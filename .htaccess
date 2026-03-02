@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Send everything to Laravel front controller in /public
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^.*$ public/index.php [L]
+
+# If you want static assets from /public to be accessible directly:
+RewriteCond %{REQUEST_URI} ^/public/
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule . - [L]

@@ -1,0 +1,469 @@
+# 🎯 ZenithSoles Project Rules - Complete MCD
+## Model Context Document for Development Standards
+
+---
+
+## 📋 **PROJECT OVERVIEW**
+**Project**: ZenithSoles Affiliate Management System  
+**Framework**: Laravel 10 (PHP 8.1+)  
+**Database**: MySQL 5.7+/8.0  
+**Architecture**: MVC with Service Providers & Middleware  
+**Deployment**: Hostinger-ready with load balancing support  
+
+---
+
+## 🔐 **1. INTEGRATION & DEVELOPMENT RULES**
+
+### 📖 **Pre-Development Protocol**
+Before ANY modification (bug fix, feature, or integration):
+
+1. **📚 Architecture Understanding**
+   - Review complete folder structure (`app/`, `config/`, `database/`, `routes/`)
+   - Understand data flow: Input → Processing → Output
+   - Map database schema relationships
+   - Identify public vs internal module access
+
+2. **🔁 Documentation Review**
+   - Read latest `CHANGELOG.md`
+   - Review `NOTES.md` for current status
+   - Check `/docs/` for architecture and schema
+   - Understand existing API endpoints
+
+3. **📂 Critical Directory Analysis**
+   - `/app/Http/Controllers/` - Request handling
+   - `/app/Models/` - Data relationships
+   - `/app/Services/` - Business logic
+   - `/routes/` - API endpoints
+   - `/database/migrations/` - Schema changes
+
+4. **🧠 Logic Confirmation**
+   - Input validation and sanitization
+   - Processing logic and business rules
+   - Output formatting and response structure
+   - Error handling and edge cases
+
+5. **📝 Planning Documentation**
+   - Log implementation plan in `CHANGELOG.md`
+   - Document expected changes and impacts
+   - Identify potential breaking changes
+   - Plan rollback strategy
+
+6. **⚠️ CRITICAL**: Never guess logic - READ before writing
+
+---
+
+## ✏️ **2. EDIT & CHANGE MANAGEMENT**
+
+### **Code Modification Standards**
+1. **Goal Confirmation**
+   - Clearly define the purpose of each edit
+   - Document expected outcomes
+   - Identify affected components
+
+2. **Database Field Management**
+   - NEVER rename/delete DB fields without impact analysis
+   - Use migrations for schema changes
+   - Maintain backward compatibility where possible
+   - Document all field modifications
+
+3. **Change Documentation**
+   - Update `CHANGELOG.md` for major changes
+   - Create roadmap updates for significant features
+   - Document breaking changes with migration paths
+
+4. **Version Control**
+   - Use `git diff` to track all changes before committing
+   - Create meaningful commit messages
+   - Use feature branches for major changes
+
+5. **Incremental Development**
+   - All edits must be incremental and reversible
+   - Test each change before proceeding
+   - Maintain working state at all times
+
+---
+
+## 🛠 **3. TROUBLESHOOTING & DEBUGGING**
+
+### **Systematic Debugging Process**
+1. **Problem Understanding**
+   - Fully understand the bug before making changes
+   - Reproduce the issue consistently
+   - Identify root cause, not just symptoms
+   - Document the problem clearly
+
+2. **Controlled Changes**
+   - Change ONE variable/function at a time
+   - Test after each modification
+   - Keep changes minimal and focused
+   - Maintain working state between changes
+
+3. **Rollback Strategy**
+   - If it breaks, revert before attempting new fix
+   - Keep backup of working state
+   - Document what was tried and results
+   - Learn from failed attempts
+
+4. **Testing Protocol**
+   - Always test after each step
+   - Verify fix doesn't break other functionality
+   - Test edge cases and error conditions
+   - Document test results
+
+5. **Change Logging**
+   - Log every attempt and result in `CHANGELOG.md`
+   - Document successful solutions
+   - Record lessons learned
+   - Update troubleshooting documentation
+
+---
+
+## 🔐 **4. SECURITY STANDARDS**
+
+### **Input Security**
+1. **Data Sanitization**
+   - Sanitize ALL external input (forms, APIs, files)
+   - Validate data types and formats
+   - Use Laravel validation rules
+   - Implement CSRF protection
+
+2. **Secrets Management**
+   - Store secrets in `.env` files only
+   - Never commit sensitive data to version control
+   - Use environment-specific configurations
+   - Rotate API keys regularly
+
+3. **Authentication & Authorization**
+   - Use hashed passwords (bcrypt/Argon2)
+   - Implement encrypted tokens for sessions
+   - Apply multi-factor authentication where needed
+   - Use Laravel's built-in auth features
+
+4. **Endpoint Protection**
+   - Always protect endpoints with auth checks
+   - Implement rate limiting
+   - Use middleware for access control
+   - Validate user permissions
+
+5. **Database Security**
+   - Apply least-privilege access control
+   - Use parameterized queries (Eloquent ORM)
+   - Encrypt sensitive data at rest
+   - Implement database-level security
+
+---
+
+## ✅ **5. TESTING REQUIREMENTS**
+
+### **Comprehensive Testing Standards**
+1. **Test Coverage**
+   - Every feature MUST have at least one test
+   - Aim for 80%+ code coverage
+   - Test both happy path and edge cases
+   - Include negative test scenarios
+
+2. **Test Organization**
+   - Create unit tests under `/tests/Unit/`
+   - Create integration tests under `/tests/Feature/`
+   - Use descriptive test names
+   - Group related tests logically
+
+3. **Real-World Testing**
+   - Test cases should reflect real-world use
+   - Include performance testing
+   - Test with realistic data volumes
+   - Simulate user workflows
+
+4. **Pre-Merge Requirements**
+   - Run full test suite before merging code
+   - All tests must pass
+   - No test failures allowed
+   - Update tests for new features
+
+5. **Bug Fix Testing**
+   - Fixes must include test that would fail without the fix
+   - Regression tests for bug fixes
+   - Document test scenarios
+   - Verify fix doesn't break existing functionality
+
+---
+
+## 🚀 **6. RELEASE & DEPLOYMENT**
+
+### **Version Management**
+1. **Semantic Versioning**
+   - Use semantic versioning (v1.0.0, v1.1.0, v2.0.0)
+   - Tag each release properly
+   - Document breaking changes in major versions
+   - Maintain version compatibility
+
+2. **Changelog Management**
+   - Maintain detailed changelog entries for each version
+   - Document new features, bug fixes, breaking changes
+   - Include migration instructions
+   - Link to related issues/PRs
+
+3. **Pre-Release Testing**
+   - Staging test must be 100% passed before release
+   - Full regression testing required
+   - Performance testing for major releases
+   - Security audit for sensitive changes
+
+4. **Deployment Safety**
+   - Prepare rollback instructions before deploying
+   - Test rollback procedures
+   - Have backup strategies ready
+   - Monitor deployment closely
+
+5. **Code Quality Gates**
+   - Never deploy untested code
+   - No partially merged code allowed
+   - All security checks must pass
+   - Performance benchmarks met
+
+---
+
+## 🎨 **7. UI/UX STANDARDS**
+
+### **Design Consistency**
+1. **Layout Systems**
+   - Use standard layout system (CSS Grid/Flexbox) consistently
+   - Maintain consistent spacing and typography
+   - Follow established design patterns
+   - Use Laravel Blade components for reusability
+
+2. **Responsive Design**
+   - Ensure mobile responsiveness across all screen sizes
+   - Test on multiple devices and browsers
+   - Use responsive breakpoints consistently
+   - Optimize for touch interactions
+
+3. **Accessibility Compliance**
+   - Follow WCAG 2.1 guidelines
+   - Ensure keyboard navigation support
+   - Provide alt text for images
+   - Use semantic HTML elements
+
+4. **Component Reusability**
+   - Style components from shared theme/config
+   - Avoid repetition - reuse components
+   - Create reusable Blade components
+   - Maintain consistent styling patterns
+
+5. **Cross-Platform Testing**
+   - Test UI changes across screen sizes
+   - Verify browser compatibility
+   - Test on different operating systems
+   - Ensure consistent user experience
+
+---
+
+## 🚀 **8. ADVANCEMENT & SCALING**
+
+### **Scalability Standards**
+1. **Modular Design**
+   - New features must follow modular design principles
+   - Maintain loose coupling between components
+   - Use service providers for feature registration
+   - Implement dependency injection
+
+2. **Multi-Source Support**
+   - Support multiple data sources and user types
+   - Design for horizontal scaling
+   - Use queue systems for heavy processing
+   - Implement caching strategies
+
+3. **Performance Requirements**
+   - Scale tests required before production launch
+   - Load testing for expected traffic
+   - Database optimization for large datasets
+   - API response time optimization
+
+4. **Async Processing**
+   - Prefer async jobs for heavy operations
+   - Use API-driven logic when scaling
+   - Implement background job processing
+   - Use Laravel queues for scalability
+
+5. **Replaceability**
+   - Avoid tight coupling - make components replaceable
+   - Use interfaces for external dependencies
+   - Implement adapter patterns
+   - Design for future technology changes
+
+---
+
+## 📊 **9. AFFILIATE SYSTEM SPECIFIC RULES**
+
+### **Business Logic Standards**
+1. **Click Tracking**
+   - All affiliate links must be tracked
+   - Implement unique tracking IDs
+   - Store click data with timestamps
+   - Handle click attribution correctly
+
+2. **Commission Management**
+   - Calculate commissions accurately
+   - Support multiple commission structures
+   - Handle sub-affiliate commission splits
+   - Implement commission reporting
+
+3. **Product Sync**
+   - Sync products from multiple sources
+   - Handle product data enrichment via AI/LLM
+   - Implement deduplication logic
+   - Cache product data efficiently
+
+4. **Multi-Language Support**
+   - Support English and Hinglish content
+   - Implement translation workflows
+   - Store language-specific data
+   - Handle language switching
+
+5. **API Integration**
+   - Design RESTful API endpoints
+   - Implement proper API authentication
+   - Use rate limiting for API calls
+   - Document API endpoints thoroughly
+
+---
+
+## 🔍 **10. QUALITY ASSURANCE CHECKLIST**
+
+### **Pre-Development Checklist**
+- [ ] Architecture understanding complete
+- [ ] Documentation reviewed
+- [ ] Change plan documented
+- [ ] Impact analysis completed
+- [ ] Rollback strategy prepared
+
+### **During Development Checklist**
+- [ ] Code follows Laravel conventions
+- [ ] Security measures implemented
+- [ ] Input validation added
+- [ ] Error handling implemented
+- [ ] Tests written and passing
+
+### **Pre-Release Checklist**
+- [ ] All tests passing
+- [ ] Security audit completed
+- [ ] Performance testing done
+- [ ] Documentation updated
+- [ ] Changelog updated
+
+### **Post-Release Checklist**
+- [ ] Monitoring setup
+- [ ] Rollback plan ready
+- [ ] User feedback collected
+- [ ] Performance metrics tracked
+- [ ] Issues documented
+
+---
+
+## 📝 **11. DOCUMENTATION REQUIREMENTS**
+
+### **Code Documentation**
+- Document all public methods
+- Include parameter descriptions
+- Explain complex business logic
+- Use PHPDoc standards
+
+### **API Documentation**
+- Document all endpoints
+- Include request/response examples
+- Document authentication requirements
+- Provide error code references
+
+### **User Documentation**
+- Create user guides for admin panel
+- Document affiliate onboarding process
+- Provide API integration guides
+- Include troubleshooting sections
+
+---
+
+## 🚨 **12. FAILURE PREVENTION**
+
+### **Common Failure Points**
+1. **Database Changes**
+   - Always use migrations
+   - Test migrations on staging
+   - Backup before major changes
+   - Plan for data migration
+
+2. **API Changes**
+   - Maintain backward compatibility
+   - Version API endpoints
+   - Document breaking changes
+   - Provide migration guides
+
+3. **Security Vulnerabilities**
+   - Regular security audits
+   - Keep dependencies updated
+   - Monitor for vulnerabilities
+   - Implement security headers
+
+4. **Performance Issues**
+   - Monitor database queries
+   - Implement caching strategies
+   - Use database indexes
+   - Monitor server resources
+
+---
+
+## 📞 **13. ESCALATION PROCEDURES**
+
+### **When to Escalate**
+- Security vulnerabilities discovered
+- Critical bugs affecting users
+- Performance degradation
+- Data integrity issues
+
+### **Escalation Process**
+1. Document the issue clearly
+2. Assess impact and urgency
+3. Notify relevant stakeholders
+4. Implement immediate fixes if needed
+5. Plan long-term solutions
+
+---
+
+## 🎯 **14. SUCCESS METRICS**
+
+### **Development Metrics**
+- Code coverage percentage
+- Test pass rate
+- Bug resolution time
+- Feature delivery time
+
+### **Business Metrics**
+- API response times
+- User satisfaction scores
+- System uptime percentage
+- Affiliate conversion rates
+
+---
+
+## 📋 **15. COMPLIANCE & LEGAL**
+
+### **Data Protection**
+- GDPR compliance for EU users
+- Data retention policies
+- User consent management
+- Privacy policy updates
+
+### **Affiliate Compliance**
+- FTC guidelines compliance
+- Affiliate disclosure requirements
+- Commission transparency
+- Terms of service updates
+
+---
+
+**Last Updated**: 2025-10-22  
+**Version**: 1.0.0  
+**Next Review**: 2025-11-22  
+
+---
+
+*This MCD serves as the single source of truth for all development standards and must be followed for all project activities.*

@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+      "memory": {
+        "command": "npx",
+        "args": ["-y", "@itseasy21/mcp-knowledge-graph"],
+        "env": {
+          "MEMORY_FILE_PATH": "/path/to/your/project_memory.jsonl"
+        }
+      }
+    }
+  }
+  
