@@ -20,12 +20,21 @@ return new class extends Migration
             $table->unsignedBigInteger('gift_id')->nullable()->comment('Gift ID if gift redemption');
             $table->enum('status', ['pending', 'approved', 'completed', 'rejected'])->default('pending');
             $table->text('admin_notes')->nullable();
+            $table->string('payout_method')->nullable();
+            $table->string('payout_reference')->nullable();
+            $table->json('payout_details')->nullable();
+            $table->unsignedBigInteger('approved_by')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->unsignedBigInteger('rejected_by')->nullable();
+            $table->timestamp('rejected_at')->nullable();
+            $table->unsignedBigInteger('completed_by')->nullable();
+            $table->timestamp('completed_at')->nullable();
+            $table->unsignedBigInteger('refund_transaction_id')->nullable();
+            $table->string('idempotency_key')->nullable()->unique();
             $table->timestamp('processed_at')->nullable();
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('gift_id')->references('id')->on('gifts')->onDelete('set null');
             
             // Indexes for better performance
             $table->index('user_id');

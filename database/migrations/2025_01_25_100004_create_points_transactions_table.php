@@ -21,10 +21,10 @@ return new class extends Migration
             $table->string('reference_type')->comment('Type: purchase_cashback, referral, redemption, gift, bonus, adjustment');
             $table->unsignedBigInteger('reference_id')->nullable()->comment('ID of related record');
             $table->enum('status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->string('idempotency_key')->nullable()->unique();
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             // Indexes for better performance
             $table->index('user_id');

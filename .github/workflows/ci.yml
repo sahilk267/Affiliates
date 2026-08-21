@@ -11,23 +11,70 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        php: [ '8.1', '8.2' ]
+        php: [ '8.2', '8.3', '8.4' ]
+    env:
+      APP_ENV: testing
+      APP_KEY: base64:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+      DB_CONNECTION: sqlite
+      DB_DATABASE: database/testing.sqlite
+      CACHE_DRIVER: array
+      SESSION_DRIVER: array
+      QUEUE_CONNECTION: sync
+      MAIL_MAILER: array
+      AFFILIATE_API_KEY: ci-test-key
+      AFFILIATE_API_SECRET: ci-test-secret
+      ADMIN_PASSWORD: ci-admin-password
+      ADMIN_EMAIL: admin@example.test
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup PHP
-        uses: shivammathur/setup-php@v4
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite
+          coverage: pcov
+
       - name: Get composer cache
         uses: actions/cache@v4
         with:
           path: ~/.composer/cache
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+
       - name: Install dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
-      - name: Run migrations (if any)
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      - name: Audit dependencies
+        run: composer audit --format=plain
+
+      - name: Prepare test database
+        run: mkdir -p database && touch database/testing.sqlite
+
+      - name: Check PHP syntax
         run: |
-          if [ -f artisan ]; then php artisan migrate --force; fi
-      - name: Run tests
+          find app bootstrap config database routes tests -type f -name '*.php' -print0 2>/dev/null | xargs -0 -n1 php -l
+
+      - name: Check repository release contracts
         run: |
-          if [ -f ./vendor/bin/phpunit ]; then ./vendor/bin/phpunit --configuration phpunit.xml || true; fi
+          python3 -m py_compile tools/*.py
+          python3 tools/validate_release_contracts.py
+          php artisan route:list --path=api -v
+          git diff --check
+
+      - name: Run migrations
+        run: php artisan migrate:fresh --force
+
+      - name: Run tests with coverage
+        run: |
+          mkdir -p build/coverage
+          ./vendor/bin/phpunit --configuration phpunit.xml.dist \
+            --coverage-clover build/coverage/clover.xml \
+            --coverage-text
+
+      - name: Upload coverage artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-php-${{ matrix.php }}
+          path: build/coverage/
+          if-no-files-found: error

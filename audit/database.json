@@ -1,0 +1,946 @@
+{
+  "generated_at": "2026-08-21T22:00:43.763379+00:00",
+  "migration_count": 21,
+  "tables_created": [
+    "products",
+    "product_links",
+    "product_commissions",
+    "user_points",
+    "points_transactions",
+    "referrals",
+    "cashback_settings",
+    "gifts",
+    "points_redemptions",
+    "users",
+    "programs",
+    "links",
+    "clicks",
+    "conversions",
+    "commissions",
+    "simple_test",
+    "password_resets"
+  ],
+  "migration_order": [
+    {
+      "file": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "creates": [
+        "products"
+      ],
+      "references": [],
+      "prior_created_tables": [],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "creates": [
+        "product_links"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "products"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "creates": [
+        "product_commissions"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "product_links",
+        "products"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "creates": [
+        "user_points"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "product_commissions",
+        "product_links",
+        "products"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "creates": [
+        "points_transactions"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "product_commissions",
+        "product_links",
+        "products",
+        "user_points"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "creates": [
+        "referrals"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "user_points"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "creates": [
+        "cashback_settings"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "referrals",
+        "user_points"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "creates": [
+        "gifts"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "referrals",
+        "user_points"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "creates": [
+        "points_redemptions"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "gifts",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "referrals",
+        "user_points"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "creates": [
+        "users"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "gifts",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "referrals",
+        "user_points"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "creates": [
+        "programs"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "gifts",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "creates": [
+        "links"
+      ],
+      "references": [
+        "programs",
+        "users"
+      ],
+      "prior_created_tables": [
+        "cashback_settings",
+        "gifts",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "creates": [
+        "clicks"
+      ],
+      "references": [
+        "links",
+        "users",
+        "programs"
+      ],
+      "prior_created_tables": [
+        "cashback_settings",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "creates": [
+        "conversions"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "creates": [
+        "commissions"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "conversions",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "creates": [],
+      "references": [
+        "users"
+      ],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "commissions",
+        "conversions",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+      "creates": [
+        "simple_test"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "commissions",
+        "conversions",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "creates": [],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "commissions",
+        "conversions",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "simple_test",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+      "creates": [],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "commissions",
+        "conversions",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "simple_test",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "creates": [
+        "password_resets"
+      ],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "commissions",
+        "conversions",
+        "gifts",
+        "links",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "simple_test",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    },
+    {
+      "file": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "creates": [],
+      "references": [],
+      "prior_created_tables": [
+        "cashback_settings",
+        "clicks",
+        "commissions",
+        "conversions",
+        "gifts",
+        "links",
+        "password_resets",
+        "points_redemptions",
+        "points_transactions",
+        "product_commissions",
+        "product_links",
+        "products",
+        "programs",
+        "referrals",
+        "simple_test",
+        "user_points",
+        "users"
+      ],
+      "order_violation_targets": []
+    }
+  ],
+  "migration_order_violations": [],
+  "models": [
+    "app/CashbackSetting.php",
+    "app/Click.php",
+    "app/Commission.php",
+    "app/Conversion.php",
+    "app/Gift.php",
+    "app/Link.php",
+    "app/PointsRedemption.php",
+    "app/PointsTransaction.php",
+    "app/Product.php",
+    "app/ProductCommission.php",
+    "app/ProductLink.php",
+    "app/Program.php",
+    "app/Referral.php",
+    "app/User.php",
+    "app/UserPoints.php"
+  ],
+  "repository_layer": [],
+  "orm": "Eloquent model queries in controllers/services; no repository classes detected",
+  "raw_sql": [
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "line": 692,
+      "evidence": "DB::raw usage"
+    },
+    {
+      "file": "tools/__pycache__/generate_audit_artifacts.cpython-312.pyc",
+      "line": 148,
+      "evidence": "DB::raw usage"
+    },
+    {
+      "file": "tools/generate_audit_artifacts.py",
+      "line": 193,
+      "evidence": "DB::raw usage"
+    }
+  ],
+  "transactions": [
+    {
+      "file": "app/Http/Controllers/ApiController.php",
+      "lines": [
+        138
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/ConsumerController.php",
+      "lines": [
+        303
+      ]
+    },
+    {
+      "file": "app/Services/AffiliateTrackingService.php",
+      "lines": [
+        32
+      ]
+    },
+    {
+      "file": "app/Services/CommissionService.php",
+      "lines": [
+        116
+      ]
+    },
+    {
+      "file": "app/Services/PayoutService.php",
+      "lines": [
+        27,
+        63,
+        72,
+        86,
+        95,
+        104,
+        132
+      ]
+    },
+    {
+      "file": "app/Services/PointsService.php",
+      "lines": [
+        32,
+        124
+      ]
+    },
+    {
+      "file": "tools/__pycache__/generate_audit_artifacts.cpython-312.pyc",
+      "lines": [
+        374
+      ]
+    },
+    {
+      "file": "tools/__pycache__/generate_release_score.cpython-312.pyc",
+      "lines": [
+        165
+      ]
+    },
+    {
+      "file": "tools/generate_audit_artifacts.py",
+      "lines": [
+        194
+      ]
+    },
+    {
+      "file": "tools/generate_release_score.py",
+      "lines": [
+        36
+      ]
+    }
+  ],
+  "indexes_and_foreign_keys": [
+    {
+      "file": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "line": 26,
+      "definition": "$table->index('category');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "line": 27,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "line": 28,
+      "definition": "$table->index('brand');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "line": 29,
+      "definition": "$table->index('sku');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "line": 28,
+      "definition": "$table->index('product_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "line": 29,
+      "definition": "$table->index('program_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "line": 30,
+      "definition": "$table->index('is_best_price');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "line": 31,
+      "definition": "$table->index('price');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "line": 32,
+      "definition": "$table->unique(['product_id', 'program_id'], 'unique_product_program');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "line": 35,
+      "definition": "$table->index('commission_rate');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "line": 36,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "line": 37,
+      "definition": "$table->index('category');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "line": 38,
+      "definition": "$table->index('source');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "line": 16,
+      "definition": "$table->unsignedBigInteger('user_id')->unique();"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "line": 26,
+      "definition": "$table->index('balance');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "line": 24,
+      "definition": "$table->string('idempotency_key')->nullable()->unique();"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "line": 30,
+      "definition": "$table->index('user_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "line": 31,
+      "definition": "$table->index('type');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "line": 32,
+      "definition": "$table->index('reference_type');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "line": 33,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "line": 34,
+      "definition": "$table->index('created_at');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "line": 18,
+      "definition": "$table->string('referral_code', 50)->unique();"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "line": 29,
+      "definition": "$table->index('referral_code');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "line": 30,
+      "definition": "$table->index('referrer_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "line": 31,
+      "definition": "$table->index('referred_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "line": 32,
+      "definition": "$table->index('program_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "line": 33,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "line": 16,
+      "definition": "$table->unsignedBigInteger('program_id')->unique();"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "line": 25,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "line": 26,
+      "definition": "$table->index('points_required');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "line": 27,
+      "definition": "$table->index('stock');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "line": 33,
+      "definition": "$table->string('idempotency_key')->nullable()->unique();"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "line": 40,
+      "definition": "$table->index('user_id');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "line": 41,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "line": 42,
+      "definition": "$table->index('redemption_type');"
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "line": 43,
+      "definition": "$table->index('created_at');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "line": 17,
+      "definition": "$table->string('email')->unique();"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "line": 33,
+      "definition": "$table->index('role');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "line": 34,
+      "definition": "$table->index('is_active');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "line": 35,
+      "definition": "$table->index('parent_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "line": 17,
+      "definition": "$table->string('slug')->unique();"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "line": 36,
+      "definition": "$table->index('type');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "line": 37,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "line": 38,
+      "definition": "$table->index('supports_sub_affiliate');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 20,
+      "definition": "$table->string('short_code')->unique(); // Short code for the link"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 33,
+      "definition": "$table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 34,
+      "definition": "$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 37,
+      "definition": "$table->index('user_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 38,
+      "definition": "$table->index('program_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 39,
+      "definition": "$table->index('is_active');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 40,
+      "definition": "$table->index('short_code');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "line": 41,
+      "definition": "$table->index('sub_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 34,
+      "definition": "$table->foreign('link_id')->references('id')->on('links')->onDelete('cascade');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 35,
+      "definition": "$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 36,
+      "definition": "$table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 39,
+      "definition": "$table->index('user_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 40,
+      "definition": "$table->index('program_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 41,
+      "definition": "$table->index('ip_address');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 42,
+      "definition": "$table->index('clicked_at');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 43,
+      "definition": "$table->index('is_converted');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "line": 44,
+      "definition": "$table->index('is_unique');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 18,
+      "definition": "$table->string('conversion_id')->nullable()->unique();"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 19,
+      "definition": "$table->string('partner_event_id')->nullable()->unique();"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 41,
+      "definition": "$table->index('user_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 42,
+      "definition": "$table->index('program_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 43,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 44,
+      "definition": "$table->index('converted_at');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "line": 45,
+      "definition": "$table->index('partner_event_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "line": 35,
+      "definition": "$table->index('user_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "line": 36,
+      "definition": "$table->index('status');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "line": 37,
+      "definition": "$table->index('paid_at');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "line": 38,
+      "definition": "$table->index('conversion_id');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "line": 39,
+      "definition": "$table->index('commission_type');"
+    },
+    {
+      "file": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "line": 16,
+      "definition": "$table->foreign('parent_id')->references('id')->on('users')->onDelete('cascade');"
+    },
+    {
+      "file": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "line": 44,
+      "definition": "$foreign = $schema->foreign($column)->references('id')->on($referencedTable);"
+    },
+    {
+      "file": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "line": 53,
+      "definition": "$this->addColumnIfMissing('conversions', 'partner_event_id', fn (Blueprint $table) => $table->string('partner_event_id')->nullable()->unique()->after('conversion_id'));"
+    },
+    {
+      "file": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+      "line": 13,
+      "definition": "$table->string('idempotency_key')->nullable()->unique()->after('status');"
+    },
+    {
+      "file": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "line": 13,
+      "definition": "$table->string('email')->index();"
+    },
+    {
+      "file": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "line": 39,
+      "definition": "'idempotency_key' => fn (Blueprint $table) => $table->string('idempotency_key')->nullable()->unique(),"
+    }
+  ],
+  "connection_pooling": "NOT MEASURABLE from repository; standard Laravel database config only",
+  "n_plus_one_candidates": [
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "line": 65,
+      "evidence": "multiple dashboard aggregates and eager-load patterns require query-plan testing"
+    }
+  ]
+}

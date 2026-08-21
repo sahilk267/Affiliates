@@ -1,0 +1,28 @@
+
+   INFO  Preparing database.
+
+  Creating migration table ....................................... 2.75ms DONE
+
+   INFO  Running migrations.
+
+  2025_01_25_100000_create_products_table ........................ 4.13ms DONE
+  2025_01_25_100001_create_product_links_table ................... 4.16ms DONE
+  2025_01_25_100002_create_product_commissions_table ............. 4.68ms DONE
+  2025_01_25_100003_create_user_points_table ..................... 2.58ms DONE
+  2025_01_25_100004_create_points_transactions_table ............. 4.55ms DONE
+  2025_01_25_100005_create_referrals_table ....................... 4.40ms DONE
+  2025_01_25_100006_create_cashback_settings_table ............... 1.47ms DONE
+  2025_01_25_100007_create_gifts_table ........................... 2.83ms DONE
+  2025_01_25_100008_create_points_redemptions_table .............. 4.29ms DONE
+  2025_10_23_214347_create_users_table ........................... 3.82ms DONE
+  2025_10_23_214403_create_programs_table ........................ 3.67ms DONE
+  2025_10_23_214418_create_links_table ........................... 5.03ms DONE
+  2025_10_23_214430_create_clicks_table .......................... 4.61ms DONE
+  2025_10_23_214440_create_conversions_table ..................... 5.27ms DONE
+  2025_10_23_214453_create_commissions_table ..................... 4.10ms DONE
+  2025_10_23_214753_add_foreign_keys_to_users_table .............. 6.56ms DONE
+  2025_10_23_215158_create_simple_test_table ..................... 0.67ms DONE
+  2026_08_20_000001_align_affiliate_financial_contracts ........ 135.25ms DONE
+  2026_08_20_000002_add_points_transaction_idempotency ........... 0.18ms DONE
+  2026_08_20_000003_create_password_resets_table ................. 1.38ms DONE
+  2026_08_20_000004_add_payout_audit_fields ...................... 1.38ms DONE

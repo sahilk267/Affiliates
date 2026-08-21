@@ -1,0 +1,49 @@
+
+  GET|HEAD   admin/ui/api-test .. admin.api-test › AdminController@apiTestView
+             ⇂ web
+             ⇂ admin
+  POST       admin/ui/api-test/click admin.api-test.click › AdminController@testClickApi
+             ⇂ web
+             ⇂ admin
+  POST       admin/ui/api-test/conversion admin.api-test.conversion › AdminController@testConversionApi
+             ⇂ web
+             ⇂ admin
+  POST       api/affiliate/click .................... ApiController@trackClick
+             ⇂ api
+             ⇂ throttle:affiliate-click
+  POST       api/affiliate/conversion ......... ApiController@reportConversion
+             ⇂ api
+             ⇂ partner.signature
+             ⇂ throttle:affiliate-conversion
+  GET|HEAD   api/affiliate/link/{shortCode} ............ ApiController@getLink
+             ⇂ api
+  GET|HEAD   api/affiliate/user/{userId}/stats .... ApiController@getUserStats
+             ⇂ api
+             ⇂ web
+             ⇂ auth
+  GET|HEAD   api/health .................................... routes/api.php:23
+             ⇂ api
+  GET|HEAD   api/points/balance/{userId} ...... ApiController@getPointsBalance
+             ⇂ api
+             ⇂ web
+             ⇂ auth
+  POST       api/points/credit .................... ApiController@creditPoints
+             ⇂ api
+             ⇂ partner.signature
+             ⇂ throttle:points-credit
+  GET|HEAD   api/products ............................ ProductController@index
+             ⇂ api
+  GET|HEAD   api/products/{id} ........................ ProductController@show
+             ⇂ api
+  GET|HEAD   api/referral/info/{code} .......... ApiController@getReferralInfo
+             ⇂ api
+             ⇂ web
+             ⇂ auth
+  POST       api/referral/track .................. ApiController@trackReferral
+             ⇂ api
+             ⇂ throttle:referral-track
+  GET|HEAD   api/user ...................................... routes/api.php:18
+             ⇂ api
+             ⇂ auth:sanctum
+
+                                                           Showing [15] routes

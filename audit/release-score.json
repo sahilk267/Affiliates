@@ -1,0 +1,507 @@
+{
+  "generated_at": "2026-08-21T22:00:44.038794+00:00",
+  "scoring_policy": "Each measurable category is the arithmetic percentage of passed explicit repository checks. Categories without runtime evidence are marked NOT MEASURABLE and excluded from the overall arithmetic mean. No subjective weighting is applied.",
+  "categories": {
+    "Architecture": {
+      "score": 80.0,
+      "earned": 8,
+      "possible": 10,
+      "controls": [
+        {
+          "name": "frontend",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "backend",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "api",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "database",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "service layer",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "kernel",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "security/auth/authorization",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "infrastructure",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "queue/workers",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "adapters/plugins/agents",
+          "passed": false,
+          "measurable": true
+        }
+      ]
+    },
+    "Security": {
+      "score": 100.0,
+      "earned": 10,
+      "possible": 10,
+      "controls": [
+        {
+          "name": "web CSRF",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "password hashing",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "request validation",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "rate limiting",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "file upload validation",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "API authentication",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "auth mechanism consistency",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "default secret hygiene",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "security headers",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "brute-force control",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "Testing": {
+      "score": 100.0,
+      "earned": 5,
+      "possible": 5,
+      "controls": [
+        {
+          "name": "test files",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "coverage artifact",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "CI fails on test failure",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "migration tests",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "API/security tests",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "Documentation": {
+      "score": 100.0,
+      "earned": 7,
+      "possible": 7,
+      "controls": [
+        {
+          "name": "README",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "changelog",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "deployment guidance",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "environment template",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "API contract",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "architecture docs",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "ADR directory",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "Performance": {
+      "score": "NOT MEASURABLE",
+      "earned": null,
+      "possible": null,
+      "controls": [
+        {
+          "name": "runtime profiling",
+          "passed": false,
+          "measurable": false
+        },
+        {
+          "name": "load test",
+          "passed": false,
+          "measurable": false
+        }
+      ]
+    },
+    "Maintainability": {
+      "score": 44.04,
+      "earned": 44.04,
+      "possible": 100,
+      "controls": [
+        {
+          "name": "static maintainability heuristic",
+          "passed": 44.04,
+          "measurable": true
+        }
+      ]
+    },
+    "Scalability": {
+      "score": 66.67,
+      "earned": 4,
+      "possible": 6,
+      "controls": [
+        {
+          "name": "pagination",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "indexes",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "cache/redis",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "queues",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "background workers",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "rate limiting",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "Reliability": {
+      "score": 100.0,
+      "earned": 5,
+      "possible": 5,
+      "controls": [
+        {
+          "name": "health endpoints",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "error logging",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "transactional points operations",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "clean migration order",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "automated tests",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "AI Safety": {
+      "score": "NOT MEASURABLE",
+      "earned": null,
+      "possible": null,
+      "controls": [
+        {
+          "name": "AI runtime exists to audit",
+          "passed": false,
+          "measurable": false
+        }
+      ]
+    },
+    "DevOps": {
+      "score": 50.0,
+      "earned": 3,
+      "possible": 6,
+      "controls": [
+        {
+          "name": "CI workflow",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "Docker assets",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "environment template",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "monitoring",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "backups",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "rollback/blue-green",
+          "passed": false,
+          "measurable": true
+        }
+      ]
+    },
+    "Database": {
+      "score": 80.0,
+      "earned": 4,
+      "possible": 5,
+      "controls": [
+        {
+          "name": "migration order",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "foreign keys/indexes",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "transactions",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "schema/runtime alignment",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "repository abstraction",
+          "passed": false,
+          "measurable": true
+        }
+      ]
+    },
+    "API": {
+      "score": 100.0,
+      "earned": 6,
+      "possible": 6,
+      "controls": [
+        {
+          "name": "routes discovered",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "request validation detected",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "auth on mutation APIs",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "rate limiting",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "OpenAPI contract",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "automated API tests",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "Frontend": {
+      "score": 40.0,
+      "earned": 2,
+      "possible": 5,
+      "controls": [
+        {
+          "name": "Blade views",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "named-route usage",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "automated accessibility checks",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "automated SEO checks",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "compiled asset pipeline",
+          "passed": false,
+          "measurable": true
+        }
+      ]
+    },
+    "Backend": {
+      "score": 83.33,
+      "earned": 5,
+      "possible": 6,
+      "controls": [
+        {
+          "name": "controllers",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "services",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "dependency injection",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "validation",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "centralized repositories",
+          "passed": false,
+          "measurable": true
+        },
+        {
+          "name": "centralized error handling",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    },
+    "Observability": {
+      "score": 100.0,
+      "earned": 3,
+      "possible": 3,
+      "controls": [
+        {
+          "name": "application logging",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "health checks",
+          "passed": true,
+          "measurable": true
+        },
+        {
+          "name": "metrics/monitoring",
+          "passed": true,
+          "measurable": true
+        }
+      ]
+    }
+  },
+  "release_score_out_of_100": 80.31,
+  "measurable_category_count": 13,
+  "not_measurable_categories": [
+    "Performance",
+    "AI Safety"
+  ]
+}

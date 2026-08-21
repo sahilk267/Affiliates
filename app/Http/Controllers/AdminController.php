@@ -18,6 +18,7 @@ use App\Referral;
 use App\PointsRedemption;
 use App\Gift;
 use App\Services\ProductService;
+use App\Services\PayoutService;
 use App\Services\PointsService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -27,11 +28,13 @@ class AdminController extends Controller
 {
     protected ProductService $productService;
     protected PointsService $pointsService;
+    protected PayoutService $payoutService;
 
-    public function __construct(ProductService $productService, PointsService $pointsService)
+    public function __construct(ProductService $productService, PointsService $pointsService, PayoutService $payoutService)
     {
         $this->productService = $productService;
         $this->pointsService = $pointsService;
+        $this->payoutService = $payoutService;
     }
     /**
      * Display HTML dashboard view
@@ -493,7 +496,7 @@ class AdminController extends Controller
         ];
 
         // Call the API controller method
-        $apiController = new \App\Http\Controllers\ApiController();
+        $apiController = app(\App\Http\Controllers\ApiController::class);
         $response = $apiController->trackClick(new \Illuminate\Http\Request($clickData));
 
         return response()->json([
@@ -519,10 +522,11 @@ class AdminController extends Controller
             'conversion_value' => $request->conversion_value ?? 1000,
             'currency' => $request->currency ?? 'INR',
             'order_id' => $request->order_id ?? 'TEST-' . time(),
+            'partner_event_id' => $request->input('partner_event_id', 'admin-test-' . bin2hex(random_bytes(8))),
         ];
 
-        // Call the API controller method
-        $apiController = new \App\Http\Controllers\ApiController();
+        // Call the API controller method through the service container
+        $apiController = app(\App\Http\Controllers\ApiController::class);
         $response = $apiController->reportConversion(new \Illuminate\Http\Request($conversionData));
 
         return response()->json([
@@ -626,19 +630,29 @@ class AdminController extends Controller
     /**
      * Approve commission
      */
-    public function approveCommission(Commission $commission)
+    public function approveCommission(Request $request, Commission $commission)
     {
-        $commission->approve();
-        return redirect()->route('admin.commissions')->with('success', 'Commission approved successfully!');
+        try {
+            $this->payoutService->approveCommission($commission, $request->user()?->id, $request->input('notes'));
+            return redirect()->route('admin.commissions')->with('success', 'Commission approved successfully!');
+        } catch (\Throwable $e) {
+            Log::warning('Commission approval rejected', ['commission_id' => $commission->id, 'error' => $e->getMessage()]);
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     /**
      * Reject/Cancel commission
      */
-    public function rejectCommission(Commission $commission)
+    public function rejectCommission(Request $request, Commission $commission)
     {
-        $commission->cancel();
-        return redirect()->route('admin.commissions')->with('success', 'Commission cancelled successfully!');
+        try {
+            $this->payoutService->cancelCommission($commission, $request->user()?->id, $request->input('notes'));
+            return redirect()->route('admin.commissions')->with('success', 'Commission cancelled successfully!');
+        } catch (\Throwable $e) {
+            Log::warning('Commission cancellation rejected', ['commission_id' => $commission->id, 'error' => $e->getMessage()]);
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     /**
@@ -647,22 +661,24 @@ class AdminController extends Controller
     public function markCommissionPaid(Request $request, Commission $commission)
     {
         $request->validate([
-            'payout_method' => 'nullable|string',
-            'transaction_id' => 'nullable|string',
-            'notes' => 'nullable|string',
+            'payout_method' => 'required|string|in:bank_transfer,paypal,check,crypto',
+            'transaction_id' => 'required|string|max:255',
+            'notes' => 'nullable|string|max:2000',
         ]);
 
-        $commission->update([
-            'status' => Commission::STATUS_PAID,
-            'paid_at' => now(),
-            'payout_method' => $request->payout_method ?? Commission::PAYOUT_BANK_TRANSFER,
-            'payout_details' => [
-                'transaction_id' => $request->transaction_id,
-                'notes' => $request->notes,
-            ],
-        ]);
-
-        return redirect()->route('admin.commissions')->with('success', 'Commission marked as paid!');
+        try {
+            $this->payoutService->payCommission(
+                $commission,
+                $request->user()?->id,
+                $request->string('payout_method')->toString(),
+                $request->string('transaction_id')->toString(),
+                ['notes' => $request->input('notes')]
+            );
+            return redirect()->route('admin.commissions')->with('success', 'Commission marked as paid!');
+        } catch (\Throwable $e) {
+            Log::warning('Commission payment rejected', ['commission_id' => $commission->id, 'error' => $e->getMessage()]);
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     /**
@@ -1602,7 +1618,7 @@ class AdminController extends Controller
         $redemption = PointsRedemption::findOrFail($redemptionId);
 
         try {
-            $redemption->approve($request->admin_notes);
+            $this->payoutService->approveRedemption($redemption, $request->user()?->id, $request->input('admin_notes'));
 
             return redirect()->back()
                 ->with('success', 'Redemption approved successfully!');
@@ -1621,18 +1637,7 @@ class AdminController extends Controller
         $redemption = PointsRedemption::findOrFail($redemptionId);
 
         try {
-            $redemption->reject($request->admin_notes);
-
-            // Refund points if rejected
-            if ($redemption->status === PointsRedemption::STATUS_REJECTED) {
-                $this->pointsService->creditPoints(
-                    $redemption->user_id,
-                    $redemption->points_used,
-                    "Redemption rejected - Refund",
-                    PointsTransaction::REF_ADJUSTMENT,
-                    $redemption->id
-                );
-            }
+            $this->payoutService->rejectRedemption($redemption, $request->user()?->id, $request->input('admin_notes'));
 
             return redirect()->back()
                 ->with('success', 'Redemption rejected successfully!');
@@ -1646,12 +1651,23 @@ class AdminController extends Controller
     /**
      * Mark redemption as completed (Admin)
      */
-    public function completeRedemption($redemptionId)
+    public function completeRedemption(Request $request, $redemptionId)
     {
         $redemption = PointsRedemption::findOrFail($redemptionId);
+        $request->validate([
+            'payout_method' => 'required|string|max:100',
+            'payout_reference' => 'required|string|max:255',
+            'payout_notes' => 'nullable|string|max:2000',
+        ]);
 
         try {
-            $redemption->markAsCompleted();
+            $this->payoutService->completeRedemption(
+                $redemption,
+                $request->user()?->id,
+                $request->string('payout_method')->toString(),
+                $request->string('payout_reference')->toString(),
+                ['notes' => $request->input('payout_notes')]
+            );
 
             return redirect()->back()
                 ->with('success', 'Redemption marked as completed!');

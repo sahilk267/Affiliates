@@ -1,0 +1,12 @@
+flowchart TD
+  Browser[Consumer/Admin Browser] --> Web[Laravel Web Routes]
+  Browser --> API[Laravel API Routes]
+  Web --> Controllers[Controllers]
+  API --> Controllers
+  Controllers --> Services[Domain Services]
+  Controllers --> Models[Eloquent Models]
+  Services --> Models
+  Models --> DB[(MySQL/SQLite configured DB)]
+  Web --> Views[Blade + Tailwind CDN Views]
+  Controllers --> Logs[Laravel Logging]
+  CI[GitHub Actions] --> App[Composer/Laravel App]

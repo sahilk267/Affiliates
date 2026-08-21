@@ -1,0 +1,1896 @@
+{
+  "generated_at": "2026-08-21T22:00:43.763379+00:00",
+  "scan_scope": "All files in working tree excluding .git internals and generated audit/ outputs.",
+  "counts": {
+    "total_files": 219,
+    "total_source_files": 133,
+    "total_test_files": 3,
+    "total_documentation_files": 53,
+    "total_configuration_files": 17,
+    "total_images": 0,
+    "total_scripts": 9,
+    "total_directories": 1155
+  },
+  "language_counts": {
+    "JSON": 2,
+    "Markdown": 45,
+    "Mermaid": 8,
+    "Environment": 2,
+    "YAML": 2,
+    "Config": 6,
+    "Unknown": 20,
+    "PHP": 130,
+    "PHP CLI": 1,
+    "Lockfile": 1,
+    "SQL": 2
+  },
+  "extension_counts": {
+    ".json": 2,
+    ".md": 45,
+    ".mcd": 8,
+    "[no extension]": 7,
+    ".example": 1,
+    ".yml": 1,
+    ".cache": 1,
+    ".zip": 1,
+    ".php": 130,
+    ".lock": 1,
+    ".sqlite": 2,
+    ".sql": 2,
+    ".yaml": 1,
+    ".dist": 1,
+    ".pyc": 8,
+    ".py": 8
+  },
+  "total_loc": 34924,
+  "average_file_size_bytes": 12821.59,
+  "total_bytes": 2807928,
+  "largest_files": [
+    {
+      "path": "Affiliates_enterprise_audit.zip",
+      "size_bytes": 580508,
+      "line_count": 2026
+    },
+    {
+      "path": "database/database.sqlite",
+      "size_bytes": 393216,
+      "line_count": 74
+    },
+    {
+      "path": "database/testing.sqlite",
+      "size_bytes": 393216,
+      "line_count": 74
+    },
+    {
+      "path": "composer.lock",
+      "size_bytes": 285873,
+      "line_count": 7736
+    },
+    {
+      "path": "tools/__pycache__/generate_audit_artifacts.cpython-312.pyc",
+      "size_bytes": 63201,
+      "line_count": 407
+    },
+    {
+      "path": "app/Http/Controllers/AdminController.php",
+      "size_bytes": 56789,
+      "line_count": 1680
+    },
+    {
+      "path": "tools/generate_audit_artifacts.py",
+      "size_bytes": 41705,
+      "line_count": 313
+    },
+    {
+      "path": "PHASE_WISE_IMPLEMENTATION_PLAN.md",
+      "size_bytes": 24572,
+      "line_count": 256
+    },
+    {
+      "path": "bootstrap/cache/services.php",
+      "size_bytes": 21465,
+      "line_count": 252
+    },
+    {
+      "path": "app/Http/Controllers/ApiController.php",
+      "size_bytes": 20476,
+      "line_count": 550
+    },
+    {
+      "path": "tools/__pycache__/generate_release_score.cpython-312.pyc",
+      "size_bytes": 20417,
+      "line_count": 100
+    },
+    {
+      "path": "END_TO_END_GAP_ASSESSMENT.md",
+      "size_bytes": 18370,
+      "line_count": 156
+    },
+    {
+      "path": "tools/__pycache__/build_audit_index.cpython-312.pyc",
+      "size_bytes": 17767,
+      "line_count": 92
+    },
+    {
+      "path": "app/Http/Controllers/ProductController.php",
+      "size_bytes": 15426,
+      "line_count": 453
+    },
+    {
+      "path": ".cursor/rules/maintenance-rules.mcd",
+      "size_bytes": 14995,
+      "line_count": 441
+    }
+  ],
+  "largest_folders": [
+    {
+      "folder": "database",
+      "files": 27,
+      "bytes": 836625,
+      "loc": 1390
+    },
+    {
+      "folder": "Affiliates_enterprise_audit.zip",
+      "files": 1,
+      "bytes": 580508,
+      "loc": 2026
+    },
+    {
+      "folder": "composer.lock",
+      "files": 1,
+      "bytes": 285873,
+      "loc": 7736
+    },
+    {
+      "folder": "app",
+      "files": 48,
+      "bytes": 236557,
+      "loc": 7986
+    },
+    {
+      "folder": "resources",
+      "files": 40,
+      "bytes": 233215,
+      "loc": 4203
+    },
+    {
+      "folder": "tools",
+      "files": 16,
+      "bytes": 221745,
+      "loc": 1990
+    },
+    {
+      "folder": ".cursor",
+      "files": 11,
+      "bytes": 112310,
+      "loc": 3713
+    },
+    {
+      "folder": "docs",
+      "files": 8,
+      "bytes": 48112,
+      "loc": 794
+    },
+    {
+      "folder": "config",
+      "files": 8,
+      "bytes": 28446,
+      "loc": 860
+    },
+    {
+      "folder": "PHASE_WISE_IMPLEMENTATION_PLAN.md",
+      "files": 1,
+      "bytes": 24572,
+      "loc": 256
+    },
+    {
+      "folder": "bootstrap",
+      "files": 4,
+      "bytes": 23384,
+      "loc": 325
+    },
+    {
+      "folder": "END_TO_END_GAP_ASSESSMENT.md",
+      "files": 1,
+      "bytes": 18370,
+      "loc": 156
+    },
+    {
+      "folder": "PROJECT_STATUS_REPORT.md",
+      "files": 1,
+      "bytes": 14233,
+      "loc": 447
+    },
+    {
+      "folder": "routes",
+      "files": 3,
+      "bytes": 13904,
+      "loc": 236
+    },
+    {
+      "folder": "PRIORITIZATION_ROADMAP.md",
+      "files": 1,
+      "bytes": 11886,
+      "loc": 399
+    }
+  ],
+  "dependency_count": 2910,
+  "unused_file_candidates": [],
+  "dead_code_candidates": [
+    {
+      "file": "app/Click.php",
+      "function": "scopeConverted",
+      "line": 84,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Click.php",
+      "function": "scopeNotConverted",
+      "line": 92,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Click.php",
+      "function": "scopeByCountry",
+      "line": 124,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Click.php",
+      "function": "scopeByDeviceType",
+      "line": 132,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Click.php",
+      "function": "getTimeToConversionAttribute",
+      "line": 140,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Click.php",
+      "function": "getGeographicInfoAttribute",
+      "line": 168,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Click.php",
+      "function": "getDeviceInfoAttribute",
+      "line": 179,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "scopeByAmountRange",
+      "line": 163,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "isCancelled",
+      "line": 195,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "getAgeInDaysAttribute",
+      "line": 256,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "getTimeToPaymentAttribute",
+      "line": 264,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "isOverdue",
+      "line": 276,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "getFormattedAmountAttribute",
+      "line": 284,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Commission.php",
+      "function": "getPayoutSummaryAttribute",
+      "line": 292,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Conversion.php",
+      "function": "scopeByEventType",
+      "line": 153,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Conversion.php",
+      "function": "getRoiAttribute",
+      "line": 268,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Conversion.php",
+      "function": "hasSubAffiliate",
+      "line": 279,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Conversion.php",
+      "function": "getTimeToProcessAttribute",
+      "line": 287,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Gift.php",
+      "function": "isOutOfStock",
+      "line": 63,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Gift.php",
+      "function": "incrementStock",
+      "line": 83,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Gift.php",
+      "function": "scopeAvailable",
+      "line": 103,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Gift.php",
+      "function": "scopeByPointsRange",
+      "line": 112,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "function": "productsView",
+      "line": 1039,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "function": "productCommissionsView",
+      "line": 1068,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "function": "storeProductCommission",
+      "line": 1079,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "function": "updateProductCommission",
+      "line": 1130,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "function": "deleteProductCommission",
+      "line": 1176,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "function": "importProductCommissions",
+      "line": 1196,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Http/Middleware/Authenticate.php",
+      "function": "redirectTo",
+      "line": 13,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Link.php",
+      "function": "scopeNotExpired",
+      "line": 118,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Link.php",
+      "function": "getAverageCommissionAttribute",
+      "line": 156,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsRedemption.php",
+      "function": "isCash",
+      "line": 89,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsRedemption.php",
+      "function": "isGift",
+      "line": 97,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "function": "isCredit",
+      "line": 94,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "function": "isDebit",
+      "line": 102,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "function": "scopeCredits",
+      "line": 118,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "function": "scopeDebits",
+      "line": 126,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "function": "scopeCompleted",
+      "line": 134,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "function": "scopeByReferenceType",
+      "line": 142,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Product.php",
+      "function": "activeProductLinks",
+      "line": 54,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Product.php",
+      "function": "getMaxCommissionRateAttribute",
+      "line": 80,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Product.php",
+      "function": "getBestCommissionPlatformAttribute",
+      "line": 92,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Product.php",
+      "function": "getMinPriceAttribute",
+      "line": 103,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Product.php",
+      "function": "scopeByBrand",
+      "line": 138,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/ProductLink.php",
+      "function": "getCommissionRateAttribute",
+      "line": 65,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/ProductLink.php",
+      "function": "isBestPrice",
+      "line": 78,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/ProductLink.php",
+      "function": "scopeBestPrice",
+      "line": 86,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Program.php",
+      "function": "supportsSubAffiliates",
+      "line": 78,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Program.php",
+      "function": "scopeSupportsSubAffiliates",
+      "line": 134,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Program.php",
+      "function": "getTotalClicksAttribute",
+      "line": 142,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Program.php",
+      "function": "getTotalConversionsAttribute",
+      "line": 150,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Providers/EventServiceProvider.php",
+      "function": "shouldDiscoverEvents",
+      "line": 34,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Referral.php",
+      "function": "scopeByReferrer",
+      "line": 155,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/CashbackService.php",
+      "function": "getCashbackRate",
+      "line": 154,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/CashbackService.php",
+      "function": "getReferralRate",
+      "line": 169,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/CashbackService.php",
+      "function": "supportsCashback",
+      "line": 204,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/CommissionService.php",
+      "function": "processCommission",
+      "line": 113,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/CommissionService.php",
+      "function": "checkSubAffiliateSupport",
+      "line": 174,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/CommissionService.php",
+      "function": "getProductCommissionRate",
+      "line": 186,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/PointsService.php",
+      "function": "processWithdrawal",
+      "line": 238,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/ProductService.php",
+      "function": "getBestPrice",
+      "line": 151,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/ProductService.php",
+      "function": "getProductsByCategory",
+      "line": 166,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/ProductService.php",
+      "function": "searchProducts",
+      "line": 228,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/Services/ProductService.php",
+      "function": "updateBestPriceFlags",
+      "line": 258,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/User.php",
+      "function": "isAffiliate",
+      "line": 76,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/User.php",
+      "function": "isSubAffiliate",
+      "line": 84,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/User.php",
+      "function": "subAffiliates",
+      "line": 100,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/User.php",
+      "function": "pointsTransactions",
+      "line": 148,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/User.php",
+      "function": "scopeByRole",
+      "line": 188,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/User.php",
+      "function": "getPendingCommissionAttribute",
+      "line": 204,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "app/UserPoints.php",
+      "function": "getTotalBalance",
+      "line": 66,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_clean_schema_contains_canonical_financial_columns",
+      "line": 24,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_login_uses_laravel_guard_and_status_reads_the_same_identity",
+      "line": 34,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_non_admin_authenticated_user_cannot_access_admin_routes",
+      "line": 56,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_conversion_and_points_mutations_require_partner_signature",
+      "line": 69,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_points_credit_is_idempotent_for_the_same_key",
+      "line": 79,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_withdrawal_is_atomic_idempotent_and_refunds_on_rejection",
+      "line": 99,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_commission_cannot_be_paid_before_approval",
+      "line": 132,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_health_endpoint_checks_the_database_connection",
+      "line": 192,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_security_headers_are_present_on_http_responses",
+      "line": 200,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_authenticated_user_cannot_read_another_users_points_balance",
+      "line": 210,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "function": "test_signed_conversion_creates_one_attributed_commission_and_is_idempotent",
+      "line": 230,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    },
+    {
+      "file": "tests/TestCase.php",
+      "function": "createApplication",
+      "line": 10,
+      "reason": "method name has no text reference outside its declaration; heuristic only"
+    }
+  ],
+  "duplicate_content_groups": [
+    [
+      "database/database.sqlite",
+      "database/testing.sqlite"
+    ]
+  ],
+  "duplicate_filename_groups": {
+    "README.md": [
+      ".cursor/rules/README.md",
+      "README.md",
+      "complete-project-rules/README.md"
+    ],
+    ".gitignore": [
+      ".gitignore",
+      "bootstrap/cache/.gitignore"
+    ],
+    ".htaccess": [
+      ".htaccess",
+      "public/.htaccess"
+    ],
+    "Kernel.php": [
+      "app/Console/Kernel.php",
+      "app/Http/Kernel.php"
+    ],
+    "app.php": [
+      "bootstrap/app.php",
+      "config/app.php"
+    ],
+    "services.php": [
+      "bootstrap/cache/services.php",
+      "config/services.php"
+    ],
+    "index.php": [
+      "index.php",
+      "public/index.php"
+    ],
+    "index.blade.php": [
+      "resources/views/admin/cashback-settings/index.blade.php",
+      "resources/views/admin/products/index.blade.php",
+      "resources/views/admin/redemptions/index.blade.php",
+      "resources/views/admin/referrals/index.blade.php",
+      "resources/views/admin/wallets/index.blade.php",
+      "resources/views/dashboard/index.blade.php",
+      "resources/views/gifts/index.blade.php",
+      "resources/views/products/index.blade.php",
+      "resources/views/referrals/index.blade.php",
+      "resources/views/wallet/index.blade.php"
+    ],
+    "commissions.blade.php": [
+      "resources/views/admin/commissions.blade.php",
+      "resources/views/admin/products/commissions.blade.php"
+    ],
+    "create.blade.php": [
+      "resources/views/admin/links/create.blade.php",
+      "resources/views/admin/products/create.blade.php",
+      "resources/views/admin/programs/create.blade.php",
+      "resources/views/admin/users/create.blade.php"
+    ],
+    "edit.blade.php": [
+      "resources/views/admin/links/edit.blade.php",
+      "resources/views/admin/products/edit.blade.php",
+      "resources/views/admin/programs/edit.blade.php",
+      "resources/views/admin/users/edit.blade.php",
+      "resources/views/profile/edit.blade.php"
+    ],
+    "reset-password.blade.php": [
+      "resources/views/auth/reset-password.blade.php",
+      "resources/views/emails/reset-password.blade.php"
+    ]
+  },
+  "circular_dependencies": "NOT MEASURABLE by heuristic graph because PHP class resolution is dynamic",
+  "largest_dependency_graph_nodes": [
+    [
+      "bootstrap/cache/services.php",
+      170
+    ],
+    [
+      "app/Http/Controllers/AdminController.php",
+      112
+    ],
+    [
+      "app/Http/Controllers/ConsumerController.php",
+      58
+    ],
+    [
+      "PROJECT_STATUS_REPORT.md",
+      57
+    ],
+    [
+      "tools/generate_audit_artifacts.py",
+      55
+    ],
+    [
+      "tools/__pycache__/generate_audit_artifacts.cpython-312.pyc",
+      54
+    ],
+    [
+      "routes/web.php",
+      52
+    ],
+    [
+      "app/Http/Controllers/ApiController.php",
+      50
+    ],
+    [
+      "app/Http/Controllers/ProductController.php",
+      49
+    ],
+    [
+      "app/Http/Kernel.php",
+      49
+    ],
+    [
+      "tests/Feature/ReleaseBlockingControlsTest.php",
+      47
+    ],
+    [
+      "app/Services/ReferralService.php",
+      44
+    ],
+    [
+      "README.md",
+      43
+    ],
+    [
+      "IMPLEMENTATION_COMPLETE.md",
+      40
+    ],
+    [
+      "PHASE_WISE_IMPLEMENTATION_PLAN.md",
+      38
+    ],
+    [
+      "FINAL_IMPLEMENTATION_SUMMARY.md",
+      36
+    ],
+    [
+      "tools/build_audit_index.py",
+      34
+    ],
+    [
+      "app/Services/PayoutService.php",
+      33
+    ],
+    [
+      "PRIORITIZATION_ROADMAP.md",
+      32
+    ],
+    [
+      "tools/__pycache__/build_audit_index.cpython-312.pyc",
+      32
+    ]
+  ],
+  "complexity": {
+    "method_count": 418,
+    "files": [
+      {
+        "path": "app/Http/Controllers/AdminController.php",
+        "loc": 1680,
+        "cyclomatic_complexity_heuristic": 93,
+        "method_count": 57,
+        "maintainability_index_heuristic": 0
+      },
+      {
+        "path": "app/Http/Controllers/ApiController.php",
+        "loc": 550,
+        "cyclomatic_complexity_heuristic": 34,
+        "method_count": 10,
+        "maintainability_index_heuristic": 17.09
+      },
+      {
+        "path": "app/Http/Controllers/ProductController.php",
+        "loc": 453,
+        "cyclomatic_complexity_heuristic": 28,
+        "method_count": 15,
+        "maintainability_index_heuristic": 20.1
+      },
+      {
+        "path": "app/Services/ReferralService.php",
+        "loc": 308,
+        "cyclomatic_complexity_heuristic": 25,
+        "method_count": 8,
+        "maintainability_index_heuristic": 25.31
+      },
+      {
+        "path": "app/Commission.php",
+        "loc": 301,
+        "cyclomatic_complexity_heuristic": 21,
+        "method_count": 23,
+        "maintainability_index_heuristic": 26.31
+      },
+      {
+        "path": "app/Services/CommissionService.php",
+        "loc": 218,
+        "cyclomatic_complexity_heuristic": 21,
+        "method_count": 6,
+        "maintainability_index_heuristic": 29.94
+      },
+      {
+        "path": "app/Conversion.php",
+        "loc": 295,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 25,
+        "maintainability_index_heuristic": 26.95
+      },
+      {
+        "path": "app/Http/Controllers/AuthController.php",
+        "loc": 229,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 9,
+        "maintainability_index_heuristic": 29.27
+      },
+      {
+        "path": "app/Link.php",
+        "loc": 198,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 15,
+        "maintainability_index_heuristic": 31.55
+      },
+      {
+        "path": "app/Services/CashbackService.php",
+        "loc": 211,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 8,
+        "maintainability_index_heuristic": 30.68
+      },
+      {
+        "path": "app/Services/ProductService.php",
+        "loc": 274,
+        "cyclomatic_complexity_heuristic": 17,
+        "method_count": 10,
+        "maintainability_index_heuristic": 27.57
+      },
+      {
+        "path": "app/Services/PointsService.php",
+        "loc": 295,
+        "cyclomatic_complexity_heuristic": 16,
+        "method_count": 8,
+        "maintainability_index_heuristic": 27.21
+      },
+      {
+        "path": "app/Http/Controllers/ConsumerController.php",
+        "loc": 347,
+        "cyclomatic_complexity_heuristic": 15,
+        "method_count": 13,
+        "maintainability_index_heuristic": 25.11
+      },
+      {
+        "path": "resources/views/admin/links/create.blade.php",
+        "loc": 118,
+        "cyclomatic_complexity_heuristic": 15,
+        "method_count": 0,
+        "maintainability_index_heuristic": 35.66
+      },
+      {
+        "path": "app/User.php",
+        "loc": 208,
+        "cyclomatic_complexity_heuristic": 14,
+        "method_count": 18,
+        "maintainability_index_heuristic": 31.63
+      },
+      {
+        "path": "app/Click.php",
+        "loc": 187,
+        "cyclomatic_complexity_heuristic": 13,
+        "method_count": 16,
+        "maintainability_index_heuristic": 33.19
+      },
+      {
+        "path": "app/Gift.php",
+        "loc": 123,
+        "cyclomatic_complexity_heuristic": 13,
+        "method_count": 8,
+        "maintainability_index_heuristic": 38.07
+      },
+      {
+        "path": "resources/views/products/show.blade.php",
+        "loc": 126,
+        "cyclomatic_complexity_heuristic": 13,
+        "method_count": 0,
+        "maintainability_index_heuristic": 35.47
+      },
+      {
+        "path": "app/CashbackSetting.php",
+        "loc": 112,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 6,
+        "maintainability_index_heuristic": 39.27
+      },
+      {
+        "path": "app/PointsRedemption.php",
+        "loc": 196,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 12,
+        "maintainability_index_heuristic": 32.66
+      },
+      {
+        "path": "app/PointsTransaction.php",
+        "loc": 147,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 9,
+        "maintainability_index_heuristic": 36.01
+      },
+      {
+        "path": "app/ProductCommission.php",
+        "loc": 137,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 7,
+        "maintainability_index_heuristic": 36.88
+      },
+      {
+        "path": "app/Referral.php",
+        "loc": 168,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 12,
+        "maintainability_index_heuristic": 34.4
+      },
+      {
+        "path": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+        "loc": 100,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 5,
+        "maintainability_index_heuristic": 38.39
+      },
+      {
+        "path": "resources/views/admin/commissions.blade.php",
+        "loc": 174,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 2,
+        "maintainability_index_heuristic": 31.42
+      },
+      {
+        "path": "resources/views/admin/links/edit.blade.php",
+        "loc": 119,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 0,
+        "maintainability_index_heuristic": 35.97
+      },
+      {
+        "path": "resources/views/home.blade.php",
+        "loc": 113,
+        "cyclomatic_complexity_heuristic": 12,
+        "method_count": 0,
+        "maintainability_index_heuristic": 36.66
+      },
+      {
+        "path": "resources/views/admin/api-test.blade.php",
+        "loc": 144,
+        "cyclomatic_complexity_heuristic": 11,
+        "method_count": 0,
+        "maintainability_index_heuristic": 34.13
+      },
+      {
+        "path": "resources/views/gifts/index.blade.php",
+        "loc": 72,
+        "cyclomatic_complexity_heuristic": 11,
+        "method_count": 0,
+        "maintainability_index_heuristic": 42.31
+      },
+      {
+        "path": "app/Http/Middleware/VerifyPartnerSignature.php",
+        "loc": 52,
+        "cyclomatic_complexity_heuristic": 10,
+        "method_count": 1,
+        "maintainability_index_heuristic": 47.78
+      },
+      {
+        "path": "app/Product.php",
+        "loc": 143,
+        "cyclomatic_complexity_heuristic": 10,
+        "method_count": 11,
+        "maintainability_index_heuristic": 36.65
+      },
+      {
+        "path": "app/Program.php",
+        "loc": 174,
+        "cyclomatic_complexity_heuristic": 10,
+        "method_count": 12,
+        "maintainability_index_heuristic": 34.49
+      },
+      {
+        "path": "resources/views/admin/users/create.blade.php",
+        "loc": 114,
+        "cyclomatic_complexity_heuristic": 10,
+        "method_count": 0,
+        "maintainability_index_heuristic": 37.07
+      },
+      {
+        "path": "resources/views/admin/users/edit.blade.php",
+        "loc": 114,
+        "cyclomatic_complexity_heuristic": 10,
+        "method_count": 0,
+        "maintainability_index_heuristic": 37.0
+      },
+      {
+        "path": "config/session.php",
+        "loc": 201,
+        "cyclomatic_complexity_heuristic": 9,
+        "method_count": 0,
+        "maintainability_index_heuristic": 31.56
+      },
+      {
+        "path": "resources/views/admin/redemptions/index.blade.php",
+        "loc": 113,
+        "cyclomatic_complexity_heuristic": 9,
+        "method_count": 0,
+        "maintainability_index_heuristic": 37.03
+      },
+      {
+        "path": "app/Http/Middleware/AdminMiddleware.php",
+        "loc": 38,
+        "cyclomatic_complexity_heuristic": 8,
+        "method_count": 1,
+        "maintainability_index_heuristic": 52.07
+      },
+      {
+        "path": "app/Services/PayoutService.php",
+        "loc": 138,
+        "cyclomatic_complexity_heuristic": 8,
+        "method_count": 8,
+        "maintainability_index_heuristic": 36.48
+      },
+      {
+        "path": "app/Services/AffiliateTrackingService.php",
+        "loc": 101,
+        "cyclomatic_complexity_heuristic": 7,
+        "method_count": 7,
+        "maintainability_index_heuristic": 40.2
+      },
+      {
+        "path": "resources/views/admin/products/index.blade.php",
+        "loc": 113,
+        "cyclomatic_complexity_heuristic": 7,
+        "method_count": 0,
+        "maintainability_index_heuristic": 37.48
+      },
+      {
+        "path": "resources/views/admin/programs.blade.php",
+        "loc": 130,
+        "cyclomatic_complexity_heuristic": 7,
+        "method_count": 0,
+        "maintainability_index_heuristic": 35.43
+      },
+      {
+        "path": "resources/views/admin/users.blade.php",
+        "loc": 141,
+        "cyclomatic_complexity_heuristic": 7,
+        "method_count": 0,
+        "maintainability_index_heuristic": 34.47
+      },
+      {
+        "path": "resources/views/products/index.blade.php",
+        "loc": 94,
+        "cyclomatic_complexity_heuristic": 7,
+        "method_count": 0,
+        "maintainability_index_heuristic": 39.52
+      },
+      {
+        "path": "app/Providers/RouteServiceProvider.php",
+        "loc": 60,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 1,
+        "maintainability_index_heuristic": 46.32
+      },
+      {
+        "path": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+        "loc": 49,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 3,
+        "maintainability_index_heuristic": 48.0
+      },
+      {
+        "path": "resources/views/admin/cashback-settings/index.blade.php",
+        "loc": 111,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 2,
+        "maintainability_index_heuristic": 37.58
+      },
+      {
+        "path": "resources/views/admin/products/commissions.blade.php",
+        "loc": 125,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 0,
+        "maintainability_index_heuristic": 36.24
+      },
+      {
+        "path": "resources/views/auth/login.blade.php",
+        "loc": 74,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 0,
+        "maintainability_index_heuristic": 42.4
+      },
+      {
+        "path": "resources/views/auth/reset-password.blade.php",
+        "loc": 60,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 0,
+        "maintainability_index_heuristic": 44.55
+      },
+      {
+        "path": "resources/views/wallet/transactions.blade.php",
+        "loc": 90,
+        "cyclomatic_complexity_heuristic": 6,
+        "method_count": 0,
+        "maintainability_index_heuristic": 39.99
+      },
+      {
+        "path": "app/ProductLink.php",
+        "loc": 99,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 7,
+        "maintainability_index_heuristic": 41.68
+      },
+      {
+        "path": "config/database.php",
+        "loc": 171,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 0,
+        "maintainability_index_heuristic": 34.38
+      },
+      {
+        "path": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+        "loc": 50,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 2,
+        "maintainability_index_heuristic": 48.19
+      },
+      {
+        "path": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+        "loc": 27,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 2,
+        "maintainability_index_heuristic": 56.39
+      },
+      {
+        "path": "resources/views/admin/analytics.blade.php",
+        "loc": 98,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 0,
+        "maintainability_index_heuristic": 39.28
+      },
+      {
+        "path": "resources/views/admin/referrals/index.blade.php",
+        "loc": 81,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 0,
+        "maintainability_index_heuristic": 41.28
+      },
+      {
+        "path": "resources/views/dashboard/index.blade.php",
+        "loc": 155,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 0,
+        "maintainability_index_heuristic": 33.8
+      },
+      {
+        "path": "resources/views/referrals/index.blade.php",
+        "loc": 105,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 1,
+        "maintainability_index_heuristic": 38.2
+      },
+      {
+        "path": "resources/views/wallet/index.blade.php",
+        "loc": 101,
+        "cyclomatic_complexity_heuristic": 5,
+        "method_count": 0,
+        "maintainability_index_heuristic": 38.78
+      },
+      {
+        "path": "app/Providers/EventServiceProvider.php",
+        "loc": 38,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 2,
+        "maintainability_index_heuristic": 52.79
+      },
+      {
+        "path": "config/app.php",
+        "loc": 170,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 0,
+        "maintainability_index_heuristic": 34.36
+      },
+      {
+        "path": "config/cache.php",
+        "loc": 110,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 0,
+        "maintainability_index_heuristic": 40.2
+      },
+      {
+        "path": "config/view.php",
+        "loc": 36,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 0,
+        "maintainability_index_heuristic": 53.01
+      },
+      {
+        "path": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+        "loc": 45,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 2,
+        "maintainability_index_heuristic": 50.05
+      },
+      {
+        "path": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+        "loc": 55,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 2,
+        "maintainability_index_heuristic": 47.63
+      },
+      {
+        "path": "database/migrations/2025_10_23_214418_create_links_table.php",
+        "loc": 52,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 2,
+        "maintainability_index_heuristic": 48.01
+      },
+      {
+        "path": "database/seeders/AdminUserSeeder.php",
+        "loc": 34,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 1,
+        "maintainability_index_heuristic": 53.61
+      },
+      {
+        "path": "public/index.php",
+        "loc": 25,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 0,
+        "maintainability_index_heuristic": 56.59
+      },
+      {
+        "path": "resources/views/admin/links.blade.php",
+        "loc": 101,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 0,
+        "maintainability_index_heuristic": 38.92
+      },
+      {
+        "path": "resources/views/auth/forgot-password.blade.php",
+        "loc": 44,
+        "cyclomatic_complexity_heuristic": 4,
+        "method_count": 0,
+        "maintainability_index_heuristic": 48.61
+      },
+      {
+        "path": "app/Http/Middleware/RedirectIfAuthenticated.php",
+        "loc": 30,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 1,
+        "maintainability_index_heuristic": 55.46
+      },
+      {
+        "path": "app/Http/Middleware/SecurityHeaders.php",
+        "loc": 34,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 1,
+        "maintainability_index_heuristic": 53.22
+      },
+      {
+        "path": "app/UserPoints.php",
+        "loc": 79,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 5,
+        "maintainability_index_heuristic": 44.63
+      },
+      {
+        "path": "bootstrap/app.php",
+        "loc": 55,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 47.72
+      },
+      {
+        "path": "config/logging.php",
+        "loc": 131,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 38.21
+      },
+      {
+        "path": "resources/views/admin/programs/edit.blade.php",
+        "loc": 83,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 40.69
+      },
+      {
+        "path": "resources/views/admin/programs/quick-add.blade.php",
+        "loc": 105,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 1,
+        "maintainability_index_heuristic": 38.86
+      },
+      {
+        "path": "resources/views/admin/wallets/index.blade.php",
+        "loc": 109,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 2,
+        "maintainability_index_heuristic": 38.13
+      },
+      {
+        "path": "resources/views/layouts/app.blade.php",
+        "loc": 164,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 32.74
+      },
+      {
+        "path": "resources/views/layouts/consumer.blade.php",
+        "loc": 99,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 39.46
+      },
+      {
+        "path": "resources/views/layouts/guest.blade.php",
+        "loc": 77,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 42.61
+      },
+      {
+        "path": "routes/web.php",
+        "loc": 162,
+        "cyclomatic_complexity_heuristic": 3,
+        "method_count": 0,
+        "maintainability_index_heuristic": 33.27
+      },
+      {
+        "path": "app/Console/Kernel.php",
+        "loc": 27,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 57.21
+      },
+      {
+        "path": "app/Exceptions/Handler.php",
+        "loc": 30,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 1,
+        "maintainability_index_heuristic": 55.94
+      },
+      {
+        "path": "app/Http/Middleware/ConsumerMiddleware.php",
+        "loc": 25,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 1,
+        "maintainability_index_heuristic": 57.8
+      },
+      {
+        "path": "app/Http/Middleware/PreventRequestsDuringMaintenance.php",
+        "loc": 17,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 62.68
+      },
+      {
+        "path": "app/Http/Middleware/TrustProxies.php",
+        "loc": 28,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 56.79
+      },
+      {
+        "path": "app/Providers/AuthServiceProvider.php",
+        "loc": 25,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 1,
+        "maintainability_index_heuristic": 58.54
+      },
+      {
+        "path": "create_db.php",
+        "loc": 25,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 59.27
+      },
+      {
+        "path": "database/migrations/2025_01_25_100000_create_products_table.php",
+        "loc": 41,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 52.02
+      },
+      {
+        "path": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+        "loc": 43,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 51.55
+      },
+      {
+        "path": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+        "loc": 38,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 52.62
+      },
+      {
+        "path": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+        "loc": 46,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 50.14
+      },
+      {
+        "path": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+        "loc": 37,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 52.74
+      },
+      {
+        "path": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+        "loc": 39,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 52.64
+      },
+      {
+        "path": "database/migrations/2025_10_23_214347_create_users_table.php",
+        "loc": 46,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 50.19
+      },
+      {
+        "path": "database/migrations/2025_10_23_214403_create_programs_table.php",
+        "loc": 49,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 49.01
+      },
+      {
+        "path": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+        "loc": 55,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 47.65
+      },
+      {
+        "path": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+        "loc": 29,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 56.08
+      },
+      {
+        "path": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+        "loc": 24,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 2,
+        "maintainability_index_heuristic": 58.46
+      },
+      {
+        "path": "resources/views/admin/clicks.blade.php",
+        "loc": 55,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 46.42
+      },
+      {
+        "path": "resources/views/admin/conversions.blade.php",
+        "loc": 65,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 44.47
+      },
+      {
+        "path": "resources/views/admin/dashboard.blade.php",
+        "loc": 244,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 29.01
+      },
+      {
+        "path": "resources/views/emails/reset-password.blade.php",
+        "loc": 27,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 54.55
+      },
+      {
+        "path": "resources/views/profile/edit.blade.php",
+        "loc": 91,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 40.53
+      },
+      {
+        "path": "routes/api.php",
+        "loc": 55,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 0,
+        "maintainability_index_heuristic": 47.23
+      },
+      {
+        "path": "tests/Feature/ReleaseBlockingControlsTest.php",
+        "loc": 297,
+        "cyclomatic_complexity_heuristic": 2,
+        "method_count": 11,
+        "maintainability_index_heuristic": 28.25
+      },
+      {
+        "path": "app/Http/Controllers/Controller.php",
+        "loc": 12,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 66.7
+      },
+      {
+        "path": "app/Http/Controllers/LinkController.php",
+        "loc": 10,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 70.37
+      },
+      {
+        "path": "app/Http/Kernel.php",
+        "loc": 72,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 44.38
+      },
+      {
+        "path": "app/Http/Middleware/Authenticate.php",
+        "loc": 17,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 1,
+        "maintainability_index_heuristic": 62.08
+      },
+      {
+        "path": "app/Http/Middleware/EncryptCookies.php",
+        "loc": 17,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 62.95
+      },
+      {
+        "path": "app/Http/Middleware/TrimStrings.php",
+        "loc": 19,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 61.6
+      },
+      {
+        "path": "app/Http/Middleware/ValidateSignature.php",
+        "loc": 22,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 60.0
+      },
+      {
+        "path": "app/Http/Middleware/VerifyCsrfToken.php",
+        "loc": 18,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 62.27
+      },
+      {
+        "path": "app/Providers/AppServiceProvider.php",
+        "loc": 24,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 2,
+        "maintainability_index_heuristic": 60.13
+      },
+      {
+        "path": "bootstrap/cache/packages.php",
+        "loc": 16,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 65.09
+      },
+      {
+        "path": "bootstrap/cache/services.php",
+        "loc": 252,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 28.96
+      },
+      {
+        "path": "config/auth.php",
+        "loc": 33,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 56.95
+      },
+      {
+        "path": "config/services.php",
+        "loc": 8,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 73.57
+      },
+      {
+        "path": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+        "loc": 53,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 2,
+        "maintainability_index_heuristic": 48.28
+      },
+      {
+        "path": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+        "loc": 47,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 2,
+        "maintainability_index_heuristic": 49.93
+      },
+      {
+        "path": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+        "loc": 27,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 2,
+        "maintainability_index_heuristic": 57.74
+      },
+      {
+        "path": "database/seeders/DatabaseSeeder.php",
+        "loc": 17,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 1,
+        "maintainability_index_heuristic": 64.22
+      },
+      {
+        "path": "index.php",
+        "loc": 2,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 88.03
+      },
+      {
+        "path": "resources/views/admin/products/create.blade.php",
+        "loc": 83,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 42.09
+      },
+      {
+        "path": "resources/views/admin/products/edit.blade.php",
+        "loc": 84,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 41.87
+      },
+      {
+        "path": "resources/views/admin/programs/create.blade.php",
+        "loc": 87,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 40.39
+      },
+      {
+        "path": "routes/console.php",
+        "loc": 19,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 0,
+        "maintainability_index_heuristic": 60.38
+      },
+      {
+        "path": "tests/TestCase.php",
+        "loc": 16,
+        "cyclomatic_complexity_heuristic": 1,
+        "method_count": 1,
+        "maintainability_index_heuristic": 63.36
+      }
+    ],
+    "top_complexity": [
+      {
+        "path": "app/Http/Controllers/AdminController.php",
+        "loc": 1680,
+        "cyclomatic_complexity_heuristic": 93,
+        "method_count": 57,
+        "maintainability_index_heuristic": 0
+      },
+      {
+        "path": "app/Http/Controllers/ApiController.php",
+        "loc": 550,
+        "cyclomatic_complexity_heuristic": 34,
+        "method_count": 10,
+        "maintainability_index_heuristic": 17.09
+      },
+      {
+        "path": "app/Http/Controllers/ProductController.php",
+        "loc": 453,
+        "cyclomatic_complexity_heuristic": 28,
+        "method_count": 15,
+        "maintainability_index_heuristic": 20.1
+      },
+      {
+        "path": "app/Services/ReferralService.php",
+        "loc": 308,
+        "cyclomatic_complexity_heuristic": 25,
+        "method_count": 8,
+        "maintainability_index_heuristic": 25.31
+      },
+      {
+        "path": "app/Commission.php",
+        "loc": 301,
+        "cyclomatic_complexity_heuristic": 21,
+        "method_count": 23,
+        "maintainability_index_heuristic": 26.31
+      },
+      {
+        "path": "app/Services/CommissionService.php",
+        "loc": 218,
+        "cyclomatic_complexity_heuristic": 21,
+        "method_count": 6,
+        "maintainability_index_heuristic": 29.94
+      },
+      {
+        "path": "app/Conversion.php",
+        "loc": 295,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 25,
+        "maintainability_index_heuristic": 26.95
+      },
+      {
+        "path": "app/Http/Controllers/AuthController.php",
+        "loc": 229,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 9,
+        "maintainability_index_heuristic": 29.27
+      },
+      {
+        "path": "app/Link.php",
+        "loc": 198,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 15,
+        "maintainability_index_heuristic": 31.55
+      },
+      {
+        "path": "app/Services/CashbackService.php",
+        "loc": 211,
+        "cyclomatic_complexity_heuristic": 19,
+        "method_count": 8,
+        "maintainability_index_heuristic": 30.68
+      },
+      {
+        "path": "app/Services/ProductService.php",
+        "loc": 274,
+        "cyclomatic_complexity_heuristic": 17,
+        "method_count": 10,
+        "maintainability_index_heuristic": 27.57
+      },
+      {
+        "path": "app/Services/PointsService.php",
+        "loc": 295,
+        "cyclomatic_complexity_heuristic": 16,
+        "method_count": 8,
+        "maintainability_index_heuristic": 27.21
+      },
+      {
+        "path": "app/Http/Controllers/ConsumerController.php",
+        "loc": 347,
+        "cyclomatic_complexity_heuristic": 15,
+        "method_count": 13,
+        "maintainability_index_heuristic": 25.11
+      },
+      {
+        "path": "resources/views/admin/links/create.blade.php",
+        "loc": 118,
+        "cyclomatic_complexity_heuristic": 15,
+        "method_count": 0,
+        "maintainability_index_heuristic": 35.66
+      },
+      {
+        "path": "app/User.php",
+        "loc": 208,
+        "cyclomatic_complexity_heuristic": 14,
+        "method_count": 18,
+        "maintainability_index_heuristic": 31.63
+      }
+    ],
+    "average_cyclomatic_complexity_heuristic": 6.95,
+    "average_maintainability_index_heuristic": 44.04
+  }
+}

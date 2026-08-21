@@ -18,12 +18,22 @@ class Commission extends Model
     protected $fillable = [
         'conversion_id',
         'user_id',
+        'parent_user_id',
         'amount',
+        'parent_amount',
+        'sub_affiliate_amount',
         'status',
         'commission_type',
         'payout_method',
         'payout_details',
+        'currency',
+        'transaction_id',
+        'approved_at',
+        'approved_by',
+        'cancelled_at',
+        'cancelled_by',
         'paid_at',
+        'paid_by',
         'notes',
     ];
 
@@ -34,7 +44,11 @@ class Commission extends Model
      */
     protected $casts = [
         'amount' => 'decimal:2',
+        'parent_amount' => 'decimal:2',
+        'sub_affiliate_amount' => 'decimal:2',
         'payout_details' => 'array',
+        'approved_at' => 'datetime',
+        'cancelled_at' => 'datetime',
         'paid_at' => 'datetime',
     ];
 
@@ -186,28 +200,54 @@ class Commission extends Model
     /**
      * Approve commission
      */
-    public function approve(): void
+    public function approve(?int $actorId = null, ?string $notes = null): void
     {
-        $this->update(['status' => self::STATUS_APPROVED]);
+        if (!$this->isPending()) {
+            throw new \DomainException('Only pending commissions can be approved');
+        }
+
+        $this->update([
+            'status' => self::STATUS_APPROVED,
+            'approved_at' => now(),
+            'approved_by' => $actorId,
+            'notes' => $notes ?? $this->notes,
+        ]);
     }
 
     /**
      * Mark commission as paid
      */
-    public function markAsPaid(): void
+    public function markAsPaid(?int $actorId = null, ?string $method = null, ?string $transactionId = null, ?array $details = null): void
     {
+        if (!$this->isApproved()) {
+            throw new \DomainException('Only approved commissions can be paid');
+        }
+
         $this->update([
             'status' => self::STATUS_PAID,
             'paid_at' => now(),
+            'paid_by' => $actorId,
+            'payout_method' => $method ?? $this->payout_method,
+            'transaction_id' => $transactionId ?? $this->transaction_id,
+            'payout_details' => $details ?? $this->payout_details,
         ]);
     }
 
     /**
      * Cancel commission
      */
-    public function cancel(): void
+    public function cancel(?int $actorId = null, ?string $notes = null): void
     {
-        $this->update(['status' => self::STATUS_CANCELLED]);
+        if (!in_array($this->status, [self::STATUS_PENDING, self::STATUS_APPROVED], true)) {
+            throw new \DomainException('Only pending or approved commissions can be cancelled');
+        }
+
+        $this->update([
+            'status' => self::STATUS_CANCELLED,
+            'cancelled_at' => now(),
+            'cancelled_by' => $actorId,
+            'notes' => $notes ?? $this->notes,
+        ]);
     }
 
     /**

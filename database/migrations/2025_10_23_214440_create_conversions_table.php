@@ -6,48 +6,46 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('conversions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('click_id');
+            $table->unsignedBigInteger('link_id')->nullable();
             $table->unsignedBigInteger('program_id');
-            $table->unsignedBigInteger('user_id'); // The affiliate who gets the commission
-            $table->string('conversion_id')->unique(); // External conversion ID from merchant
-            $table->enum('event_type', ['purchase', 'signup', 'install', 'download', 'other'])->default('purchase');
-            $table->json('event_data'); // Conversion details (order value, products, etc.)
-            $table->decimal('order_value', 10, 2)->nullable(); // Order/sale value
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('sub_affiliate_id')->nullable();
+            $table->string('conversion_id')->nullable()->unique();
+            $table->string('partner_event_id')->nullable()->unique();
+            $table->enum('event_type', ['purchase', 'signup', 'download', 'install', 'lead', 'click', 'other'])->default('purchase');
+            $table->json('event_data')->nullable();
+            $table->decimal('conversion_value', 10, 2)->nullable();
+            $table->decimal('order_value', 10, 2)->nullable();
             $table->string('currency', 3)->default('INR');
-            $table->decimal('commission_amount', 10, 2); // Calculated commission
-            $table->decimal('commission_rate', 5, 2); // Commission percentage
+            $table->decimal('commission_amount', 10, 2)->default(0);
+            $table->decimal('commission_rate', 5, 2)->nullable();
+            $table->decimal('sub_affiliate_commission', 10, 2)->default(0);
+            $table->string('order_id')->nullable();
+            $table->string('customer_id')->nullable();
+            $table->string('product_id')->nullable();
+            $table->string('product_name')->nullable();
+            $table->unsignedInteger('quantity')->nullable();
             $table->enum('status', ['pending', 'approved', 'rejected', 'paid'])->default('pending');
-            $table->text('notes')->nullable(); // Admin notes
-            $table->timestamp('converted_at'); // When the conversion happened
-            $table->timestamp('approved_at')->nullable(); // When conversion was approved
-            $table->unsignedBigInteger('approved_by')->nullable(); // Admin who approved
+            $table->text('notes')->nullable();
+            $table->timestamp('converted_at')->nullable();
+            $table->timestamp('approved_at')->nullable();
+            $table->unsignedBigInteger('approved_by')->nullable();
+            $table->timestamp('processed_at')->nullable();
             $table->timestamps();
-            
-            // Foreign key constraints
-            $table->foreign('click_id')->references('id')->on('clicks')->onDelete('cascade');
-            $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('approved_by')->references('id')->on('users')->onDelete('set null');
-            
-            // Indexes for better performance
+
             $table->index('user_id');
             $table->index('program_id');
             $table->index('status');
             $table->index('converted_at');
-            $table->index('conversion_id');
+            $table->index('partner_event_id');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('conversions');

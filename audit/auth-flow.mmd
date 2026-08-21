@@ -1,0 +1,6 @@
+flowchart LR
+  Login[AuthController login] --> Session[session user_id/role]
+  Session --> Admin[AdminMiddleware reads session]
+  Login -. missing Auth::login .-> Guard[Laravel Auth Guard]
+  ConsumerRoutes[auth middleware + @auth Blade] --> Guard
+  AdminRoutes[admin middleware] --> Admin

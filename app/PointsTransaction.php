@@ -25,6 +25,7 @@ class PointsTransaction extends Model
         'reference_type',
         'reference_id',
         'status',
+        'idempotency_key',
     ];
 
     /**

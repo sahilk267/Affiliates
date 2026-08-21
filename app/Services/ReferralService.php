@@ -195,7 +195,10 @@ class ReferralService
             if (!$referral) {
                 Log::info('No referral found for conversion', [
                     'conversion_id' => $conversion->id,
+                    'partner_event_id' => $conversion->partner_event_id,
+                    'click_id' => $conversion->click_id,
                     'user_id' => $conversion->user_id,
+                    'order_id' => $conversion->order_id,
                 ]);
                 return false;
             }
@@ -234,7 +237,8 @@ class ReferralService
                 $points,
                 "Referral commission - User: {$conversion->user_id}, Order: {$conversion->order_id}",
                 \App\PointsTransaction::REF_REFERRAL,
-                $referral->id
+                $referral->id,
+                'referral-conversion-' . $conversion->id
             );
 
             if ($transaction) {
@@ -244,22 +248,32 @@ class ReferralService
 
                 Log::info('Referral points credited', [
                     'conversion_id' => $conversion->id,
+                    'partner_event_id' => $conversion->partner_event_id,
+                    'click_id' => $conversion->click_id,
                     'referrer_id' => $referral->referrer_id,
                     'referred_id' => $conversion->user_id,
+                    'order_id' => $conversion->order_id,
                     'referral_commission' => $referralCommission,
                     'points' => $points,
+                    'idempotency_key' => 'referral-conversion-' . $conversion->id,
+                    'transaction_id' => $transaction->id,
                 ]);
 
                 return true;
             }
 
-            return false;
-        } catch (\Exception $e) {
+            throw new \RuntimeException('Referral points transaction was not created');
+        } catch (\Throwable $e) {
             Log::error('Failed to credit referral points', [
                 'conversion_id' => $conversion->id,
+                'partner_event_id' => $conversion->partner_event_id,
+                'click_id' => $conversion->click_id,
+                'user_id' => $conversion->user_id,
+                'order_id' => $conversion->order_id,
+                'idempotency_key' => 'referral-conversion-' . $conversion->id,
                 'error' => $e->getMessage(),
             ]);
-            return false;
+            throw $e;
         }
     }
 

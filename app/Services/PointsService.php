@@ -25,20 +25,37 @@ class PointsService
         int $points,
         string $description,
         string $referenceType = PointsTransaction::REF_BONUS,
-        ?int $referenceId = null
+        ?int $referenceId = null,
+        ?string $idempotencyKey = null
     ): ?PointsTransaction {
         try {
-            return DB::transaction(function () use ($userId, $points, $description, $referenceType, $referenceId) {
+            return DB::transaction(function () use ($userId, $points, $description, $referenceType, $referenceId, $idempotencyKey) {
+                if ($idempotencyKey) {
+                    $existing = PointsTransaction::where('idempotency_key', $idempotencyKey)->first();
+                    if ($existing) {
+                        Log::info('Points credit replayed idempotently', [
+                            'transaction_id' => $existing->id,
+                            'user_id' => $userId,
+                            'idempotency_key' => $idempotencyKey,
+                            'reference_type' => $existing->reference_type,
+                            'reference_id' => $existing->reference_id,
+                        ]);
+                        return $existing;
+                    }
+                }
+
                 // Get or create user points record
-                $userPoints = UserPoints::firstOrCreate(
-                    ['user_id' => $userId],
-                    [
+                $userPoints = UserPoints::where('user_id', $userId)->lockForUpdate()->first();
+                if (!$userPoints) {
+                    $userPoints = UserPoints::create([
+                        'user_id' => $userId,
                         'balance' => 0,
                         'pending_balance' => 0,
                         'total_earned' => 0,
                         'total_redeemed' => 0,
-                    ]
-                );
+                    ]);
+                }
+
 
                 // Update balance
                 $oldBalance = $userPoints->balance;
@@ -57,13 +74,17 @@ class PointsService
                     'reference_type' => $referenceType,
                     'reference_id' => $referenceId,
                     'status' => PointsTransaction::STATUS_COMPLETED,
+                    'idempotency_key' => $idempotencyKey,
                 ]);
 
                 Log::info('Points credited', [
+                    'transaction_id' => $transaction->id,
                     'user_id' => $userId,
                     'points' => $points,
                     'balance_after' => $newBalance,
                     'reference_type' => $referenceType,
+                    'reference_id' => $referenceId,
+                    'idempotency_key' => $idempotencyKey,
                 ]);
 
                 return $transaction;
@@ -72,6 +93,9 @@ class PointsService
             Log::error('Failed to credit points', [
                 'user_id' => $userId,
                 'points' => $points,
+                'reference_type' => $referenceType,
+                'reference_id' => $referenceId,
+                'idempotency_key' => $idempotencyKey,
                 'error' => $e->getMessage(),
             ]);
             return null;
@@ -93,11 +117,25 @@ class PointsService
         int $points,
         string $description,
         string $referenceType = PointsTransaction::REF_REDEMPTION,
-        ?int $referenceId = null
+        ?int $referenceId = null,
+        ?string $idempotencyKey = null
     ): ?PointsTransaction {
         try {
-            return DB::transaction(function () use ($userId, $points, $description, $referenceType, $referenceId) {
-                $userPoints = UserPoints::where('user_id', $userId)->first();
+            return DB::transaction(function () use ($userId, $points, $description, $referenceType, $referenceId, $idempotencyKey) {
+                if ($idempotencyKey) {
+                    $existing = PointsTransaction::where('idempotency_key', $idempotencyKey)->first();
+                    if ($existing) {
+                        Log::info('Points debit replayed idempotently', [
+                            'transaction_id' => $existing->id,
+                            'user_id' => $userId,
+                            'idempotency_key' => $idempotencyKey,
+                            'reference_type' => $existing->reference_type,
+                            'reference_id' => $existing->reference_id,
+                        ]);
+                        return $existing;
+                    }
+                }
+                $userPoints = UserPoints::where('user_id', $userId)->lockForUpdate()->first();
 
                 if (!$userPoints) {
                     throw new \Exception('User points record not found');
@@ -125,13 +163,17 @@ class PointsService
                     'reference_type' => $referenceType,
                     'reference_id' => $referenceId,
                     'status' => PointsTransaction::STATUS_COMPLETED,
+                    'idempotency_key' => $idempotencyKey,
                 ]);
 
                 Log::info('Points debited', [
+                    'transaction_id' => $transaction->id,
                     'user_id' => $userId,
                     'points' => $points,
                     'balance_after' => $newBalance,
                     'reference_type' => $referenceType,
+                    'reference_id' => $referenceId,
+                    'idempotency_key' => $idempotencyKey,
                 ]);
 
                 return $transaction;
@@ -140,6 +182,9 @@ class PointsService
             Log::error('Failed to debit points', [
                 'user_id' => $userId,
                 'points' => $points,
+                'reference_type' => $referenceType,
+                'reference_id' => $referenceId,
+                'idempotency_key' => $idempotencyKey,
                 'error' => $e->getMessage(),
             ]);
             return null;

@@ -23,6 +23,17 @@ class PointsRedemption extends Model
         'gift_id',
         'status',
         'admin_notes',
+        'payout_method',
+        'payout_reference',
+        'payout_details',
+        'approved_by',
+        'approved_at',
+        'rejected_by',
+        'rejected_at',
+        'completed_by',
+        'completed_at',
+        'refund_transaction_id',
+        'idempotency_key',
         'processed_at',
     ];
 
@@ -34,6 +45,10 @@ class PointsRedemption extends Model
     protected $casts = [
         'points_used' => 'integer',
         'cash_amount' => 'decimal:2',
+        'payout_details' => 'array',
+        'approved_at' => 'datetime',
+        'rejected_at' => 'datetime',
+        'completed_at' => 'datetime',
         'processed_at' => 'datetime',
     ];
 
@@ -111,32 +126,53 @@ class PointsRedemption extends Model
     /**
      * Approve redemption
      */
-    public function approve(?string $notes = null): void
+    public function approve(?string $notes = null, ?int $actorId = null): void
     {
+        if (!$this->isPending()) {
+            throw new \DomainException('Only pending redemptions can be approved');
+        }
+
         $this->update([
             'status' => self::STATUS_APPROVED,
             'admin_notes' => $notes ?? $this->admin_notes,
+            'approved_by' => $actorId,
+            'approved_at' => now(),
         ]);
     }
 
     /**
      * Reject redemption
      */
-    public function reject(?string $notes = null): void
+    public function reject(?string $notes = null, ?int $actorId = null): void
     {
+        if (!in_array($this->status, [self::STATUS_PENDING, self::STATUS_APPROVED], true)) {
+            throw new \DomainException('Only pending or approved redemptions can be rejected');
+        }
+
         $this->update([
             'status' => self::STATUS_REJECTED,
             'admin_notes' => $notes ?? $this->admin_notes,
+            'rejected_by' => $actorId,
+            'rejected_at' => now(),
         ]);
     }
 
     /**
      * Mark as completed
      */
-    public function markAsCompleted(): void
+    public function markAsCompleted(?int $actorId = null, ?string $reference = null, ?string $method = null, ?array $details = null): void
     {
+        if (!$this->isApproved()) {
+            throw new \DomainException('Only approved redemptions can be completed');
+        }
+
         $this->update([
             'status' => self::STATUS_COMPLETED,
+            'payout_reference' => $reference,
+            'payout_method' => $method,
+            'payout_details' => $details,
+            'completed_by' => $actorId,
+            'completed_at' => now(),
             'processed_at' => now(),
         ]);
     }

@@ -1,0 +1,16 @@
+sequenceDiagram
+  participant U as User/Merchant
+  participant A as API
+  participant C as ApiController
+  participant DB as Database
+  participant P as PointsService
+  participant R as ReferralService
+  U->>A: POST /affiliate/click
+  A->>C: validate and trackClick
+  C->>DB: create Click; increment Link
+  C-->>U: click_id + affiliate_url
+  U->>A: POST /affiliate/conversion
+  A->>C: reportConversion
+  C->>DB: create Conversion + Commission
+  C->>P: creditCashback
+  C->>R: creditReferralPoints

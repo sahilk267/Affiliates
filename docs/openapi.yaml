@@ -1,0 +1,265 @@
+openapi: 3.0.3
+info:
+  title: ZenithSoles Affiliates API
+  version: 1.0.0
+  description: |
+    Affiliate click attribution, partner conversion reporting, points credit,
+    referral tracking, and protected owner/admin reads.
+servers:
+  - url: https://api.example.invalid
+    description: Replace with the staging or production base URL.
+tags:
+  - name: Health
+  - name: Affiliate
+  - name: Points
+  - name: Referral
+paths:
+  /api/health:
+    get:
+      tags: [Health]
+      responses:
+        '200':
+          description: Database-backed health response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+  /api/affiliate/click:
+    post:
+      tags: [Affiliate]
+      summary: Track an affiliate click.
+      description: Creates a click and returns the affiliate URL containing click_id.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClickRequest'
+      responses:
+        '200':
+          description: Click tracked.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClickResponse'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/affiliate/conversion:
+    post:
+      tags: [Affiliate]
+      summary: Report an attributed partner conversion.
+      description: HMAC-authenticated and idempotent by partner_event_id.
+      security:
+        - AffiliateHmac: []
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/IdempotencyKey'
+        - $ref: '#/components/parameters/AffiliateKey'
+        - $ref: '#/components/parameters/AffiliateTimestamp'
+        - $ref: '#/components/parameters/AffiliateSignature'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConversionRequest'
+      responses:
+        '200':
+          description: Conversion created or idempotently replayed.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversionResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: Click has already been converted by another partner event.
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+        '503':
+          description: Partner authentication is not configured.
+  /api/points/credit:
+    post:
+      tags: [Points]
+      summary: Credit points through a partner integration.
+      security:
+        - AffiliateHmac: []
+      parameters:
+        - $ref: '#/components/parameters/RequestId'
+        - $ref: '#/components/parameters/IdempotencyKeyRequired'
+        - $ref: '#/components/parameters/AffiliateKey'
+        - $ref: '#/components/parameters/AffiliateTimestamp'
+        - $ref: '#/components/parameters/AffiliateSignature'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PointsCreditRequest'
+      responses:
+        '200':
+          description: Points transaction created or replayed.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/referral/track:
+    post:
+      tags: [Referral]
+      summary: Track a referral code.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [referral_code]
+              properties:
+                referral_code:
+                  type: string
+                  maxLength: 50
+      responses:
+        '200':
+          description: Referral tracking result.
+        '422':
+          $ref: '#/components/responses/ValidationError'
+        '429':
+          $ref: '#/components/responses/RateLimited'
+  /api/affiliate/link/{shortCode}:
+    get:
+      tags: [Affiliate]
+      summary: Read affiliate link metadata.
+      parameters:
+        - name: shortCode
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Link metadata returned. }
+        '404': { description: Link not found. }
+  /api/points/balance/{userId}:
+    get:
+      tags: [Points]
+      summary: Read a points balance for the authenticated owner or admin.
+      security: [{ WebSession: [] }]
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Balance returned. }
+        '403': { description: Authenticated user is not the owner or an admin. }
+components:
+  securitySchemes:
+    AffiliateHmac:
+      type: apiKey
+      in: header
+      name: X-Affiliate-Signature
+      description: HMAC-SHA256 over X-Affiliate-Timestamp + '.' + exact raw JSON body; also requires key and timestamp headers.
+    WebSession:
+      type: apiKey
+      in: cookie
+      name: laravel_session
+  parameters:
+    RequestId:
+      name: X-Request-ID
+      in: header
+      required: false
+      schema: { type: string, maxLength: 100 }
+    IdempotencyKey:
+      name: Idempotency-Key
+      in: header
+      required: false
+      schema: { type: string, maxLength: 100 }
+    IdempotencyKeyRequired:
+      name: Idempotency-Key
+      in: header
+      required: true
+      schema: { type: string, maxLength: 100 }
+    AffiliateKey:
+      name: X-Affiliate-Key
+      in: header
+      required: true
+      schema: { type: string }
+    AffiliateTimestamp:
+      name: X-Affiliate-Timestamp
+      in: header
+      required: true
+      schema: { type: integer, format: int64 }
+    AffiliateSignature:
+      name: X-Affiliate-Signature
+      in: header
+      required: true
+      schema: { type: string, minLength: 64, maxLength: 64 }
+  responses:
+    Unauthorized:
+      description: Invalid, expired, or missing partner credentials.
+    ValidationError:
+      description: Request validation failed.
+    RateLimited:
+      description: Endpoint-specific rate limit exceeded.
+  schemas:
+    HealthResponse:
+      type: object
+      required: [status, database]
+      properties:
+        status: { type: string, example: healthy }
+        database: { type: string, example: connected }
+        timestamp: { type: string, format: date-time }
+    ClickRequest:
+      type: object
+      required: [link_id]
+      properties:
+        link_id: { type: integer, minimum: 1 }
+        ip_address: { type: string }
+        user_agent: { type: string, maxLength: 500 }
+        referrer: { type: string, maxLength: 500 }
+        referral_code: { type: string, maxLength: 50 }
+    ClickResponse:
+      type: object
+      properties:
+        status: { type: string, example: success }
+        data:
+          type: object
+          properties:
+            click_id: { type: integer }
+            affiliate_url: { type: string, format: uri }
+            redirect_url: { type: string, format: uri }
+    ConversionRequest:
+      type: object
+      required: [click_id, partner_event_id, event_type]
+      properties:
+        click_id: { type: integer, minimum: 1 }
+        partner_event_id: { type: string, maxLength: 100 }
+        event_type: { type: string, enum: [purchase, signup, download, install, lead, click, other] }
+        conversion_value: { type: number, minimum: 0 }
+        currency: { type: string, minLength: 3, maxLength: 3 }
+        order_id: { type: string, maxLength: 100 }
+        customer_id: { type: string, maxLength: 100 }
+        product_id: { type: string, maxLength: 100 }
+        product_name: { type: string, maxLength: 255 }
+        quantity: { type: integer, minimum: 1 }
+        event_data: { type: object, additionalProperties: true }
+    ConversionResponse:
+      type: object
+      properties:
+        status: { type: string, example: success }
+        idempotent: { type: boolean }
+        data: { type: object, additionalProperties: true }
+    PointsCreditRequest:
+      type: object
+      required: [user_id, points, description]
+      properties:
+        user_id: { type: integer, minimum: 1 }
+        points: { type: integer, minimum: 1, maximum: 1000000 }
+        description: { type: string, maxLength: 255 }
+        reference_type: { type: string, enum: [purchase_cashback, referral, redemption, gift, bonus, adjustment] }
+        reference_id: { type: integer, minimum: 1 }

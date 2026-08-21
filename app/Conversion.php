@@ -19,13 +19,17 @@ class Conversion extends Model
     protected $fillable = [
         'click_id',
         'link_id',
+        'conversion_id',
+        'partner_event_id',
         'user_id',
         'program_id',
         'event_type',
         'event_data',
         'commission_amount',
+        'commission_rate',
         'status',
         'conversion_value',
+        'order_value',
         'currency',
         'order_id',
         'customer_id',
@@ -35,6 +39,10 @@ class Conversion extends Model
         'sub_affiliate_id',
         'sub_affiliate_commission',
         'processed_at',
+        'converted_at',
+        'approved_at',
+        'approved_by',
+        'notes',
     ];
 
     /**
@@ -45,10 +53,14 @@ class Conversion extends Model
     protected $casts = [
         'event_data' => 'array',
         'commission_amount' => 'decimal:2',
+        'commission_rate' => 'decimal:2',
         'conversion_value' => 'decimal:2',
+        'order_value' => 'decimal:2',
         'sub_affiliate_commission' => 'decimal:2',
         'quantity' => 'integer',
         'processed_at' => 'datetime',
+        'converted_at' => 'datetime',
+        'approved_at' => 'datetime',
     ];
 
     /**

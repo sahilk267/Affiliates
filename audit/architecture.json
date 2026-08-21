@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-08-21T22:00:43.763379+00:00",
+  "detected_layers": {
+    "frontend": [
+      "Blade views"
+    ],
+    "backend": [
+      "Domain models and application",
+      "Domain services",
+      "HTTP controllers"
+    ],
+    "api": [
+      "Routing"
+    ],
+    "database": [
+      "Database assets",
+      "Database migrations",
+      "Database seeders"
+    ],
+    "kernel": [
+      "Laravel bootstrap and CLI",
+      "Service providers"
+    ],
+    "security": [
+      "HTTP middleware"
+    ],
+    "infrastructure": [
+      "Configuration",
+      "Public entrypoint"
+    ],
+    "devops": [
+      "GitHub workflow and templates"
+    ],
+    "documentation": [
+      "Project rules",
+      "Repository root and documentation"
+    ]
+  },
+  "present": {
+    "frontend": true,
+    "backend": true,
+    "api": true,
+    "database": true,
+    "repository_layer": false,
+    "service_layer": true,
+    "kernel": true,
+    "agents": false,
+    "ai_modules": false,
+    "infrastructure": true,
+    "security": true,
+    "authentication": true,
+    "authorization": true,
+    "observability": true,
+    "monitoring": true,
+    "scheduler": true,
+    "messaging": false,
+    "storage": false,
+    "queue": false,
+    "cli": true,
+    "workers": false,
+    "plugins": false,
+    "adapters": false
+  },
+  "framework": {
+    "name": "Laravel",
+    "version_constraint": "laravel/framework\": \"^12.0\""
+  },
+  "entrypoints": [
+    "public/index.php",
+    "index.php",
+    "artisan",
+    "routes/web.php",
+    "routes/api.php"
+  ],
+  "warnings": [
+    "No repository classes detected; Eloquent models are queried directly from controllers/services.",
+    "No AI, agent, plugin, adapter, worker, queue, or OpenTelemetry modules detected; partner adapters, payout providers, and centralized monitoring remain environment-specific."
+  ]
+}

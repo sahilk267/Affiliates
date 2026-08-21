@@ -75,6 +75,10 @@ class CashbackService
             if ($purchaseValue <= 0) {
                 Log::warning('Invalid purchase value for cashback', [
                     'conversion_id' => $conversion->id,
+                    'partner_event_id' => $conversion->partner_event_id,
+                    'click_id' => $conversion->click_id,
+                    'user_id' => $conversion->user_id,
+                    'order_id' => $conversion->order_id,
                 ]);
                 return false;
             }
@@ -85,6 +89,10 @@ class CashbackService
             if ($cashbackAmount <= 0) {
                 Log::info('No cashback for conversion', [
                     'conversion_id' => $conversion->id,
+                    'partner_event_id' => $conversion->partner_event_id,
+                    'click_id' => $conversion->click_id,
+                    'user_id' => $conversion->user_id,
+                    'order_id' => $conversion->order_id,
                     'purchase_value' => $purchaseValue,
                 ]);
                 return false;
@@ -103,26 +111,37 @@ class CashbackService
                 $points,
                 "Cashback for purchase - Order: {$conversion->order_id}",
                 \App\PointsTransaction::REF_PURCHASE_CASHBACK,
-                $conversion->id
+                $conversion->id,
+                'cashback-conversion-' . $conversion->id
             );
 
             if ($transaction) {
                 Log::info('Cashback credited', [
                     'conversion_id' => $conversion->id,
+                    'partner_event_id' => $conversion->partner_event_id,
+                    'click_id' => $conversion->click_id,
                     'user_id' => $conversion->user_id,
+                    'order_id' => $conversion->order_id,
                     'cashback_amount' => $cashbackAmount,
                     'points' => $points,
+                    'idempotency_key' => 'cashback-conversion-' . $conversion->id,
+                    'transaction_id' => $transaction->id,
                 ]);
                 return true;
             }
 
-            return false;
-        } catch (\Exception $e) {
+            throw new \RuntimeException('Cashback points transaction was not created');
+        } catch (\Throwable $e) {
             Log::error('Failed to credit cashback', [
                 'conversion_id' => $conversion->id,
+                'partner_event_id' => $conversion->partner_event_id,
+                'click_id' => $conversion->click_id,
+                'user_id' => $conversion->user_id,
+                'order_id' => $conversion->order_id,
+                'idempotency_key' => 'cashback-conversion-' . $conversion->id,
                 'error' => $e->getMessage(),
             ]);
-            return false;
+            throw $e;
         }
     }
 

@@ -82,12 +82,12 @@ A scalable, consumer-facing cashback and referral platform with points-based rew
 - `tests/` – PHPUnit tests
 - `docs/` – Project documentation, API docs, architecture diagrams
 
-## Hostinger Deployment Notes
-- Upload all files except `/storage`, `/tests`, `/docs` to your Hostinger web root
-- Set `public/` as your web root in Hostinger panel
-- Configure `.env` for database, AI/LLM API keys, and other secrets
-- Set file/folder permissions for `storage/` and `bootstrap/cache/`
-- Use PHP 8.1+ and MySQL 5.7+/8.0
+## Deployment Notes
+- Serve the `public/` directory as the web root; do not expose the repository root.
+- Keep `vendor/`, `storage/`, `bootstrap/cache/`, migrations, and operational documentation available to the deployment process as required by the release runbook.
+- Configure `.env` from the secret manager; never commit production credentials.
+- Set writable permissions for `storage/` and `bootstrap/cache/` without making the entire application tree writable.
+- Use PHP 8.2+ and a database version supported by Laravel 12. Complete the migration rehearsal, secret validation, partner certification, payout reconciliation, and rollback checks in `docs/RELEASE_OPERATIONS_RUNBOOK.md` before production release.
 
 ## Getting Started
 1. Clone/download this repo
@@ -104,17 +104,33 @@ A scalable, consumer-facing cashback and referral platform with points-based rew
 5. Add new affiliate programs (e.g., bank account, credit card, app download) from the admin panel as needed.
 6. Parent-child affiliate relationships are automatically managed for supported (non-e-commerce) platforms.
 
-For advanced setup and API details, see `/docs/sub-affiliate.md` (or the relevant documentation in `/docs`).
+For advanced setup and API details, see `PARTNER_INTEGRATION_CONTRACT.md` and `API_SECURITY_CONTRACT.md`. Deployment and staging procedures are in `docs/RELEASE_OPERATIONS_RUNBOOK.md`, with sign-off fields in `docs/STAGING_ACCEPTANCE_RECORD.md`.
 
 ---
 
-For full architecture, DB schema, and API docs, see `/docs`.
+## Current Documentation
+
+| Document | Purpose |
+|---|---|
+| `API_SECURITY_CONTRACT.md` | HMAC authentication and mutation security contract |
+| `PARTNER_INTEGRATION_CONTRACT.md` | Partner payloads, idempotency, retries, throttles, and reconciliation |
+| `LARAVEL12_UPGRADE_REPORT.md` | Laravel 12 migration and zero-advisory verification |
+| `docs/RELEASE_OPERATIONS_RUNBOOK.md` | Deployment, migration, rollback, secret rotation, and payout operations |
+| `docs/STAGING_ACCEPTANCE_RECORD.md` | Staging evidence and release sign-off template |
+| `docs/LICENSE_DECISION_RECORD.md` | Repository-owner license metadata decision |
+| `FINAL_STAGING_HANDOFF_CHECKLIST.md` | Final staging gates, owners, evidence, and sign-off |
+| `docs/CONTROL_EXECUTION_MATRIX.md` | Local versus staging-only control boundary |
+| `docs/STAGING_OWNER_EXECUTION_GUIDE.md` | Step-by-step staging certification and evidence procedure |
+| `STAGING_BLOCKER_REGISTER.md` | Owner, evidence, and stop-condition register for staging blockers |
+| `STAGING_READINESS_REPORT.md` | Partner certification and payout reconciliation readiness |
+| `IMPLEMENTATION_PROGRESS.md` | Cumulative remediation status and verification evidence |
+| `FINAL_IMPLEMENTATION_SUMMARY.md` | Summary of the previous local-code remediation batch |
 
 ## API Reference
-For full API documentation and example requests, see `/docs/api.md`.
+The implemented API contract and examples are documented in `PARTNER_INTEGRATION_CONTRACT.md` and `API_SECURITY_CONTRACT.md`. The live route source is `routes/api.php`.
 
 ## Admin Panel
-See `/docs/admin-panel.md` for admin features, screenshots, and usage tips.
+Admin workflows are implemented in `app/Http/Controllers/AdminController.php`. Staging and production approval requirements are documented in `docs/STAGING_ACCEPTANCE_RECORD.md`.
 
 ## Contributing
 Pull requests and suggestions are welcome! For major changes, please open an issue first to discuss what you would like to change.
@@ -123,23 +139,24 @@ Pull requests and suggestions are welcome! For major changes, please open an iss
 For support, open an issue or contact [your-email@example.com].
 
 ## License
-[Specify your license here, e.g., MIT, Proprietary, etc.]
+No license has been declared in the repository. Confirm the appropriate SPDX classification with the repository owner before external distribution.
 
 ## 📚 Documentation Table of Contents
 
 ### Core Documentation
-- `/docs/COMPLETE_IMPLEMENTATION_PLAN.md` – Complete implementation plan
-- `/docs/DATABASE_SCHEMA_V2.md` – Database schema v2.0 (points system)
-- `/docs/FEATURE_SPECIFICATIONS.md` – Detailed feature specifications
-- `/docs/IMPLEMENTATION_ROADMAP_V2.md` – Step-by-step implementation roadmap
+- `API_SECURITY_CONTRACT.md` – Partner authentication and mutation security.
+- `PARTNER_INTEGRATION_CONTRACT.md` – Partner API payload, retry, and reconciliation contract.
+- `LARAVEL12_UPGRADE_REPORT.md` – Framework upgrade and dependency audit result.
+- `docs/RELEASE_OPERATIONS_RUNBOOK.md` – Deployment and operations procedure.
+- `docs/STAGING_ACCEPTANCE_RECORD.md` – Staging acceptance and release sign-off record.
+- `docs/LICENSE_DECISION_RECORD.md` – Pending repository-owner license decision.
+- `FINAL_STAGING_HANDOFF_CHECKLIST.md` – Final staging handoff checklist.
+- `docs/CONTROL_EXECUTION_MATRIX.md` – Local versus staging-only execution boundary.
+- `docs/STAGING_OWNER_EXECUTION_GUIDE.md` – Staging certification and evidence procedure.
+- `STAGING_BLOCKER_REGISTER.md` – Owner-assigned staging blocker register.
 
-### Existing Documentation
-- `/docs/api.md` – API documentation
-- `/docs/admin-panel.md` – Admin panel guide
-- `/docs/architecture.md` – System architecture
-- `/docs/db-schema.md` – Original database schema
-
-### Planning Documents
-- `/PRIORITIZATION_ROADMAP.md` – Feature prioritization
-- `/PROJECT_STATUS_REPORT.md` – Current project status
-- `/IMPLEMENTATION_COMPLETE.md` – Previous implementation status 
+### Current Status
+- `STAGING_READINESS_REPORT.md` – Staging certification and payout reconciliation results.
+- `IMPLEMENTATION_PROGRESS.md` – Cumulative implementation progress.
+- `FINAL_IMPLEMENTATION_SUMMARY.md` – Previous local-code remediation summary.
+- `NEXT_RELEASE_READINESS_REPORT.md` – Superseded pre-Laravel-12 readiness decision record.

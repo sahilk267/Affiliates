@@ -27,8 +27,6 @@ return new class extends Migration
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
             
             // Unique constraint: one commission rate per product+program combination
             $table->unique(['product_id', 'program_id'], 'unique_product_program');

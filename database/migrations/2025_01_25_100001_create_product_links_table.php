@@ -23,9 +23,6 @@ return new class extends Migration
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
-            $table->foreign('link_id')->references('id')->on('links')->onDelete('cascade');
             
             // Indexes for better performance
             $table->index('product_id');

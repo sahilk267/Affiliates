@@ -184,9 +184,9 @@ This directory contains comprehensive project rules for the ZenithSoles Affiliat
 
 ---
 
-**Last Updated**: 2025-10-22  
-**Version**: 1.0.0  
-**Next Review**: 2025-11-22  
+**Last Updated**: 2025-10-22
+**Version**: 1.0.0
+**Next Review**: 2025-11-22
 
 ---
 

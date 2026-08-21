@@ -8,6 +8,7 @@
 /storage/logs
 .env
 .env.*
+!.env.example
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -15,5 +16,8 @@ npm-debug.log
 .DS_Store
 .idea/
 .vscode/
-/tests/
-/docs/ 
+/bootstrap/cache/*.php
+/build/coverage/
+!/bootstrap/cache/.gitignore
+# /tests/ must remain tracked for release verification
+database/*.sqlite

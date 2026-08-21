@@ -1,0 +1,48 @@
+{
+  "base_url": "http://127.0.0.1:8097",
+  "results": [
+    {
+      "name": "health",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "body": "{\"status\":\"healthy\",\"timestamp\":\"2026-08-20T14:59:59+00:00\",\"database\":\"connected\"}"
+    },
+    {
+      "name": "invalid_signature",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "passed": true,
+      "body": "{\"status\":\"error\",\"message\":\"Invalid partner signature\"}"
+    },
+    {
+      "name": "expired_timestamp",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "passed": true,
+      "body": "{\"status\":\"error\",\"message\":\"Expired or invalid partner timestamp\"}"
+    },
+    {
+      "name": "signed_validation_failure",
+      "status": 422,
+      "expected": [
+        422,
+        503
+      ],
+      "passed": true,
+      "body": "{\"status\":\"error\",\"message\":\"Validation failed\",\"errors\":{\"click_id\":[\"The click id field is required.\"],\"partner_event_id\":[\"The partner event id field is required.\"]}}"
+    },
+    {
+      "name": "valid_mutation_checks",
+      "passed": true,
+      "skipped": true
+    }
+  ],
+  "passed": true
+}

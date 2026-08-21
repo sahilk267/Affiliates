@@ -20,5 +20,5 @@ If applicable, add screenshots or terminal logs to help explain your problem.
 
 **Environment (please complete the following information):**
 - OS: (e.g. Windows 10)
-- PHP version: 
-- Browser: 
+- PHP version:
+- Browser:

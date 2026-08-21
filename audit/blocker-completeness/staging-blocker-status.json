@@ -1,0 +1,108 @@
+{
+  "status": "open_blockers",
+  "register": "STAGING_BLOCKER_REGISTER.md",
+  "total_blockers": 14,
+  "closed_blockers": 0,
+  "open_or_incomplete_blockers": 14,
+  "blockers": [
+    {
+      "id": "STG-001",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-002",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-003",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-004",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-005",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-006",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-007",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-008",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-009",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-010",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-011",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-012",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-013",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    },
+    {
+      "id": "STG-014",
+      "owner_assigned": false,
+      "due_assigned": false,
+      "evidence_recorded": false,
+      "status": "\u2610 Open"
+    }
+  ],
+  "production_approval": "blocked"
+}

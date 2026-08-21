@@ -21,7 +21,6 @@ return new class extends Migration
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
             // Indexes for better performance
             $table->index('balance');

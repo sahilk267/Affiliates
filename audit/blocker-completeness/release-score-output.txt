@@ -1,0 +1,24 @@
+{
+  "release_score_out_of_100": 77.23,
+  "categories": {
+    "Architecture": 80.0,
+    "Security": 80.0,
+    "Testing": 80.0,
+    "Documentation": 100.0,
+    "Performance": "NOT MEASURABLE",
+    "Maintainability": 43.93,
+    "Scalability": 66.67,
+    "Reliability": 100.0,
+    "AI Safety": "NOT MEASURABLE",
+    "DevOps": 50.0,
+    "Database": 80.0,
+    "API": 100.0,
+    "Frontend": 40.0,
+    "Backend": 83.33,
+    "Observability": 100.0
+  },
+  "not_measurable": [
+    "Performance",
+    "AI Safety"
+  ]
+}

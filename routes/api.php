@@ -30,10 +30,10 @@ Route::get('/health', function () {
 
 // Affiliate tracking endpoints
 Route::prefix('affiliate')->group(function () {
-    Route::post('/click', [ApiController::class, 'trackClick']);
-    Route::post('/conversion', [ApiController::class, 'reportConversion']);
+    Route::post('/click', [ApiController::class, 'trackClick'])->middleware('throttle:affiliate-click');
+    Route::post('/conversion', [ApiController::class, 'reportConversion'])->middleware(['partner.signature', 'throttle:affiliate-conversion']);
     Route::get('/link/{shortCode}', [ApiController::class, 'getLink']);
-    Route::get('/user/{userId}/stats', [ApiController::class, 'getUserStats']);
+    Route::get('/user/{userId}/stats', [ApiController::class, 'getUserStats'])->middleware(['web', 'auth']);
 });
 
 // Product endpoints
@@ -44,12 +44,12 @@ Route::prefix('products')->group(function () {
 
 // Points API endpoints
 Route::prefix('points')->group(function () {
-    Route::post('/credit', [App\Http\Controllers\ApiController::class, 'creditPoints']);
-    Route::get('/balance/{userId}', [App\Http\Controllers\ApiController::class, 'getPointsBalance']);
+    Route::post('/credit', [App\Http\Controllers\ApiController::class, 'creditPoints'])->middleware(['partner.signature', 'throttle:points-credit']);
+    Route::get('/balance/{userId}', [App\Http\Controllers\ApiController::class, 'getPointsBalance'])->middleware(['web', 'auth']);
 });
 
 // Referral API endpoints
 Route::prefix('referral')->group(function () {
-    Route::get('/{code}', [App\Http\Controllers\ApiController::class, 'getReferralInfo']);
-    Route::post('/track', [App\Http\Controllers\ApiController::class, 'trackReferral']);
+    Route::get('/info/{code}', [ApiController::class, 'getReferralInfo'])->middleware(['web', 'auth']);
+    Route::post('/track', [ApiController::class, 'trackReferral'])->middleware('throttle:referral-track');
 });

@@ -1,0 +1,49 @@
+{
+  "base_url": "http://127.0.0.1:8096",
+  "results": [
+    {
+      "name": "health",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "body": "{\"status\":\"healthy\",\"timestamp\":\"2026-08-20T14:59:01+00:00\",\"database\":\"connected\"}"
+    },
+    {
+      "name": "invalid_signature",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "passed": true,
+      "body": "{\"status\":\"error\",\"message\":\"Invalid partner signature\"}"
+    },
+    {
+      "name": "expired_timestamp",
+      "status": 401,
+      "expected": [
+        401
+      ],
+      "passed": true,
+      "body": "{\"status\":\"error\",\"message\":\"Expired or invalid partner timestamp\"}"
+    },
+    {
+      "name": "signed_validation_failure",
+      "status": 401,
+      "expected": [
+        401,
+        422,
+        503
+      ],
+      "passed": true,
+      "body": "{\"status\":\"error\",\"message\":\"Invalid partner signature\"}"
+    },
+    {
+      "name": "valid_mutation_checks",
+      "passed": true,
+      "skipped": true
+    }
+  ],
+  "passed": true
+}

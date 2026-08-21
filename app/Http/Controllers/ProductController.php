@@ -8,6 +8,7 @@ use App\ProductLink;
 use App\ProductCommission;
 use App\Program;
 use App\Link;
+use App\Services\AffiliateTrackingService;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
@@ -16,10 +17,12 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     protected ProductService $productService;
+    protected AffiliateTrackingService $trackingService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(ProductService $productService, AffiliateTrackingService $trackingService)
     {
         $this->productService = $productService;
+        $this->trackingService = $trackingService;
     }
 
     /**
@@ -99,13 +102,21 @@ class ProductController extends Controller
             return redirect()->back()->with('error', 'Product link not found');
         }
 
-        // Track click (if user is logged in)
-        if (auth()->check()) {
-            // You can add click tracking here if needed
+        try {
+            $click = $this->trackingService->track($productLink->link, $request);
+            $affiliateUrl = $productLink->link->generateAffiliateUrl();
+            $separator = str_contains($affiliateUrl, '?') ? '&' : '?';
+            return redirect($affiliateUrl . $separator . http_build_query(['click_id' => $click->id]));
+        } catch (\DomainException $e) {
+            return redirect()->back()->with('error', $e->getMessage());
+        } catch (\Throwable $e) {
+            Log::error('Product affiliate redirect failed', [
+                'product_id' => $productId,
+                'program_id' => $programId,
+                'error' => $e->getMessage(),
+            ]);
+            return redirect()->back()->with('error', 'Unable to start affiliate redirect');
         }
-
-        // Redirect to affiliate URL
-        return redirect($productLink->link->affiliate_url);
     }
 
     // ========== ADMIN METHODS ==========

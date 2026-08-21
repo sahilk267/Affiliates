@@ -1,0 +1,12 @@
+erDiagram
+  USERS ||--o{ LINKS : owns
+  PROGRAMS ||--o{ LINKS : configures
+  LINKS ||--o{ CLICKS : receives
+  CLICKS ||--o{ CONVERSIONS : produces
+  CONVERSIONS ||--o{ COMMISSIONS : creates
+  USERS ||--o| USER_POINTS : has
+  USERS ||--o{ POINTS_TRANSACTIONS : ledger
+  PRODUCTS ||--o{ PRODUCT_LINKS : maps
+  PROGRAMS ||--o{ PRODUCT_LINKS : offers
+  PRODUCTS ||--o{ PRODUCT_COMMISSIONS : overrides
+  USERS ||--o{ REFERRALS : refers

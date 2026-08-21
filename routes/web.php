@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
@@ -39,11 +40,21 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/health', function () {
-    return response()->json([
-        'status' => 'healthy',
-        'timestamp' => now(),
-        'database' => 'connected'
-    ]);
+    try {
+        DB::connection()->getPdo();
+        return response()->json([
+            'status' => 'healthy',
+            'timestamp' => now()->toIso8601String(),
+            'database' => 'connected',
+        ]);
+    } catch (\Throwable $e) {
+        report($e);
+        return response()->json([
+            'status' => 'unhealthy',
+            'timestamp' => now()->toIso8601String(),
+            'database' => 'unavailable',
+        ], 503);
+    }
 });
 
 // Admin routes (JSON API)

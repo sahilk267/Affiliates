@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
@@ -55,8 +56,8 @@ class AuthController extends Controller
             return back()->with('error', 'Account is inactive')->withInput();
         }
 
-        $request->session()->put('user_id', $user->id);
-        $request->session()->put('role', $user->role);
+        Auth::login($user, $request->boolean('remember'));
+        $request->session()->regenerate();
 
         if ($request->expectsJson()) {
             return response()->json([
@@ -78,7 +79,9 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->session()->flush();
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         
         if ($request->expectsJson()) {
             return response()->json(['message' => 'Logged out']);
@@ -92,14 +95,9 @@ class AuthController extends Controller
      */
     public function status(Request $request)
     {
-        $userId = $request->session()->get('user_id');
-        if (!$userId) {
-            return response()->json(['authenticated' => false]);
-        }
-
-        $user = User::find($userId);
+        $user = Auth::user();
         return response()->json([
-            'authenticated' => !!$user,
+            'authenticated' => $user !== null,
             'user' => $user ? [
                 'id' => $user->id,
                 'name' => $user->name,

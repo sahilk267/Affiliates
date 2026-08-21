@@ -1,0 +1,26 @@
+{
+  "exceptions": {
+    "amount_mismatches": [],
+    "duplicate_platform_ids": [],
+    "duplicate_provider_ids": [],
+    "missing_provider": [],
+    "reference_mismatches": [],
+    "status_mismatches": [],
+    "unexpected_provider": []
+  },
+  "inputs": {
+    "platform_export": "/tmp/platform-payout-export.csv",
+    "provider_export": "/tmp/provider-payout-export.csv"
+  },
+  "schema_errors": {
+    "platform_missing_columns": [],
+    "provider_missing_columns": []
+  },
+  "summary": {
+    "exception_count": 0,
+    "matched_ids": 2,
+    "platform_rows": 2,
+    "provider_rows": 2,
+    "status": "matched"
+  }
+}

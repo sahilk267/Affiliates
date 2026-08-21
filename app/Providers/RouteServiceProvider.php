@@ -24,8 +24,28 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $partnerBucket = static function (Request $request): string {
+            return (string) ($request->header('X-Affiliate-Key') ?: $request->ip());
+        };
+
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        RateLimiter::for('affiliate-click', function (Request $request) use ($partnerBucket) {
+            return Limit::perMinute(60)->by($partnerBucket($request));
+        });
+
+        RateLimiter::for('affiliate-conversion', function (Request $request) use ($partnerBucket) {
+            return Limit::perMinute(30)->by($partnerBucket($request));
+        });
+
+        RateLimiter::for('points-credit', function (Request $request) use ($partnerBucket) {
+            return Limit::perMinute(10)->by($partnerBucket($request));
+        });
+
+        RateLimiter::for('referral-track', function (Request $request) {
+            return Limit::perMinute(30)->by($request->ip());
         });
 
         $this->routes(function () {

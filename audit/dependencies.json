@@ -1,0 +1,5123 @@
+{
+  "generated_at": "2026-08-21T22:00:43.763379+00:00",
+  "imports_graph": [
+    {
+      "from": "app/CashbackSetting.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/CashbackSetting.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/CashbackSetting.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/CashbackSetting.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Click.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Click.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Click.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Click.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Click.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasOne",
+      "kind": "import"
+    },
+    {
+      "from": "app/Commission.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Commission.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Commission.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Commission.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Console/Kernel.php",
+      "to": "Illuminate\\Console\\Scheduling\\Schedule",
+      "kind": "import"
+    },
+    {
+      "from": "app/Console/Kernel.php",
+      "to": "Illuminate\\Foundation\\Console\\Kernel as ConsoleKernel",
+      "kind": "import"
+    },
+    {
+      "from": "app/Console/Kernel.php",
+      "to": "routes/console.php",
+      "kind": "import"
+    },
+    {
+      "from": "app/Conversion.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Conversion.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Conversion.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Conversion.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Conversion.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "app/Exceptions/Handler.php",
+      "to": "Illuminate\\Foundation\\Exceptions\\Handler as ExceptionHandler",
+      "kind": "import"
+    },
+    {
+      "from": "app/Exceptions/Handler.php",
+      "to": "Throwable",
+      "kind": "import"
+    },
+    {
+      "from": "app/Gift.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Gift.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Gift.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Gift.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        $conversionData = [\n            ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        $data = [\n            ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        $link->update([\n            ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        $logoUrl = $request->logo_url ?? $program->logo_url;\n        if ($request->hasFile(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        $logoUrl = $request->logo_url;\n        if ($request->hasFile(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        $shortCode = $request->short_code ?? Link::generateShortCode();\n        \n        $link = Link::create([\n            ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        // Simulate a click request\n        $link = Link::findOrFail($request->link_id);\n        \n        $clickData = [\n            ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        User::create([\n            ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            $commission->update([\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            $templates = [\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            CashbackSetting::updateOrCreate(\n                [",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            ProductCommission::updateOrCreate(\n                [\n                    ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator);\n        }\n\n        try {\n            $file = $request->file(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator);\n        }\n\n        try {\n            if ($request->type === ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        try {\n            $this->payoutService->completeRedemption(\n                $redemption,\n                $request->user()?->id,\n                $request->string(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": ",\n        ]);\n\n        try {\n            $this->payoutService->payCommission(\n                $commission,\n                $request->user()?->id,\n                $request->string(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\CashbackSetting",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Click",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Commission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Conversion",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Gift",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Link",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\PointsRedemption",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\PointsTransaction",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Product",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\ProductCommission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Program",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Referral",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Services\\PayoutService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Services\\PointsService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\Services\\ProductService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "App\\UserPoints",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AdminController.php",
+      "to": "Illuminate\\Support\\Facades\\Validator",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return response()->json([\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Click",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Commission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Conversion",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Link",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Services\\AffiliateTrackingService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Services\\CashbackService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\Services\\ReferralService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "Illuminate\\Support\\Facades\\Auth",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "Illuminate\\Support\\Facades\\Validator",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ApiController.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            if ($request->expectsJson()) {\n                return response()->json([\n                    ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return back()->withErrors($validator)->withInput();\n        }\n\n        $reset = DB::table(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return back()->withErrors($validator)->withInput();\n        }\n\n        $user = User::where(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Support\\Facades\\Auth",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Support\\Facades\\Hash",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Support\\Facades\\Mail",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Support\\Facades\\Validator",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/AuthController.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        $idempotencyKey = (string) ($request->header(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            $user->update($request->only([\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Gift",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\PointsRedemption",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Product",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Services\\CashbackService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Services\\PayoutService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Services\\PointsService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Services\\ProductService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "App\\Services\\ReferralService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ConsumerController.php",
+      "to": "Illuminate\\Support\\Facades\\Validator",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/Controller.php",
+      "to": "AuthorizesRequests, ValidatesRequests",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/Controller.php",
+      "to": "Illuminate\\Foundation\\Auth\\Access\\AuthorizesRequests",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/Controller.php",
+      "to": "Illuminate\\Foundation\\Validation\\ValidatesRequests",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/Controller.php",
+      "to": "Illuminate\\Routing\\Controller as BaseController",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/LinkController.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            $commission->update([\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            $product = Product::create($request->only([\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            $product->update($request->only([\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator)\n                ->withInput();\n        }\n\n        try {\n            ProductCommission::updateOrCreate(\n                [\n                    ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": ",\n        ]);\n\n        if ($validator->fails()) {\n            return redirect()->back()\n                ->withErrors($validator);\n        }\n\n        try {\n            $file = $request->file(",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\Link",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\Product",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\ProductCommission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\ProductLink",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\Program",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\Services\\AffiliateTrackingService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "App\\Services\\ProductService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Controllers/ProductController.php",
+      "to": "Illuminate\\Support\\Facades\\Validator",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Kernel.php",
+      "to": "Illuminate\\Foundation\\Http\\Kernel as HttpKernel",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/AdminMiddleware.php",
+      "to": "Closure",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/AdminMiddleware.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/AdminMiddleware.php",
+      "to": "Illuminate\\Support\\Facades\\Auth",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/AdminMiddleware.php",
+      "to": "Symfony\\Component\\HttpFoundation\\Response",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/Authenticate.php",
+      "to": "Illuminate\\Auth\\Middleware\\Authenticate as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/Authenticate.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/ConsumerMiddleware.php",
+      "to": "Closure",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/ConsumerMiddleware.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/ConsumerMiddleware.php",
+      "to": "Symfony\\Component\\HttpFoundation\\Response",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/EncryptCookies.php",
+      "to": "Illuminate\\Cookie\\Middleware\\EncryptCookies as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/PreventRequestsDuringMaintenance.php",
+      "to": "Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/RedirectIfAuthenticated.php",
+      "to": "App\\Providers\\RouteServiceProvider",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/RedirectIfAuthenticated.php",
+      "to": "Closure",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/RedirectIfAuthenticated.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/RedirectIfAuthenticated.php",
+      "to": "Illuminate\\Support\\Facades\\Auth",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/RedirectIfAuthenticated.php",
+      "to": "Symfony\\Component\\HttpFoundation\\Response",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/SecurityHeaders.php",
+      "to": "Closure",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/SecurityHeaders.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/SecurityHeaders.php",
+      "to": "Symfony\\Component\\HttpFoundation\\Response",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/TrimStrings.php",
+      "to": "Illuminate\\Foundation\\Http\\Middleware\\TrimStrings as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/TrustProxies.php",
+      "to": "Illuminate\\Http\\Middleware\\TrustProxies as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/TrustProxies.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/ValidateSignature.php",
+      "to": "Illuminate\\Routing\\Middleware\\ValidateSignature as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/VerifyCsrfToken.php",
+      "to": "Illuminate\\Foundation\\Http\\Middleware\\VerifyCsrfToken as Middleware",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/VerifyPartnerSignature.php",
+      "to": "Closure",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/VerifyPartnerSignature.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Http/Middleware/VerifyPartnerSignature.php",
+      "to": "Symfony\\Component\\HttpFoundation\\Response",
+      "kind": "import"
+    },
+    {
+      "from": "app/Link.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Link.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Link.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Link.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Link.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "app/Link.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsRedemption.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsRedemption.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsRedemption.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsRedemption.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsTransaction.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsTransaction.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsTransaction.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsTransaction.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/PointsTransaction.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\MorphTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Product.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Product.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Product.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Product.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductCommission.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductCommission.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductCommission.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductCommission.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductLink.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductLink.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductLink.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/ProductLink.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Program.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Program.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Program.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Program.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/AppServiceProvider.php",
+      "to": "Illuminate\\Support\\ServiceProvider",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/AuthServiceProvider.php",
+      "to": "Illuminate\\Foundation\\Support\\Providers\\AuthServiceProvider as ServiceProvider",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/EventServiceProvider.php",
+      "to": "Illuminate\\Auth\\Events\\Registered",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/EventServiceProvider.php",
+      "to": "Illuminate\\Auth\\Listeners\\SendEmailVerificationNotification",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/EventServiceProvider.php",
+      "to": "Illuminate\\Foundation\\Support\\Providers\\EventServiceProvider as ServiceProvider",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/EventServiceProvider.php",
+      "to": "Illuminate\\Support\\Facades\\Event",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/RouteServiceProvider.php",
+      "to": "Illuminate\\Cache\\RateLimiting\\Limit",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/RouteServiceProvider.php",
+      "to": "Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider as ServiceProvider",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/RouteServiceProvider.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/RouteServiceProvider.php",
+      "to": "Illuminate\\Support\\Facades\\RateLimiter",
+      "kind": "import"
+    },
+    {
+      "from": "app/Providers/RouteServiceProvider.php",
+      "to": "Illuminate\\Support\\Facades\\Route",
+      "kind": "import"
+    },
+    {
+      "from": "app/Referral.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Referral.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/Referral.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/Referral.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/Referral.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "App\\Click",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "App\\Link",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\CashbackSetting",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Conversion",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Program",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Services\\PointsService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Commission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Conversion",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\ProductCommission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Program",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": ");\n            }\n\n            $transaction = $this->pointsService->debitPoints(\n                $user->id,\n                $points,\n                ",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\Commission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\PointsRedemption",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\PointsTransaction",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\UserPoints",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\PointsTransaction",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\UserPoints",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\Product",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\ProductCommission",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\ProductLink",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "Illuminate\\Database\\Eloquent\\Collection",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "Illuminate\\Pagination\\LengthAwarePaginator",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Conversion",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Program",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Referral",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Services\\CashbackService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Services\\PointsService",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "Illuminate\\Support\\Facades\\Cookie",
+      "kind": "import"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "Illuminate\\Support\\Facades\\Log",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "HasFactory, Notifiable",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasOne",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "Illuminate\\Foundation\\Auth\\User as Authenticatable",
+      "kind": "import"
+    },
+    {
+      "from": "app/User.php",
+      "to": "Illuminate\\Notifications\\Notifiable",
+      "kind": "import"
+    },
+    {
+      "from": "app/UserPoints.php",
+      "to": "HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/UserPoints.php",
+      "to": "Illuminate\\Database\\Eloquent\\Factories\\HasFactory",
+      "kind": "import"
+    },
+    {
+      "from": "app/UserPoints.php",
+      "to": "Illuminate\\Database\\Eloquent\\Model",
+      "kind": "import"
+    },
+    {
+      "from": "app/UserPoints.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\BelongsTo",
+      "kind": "import"
+    },
+    {
+      "from": "app/UserPoints.php",
+      "to": "Illuminate\\Database\\Eloquent\\Relations\\HasMany",
+      "kind": "import"
+    },
+    {
+      "from": "artisan",
+      "to": ";\n\n$app = require_once __DIR__.",
+      "kind": "import"
+    },
+    {
+      "from": "config/app.php",
+      "to": "Illuminate\\Support\\Facades\\Facade",
+      "kind": "import"
+    },
+    {
+      "from": "config/app.php",
+      "to": "Illuminate\\Support\\ServiceProvider",
+      "kind": "import"
+    },
+    {
+      "from": "config/cache.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "config/database.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "config/logging.php",
+      "to": "Monolog\\Handler\\NullHandler",
+      "kind": "import"
+    },
+    {
+      "from": "config/logging.php",
+      "to": "Monolog\\Handler\\StreamHandler",
+      "kind": "import"
+    },
+    {
+      "from": "config/logging.php",
+      "to": "Monolog\\Handler\\SyslogUdpHandler",
+      "kind": "import"
+    },
+    {
+      "from": "config/logging.php",
+      "to": "Monolog\\Processor\\PsrLogMessageProcessor",
+      "kind": "import"
+    },
+    {
+      "from": "config/session.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "to": "Illuminate\\Database\\Migrations\\Migration",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "to": "Illuminate\\Database\\Schema\\Blueprint",
+      "kind": "import"
+    },
+    {
+      "from": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "to": "Illuminate\\Support\\Facades\\Schema",
+      "kind": "import"
+    },
+    {
+      "from": "database/schema/zenithsoles_schema_seed.sql",
+      "to": "clicks",
+      "kind": "import"
+    },
+    {
+      "from": "database/schema/zenithsoles_schema_seed.sql",
+      "to": "conversions",
+      "kind": "import"
+    },
+    {
+      "from": "database/schema/zenithsoles_schema_seed.sql",
+      "to": "links",
+      "kind": "import"
+    },
+    {
+      "from": "database/schema/zenithsoles_schema_seed.sql",
+      "to": "programs",
+      "kind": "import"
+    },
+    {
+      "from": "database/schema/zenithsoles_schema_seed.sql",
+      "to": "users",
+      "kind": "import"
+    },
+    {
+      "from": "database/seeders/AdminUserSeeder.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "database/seeders/AdminUserSeeder.php",
+      "to": "Illuminate\\Database\\Seeder",
+      "kind": "import"
+    },
+    {
+      "from": "database/seeders/AdminUserSeeder.php",
+      "to": "Illuminate\\Support\\Facades\\Hash",
+      "kind": "import"
+    },
+    {
+      "from": "database/seeders/AdminUserSeeder.php",
+      "to": "Illuminate\\Support\\Str",
+      "kind": "import"
+    },
+    {
+      "from": "database/seeders/DatabaseSeeder.php",
+      "to": "Illuminate\\Database\\Seeder",
+      "kind": "import"
+    },
+    {
+      "from": "index.php",
+      "to": "/public/index.php",
+      "kind": "import"
+    },
+    {
+      "from": "public/index.php",
+      "to": ";\n\n\t$appPath = __DIR__ . ",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/api-test.blade.php",
+      "to": ", async function(e) {\n    e.preventDefault();\n    const formData = new FormData(this);\n    const resultDiv = document.getElementById(",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/cashback-settings/index.blade.php",
+      "to": ").value = programId;\n    document.getElementById(",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/links/create.blade.php",
+      "to": "px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/links/edit.blade.php",
+      "to": "px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/products/commissions.blade.php",
+      "to": "text-gray-500",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/products/create.blade.php",
+      "to": "px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/products/edit.blade.php",
+      "to": "px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/programs/create.blade.php",
+      "to": "px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/programs/edit.blade.php",
+      "to": "px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/programs/quick-add.blade.php",
+      "to": ").value;\n    const templates = {\n        ",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/users/create.blade.php",
+      "to": "display: none;",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/users/edit.blade.php",
+      "to": " }};",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/admin/wallets/index.blade.php",
+      "to": ").value = userId;\n    document.getElementById(",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/auth/forgot-password.blade.php",
+      "to": "text-sm text-indigo-600 hover:text-indigo-500",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/auth/login.blade.php",
+      "to": "text-sm text-indigo-600 hover:text-indigo-500",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/auth/reset-password.blade.php",
+      "to": "text-sm text-indigo-600 hover:text-indigo-500",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/profile/edit.blade.php",
+      "to": "px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700",
+      "kind": "import"
+    },
+    {
+      "from": "resources/views/wallet/index.blade.php",
+      "to": "text-gray-500",
+      "kind": "import"
+    },
+    {
+      "from": "routes/api.php",
+      "to": "App\\Http\\Controllers\\ApiController",
+      "kind": "import"
+    },
+    {
+      "from": "routes/api.php",
+      "to": "Illuminate\\Http\\Request",
+      "kind": "import"
+    },
+    {
+      "from": "routes/api.php",
+      "to": "Illuminate\\Support\\Facades\\Route",
+      "kind": "import"
+    },
+    {
+      "from": "routes/console.php",
+      "to": "Illuminate\\Foundation\\Inspiring",
+      "kind": "import"
+    },
+    {
+      "from": "routes/console.php",
+      "to": "Illuminate\\Support\\Facades\\Artisan",
+      "kind": "import"
+    },
+    {
+      "from": "routes/web.php",
+      "to": "App\\Http\\Controllers\\AdminController",
+      "kind": "import"
+    },
+    {
+      "from": "routes/web.php",
+      "to": "App\\Http\\Controllers\\AuthController",
+      "kind": "import"
+    },
+    {
+      "from": "routes/web.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "routes/web.php",
+      "to": "Illuminate\\Support\\Facades\\Route",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Click",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Commission",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Conversion",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Link",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\PointsRedemption",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\PointsTransaction",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Program",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Services\\PayoutService",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\Services\\PointsService",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\User",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "App\\UserPoints",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "Illuminate\\Foundation\\Testing\\RefreshDatabase",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "Illuminate\\Support\\Facades\\DB",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "RefreshDatabase",
+      "kind": "import"
+    },
+    {
+      "from": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "to": "Tests\\TestCase",
+      "kind": "import"
+    },
+    {
+      "from": "tests/TestCase.php",
+      "to": "/../bootstrap/app.php",
+      "kind": "import"
+    },
+    {
+      "from": "tests/TestCase.php",
+      "to": "Illuminate\\Contracts\\Console\\Kernel",
+      "kind": "import"
+    },
+    {
+      "from": "tests/TestCase.php",
+      "to": "Illuminate\\Foundation\\Testing\\TestCase as BaseTestCase",
+      "kind": "import"
+    }
+  ],
+  "exports_graph": [
+    {
+      "file": ".cursor/rules/README.md",
+      "exports": [
+        "**Continuous Improvement**",
+        "**For Developers**",
+        "**For Project Managers**",
+        "**For QA Teams**",
+        "**High Priority Rules** (Must Follow)",
+        "**Low Priority Rules** (Nice to Follow)",
+        "**Medium Priority Rules** (Should Follow)",
+        "**New Team Members**",
+        "**Ongoing Education**",
+        "**Project Success Metrics**",
+        "**Project-Specific Adaptations**",
+        "**Reporting Violations**",
+        "**Rule Adherence Metrics**",
+        "**Update Process**",
+        "**Update Schedule**",
+        "**Violation Consequences**",
+        "**\ud83c\udf10 Technical Excellence Rules**",
+        "**\ud83c\udfaf Specialized Domain Rules**",
+        "**\ud83d\udcca Business-Specific Rules**",
+        "**\ud83d\udd10 Core Development Rules**",
+        "**\ud83d\ude80 Operational Rules**",
+        "**\ud83d\udee1\ufe0f Infrastructure Rules**",
+        "\ud83c\udf10 **Specialized Rule Sets**",
+        "\ud83c\udf93 **Training & Education**",
+        "\ud83c\udfaf **How to Use These Rules**",
+        "\ud83c\udfaf **Main Project Rules**",
+        "\ud83d\udcc1 **Rule Files Overview**",
+        "\ud83d\udcc8 **Success Metrics**",
+        "\ud83d\udcca **Rule Compliance Tracking**",
+        "\ud83d\udccb **Rule Categories**",
+        "\ud83d\udcd8 ZenithSoles Project Rules - Complete Index",
+        "\ud83d\udcdd **Rule Customization**",
+        "\ud83d\udcde **Rule Violations**",
+        "\ud83d\udd04 **Rule Updates**",
+        "\ud83d\udd17 **Related Documentation**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/additional-rules.mcd",
+      "exports": [
+        "**AI Service Management**",
+        "**Affiliate Onboarding**",
+        "**Data Analytics**",
+        "**Data Collection Standards**",
+        "**Data Protection**",
+        "**External API Management**",
+        "**Financial Calculations**",
+        "**Mobile Optimization**",
+        "**Multi-Language Support**",
+        "**Performance Metrics**",
+        "**Regulatory Compliance**",
+        "**System Maintenance**",
+        "**System Monitoring**",
+        "**System Performance**",
+        "**UX Standards**",
+        "Supplementary Rules for ZenithSoles Affiliate Management System",
+        "\ud83c\udf10 **23. INTERNATIONALIZATION RULES**",
+        "\ud83c\udfa8 **27. USER EXPERIENCE RULES**",
+        "\ud83c\udfaf **20. AFFILIATE MANAGEMENT RULES**",
+        "\ud83c\udfaf **30. SUCCESS METRICS & KPIs**",
+        "\ud83d\udcb0 **19. COMMISSION & PAYOUT RULES**",
+        "\ud83d\udcca **16. DATA MANAGEMENT & ANALYTICS**",
+        "\ud83d\udcca **28. ANALYTICS & REPORTING RULES**",
+        "\ud83d\udccb **26. BACKUP & DISASTER RECOVERY**",
+        "\ud83d\udcf1 **21. MOBILE & RESPONSIVE DESIGN**",
+        "\ud83d\udd04 **18. API INTEGRATION RULES**",
+        "\ud83d\udd0d **22. MONITORING & OBSERVABILITY**",
+        "\ud83d\udd12 **24. COMPLIANCE & LEGAL RULES**",
+        "\ud83d\udd27 **29. MAINTENANCE & UPDATES**",
+        "\ud83d\udd27 Additional Project Rules - Missing Aspects",
+        "\ud83d\ude80 **25. PERFORMANCE OPTIMIZATION**",
+        "\ud83e\udd16 **17. AI/LLM INTEGRATION RULES**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/disaster-recovery-rules.mcd",
+      "exports": [
+        "**Application Backup Procedures**",
+        "**Automated Recovery**",
+        "**Backup Cost Management**",
+        "**Backup Monitoring**",
+        "**Backup Performance**",
+        "**Backup Security**",
+        "**Backup Storage Strategy**",
+        "**Backup Types & Frequency**",
+        "**Business Continuity Metrics**",
+        "**Continuous Improvement**",
+        "**Cost-Benefit Analysis**",
+        "**Data Corruption Scenarios**",
+        "**Data Protection**",
+        "**Data Replication Strategy**",
+        "**Database Backup Procedures**",
+        "**Disaster Recovery KPIs**",
+        "**Infrastructure Failures**",
+        "**Multi-Region Deployment**",
+        "**ROI Analysis**",
+        "**Recovery Documentation**",
+        "**Recovery Point Objectives (RPO)**",
+        "**Recovery Testing**",
+        "**Recovery Time Objectives (RTO)**",
+        "**Regular Maintenance**",
+        "**System Health Monitoring**",
+        "**Training & Drills**",
+        "Backup Strategies and Business Continuity",
+        "\ud83c\udf10 **5. GEOGRAPHIC REDUNDANCY**",
+        "\ud83c\udfaf **13. SUCCESS METRICS**",
+        "\ud83d\udcb0 **10. COST OPTIMIZATION**",
+        "\ud83d\udcc8 **11. PERFORMANCE METRICS**",
+        "\ud83d\udcca **7. MONITORING & ALERTING**",
+        "\ud83d\udccb **1. BACKUP STRATEGY FRAMEWORK**",
+        "\ud83d\udccb **9. DOCUMENTATION & PROCEDURES**",
+        "\ud83d\udd04 **2. BUSINESS CONTINUITY PLANNING**",
+        "\ud83d\udd10 **6. SECURITY & ENCRYPTION**",
+        "\ud83d\udd27 **12. MAINTENANCE & UPDATES**",
+        "\ud83d\udd27 **4. BACKUP IMPLEMENTATION**",
+        "\ud83d\ude80 **8. RECOVERY PROCEDURES**",
+        "\ud83d\udea8 **3. DISASTER SCENARIOS & RESPONSES**",
+        "\ud83d\udee1\ufe0f Disaster Recovery Rules - ZenithSoles"
+      ]
+    },
+    {
+      "file": ".cursor/rules/internationalization-rules.mcd",
+      "exports": [
+        "**Business Intelligence**",
+        "**Business Metrics**",
+        "**Caching Strategy**",
+        "**Continuous Improvement**",
+        "**Cultural Compliance**",
+        "**Cultural Sensitivity**",
+        "**Database Design**",
+        "**Language Implementation**",
+        "**Language-Specific Analytics**",
+        "**Language-Specific Rules**",
+        "**Localization Metrics**",
+        "**Localization Testing**",
+        "**Mobile-Specific Localization**",
+        "**Multi-Currency Support**",
+        "**Payment Processing**",
+        "**Phase 1: Basic Localization**",
+        "**Phase 2: Advanced Features**",
+        "**Phase 3: Full Internationalization**",
+        "**Regional Adaptations**",
+        "**Regulatory Compliance**",
+        "**Timezone Management**",
+        "**Translation Maintenance**",
+        "Multi-language, Currency, and Cultural Considerations",
+        "\ud83c\udf10 Internationalization Rules - ZenithSoles",
+        "\ud83c\udfaf **8. QUALITY ASSURANCE**",
+        "\ud83c\udfdb\ufe0f **3. CULTURAL CONSIDERATIONS**",
+        "\ud83d\udcb0 **2. CURRENCY & FINANCIAL LOCALIZATION**",
+        "\ud83d\udcc8 **11. SUCCESS METRICS**",
+        "\ud83d\udcca **7. ANALYTICS & REPORTING**",
+        "\ud83d\udccb **1. MULTI-LANGUAGE SUPPORT**",
+        "\ud83d\udccb **9. COMPLIANCE & LEGAL**",
+        "\ud83d\udcf1 **5. MOBILE INTERNATIONALIZATION**",
+        "\ud83d\udd27 **12. MAINTENANCE & UPDATES**",
+        "\ud83d\udd27 **6. TECHNICAL IMPLEMENTATION**",
+        "\ud83d\udd50 **4. TIMEZONE HANDLING**",
+        "\ud83d\ude80 **10. IMPLEMENTATION ROADMAP**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/maintenance-rules.mcd",
+      "exports": [
+        "**Automation Tools**",
+        "**Capacity Monitoring**",
+        "**Code Maintenance Activities**",
+        "**Code Quality Standards**",
+        "**Compliance Maintenance**",
+        "**Continuous Improvement**",
+        "**Daily Maintenance Checklist**",
+        "**Documentation Standards**",
+        "**Documentation Types**",
+        "**Health Checks**",
+        "**Long-term Goals (6-12 months)**",
+        "**Maintenance Schedule**",
+        "**Maintenance Types**",
+        "**Manual Maintenance**",
+        "**Medium-term Goals (3-6 months)**",
+        "**Monitoring Systems**",
+        "**Monthly Maintenance Checklist**",
+        "**Operational Metrics**",
+        "**Performance Metrics**",
+        "**Process Optimization**",
+        "**Quality Metrics**",
+        "**Quarterly Maintenance Checklist**",
+        "**Resource Planning**",
+        "**Security Updates**",
+        "**Short-term Goals (1-3 months)**",
+        "**Update Process**",
+        "**Update Types & Priorities**",
+        "**Weekly Maintenance Checklist**",
+        "Updates, Documentation, and Code Quality",
+        "\ud83c\udfaf **10. MAINTENANCE OPTIMIZATION**",
+        "\ud83c\udfd7\ufe0f **4. CODE QUALITY MAINTENANCE**",
+        "\ud83d\udcc8 **9. CAPACITY PLANNING**",
+        "\ud83d\udcca **13. MAINTENANCE SUCCESS METRICS**",
+        "\ud83d\udcca **7. MAINTENANCE METRICS & KPIs**",
+        "\ud83d\udccb **1. MAINTENANCE FRAMEWORK**",
+        "\ud83d\udccb **11. MAINTENANCE CHECKLISTS**",
+        "\ud83d\udcda **3. DOCUMENTATION MAINTENANCE**",
+        "\ud83d\udd04 **2. UPDATE MANAGEMENT**",
+        "\ud83d\udd0d **5. SYSTEM MONITORING & HEALTH**",
+        "\ud83d\udd12 **8. SECURITY MAINTENANCE**",
+        "\ud83d\udd27 Maintenance Rules - ZenithSoles",
+        "\ud83d\ude80 **12. MAINTENANCE ROADMAP**",
+        "\ud83d\udee0\ufe0f **6. MAINTENANCE TOOLS & AUTOMATION**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/mobile-optimization-rules.mcd",
+      "exports": [
+        "**Affiliate System Mobile Features**",
+        "**App Integration**",
+        "**Content Adaptation**",
+        "**Conversion Tracking**",
+        "**Deep Link Implementation**",
+        "**Interaction Design**",
+        "**Loading Performance**",
+        "**Mobile A/B Testing**",
+        "**Mobile Business Intelligence**",
+        "**Mobile KPIs**",
+        "**Mobile Optimization Goals**",
+        "**Mobile Performance Metrics**",
+        "**Mobile Security Considerations**",
+        "**Mobile Testing Strategy**",
+        "**Mobile-First Development**",
+        "**Mobile-Specific Maintenance**",
+        "**Mobile-Specific Metrics**",
+        "**Monitoring Tools**",
+        "**Product Management**",
+        "**Responsive Design Standards**",
+        "**Runtime Performance**",
+        "**Testing Strategy**",
+        "**Touch Gestures**",
+        "**Touch Performance**",
+        "**Visual Design**",
+        "Touch Interactions, Performance, and Deep Linking",
+        "\u26a1 **3. MOBILE PERFORMANCE OPTIMIZATION**",
+        "\ud83c\udfa8 **6. MOBILE UI/UX STANDARDS**",
+        "\ud83c\udfaf **12. MOBILE SUCCESS METRICS**",
+        "\ud83d\udc46 **2. TOUCH INTERACTION RULES**",
+        "\ud83d\udcca **11. MOBILE ANALYTICS & REPORTING**",
+        "\ud83d\udcca **5. MOBILE ANALYTICS & TRACKING**",
+        "\ud83d\udccb **1. MOBILE-FIRST DESIGN PRINCIPLES**",
+        "\ud83d\udcf1 **8. MOBILE-SPECIFIC FEATURES**",
+        "\ud83d\udcf1 Mobile Optimization Rules - ZenithSoles",
+        "\ud83d\udd12 **10. MOBILE SECURITY**",
+        "\ud83d\udd17 **4. DEEP LINKING & APP INTEGRATION**",
+        "\ud83d\udd27 **13. MOBILE MAINTENANCE**",
+        "\ud83d\udd27 **7. TECHNICAL IMPLEMENTATION**",
+        "\ud83d\ude80 **9. PERFORMANCE MONITORING**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/project-rules.mcd",
+      "exports": [
+        "**API Documentation**",
+        "**Affiliate Compliance**",
+        "**Business Logic Standards**",
+        "**Business Metrics**",
+        "**Code Documentation**",
+        "**Code Modification Standards**",
+        "**Common Failure Points**",
+        "**Comprehensive Testing Standards**",
+        "**Data Protection**",
+        "**Design Consistency**",
+        "**Development Metrics**",
+        "**During Development Checklist**",
+        "**Escalation Process**",
+        "**Input Security**",
+        "**Post-Release Checklist**",
+        "**Pre-Development Checklist**",
+        "**Pre-Release Checklist**",
+        "**Scalability Standards**",
+        "**Systematic Debugging Process**",
+        "**User Documentation**",
+        "**Version Management**",
+        "**When to Escalate**",
+        "Model Context Document for Development Standards",
+        "\u2705 **5. TESTING REQUIREMENTS**",
+        "\u270f\ufe0f **2. EDIT & CHANGE MANAGEMENT**",
+        "\ud83c\udfa8 **7. UI/UX STANDARDS**",
+        "\ud83c\udfaf **14. SUCCESS METRICS**",
+        "\ud83c\udfaf ZenithSoles Project Rules - Complete MCD",
+        "\ud83d\udcca **9. AFFILIATE SYSTEM SPECIFIC RULES**",
+        "\ud83d\udccb **15. COMPLIANCE & LEGAL**",
+        "\ud83d\udccb **PROJECT OVERVIEW**",
+        "\ud83d\udcd6 **Pre-Development Protocol**",
+        "\ud83d\udcdd **11. DOCUMENTATION REQUIREMENTS**",
+        "\ud83d\udcde **13. ESCALATION PROCEDURES**",
+        "\ud83d\udd0d **10. QUALITY ASSURANCE CHECKLIST**",
+        "\ud83d\udd10 **1. INTEGRATION & DEVELOPMENT RULES**",
+        "\ud83d\udd10 **4. SECURITY STANDARDS**",
+        "\ud83d\ude80 **6. RELEASE & DEPLOYMENT**",
+        "\ud83d\ude80 **8. ADVANCEMENT & SCALING**",
+        "\ud83d\udea8 **12. FAILURE PREVENTION**",
+        "\ud83d\udee0 **3. TROUBLESHOOTING & DEBUGGING**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/quick-reference.md",
+      "exports": [
+        "**API Integration**",
+        "**Before Any Code Change**",
+        "**Business**",
+        "**Click Tracking**",
+        "**Code Quality**",
+        "**Commission Calculations**",
+        "**Critical Issues**",
+        "**Database Changes**",
+        "**Escalation Process**",
+        "**Performance**",
+        "**Post-Release**",
+        "**Pre-Release**",
+        "**Security (Non-Negotiable)**",
+        "**Security**",
+        "**Technical**",
+        "**Testing (Mandatory)**",
+        "\u26a1 Quick Reference Guide - ZenithSoles Project Rules",
+        "\ud83c\udd98 **EMERGENCY CONTACTS**",
+        "\ud83c\udfa8 **UI/UX QUICK CHECKS**",
+        "\ud83c\udfaf **AFFILIATE SYSTEM SPECIFIC**",
+        "\ud83d\udcc8 **SUCCESS METRICS**",
+        "\ud83d\udcca **QUALITY GATES**",
+        "\ud83d\udcda **QUICK LINKS**",
+        "\ud83d\udd27 **TROUBLESHOOTING STEPS**",
+        "\ud83d\ude80 **RELEASE CHECKLIST**",
+        "\ud83d\udea8 **CRITICAL RULES - MUST FOLLOW**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/success-metrics-rules.mcd",
+      "exports": [
+        "**Accessibility Metrics**",
+        "**Affiliate Performance**",
+        "**Annual Goals**",
+        "**Business Growth**",
+        "**Business Intelligence**",
+        "**Commission Metrics**",
+        "**Competitive Advantage**",
+        "**Compliance Metrics**",
+        "**Continuous Improvement**",
+        "**Cost Metrics**",
+        "**Cross-Platform Metrics**",
+        "**Dashboard Design**",
+        "**Data Quality**",
+        "**Innovation Performance**",
+        "**Market Metrics**",
+        "**Metrics Categories**",
+        "**Metrics Hierarchy**",
+        "**Metrics Management**",
+        "**Mobile-Specific KPIs**",
+        "**Quarterly Goals**",
+        "**Reliability Metrics**",
+        "**Reporting Framework**",
+        "**Revenue Metrics**",
+        "**Security Performance**",
+        "**System Performance KPIs**",
+        "**Team Performance**",
+        "**User Metrics**",
+        "**User Satisfaction**",
+        "KPIs, Performance Indicators, and Business Metrics",
+        "\ud83c\udfa8 **7. USER EXPERIENCE METRICS**",
+        "\ud83c\udfaf **12. SUCCESS TARGETS & GOALS**",
+        "\ud83c\udfaf **4. AFFILIATE SYSTEM METRICS**",
+        "\ud83d\udcb0 **3. BUSINESS METRICS**",
+        "\ud83d\udcc8 **11. GROWTH METRICS**",
+        "\ud83d\udcca **13. METRICS DASHBOARD & REPORTING**",
+        "\ud83d\udcca **9. ANALYTICS & REPORTING METRICS**",
+        "\ud83d\udcca Success Metrics Rules - ZenithSoles",
+        "\ud83d\udccb **1. METRICS FRAMEWORK**",
+        "\ud83d\udcf1 **5. MOBILE PERFORMANCE METRICS**",
+        "\ud83d\udd12 **6. SECURITY METRICS**",
+        "\ud83d\udd27 **14. METRICS MAINTENANCE & OPTIMIZATION**",
+        "\ud83d\udd27 **8. OPERATIONAL METRICS**",
+        "\ud83d\ude80 **10. INNOVATION METRICS**",
+        "\ud83d\ude80 **2. TECHNICAL PERFORMANCE METRICS**"
+      ]
+    },
+    {
+      "file": ".cursor/rules/user-experience-rules.mcd",
+      "exports": [
+        "**Adaptive Interface**",
+        "**Assistive Technology Support**",
+        "**Business Impact Metrics**",
+        "**Component Design**",
+        "**Continuous Improvement**",
+        "**Continuous Testing**",
+        "**Design Principles**",
+        "**Design System**",
+        "**Feedback Implementation**",
+        "**Key Performance Indicators**",
+        "**Mobile Performance**",
+        "**Mobile-First Design**",
+        "**Mobile-Specific UX**",
+        "**Onboarding Implementation**",
+        "**Onboarding Strategy**",
+        "**Performance Optimization**",
+        "**Testing Methodology**",
+        "**User Behavior Analytics**",
+        "**User Experience Goals**",
+        "**User Experience Monitoring**",
+        "**User Experience Performance**",
+        "**User Feedback Collection**",
+        "**User Preferences**",
+        "**User Segmentation**",
+        "**WCAG 2.1 AA Compliance**",
+        "Onboarding, Accessibility, and Feedback Systems",
+        "\u267f **2. ACCESSIBILITY STANDARDS**",
+        "\ud83c\udfa8 **8. VISUAL DESIGN STANDARDS**",
+        "\ud83c\udfa8 User Experience Rules - ZenithSoles",
+        "\ud83c\udfaf **13. SUCCESS METRICS & GOALS**",
+        "\ud83c\udfaf **4. USER INTERFACE DESIGN**",
+        "\ud83d\udcac **3. FEEDBACK SYSTEMS**",
+        "\ud83d\udcc8 **11. USER EXPERIENCE METRICS**",
+        "\ud83d\udcca **5. USER ANALYTICS & INSIGHTS**",
+        "\ud83d\udccb **1. USER ONBOARDING FRAMEWORK**",
+        "\ud83d\udcf1 **9. MOBILE USER EXPERIENCE**",
+        "\ud83d\udd0d **10. USABILITY TESTING**",
+        "\ud83d\udd27 **12. USER EXPERIENCE MAINTENANCE**",
+        "\ud83d\udd27 **6. PERSONALIZATION & CUSTOMIZATION**",
+        "\ud83d\ude80 **7. PERFORMANCE & OPTIMIZATION**"
+      ]
+    },
+    {
+      "file": ".github/PULL_REQUEST_TEMPLATE.md",
+      "exports": [
+        "Checklist",
+        "Related issue",
+        "Summary"
+      ]
+    },
+    {
+      "file": "API_SECURITY_CONTRACT.md",
+      "exports": [
+        "Affiliate API Security Contract",
+        "Protected mutation endpoints",
+        "Required environment configuration",
+        "Required headers",
+        "Verification commands"
+      ]
+    },
+    {
+      "file": "CHANGELOG.md",
+      "exports": [
+        "Changelog",
+        "[0.1.0] - 2025-10-21",
+        "[Unreleased]"
+      ]
+    },
+    {
+      "file": "CODE_OF_CONDUCT.md",
+      "exports": [
+        "Code of Conduct"
+      ]
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "exports": [
+        "Branching",
+        "Coding style",
+        "Contributing to ZenithSoles",
+        "Copy env example",
+        "How to run locally (example, Windows PowerShell)",
+        "Install dependencies (if composer.json present)",
+        "PR checklist (required)",
+        "Pull Request (PR) process",
+        "Quick start",
+        "Run migrations (if Laravel is present)"
+      ]
+    },
+    {
+      "file": "END_TO_END_GAP_ASSESSMENT.md",
+      "exports": [
+        "1. Executive conclusion",
+        "10. Recommended priority order",
+        "11. Final status by release category",
+        "2. Current verified baseline",
+        "3. P0/P1 release blockers",
+        "4. Engineering maturity gaps shown by the score",
+        "5. Functional and integration gaps",
+        "6. Security and compliance gaps",
+        "7. Data and financial-control gaps",
+        "8. Operations and observability gaps",
+        "9. Product and frontend gaps",
+        "GeoIP enrichment",
+        "Partner-network adapters",
+        "Payout-provider integration",
+        "References",
+        "Webhook and retry operations",
+        "ZenithSoles Affiliates \u2014 End-to-End Gap Assessment"
+      ]
+    },
+    {
+      "file": "FINAL_IMPLEMENTATION_SUMMARY.md",
+      "exports": [
+        "Completed remediation areas",
+        "Executive result",
+        "Files to review first",
+        "Final verification evidence",
+        "Release recommendation",
+        "Remaining production prerequisites",
+        "ZenithSoles Affiliates \u2014 Final Implementation Summary"
+      ]
+    },
+    {
+      "file": "FINAL_STAGING_HANDOFF_CHECKLIST.md",
+      "exports": [
+        "Approval rule",
+        "Deployment and operations",
+        "Partner certification",
+        "Payout and database controls",
+        "Release identity",
+        "Repository gates",
+        "Sign-off",
+        "ZenithSoles Affiliates \u2014 Final Staging Handoff Checklist"
+      ]
+    },
+    {
+      "file": "FINAL_STATUS.md",
+      "exports": [
+        "Check routes",
+        "Check syntax",
+        "Clear cache",
+        "Code Quality",
+        "Controllers (51 methods)",
+        "Features",
+        "Routes (50+ routes)",
+        "Views (20 files)",
+        "\u2705 Implementation Status - Final Check",
+        "\u2705 Verification Complete",
+        "\ud83c\udfaf Everything is Working!",
+        "\ud83d\udcdd Quick Test Commands"
+      ]
+    },
+    {
+      "file": "IMPLEMENTATION_COMPLETE.md",
+      "exports": [
+        "1. Routes (50+ routes)",
+        "2. Controllers (51 methods)",
+        "3. Views (20 files)",
+        "4. Models (6 models)",
+        "API Routes (4 routes)",
+        "Admin UI Routes (30 routes)",
+        "Authentication Routes (9 routes)",
+        "Controllers",
+        "Models",
+        "Views",
+        "\u2705 Automated Verification Results",
+        "\u2705 Implementation Complete - Final Report",
+        "\u2705 Manual Verification Results",
+        "\u2705 Quality Checks",
+        "\u2705 Ready for Production",
+        "\ud83c\udf89 Conclusion",
+        "\ud83c\udfaf Feature Implementation Status",
+        "\ud83d\udcc1 File Structure Verification",
+        "\ud83d\udcca Final Statistics",
+        "\ud83d\udccb Verification Summary",
+        "\ud83d\udcdd Optional Next Steps",
+        "\ud83d\udd17 Route Verification",
+        "\ud83d\ude80 Production Readiness"
+      ]
+    },
+    {
+      "file": "IMPLEMENTATION_PROGRESS.md",
+      "exports": [
+        "Implementation Progress",
+        "Next release-readiness batch",
+        "Remaining work before production release",
+        "Scope completed",
+        "Verification evidence"
+      ]
+    },
+    {
+      "file": "LARAVEL12_UPGRADE_REPORT.md",
+      "exports": [
+        "Applied dependency changes",
+        "Executive result",
+        "Laravel 12 Upgrade Report",
+        "Operational implications",
+        "References",
+        "Verification evidence",
+        "Why the upgrade was required"
+      ]
+    },
+    {
+      "file": "NEXT_RELEASE_READINESS_REPORT.md",
+      "exports": [
+        "Executive summary",
+        "References",
+        "Required next actions before production",
+        "Residual dependency findings",
+        "Verification results",
+        "Work completed in this batch",
+        "ZenithSoles Affiliates \u2014 Next Release-Readiness Report"
+      ]
+    },
+    {
+      "file": "NOTES.md",
+      "exports": [
+        "2025-10-22: Laravel Framework Setup Complete \u2705",
+        "Current Endpoints Working:",
+        "Environment Status:",
+        "Next Development Phase:",
+        "Previous Entries:",
+        "Project Notes & Tracking",
+        "Project Progress",
+        "Technical Decisions Made:"
+      ]
+    },
+    {
+      "file": "PARTNER_INTEGRATION_CONTRACT.md",
+      "exports": [
+        "1. Integration principles",
+        "10. Local verification",
+        "2. Endpoint summary",
+        "3. HMAC authentication",
+        "4. Click attribution contract",
+        "5. Conversion reporting contract",
+        "6. Points-credit contract",
+        "7. Response and retry rules",
+        "8. Financial lifecycle and reconciliation",
+        "9. Required partner operational controls",
+        "References",
+        "ZenithSoles Affiliates Partner Integration Contract"
+      ]
+    },
+    {
+      "file": "PHASE_WISE_IMPLEMENTATION_PLAN.md",
+      "exports": [
+        "1. Implementation Objective",
+        "10. Phase 7 \u2014 Affiliate Integrations and Performance Validation",
+        "11. Phase 8 \u2014 Controlled Production Rollout",
+        "12. Dependency and Sequencing Matrix",
+        "13. Release Gates Checklist",
+        "14. Recommended First Sprint",
+        "15. References",
+        "2. Finding-to-Phase Mapping",
+        "3. Phase 0 \u2014 Baseline Freeze, Data Safety, and Working Agreements",
+        "4. Phase 1 \u2014 Canonical Database and Financial Data Contracts",
+        "4.1 Migration ordering",
+        "4.2 Conversion contract",
+        "4.3 Commission contract",
+        "5. Phase 2 \u2014 Authentication, Authorization, and Credential Remediation",
+        "6. Phase 3 \u2014 Transactional Attribution and Reward Integrity",
+        "7. Phase 4 \u2014 Backend Consolidation, Admin Integrity, and Analytics Correctness",
+        "8. Phase 5 \u2014 Automated Tests, CI Enforcement, and API Contracts",
+        "9. Phase 6 \u2014 DevOps, Observability, Configuration, and Documentation",
+        "Affiliates \u2014 Phase-Wise Implementation Plan",
+        "Phase 1 deliverables"
+      ]
+    },
+    {
+      "file": "PRIORITIZATION_ROADMAP.md",
+      "exports": [
+        "High Risk (Do First)",
+        "Low Risk (Can Wait)",
+        "Medium Risk (Do Soon)",
+        "Priority 1.1: API Authentication & Security \u26a0\ufe0f **CRITICAL**",
+        "Priority 1.2: Product Management System \ud83c\udfaf **HIGH VALUE**",
+        "Priority 1.3: Services Layer Architecture \ud83d\udd27 **TECHNICAL DEBT**",
+        "Priority 2.1: Product Sync Foundation \ud83d\udce6",
+        "Priority 2.2: Banner Management System \ud83d\uddbc\ufe0f",
+        "Priority 2.3: Testing Infrastructure \ud83e\uddea",
+        "Priority 3.1: AI/LLM Integration Foundation \ud83e\udde0",
+        "Priority 3.2: Multi-Language Support \ud83c\udf10",
+        "Priority 3.3: External Integrations \ud83d\udd0c",
+        "Week 1-2: Critical Security & Foundation",
+        "Week 3: Architecture Improvement",
+        "Week 4+: Enhanced Features",
+        "\u26a0\ufe0f Risk Assessment",
+        "\ud83c\udfa8 Phase 2: Enhanced Features (Weeks 4-6)",
+        "\ud83c\udfaf Recommended Starting Point",
+        "\ud83c\udfaf ZenithSoles - Prioritized Development Roadmap",
+        "\ud83d\udca1 Quick Wins (Can Do Anytime)",
+        "\ud83d\udcc8 Success Metrics",
+        "\ud83d\udcca Prioritization Framework",
+        "\ud83d\udccb Quick Reference: Priority Matrix",
+        "\ud83d\udd04 Iterative Approach",
+        "\ud83d\ude80 Phase 1: Critical Foundation (Weeks 1-3)",
+        "\ud83e\udd16 Phase 3: Advanced Features (Weeks 7-10)"
+      ]
+    },
+    {
+      "file": "PROJECT_STATUS_REPORT.md",
+      "exports": [
+        "1. **Framework & Infrastructure** \u2705 100%",
+        "1. **Product Management** \u274c 0%",
+        "2. **AI/LLM Integration** \u274c 0%",
+        "2. **Database Schema** \u2705 100%",
+        "3. **Models** \u2705 100%",
+        "3. **Multi-Language Support** \u274c 0%",
+        "4. **Controllers** \u2705 95%",
+        "4. **Services Layer** \u274c 0%",
+        "5. **API Authentication** \u26a0\ufe0f 20%",
+        "5. **Routes** \u2705 100%",
+        "6. **Testing** \u274c 0%",
+        "6. **Views (Blade Templates)** \u2705 100%",
+        "7. **Authentication & Security** \u2705 90%",
+        "7. **External Integrations** \u274c 0%",
+        "8. **Middleware** \u2705 100%",
+        "9. **Documentation** \u2705 85%",
+        "Code Metrics",
+        "Feature Completion",
+        "Priority 1: High Priority (Core Features)",
+        "Priority 2: Medium Priority (Enhancements)",
+        "Priority 3: Low Priority (Nice to Have)",
+        "\u26a0\ufe0f Areas for Improvement",
+        "\u26a0\ufe0f PARTIALLY IMPLEMENTED / MISSING COMPONENTS",
+        "\u2705 COMPLETED COMPONENTS",
+        "\u2705 Fully Functional Features",
+        "\u2705 Strengths",
+        "\u2705 Technical Infrastructure",
+        "\u274c Critical Missing Features",
+        "\ud83c\udf89 Conclusion",
+        "\ud83c\udfaf Executive Summary",
+        "\ud83c\udfaf What's Working Right Now",
+        "\ud83d\udcc8 Project Health Score",
+        "\ud83d\udcca Detailed Statistics",
+        "\ud83d\udcca ZenithSoles Project - In-Depth Status Report",
+        "\ud83d\udccb Recommended Next Steps",
+        "\ud83d\udd0d Code Quality Assessment",
+        "\ud83d\udea7 What's Missing / Not Working"
+      ]
+    },
+    {
+      "file": "QUICK_START_CHECKLIST.md",
+      "exports": [
+        "1. API Authentication & Security \u26a0\ufe0f **START HERE**",
+        "2. Product Management System",
+        "Day 1-2: API Authentication",
+        "Day 3-5: Product Management (Start)",
+        "Day 6-7: Product Management (Complete)",
+        "Priority 1.1: API Authentication",
+        "Priority 1.2: Product Management",
+        "Priority 1.3: Services Layer",
+        "\u2705 Quick Start Checklist - Next Steps",
+        "\ud83c\udd98 Need Help?",
+        "\ud83c\udfaf Decision Points",
+        "\ud83d\udca1 Quick Wins (Do Anytime)",
+        "\ud83d\udcca Progress Tracking",
+        "\ud83d\udccb Phase 1 Checklist (Weeks 1-3)",
+        "\ud83d\ude80 Recommended First Week Plan",
+        "\ud83d\udea8 Immediate Action Items (This Week)"
+      ]
+    },
+    {
+      "file": "README.md",
+      "exports": [
+        "API Reference",
+        "Admin Panel",
+        "Consumer-Facing Platform",
+        "Contributing",
+        "Core Documentation",
+        "Current Documentation",
+        "Current Status",
+        "Deployment Notes",
+        "Folder Structure",
+        "For E-commerce (Amazon, Flipkart, Myntra):",
+        "For Non-E-commerce (GPay, PhonePe, Upstox, etc.):",
+        "Getting Started",
+        "How It Works",
+        "How Referrals Work",
+        "License",
+        "Points Redemption",
+        "Sub-affiliate Quick Start",
+        "Support",
+        "Supported Platforms",
+        "Technical Features",
+        "ZenithSoles Affiliate Management System",
+        "\ud83c\udfaf Core Features",
+        "\ud83d\udcb0 Points-Based Cashback System",
+        "\ud83d\udcda Documentation Table of Contents",
+        "\ud83d\udd17 Referral Program"
+      ]
+    },
+    {
+      "file": "SECURITY.md",
+      "exports": [
+        "Security Policy"
+      ]
+    },
+    {
+      "file": "STAGING_BLOCKER_REGISTER.md",
+      "exports": [
+        "Approval rule",
+        "Evidence naming convention",
+        "References",
+        "Use and ownership",
+        "ZenithSoles Affiliates \u2014 Staging Blocker Register"
+      ]
+    },
+    {
+      "file": "STAGING_READINESS_REPORT.md",
+      "exports": [
+        "Controlled-staging execution package",
+        "Executive result",
+        "Final handoff artifacts",
+        "Local evidence",
+        "New staging controls",
+        "References",
+        "Remaining production blockers",
+        "Staging execution procedure",
+        "ZenithSoles Affiliates \u2014 Staging Readiness Report"
+      ]
+    },
+    {
+      "file": "app/CashbackSetting.php",
+      "exports": [
+        "CashbackSetting",
+        "calculateCashback",
+        "calculatePoints",
+        "calculateReferralCommission",
+        "isActive",
+        "program",
+        "scopeActive"
+      ]
+    },
+    {
+      "file": "app/Click.php",
+      "exports": [
+        "Click",
+        "conversion",
+        "getDeviceInfoAttribute",
+        "getGeographicInfoAttribute",
+        "getTimeToConversionAttribute",
+        "hasConverted",
+        "link",
+        "markAsConverted",
+        "program",
+        "scopeByCountry",
+        "scopeByDateRange",
+        "scopeByDeviceType",
+        "scopeByProgram",
+        "scopeByUser",
+        "scopeConverted",
+        "scopeNotConverted",
+        "user"
+      ]
+    },
+    {
+      "file": "app/Commission.php",
+      "exports": [
+        "Commission",
+        "approve",
+        "cancel",
+        "conversion",
+        "getAgeInDaysAttribute",
+        "getFormattedAmountAttribute",
+        "getPayoutSummaryAttribute",
+        "getTimeToPaymentAttribute",
+        "isApproved",
+        "isCancelled",
+        "isOverdue",
+        "isPaid",
+        "isPending",
+        "markAsPaid",
+        "pointsTransaction",
+        "scopeApproved",
+        "scopeByAmountRange",
+        "scopeByDateRange",
+        "scopeByStatus",
+        "scopeByType",
+        "scopeByUser",
+        "scopePaid",
+        "scopePending",
+        "user"
+      ]
+    },
+    {
+      "file": "app/Console/Kernel.php",
+      "exports": [
+        "Kernel",
+        "commands",
+        "schedule"
+      ]
+    },
+    {
+      "file": "app/Conversion.php",
+      "exports": [
+        "Conversion",
+        "approve",
+        "click",
+        "commissions",
+        "getRoiAttribute",
+        "getTimeToProcessAttribute",
+        "getTotalCommissionAttribute",
+        "hasSubAffiliate",
+        "isApproved",
+        "isPaid",
+        "isPending",
+        "link",
+        "markAsPaid",
+        "pointsTransaction",
+        "program",
+        "reject",
+        "scopeApproved",
+        "scopeByDateRange",
+        "scopeByEventType",
+        "scopeByProgram",
+        "scopeByStatus",
+        "scopeByUser",
+        "scopePaid",
+        "scopePending",
+        "subAffiliate",
+        "user"
+      ]
+    },
+    {
+      "file": "app/Exceptions/Handler.php",
+      "exports": [
+        "Handler",
+        "register"
+      ]
+    },
+    {
+      "file": "app/Gift.php",
+      "exports": [
+        "Gift",
+        "decrementStock",
+        "incrementStock",
+        "isAvailable",
+        "isOutOfStock",
+        "redemptions",
+        "scopeActive",
+        "scopeAvailable",
+        "scopeByPointsRange"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/AdminController.php",
+      "exports": [
+        "AdminController",
+        "__construct",
+        "adjustPoints",
+        "analytics",
+        "analyticsView",
+        "apiTestView",
+        "approveCommission",
+        "approveRedemption",
+        "cashbackSettingsView",
+        "clicks",
+        "clicksView",
+        "commissions",
+        "commissionsView",
+        "completeRedemption",
+        "conversions",
+        "conversionsView",
+        "createLinkView",
+        "createProgramView",
+        "createUserView",
+        "dashboard",
+        "dashboardView",
+        "deleteLink",
+        "deleteProductCommission",
+        "deleteProgram",
+        "deleteUser",
+        "editLinkView",
+        "editProgramView",
+        "editUserView",
+        "importProductCommissions",
+        "importPrograms",
+        "links",
+        "linksView",
+        "markCommissionPaid",
+        "productCommissionsView",
+        "productsView",
+        "programs",
+        "programsView",
+        "quickAddProgramView",
+        "redemptionsView",
+        "referralsView",
+        "rejectCommission",
+        "rejectRedemption",
+        "storeLink",
+        "storeProductCommission",
+        "storeProgram",
+        "storeProgramFromTemplate",
+        "storeUser",
+        "testClickApi",
+        "testConversionApi",
+        "toggleLinkStatus",
+        "updateCashbackSettings",
+        "updateLink",
+        "updateProductCommission",
+        "updateProgram",
+        "updateUser",
+        "users",
+        "usersView",
+        "walletsView"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/ApiController.php",
+      "exports": [
+        "ApiController",
+        "__construct",
+        "calculateCommission",
+        "creditPoints",
+        "getLink",
+        "getPointsBalance",
+        "getReferralInfo",
+        "getUserStats",
+        "reportConversion",
+        "trackClick",
+        "trackReferral"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/AuthController.php",
+      "exports": [
+        "AuthController",
+        "login",
+        "logout",
+        "resetPassword",
+        "sendResetLink",
+        "showForgotPasswordForm",
+        "showLoginForm",
+        "showResetPasswordForm",
+        "status",
+        "testSmtp"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/ConsumerController.php",
+      "exports": [
+        "ConsumerController",
+        "__construct",
+        "dashboard",
+        "generateReferral",
+        "gifts",
+        "home",
+        "profile",
+        "redeemGift",
+        "referralLink",
+        "referrals",
+        "transactions",
+        "updateProfile",
+        "wallet",
+        "withdraw"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/Controller.php",
+      "exports": [
+        "Controller"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/LinkController.php",
+      "exports": [
+        "LinkController"
+      ]
+    },
+    {
+      "file": "app/Http/Controllers/ProductController.php",
+      "exports": [
+        "ProductController",
+        "__construct",
+        "adminIndex",
+        "buy",
+        "commissions",
+        "create",
+        "deleteCommission",
+        "destroy",
+        "edit",
+        "importCommissions",
+        "index",
+        "show",
+        "store",
+        "storeCommission",
+        "update",
+        "updateCommission"
+      ]
+    },
+    {
+      "file": "app/Http/Kernel.php",
+      "exports": [
+        "Kernel"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/AdminMiddleware.php",
+      "exports": [
+        "AdminMiddleware",
+        "handle"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/Authenticate.php",
+      "exports": [
+        "Authenticate",
+        "redirectTo"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/ConsumerMiddleware.php",
+      "exports": [
+        "ConsumerMiddleware",
+        "handle"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/EncryptCookies.php",
+      "exports": [
+        "EncryptCookies"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/PreventRequestsDuringMaintenance.php",
+      "exports": [
+        "PreventRequestsDuringMaintenance"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/RedirectIfAuthenticated.php",
+      "exports": [
+        "RedirectIfAuthenticated",
+        "handle"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/SecurityHeaders.php",
+      "exports": [
+        "SecurityHeaders",
+        "handle"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/TrimStrings.php",
+      "exports": [
+        "TrimStrings"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/TrustProxies.php",
+      "exports": [
+        "TrustProxies"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/ValidateSignature.php",
+      "exports": [
+        "ValidateSignature"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/VerifyCsrfToken.php",
+      "exports": [
+        "VerifyCsrfToken"
+      ]
+    },
+    {
+      "file": "app/Http/Middleware/VerifyPartnerSignature.php",
+      "exports": [
+        "VerifyPartnerSignature",
+        "handle"
+      ]
+    },
+    {
+      "file": "app/Link.php",
+      "exports": [
+        "Link",
+        "clicks",
+        "conversions",
+        "generateAffiliateUrl",
+        "getAverageCommissionAttribute",
+        "getConversionRateAttribute",
+        "isExpired",
+        "isValid",
+        "productLink",
+        "program",
+        "scopeActive",
+        "scopeByProgram",
+        "scopeByUser",
+        "scopeNotExpired",
+        "user"
+      ]
+    },
+    {
+      "file": "app/PointsRedemption.php",
+      "exports": [
+        "PointsRedemption",
+        "approve",
+        "gift",
+        "isApproved",
+        "isCash",
+        "isCompleted",
+        "isGift",
+        "isPending",
+        "markAsCompleted",
+        "reject",
+        "scopeByType",
+        "scopePending",
+        "user"
+      ]
+    },
+    {
+      "file": "app/PointsTransaction.php",
+      "exports": [
+        "PointsTransaction",
+        "isCompleted",
+        "isCredit",
+        "isDebit",
+        "reference",
+        "scopeByReferenceType",
+        "scopeCompleted",
+        "scopeCredits",
+        "scopeDebits",
+        "user"
+      ]
+    },
+    {
+      "file": "app/Product.php",
+      "exports": [
+        "Product",
+        "activeCommissions",
+        "activeProductLinks",
+        "getBestCommissionPlatformAttribute",
+        "getMaxCommissionRateAttribute",
+        "getMinPriceAttribute",
+        "isActive",
+        "productCommissions",
+        "productLinks",
+        "scopeActive",
+        "scopeByBrand",
+        "scopeByCategory"
+      ]
+    },
+    {
+      "file": "app/ProductCommission.php",
+      "exports": [
+        "ProductCommission",
+        "getEffectiveCommission",
+        "isActive",
+        "product",
+        "program",
+        "scopeActive",
+        "scopeByCategory",
+        "scopeByProgram"
+      ]
+    },
+    {
+      "file": "app/ProductLink.php",
+      "exports": [
+        "ProductLink",
+        "getCommissionRateAttribute",
+        "isBestPrice",
+        "link",
+        "product",
+        "program",
+        "scopeBestPrice",
+        "scopeByProgram"
+      ]
+    },
+    {
+      "file": "app/Program.php",
+      "exports": [
+        "Program",
+        "clicks",
+        "conversions",
+        "getConversionRateAttribute",
+        "getTotalClicksAttribute",
+        "getTotalCommissionAttribute",
+        "getTotalConversionsAttribute",
+        "isActive",
+        "links",
+        "scopeActive",
+        "scopeByType",
+        "scopeSupportsSubAffiliates",
+        "supportsSubAffiliates"
+      ]
+    },
+    {
+      "file": "app/Providers/AppServiceProvider.php",
+      "exports": [
+        "AppServiceProvider",
+        "boot",
+        "register"
+      ]
+    },
+    {
+      "file": "app/Providers/AuthServiceProvider.php",
+      "exports": [
+        "AuthServiceProvider",
+        "boot"
+      ]
+    },
+    {
+      "file": "app/Providers/EventServiceProvider.php",
+      "exports": [
+        "EventServiceProvider",
+        "boot",
+        "shouldDiscoverEvents"
+      ]
+    },
+    {
+      "file": "app/Providers/RouteServiceProvider.php",
+      "exports": [
+        "RouteServiceProvider",
+        "boot"
+      ]
+    },
+    {
+      "file": "app/Referral.php",
+      "exports": [
+        "Referral",
+        "addPointsEarned",
+        "hasConverted",
+        "incrementConversions",
+        "isActive",
+        "markAsConverted",
+        "program",
+        "referred",
+        "referrer",
+        "scopeActive",
+        "scopeByProgram",
+        "scopeByReferrer"
+      ]
+    },
+    {
+      "file": "app/Services/AffiliateTrackingService.php",
+      "exports": [
+        "AffiliateTrackingService",
+        "__construct",
+        "getBrowser",
+        "getDeviceType",
+        "getOs",
+        "resolveCity",
+        "resolveCountry",
+        "track"
+      ]
+    },
+    {
+      "file": "app/Services/CashbackService.php",
+      "exports": [
+        "CashbackService",
+        "__construct",
+        "calculateCashback",
+        "calculatePoints",
+        "calculateReferralCommission",
+        "creditCashback",
+        "getCashbackRate",
+        "getReferralRate",
+        "supportsCashback"
+      ]
+    },
+    {
+      "file": "app/Services/CommissionService.php",
+      "exports": [
+        "CommissionService",
+        "calculateCommission",
+        "checkSubAffiliateSupport",
+        "getEffectiveCommission",
+        "getProductCommissionRate",
+        "processCommission",
+        "splitCommission"
+      ]
+    },
+    {
+      "file": "app/Services/PayoutService.php",
+      "exports": [
+        "PayoutService",
+        "__construct",
+        "approveCommission",
+        "approveRedemption",
+        "cancelCommission",
+        "completeRedemption",
+        "createWithdrawal",
+        "payCommission",
+        "rejectRedemption"
+      ]
+    },
+    {
+      "file": "app/Services/PointsService.php",
+      "exports": [
+        "PointsService",
+        "creditPoints",
+        "debitPoints",
+        "getAvailableBalance",
+        "getBalance",
+        "getPointsStats",
+        "getTransactionHistory",
+        "hasEnoughPoints",
+        "processWithdrawal"
+      ]
+    },
+    {
+      "file": "app/Services/ProductService.php",
+      "exports": [
+        "ProductService",
+        "comparePrices",
+        "getBestCommissionPlatform",
+        "getBestPrice",
+        "getMaxCommissionRate",
+        "getProductWithLinks",
+        "getProducts",
+        "getProductsByCategory",
+        "getProductsByCommission",
+        "searchProducts",
+        "updateBestPriceFlags"
+      ]
+    },
+    {
+      "file": "app/Services/ReferralService.php",
+      "exports": [
+        "ReferralService",
+        "__construct",
+        "calculateReferralCommission",
+        "creditReferralPoints",
+        "generateReferralCode",
+        "getReferralCodeFromCookie",
+        "getReferralStats",
+        "linkUserToReferrer",
+        "trackReferral"
+      ]
+    },
+    {
+      "file": "app/User.php",
+      "exports": [
+        "User",
+        "clicks",
+        "commissions",
+        "conversions",
+        "getPendingCommissionAttribute",
+        "getTotalCommissionAttribute",
+        "isAdmin",
+        "isAffiliate",
+        "isSubAffiliate",
+        "links",
+        "parent",
+        "points",
+        "pointsTransactions",
+        "redemptions",
+        "referral",
+        "referrals",
+        "scopeActive",
+        "scopeByRole",
+        "subAffiliates"
+      ]
+    },
+    {
+      "file": "app/UserPoints.php",
+      "exports": [
+        "UserPoints",
+        "getAvailableBalance",
+        "getTotalBalance",
+        "hasEnoughPoints",
+        "transactions",
+        "user"
+      ]
+    },
+    {
+      "file": "complete-project-rules/README copy 2.md",
+      "exports": [
+        "Features",
+        "Folder Structure",
+        "Getting Started",
+        "Hostinger Deployment Notes",
+        "How It Works",
+        "Sub-affiliate Program & Tracking System",
+        "Sub-affiliate Quick Start",
+        "Supported Platforms",
+        "ZenithSoles Affiliate Management System"
+      ]
+    },
+    {
+      "file": "complete-project-rules/README copy.md",
+      "exports": [
+        "Features",
+        "Folder Structure",
+        "Getting Started",
+        "Hostinger Deployment Notes",
+        "ZenithSoles Affiliate Management System"
+      ]
+    },
+    {
+      "file": "complete-project-rules/README.md",
+      "exports": [
+        "\u2705 `testing.rules.md`",
+        "\u270f\ufe0f `edit-change.rules.md`",
+        "\ud83c\udfa8 `ui.rules.md`",
+        "\ud83d\udccc How to Use",
+        "\ud83d\udcd8 Project Rules Overview",
+        "\ud83d\udd10 `integration-rules.md`",
+        "\ud83d\udd10 `security.rules.md`",
+        "\ud83d\uddc2 Included Rule Files",
+        "\ud83d\ude80 `advancement.rules.md`",
+        "\ud83d\ude80 `release.rules.md`",
+        "\ud83d\udee0 `troubleshooting.rules.md`"
+      ]
+    },
+    {
+      "file": "complete-project-rules/advancement.rules.md",
+      "exports": [
+        "\ud83d\ude80 Advancement & Scaling Rules"
+      ]
+    },
+    {
+      "file": "complete-project-rules/edit-change.rules.md",
+      "exports": [
+        "\u270f\ufe0f Edit & Change Rules"
+      ]
+    },
+    {
+      "file": "complete-project-rules/integration-rules.md",
+      "exports": [
+        "\ud83d\udcd6 Project Understanding Before Any Change",
+        "\ud83d\udd10 Integration Rules & Protocol"
+      ]
+    },
+    {
+      "file": "complete-project-rules/release.rules.md",
+      "exports": [
+        "\ud83d\ude80 Release & Deployment Rules"
+      ]
+    },
+    {
+      "file": "complete-project-rules/security.rules.md",
+      "exports": [
+        "\ud83d\udd10 Security Rules"
+      ]
+    },
+    {
+      "file": "complete-project-rules/testing.rules.md",
+      "exports": [
+        "\u2705 Testing Rules"
+      ]
+    },
+    {
+      "file": "complete-project-rules/troubleshooting.rules.md",
+      "exports": [
+        "\ud83d\udee0 Troubleshooting Rules"
+      ]
+    },
+    {
+      "file": "complete-project-rules/ui.rules.md",
+      "exports": [
+        "\ud83c\udfa8 UI/UX Rules"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "exports": [
+        "addColumnIfMissing",
+        "addForeignKeyIfMissing",
+        "down",
+        "foreignKeyExists",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2026_08_20_000002_add_points_transaction_idempotency.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "exports": [
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "exports": [
+        "addColumnIfMissing",
+        "down",
+        "up"
+      ]
+    },
+    {
+      "file": "database/schema/password_resets_table.sql",
+      "exports": [
+        "password_resets"
+      ]
+    },
+    {
+      "file": "database/schema/zenithsoles_schema_seed.sql",
+      "exports": [
+        "clicks",
+        "commissions",
+        "conversions",
+        "links",
+        "programs",
+        "users"
+      ]
+    },
+    {
+      "file": "database/seeders/AdminUserSeeder.php",
+      "exports": [
+        "AdminUserSeeder",
+        "run"
+      ]
+    },
+    {
+      "file": "database/seeders/DatabaseSeeder.php",
+      "exports": [
+        "DatabaseSeeder",
+        "run"
+      ]
+    },
+    {
+      "file": "docs/CONTROL_EXECUTION_MATRIX.md",
+      "exports": [
+        "Credential-free local controls",
+        "Handoff rule",
+        "Purpose",
+        "Staging-only controls",
+        "ZenithSoles Affiliates \u2014 Control Execution Matrix"
+      ]
+    },
+    {
+      "file": "docs/LICENSE_DECISION_RECORD.md",
+      "exports": [
+        "Decision boundary",
+        "Evidence reviewed",
+        "Repository License Decision Record",
+        "Required owner action",
+        "Status",
+        "Verification"
+      ]
+    },
+    {
+      "file": "docs/RELEASE_OPERATIONS_RUNBOOK.md",
+      "exports": [
+        "1. Preflight checklist",
+        "2. Migration rehearsal and deployment",
+        "3. Secret rotation procedure",
+        "4. Partner webhook and conversion certification",
+        "5. Payout and reconciliation controls",
+        "6. Rollback and incident response",
+        "7. Staging smoke and bounded performance check",
+        "8. Observability and alerting",
+        "9. Release sign-off",
+        "Purpose and release boundary",
+        "Required environment variables",
+        "ZenithSoles Affiliates Release Operations Runbook"
+      ]
+    },
+    {
+      "file": "docs/STAGING_ACCEPTANCE_RECORD.md",
+      "exports": [
+        "Automated gates",
+        "Observability and rollback",
+        "Partner certification",
+        "Payout and reconciliation certification",
+        "Release identity",
+        "Sign-off",
+        "ZenithSoles Affiliates \u2014 Staging Acceptance Record"
+      ]
+    },
+    {
+      "file": "docs/STAGING_OWNER_EXECUTION_GUIDE.md",
+      "exports": [
+        "1. Assign owners and capture release identity",
+        "10. Run capacity testing separately from smoke testing",
+        "11. Evidence and approval",
+        "2. Run repository and deployment preflight",
+        "3. Validate secrets and rotation",
+        "4. Run partner negative certification first",
+        "5. Run valid conversion certification with disposable fixtures",
+        "6. Run valid points-credit certification",
+        "7. Execute payout and reconciliation certification",
+        "8. Rehearse migration, backup, restore, and rollback",
+        "9. Validate observability and incident response",
+        "Purpose and safety boundary",
+        "References",
+        "ZenithSoles Affiliates \u2014 Staging Owner Execution Guide"
+      ]
+    },
+    {
+      "file": "docs/adr/0001-atomic-financial-transitions.md",
+      "exports": [
+        "ADR-0001: Centralize Financial State Transitions",
+        "Alternatives rejected",
+        "Consequences",
+        "Context",
+        "Decision",
+        "Status"
+      ]
+    },
+    {
+      "file": "docs/architecture.md",
+      "exports": [
+        "Control boundaries",
+        "Deployment boundary",
+        "Related documents",
+        "Runtime flow",
+        "System boundary",
+        "ZenithSoles Affiliates Architecture"
+      ]
+    },
+    {
+      "file": "resources/views/admin/cashback-settings/index.blade.php",
+      "exports": [
+        "closeSettingsModal",
+        "openSettingsModal"
+      ]
+    },
+    {
+      "file": "resources/views/admin/commissions.blade.php",
+      "exports": [
+        "closePayModal",
+        "showPayModal"
+      ]
+    },
+    {
+      "file": "resources/views/admin/programs/quick-add.blade.php",
+      "exports": [
+        "updateTemplateFields"
+      ]
+    },
+    {
+      "file": "resources/views/admin/wallets/index.blade.php",
+      "exports": [
+        "closeAdjustModal",
+        "openAdjustModal"
+      ]
+    },
+    {
+      "file": "resources/views/referrals/index.blade.php",
+      "exports": [
+        "copyReferralLink"
+      ]
+    },
+    {
+      "file": "tests/Feature/ReleaseBlockingControlsTest.php",
+      "exports": [
+        "ReleaseBlockingControlsTest",
+        "test_authenticated_user_cannot_read_another_users_points_balance",
+        "test_clean_schema_contains_canonical_financial_columns",
+        "test_commission_cannot_be_paid_before_approval",
+        "test_conversion_and_points_mutations_require_partner_signature",
+        "test_health_endpoint_checks_the_database_connection",
+        "test_login_uses_laravel_guard_and_status_reads_the_same_identity",
+        "test_non_admin_authenticated_user_cannot_access_admin_routes",
+        "test_points_credit_is_idempotent_for_the_same_key",
+        "test_security_headers_are_present_on_http_responses",
+        "test_signed_conversion_creates_one_attributed_commission_and_is_idempotent",
+        "test_withdrawal_is_atomic_idempotent_and_refunds_on_rejection"
+      ]
+    },
+    {
+      "file": "tests/TestCase.php",
+      "exports": [
+        "TestCase",
+        "createApplication"
+      ]
+    }
+  ],
+  "runtime_graph": [
+    {
+      "route": "/user",
+      "line": 18
+    },
+    {
+      "route": "/health",
+      "line": 23
+    },
+    {
+      "route": "/click",
+      "line": 33
+    },
+    {
+      "route": "/conversion",
+      "line": 34
+    },
+    {
+      "route": "/link/{shortCode}",
+      "line": 35
+    },
+    {
+      "route": "/user/{userId}/stats",
+      "line": 36
+    },
+    {
+      "route": "/",
+      "line": 18
+    },
+    {
+      "route": "/{id}",
+      "line": 42
+    },
+    {
+      "route": "/credit",
+      "line": 47
+    },
+    {
+      "route": "/balance/{userId}",
+      "line": 48
+    },
+    {
+      "route": "/info/{code}",
+      "line": 53
+    },
+    {
+      "route": "/track",
+      "line": 54
+    },
+    {
+      "route": "web:/",
+      "line": 20
+    },
+    {
+      "route": "web:/products",
+      "line": 23
+    },
+    {
+      "route": "web:/products/{id}",
+      "line": 24
+    },
+    {
+      "route": "web:/buy/{productId}/{programId}",
+      "line": 25
+    },
+    {
+      "route": "web:/dashboard",
+      "line": 29
+    },
+    {
+      "route": "web:/wallet",
+      "line": 30
+    },
+    {
+      "route": "web:/transactions",
+      "line": 31
+    },
+    {
+      "route": "web:/referrals",
+      "line": 32
+    },
+    {
+      "route": "web:/referral-link/{code}",
+      "line": 33
+    },
+    {
+      "route": "web:/generate-referral",
+      "line": 34
+    },
+    {
+      "route": "web:/profile",
+      "line": 35
+    },
+    {
+      "route": "web:/profile",
+      "line": 36
+    },
+    {
+      "route": "web:/withdraw",
+      "line": 37
+    },
+    {
+      "route": "web:/gifts",
+      "line": 38
+    },
+    {
+      "route": "web:/gifts/{giftId}/redeem",
+      "line": 39
+    },
+    {
+      "route": "web:/health",
+      "line": 42
+    },
+    {
+      "route": "web:/dashboard",
+      "line": 29
+    },
+    {
+      "route": "web:/users",
+      "line": 63
+    },
+    {
+      "route": "web:/programs",
+      "line": 64
+    },
+    {
+      "route": "web:/links",
+      "line": 65
+    },
+    {
+      "route": "web:/clicks",
+      "line": 66
+    },
+    {
+      "route": "web:/conversions",
+      "line": 67
+    },
+    {
+      "route": "web:/commissions",
+      "line": 68
+    },
+    {
+      "route": "web:/analytics",
+      "line": 69
+    },
+    {
+      "route": "web:/dashboard",
+      "line": 29
+    },
+    {
+      "route": "web:/users",
+      "line": 63
+    },
+    {
+      "route": "web:/users/create",
+      "line": 78
+    },
+    {
+      "route": "web:/users",
+      "line": 79
+    },
+    {
+      "route": "web:/users/{user}/edit",
+      "line": 80
+    },
+    {
+      "route": "web:/users/{user}",
+      "line": 81
+    },
+    {
+      "route": "web:/users/{user}",
+      "line": 82
+    },
+    {
+      "route": "web:/programs",
+      "line": 64
+    },
+    {
+      "route": "web:/programs/create",
+      "line": 86
+    },
+    {
+      "route": "web:/programs",
+      "line": 87
+    },
+    {
+      "route": "web:/programs/{program}/edit",
+      "line": 88
+    },
+    {
+      "route": "web:/programs/{program}",
+      "line": 89
+    },
+    {
+      "route": "web:/programs/{program}",
+      "line": 90
+    },
+    {
+      "route": "web:/links",
+      "line": 65
+    },
+    {
+      "route": "web:/links/create",
+      "line": 94
+    },
+    {
+      "route": "web:/links",
+      "line": 95
+    },
+    {
+      "route": "web:/links/{link}/edit",
+      "line": 96
+    },
+    {
+      "route": "web:/links/{link}",
+      "line": 97
+    },
+    {
+      "route": "web:/links/{link}",
+      "line": 98
+    },
+    {
+      "route": "web:/links/{link}/toggle",
+      "line": 99
+    },
+    {
+      "route": "web:/clicks",
+      "line": 66
+    },
+    {
+      "route": "web:/conversions",
+      "line": 67
+    },
+    {
+      "route": "web:/commissions",
+      "line": 68
+    },
+    {
+      "route": "web:/commissions/{commission}/approve",
+      "line": 103
+    },
+    {
+      "route": "web:/commissions/{commission}/reject",
+      "line": 104
+    },
+    {
+      "route": "web:/commissions/{commission}/pay",
+      "line": 105
+    },
+    {
+      "route": "web:/analytics",
+      "line": 69
+    },
+    {
+      "route": "web:/api-test",
+      "line": 107
+    },
+    {
+      "route": "web:/api-test/click",
+      "line": 108
+    },
+    {
+      "route": "web:/api-test/conversion",
+      "line": 109
+    },
+    {
+      "route": "web:/products",
+      "line": 23
+    },
+    {
+      "route": "web:/products/create",
+      "line": 113
+    },
+    {
+      "route": "web:/products",
+      "line": 114
+    },
+    {
+      "route": "web:/products/{id}/edit",
+      "line": 115
+    },
+    {
+      "route": "web:/products/{id}",
+      "line": 116
+    },
+    {
+      "route": "web:/products/{id}",
+      "line": 117
+    },
+    {
+      "route": "web:/products/{productId}/commissions",
+      "line": 120
+    },
+    {
+      "route": "web:/products/{productId}/commissions",
+      "line": 121
+    },
+    {
+      "route": "web:/products/{productId}/commissions/{commissionId}",
+      "line": 122
+    },
+    {
+      "route": "web:/products/{productId}/commissions/{commissionId}",
+      "line": 123
+    },
+    {
+      "route": "web:/products/{productId}/commissions/import",
+      "line": 124
+    },
+    {
+      "route": "web:/programs/quick-add",
+      "line": 127
+    },
+    {
+      "route": "web:/programs/quick-add",
+      "line": 128
+    },
+    {
+      "route": "web:/programs/import",
+      "line": 129
+    },
+    {
+      "route": "web:/wallets",
+      "line": 132
+    },
+    {
+      "route": "web:/wallets/{userId}/adjust",
+      "line": 133
+    },
+    {
+      "route": "web:/cashback-settings",
+      "line": 136
+    },
+    {
+      "route": "web:/cashback-settings/{programId}",
+      "line": 137
+    },
+    {
+      "route": "web:/referrals",
+      "line": 32
+    },
+    {
+      "route": "web:/redemptions",
+      "line": 143
+    },
+    {
+      "route": "web:/redemptions/{redemptionId}/approve",
+      "line": 144
+    },
+    {
+      "route": "web:/redemptions/{redemptionId}/reject",
+      "line": 145
+    },
+    {
+      "route": "web:/redemptions/{redemptionId}/complete",
+      "line": 146
+    },
+    {
+      "route": "web:/login",
+      "line": 150
+    },
+    {
+      "route": "web:/login",
+      "line": 151
+    },
+    {
+      "route": "web:/logout",
+      "line": 152
+    },
+    {
+      "route": "web:/auth/status",
+      "line": 153
+    },
+    {
+      "route": "web:/forgot-password",
+      "line": 156
+    },
+    {
+      "route": "web:/forgot-password",
+      "line": 157
+    },
+    {
+      "route": "web:/reset-password/{token}",
+      "line": 158
+    },
+    {
+      "route": "web:/reset-password",
+      "line": 159
+    },
+    {
+      "route": "web:/test-smtp",
+      "line": 162
+    }
+  ],
+  "service_graph": [
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "App\\Click"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "App\\Link"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Http\\Request"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Support\\Facades\\DB"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Support\\Facades\\Log"
+    },
+    {
+      "from": "app/Services/AffiliateTrackingService.php",
+      "to": "Illuminate\\Support\\Str"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\CashbackSetting"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Conversion"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\PointsTransaction"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Program"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "App\\Services\\PointsService"
+    },
+    {
+      "from": "app/Services/CashbackService.php",
+      "to": "Illuminate\\Support\\Facades\\Log"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Commission"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Conversion"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\ProductCommission"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Program"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "Illuminate\\Support\\Facades\\DB"
+    },
+    {
+      "from": "app/Services/CommissionService.php",
+      "to": "Illuminate\\Support\\Facades\\Log"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\Commission"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\PointsRedemption"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\PointsTransaction"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\User"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "App\\UserPoints"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "Illuminate\\Support\\Facades\\DB"
+    },
+    {
+      "from": "app/Services/PayoutService.php",
+      "to": "Illuminate\\Support\\Str"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\PointsTransaction"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\User"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "App\\UserPoints"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "Illuminate\\Database\\Eloquent\\Collection"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "Illuminate\\Support\\Facades\\DB"
+    },
+    {
+      "from": "app/Services/PointsService.php",
+      "to": "Illuminate\\Support\\Facades\\Log"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\Product"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\ProductCommission"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\ProductLink"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "Illuminate\\Database\\Eloquent\\Collection"
+    },
+    {
+      "from": "app/Services/ProductService.php",
+      "to": "Illuminate\\Pagination\\LengthAwarePaginator"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\CashbackSetting"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Conversion"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\PointsTransaction"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Program"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Referral"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Services"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Services\\CashbackService"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\Services\\PointsService"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "App\\User"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "Illuminate\\Support\\Facades\\Cookie"
+    },
+    {
+      "from": "app/Services/ReferralService.php",
+      "to": "Illuminate\\Support\\Facades\\Log"
+    }
+  ],
+  "database_graph": [
+    {
+      "migration": "database/migrations/2025_01_25_100000_create_products_table.php",
+      "creates": "products"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100001_create_product_links_table.php",
+      "creates": "product_links"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100002_create_product_commissions_table.php",
+      "creates": "product_commissions"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100003_create_user_points_table.php",
+      "creates": "user_points"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100004_create_points_transactions_table.php",
+      "creates": "points_transactions"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100005_create_referrals_table.php",
+      "creates": "referrals"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100006_create_cashback_settings_table.php",
+      "creates": "cashback_settings"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100007_create_gifts_table.php",
+      "creates": "gifts"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "creates": "points_redemptions"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "creates": "users"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "creates": "programs"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "creates": "links"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "creates": "clicks"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "creates": "conversions"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "creates": "commissions"
+    },
+    {
+      "migration": "database/migrations/2025_10_23_215158_create_simple_test_table.php",
+      "creates": "simple_test"
+    },
+    {
+      "migration": "database/migrations/2026_08_20_000003_create_password_resets_table.php",
+      "creates": "password_resets"
+    },
+    {
+      "migration": "database/migrations/2025_01_25_100008_create_points_redemptions_table.php",
+      "references": "payout_details",
+      "line": 25
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214347_create_users_table.php",
+      "references": "settings",
+      "line": 28
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "references": "commission_structure",
+      "line": 24
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "references": "api_credentials",
+      "line": 27
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "references": "tracking_parameters",
+      "line": 28
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214403_create_programs_table.php",
+      "references": "restrictions",
+      "line": 32
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "references": "tracking_parameters",
+      "line": 24
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "references": "programs",
+      "line": 33
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214418_create_links_table.php",
+      "references": "users",
+      "line": 34
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "references": "tracking_data",
+      "line": 27
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "references": "links",
+      "line": 34
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "references": "users",
+      "line": 35
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214430_create_clicks_table.php",
+      "references": "programs",
+      "line": 36
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214440_create_conversions_table.php",
+      "references": "event_data",
+      "line": 21
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214453_create_commissions_table.php",
+      "references": "payout_details",
+      "line": 24
+    },
+    {
+      "migration": "database/migrations/2025_10_23_214753_add_foreign_keys_to_users_table.php",
+      "references": "users",
+      "line": 16
+    },
+    {
+      "migration": "database/migrations/2026_08_20_000001_align_affiliate_financial_contracts.php",
+      "references": "payout_details",
+      "line": 66
+    },
+    {
+      "migration": "database/migrations/2026_08_20_000004_add_payout_audit_fields.php",
+      "references": "payout_details",
+      "line": 31
+    }
+  ],
+  "agent_graph": [],
+  "api_graph": [
+    {
+      "route": "/user",
+      "line": 18
+    },
+    {
+      "route": "/health",
+      "line": 23
+    },
+    {
+      "route": "/click",
+      "line": 33
+    },
+    {
+      "route": "/conversion",
+      "line": 34
+    },
+    {
+      "route": "/link/{shortCode}",
+      "line": 35
+    },
+    {
+      "route": "/user/{userId}/stats",
+      "line": 36
+    },
+    {
+      "route": "/",
+      "line": 18
+    },
+    {
+      "route": "/{id}",
+      "line": 42
+    },
+    {
+      "route": "/credit",
+      "line": 47
+    },
+    {
+      "route": "/balance/{userId}",
+      "line": 48
+    },
+    {
+      "route": "/info/{code}",
+      "line": 53
+    },
+    {
+      "route": "/track",
+      "line": 54
+    },
+    {
+      "route": "web:/",
+      "line": 20
+    },
+    {
+      "route": "web:/products",
+      "line": 23
+    },
+    {
+      "route": "web:/products/{id}",
+      "line": 24
+    },
+    {
+      "route": "web:/buy/{productId}/{programId}",
+      "line": 25
+    },
+    {
+      "route": "web:/dashboard",
+      "line": 29
+    },
+    {
+      "route": "web:/wallet",
+      "line": 30
+    },
+    {
+      "route": "web:/transactions",
+      "line": 31
+    },
+    {
+      "route": "web:/referrals",
+      "line": 32
+    },
+    {
+      "route": "web:/referral-link/{code}",
+      "line": 33
+    },
+    {
+      "route": "web:/generate-referral",
+      "line": 34
+    },
+    {
+      "route": "web:/profile",
+      "line": 35
+    },
+    {
+      "route": "web:/profile",
+      "line": 36
+    },
+    {
+      "route": "web:/withdraw",
+      "line": 37
+    },
+    {
+      "route": "web:/gifts",
+      "line": 38
+    },
+    {
+      "route": "web:/gifts/{giftId}/redeem",
+      "line": 39
+    },
+    {
+      "route": "web:/health",
+      "line": 42
+    },
+    {
+      "route": "web:/dashboard",
+      "line": 29
+    },
+    {
+      "route": "web:/users",
+      "line": 63
+    },
+    {
+      "route": "web:/programs",
+      "line": 64
+    },
+    {
+      "route": "web:/links",
+      "line": 65
+    },
+    {
+      "route": "web:/clicks",
+      "line": 66
+    },
+    {
+      "route": "web:/conversions",
+      "line": 67
+    },
+    {
+      "route": "web:/commissions",
+      "line": 68
+    },
+    {
+      "route": "web:/analytics",
+      "line": 69
+    },
+    {
+      "route": "web:/dashboard",
+      "line": 29
+    },
+    {
+      "route": "web:/users",
+      "line": 63
+    },
+    {
+      "route": "web:/users/create",
+      "line": 78
+    },
+    {
+      "route": "web:/users",
+      "line": 79
+    },
+    {
+      "route": "web:/users/{user}/edit",
+      "line": 80
+    },
+    {
+      "route": "web:/users/{user}",
+      "line": 81
+    },
+    {
+      "route": "web:/users/{user}",
+      "line": 82
+    },
+    {
+      "route": "web:/programs",
+      "line": 64
+    },
+    {
+      "route": "web:/programs/create",
+      "line": 86
+    },
+    {
+      "route": "web:/programs",
+      "line": 87
+    },
+    {
+      "route": "web:/programs/{program}/edit",
+      "line": 88
+    },
+    {
+      "route": "web:/programs/{program}",
+      "line": 89
+    },
+    {
+      "route": "web:/programs/{program}",
+      "line": 90
+    },
+    {
+      "route": "web:/links",
+      "line": 65
+    },
+    {
+      "route": "web:/links/create",
+      "line": 94
+    },
+    {
+      "route": "web:/links",
+      "line": 95
+    },
+    {
+      "route": "web:/links/{link}/edit",
+      "line": 96
+    },
+    {
+      "route": "web:/links/{link}",
+      "line": 97
+    },
+    {
+      "route": "web:/links/{link}",
+      "line": 98
+    },
+    {
+      "route": "web:/links/{link}/toggle",
+      "line": 99
+    },
+    {
+      "route": "web:/clicks",
+      "line": 66
+    },
+    {
+      "route": "web:/conversions",
+      "line": 67
+    },
+    {
+      "route": "web:/commissions",
+      "line": 68
+    },
+    {
+      "route": "web:/commissions/{commission}/approve",
+      "line": 103
+    },
+    {
+      "route": "web:/commissions/{commission}/reject",
+      "line": 104
+    },
+    {
+      "route": "web:/commissions/{commission}/pay",
+      "line": 105
+    },
+    {
+      "route": "web:/analytics",
+      "line": 69
+    },
+    {
+      "route": "web:/api-test",
+      "line": 107
+    },
+    {
+      "route": "web:/api-test/click",
+      "line": 108
+    },
+    {
+      "route": "web:/api-test/conversion",
+      "line": 109
+    },
+    {
+      "route": "web:/products",
+      "line": 23
+    },
+    {
+      "route": "web:/products/create",
+      "line": 113
+    },
+    {
+      "route": "web:/products",
+      "line": 114
+    },
+    {
+      "route": "web:/products/{id}/edit",
+      "line": 115
+    },
+    {
+      "route": "web:/products/{id}",
+      "line": 116
+    },
+    {
+      "route": "web:/products/{id}",
+      "line": 117
+    },
+    {
+      "route": "web:/products/{productId}/commissions",
+      "line": 120
+    },
+    {
+      "route": "web:/products/{productId}/commissions",
+      "line": 121
+    },
+    {
+      "route": "web:/products/{productId}/commissions/{commissionId}",
+      "line": 122
+    },
+    {
+      "route": "web:/products/{productId}/commissions/{commissionId}",
+      "line": 123
+    },
+    {
+      "route": "web:/products/{productId}/commissions/import",
+      "line": 124
+    },
+    {
+      "route": "web:/programs/quick-add",
+      "line": 127
+    },
+    {
+      "route": "web:/programs/quick-add",
+      "line": 128
+    },
+    {
+      "route": "web:/programs/import",
+      "line": 129
+    },
+    {
+      "route": "web:/wallets",
+      "line": 132
+    },
+    {
+      "route": "web:/wallets/{userId}/adjust",
+      "line": 133
+    },
+    {
+      "route": "web:/cashback-settings",
+      "line": 136
+    },
+    {
+      "route": "web:/cashback-settings/{programId}",
+      "line": 137
+    },
+    {
+      "route": "web:/referrals",
+      "line": 32
+    },
+    {
+      "route": "web:/redemptions",
+      "line": 143
+    },
+    {
+      "route": "web:/redemptions/{redemptionId}/approve",
+      "line": 144
+    },
+    {
+      "route": "web:/redemptions/{redemptionId}/reject",
+      "line": 145
+    },
+    {
+      "route": "web:/redemptions/{redemptionId}/complete",
+      "line": 146
+    },
+    {
+      "route": "web:/login",
+      "line": 150
+    },
+    {
+      "route": "web:/login",
+      "line": 151
+    },
+    {
+      "route": "web:/logout",
+      "line": 152
+    },
+    {
+      "route": "web:/auth/status",
+      "line": 153
+    },
+    {
+      "route": "web:/forgot-password",
+      "line": 156
+    },
+    {
+      "route": "web:/forgot-password",
+      "line": 157
+    },
+    {
+      "route": "web:/reset-password/{token}",
+      "line": 158
+    },
+    {
+      "route": "web:/reset-password",
+      "line": 159
+    },
+    {
+      "route": "web:/test-smtp",
+      "line": 162
+    }
+  ],
+  "tool_graph": [],
+  "authentication_flow": [
+    {
+      "file": "app/Http/Controllers/AuthController.php",
+      "function": "login",
+      "line": 27,
+      "evidence": "Auth::login with session regeneration"
+    },
+    {
+      "file": "app/Http/Middleware/AdminMiddleware.php",
+      "function": "handle",
+      "line": 15,
+      "evidence": "Auth::user role check"
+    },
+    {
+      "file": "app/Http/Middleware/Authenticate.php",
+      "function": "redirectTo",
+      "line": 13,
+      "evidence": "Laravel auth middleware"
+    },
+    {
+      "file": "resources/views/layouts/consumer.blade.php",
+      "function": "Blade layout",
+      "line": 36,
+      "evidence": "@auth and auth()->user()"
+    }
+  ],
+  "authorization_flow": [
+    {
+      "file": "app/Http/Middleware/AdminMiddleware.php",
+      "line": 24,
+      "evidence": "custom admin role check"
+    },
+    {
+      "file": "routes/web.php",
+      "line": 61,
+      "evidence": "admin middleware route groups"
+    }
+  ],
+  "event_flow": [
+    {
+      "from": "POST /api/affiliate/click",
+      "to": "Click",
+      "evidence": "ApiController::trackClick"
+    },
+    {
+      "from": "POST /api/affiliate/conversion",
+      "to": "Conversion",
+      "evidence": "ApiController::reportConversion"
+    },
+    {
+      "from": "Conversion",
+      "to": "Commission",
+      "evidence": "$conversion->commissions()->create"
+    },
+    {
+      "from": "Conversion",
+      "to": "PointsTransaction",
+      "evidence": "CashbackService::creditCashback"
+    },
+    {
+      "from": "Conversion",
+      "to": "Referral points",
+      "evidence": "ReferralService::creditReferralPoints"
+    }
+  ],
+  "largest_dependency_graph_nodes": [
+    [
+      "bootstrap/cache/services.php",
+      170
+    ],
+    [
+      "app/Http/Controllers/AdminController.php",
+      112
+    ],
+    [
+      "app/Http/Controllers/ConsumerController.php",
+      58
+    ],
+    [
+      "PROJECT_STATUS_REPORT.md",
+      57
+    ],
+    [
+      "tools/generate_audit_artifacts.py",
+      55
+    ],
+    [
+      "tools/__pycache__/generate_audit_artifacts.cpython-312.pyc",
+      54
+    ],
+    [
+      "routes/web.php",
+      52
+    ],
+    [
+      "app/Http/Controllers/ApiController.php",
+      50
+    ],
+    [
+      "app/Http/Controllers/ProductController.php",
+      49
+    ],
+    [
+      "app/Http/Kernel.php",
+      49
+    ],
+    [
+      "tests/Feature/ReleaseBlockingControlsTest.php",
+      47
+    ],
+    [
+      "app/Services/ReferralService.php",
+      44
+    ],
+    [
+      "README.md",
+      43
+    ],
+    [
+      "IMPLEMENTATION_COMPLETE.md",
+      40
+    ],
+    [
+      "PHASE_WISE_IMPLEMENTATION_PLAN.md",
+      38
+    ],
+    [
+      "FINAL_IMPLEMENTATION_SUMMARY.md",
+      36
+    ],
+    [
+      "tools/build_audit_index.py",
+      34
+    ],
+    [
+      "app/Services/PayoutService.php",
+      33
+    ],
+    [
+      "PRIORITIZATION_ROADMAP.md",
+      32
+    ],
+    [
+      "tools/__pycache__/build_audit_index.cpython-312.pyc",
+      32
+    ]
+  ]
+}

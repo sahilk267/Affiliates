@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('program_id')->references('id')->on('programs')->onDelete('cascade');
         });
     }
 

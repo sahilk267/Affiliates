@@ -24,9 +24,6 @@ return new class extends Migration
             $table->timestamps();
             
             // Foreign key constraints
-            $table->foreign('referrer_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('referred_id')->references('id')->on('users')->onDelete('set null');
-            $table->foreign('program_id')->references('id')->on('programs')->onDelete('set null');
             
             // Indexes for better performance
             $table->index('referral_code');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\ProductService;
+use App\Services\PayoutService;
 use App\Services\PointsService;
 use App\Services\ReferralService;
 use App\Services\CashbackService;
@@ -18,17 +19,20 @@ class ConsumerController extends Controller
 {
     protected ProductService $productService;
     protected PointsService $pointsService;
+    protected PayoutService $payoutService;
     protected ReferralService $referralService;
     protected CashbackService $cashbackService;
 
     public function __construct(
         ProductService $productService,
         PointsService $pointsService,
+        PayoutService $payoutService,
         ReferralService $referralService,
         CashbackService $cashbackService
     ) {
         $this->productService = $productService;
         $this->pointsService = $pointsService;
+        $this->payoutService = $payoutService;
         $this->referralService = $referralService;
         $this->cashbackService = $cashbackService;
     }
@@ -227,6 +231,7 @@ class ConsumerController extends Controller
 
         $validator = Validator::make($request->all(), [
             'points' => 'required|integer|min:100',
+            'idempotency_key' => 'nullable|string|max:100',
         ]);
 
         if ($validator->fails()) {
@@ -235,38 +240,14 @@ class ConsumerController extends Controller
                 ->withInput();
         }
 
-        // Check if user has enough points
-        if (!$this->pointsService->hasEnoughPoints($user->id, $request->points)) {
-            return redirect()->back()
-                ->with('error', 'Insufficient points balance');
-        }
-
-        // Check if user has bank details
-        if (!$user->bank_account || !$user->ifsc_code) {
-            return redirect()->route('profile')
-                ->with('error', 'Please add bank account details before withdrawing');
-        }
+        $idempotencyKey = (string) ($request->header('Idempotency-Key') ?: $request->input('idempotency_key'));
 
         try {
-            // Debit points
-            $transaction = $this->pointsService->processWithdrawal(
-                $user->id,
-                $request->points,
-                'Withdrawal request'
+            $redemption = $this->payoutService->createWithdrawal(
+                $user,
+                $request->integer('points'),
+                $idempotencyKey ?: null
             );
-
-            if (!$transaction) {
-                throw new \Exception('Failed to process withdrawal');
-            }
-
-            // Create redemption request
-            $redemption = PointsRedemption::create([
-                'user_id' => $user->id,
-                'redemption_type' => PointsRedemption::TYPE_CASH,
-                'points_used' => $request->points,
-                'cash_amount' => $request->points, // 1 point = 1 rupee
-                'status' => PointsRedemption::STATUS_PENDING,
-            ]);
 
             return redirect()->route('wallet')
                 ->with('success', 'Withdrawal request submitted successfully!');

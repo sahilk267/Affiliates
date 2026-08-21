@@ -8,116 +8,91 @@ use App\Click;
 use App\Conversion;
 use App\Commission;
 use App\User;
+use App\Services\AffiliateTrackingService;
 use App\Services\CashbackService;
 use App\Services\ReferralService;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class ApiController extends Controller
 {
+    protected AffiliateTrackingService $trackingService;
     protected CashbackService $cashbackService;
     protected ReferralService $referralService;
 
-    public function __construct(CashbackService $cashbackService, ReferralService $referralService)
+    public function __construct(
+        AffiliateTrackingService $trackingService,
+        CashbackService $cashbackService,
+        ReferralService $referralService
+    )
     {
+        $this->trackingService = $trackingService;
         $this->cashbackService = $cashbackService;
         $this->referralService = $referralService;
     }
     /**
-     * Track a click on an affiliate link
+     * Track a click on an affiliate link.
      */
     public function trackClick(Request $request)
     {
+        $requestId = (string) ($request->header('X-Request-ID') ?: Str::uuid());
         $validator = Validator::make($request->all(), [
-            'link_id' => 'required|exists:links,id',
-            'ip_address' => 'required|ip',
-            'user_agent' => 'required|string|max:500',
+            'link_id' => 'required|integer|exists:links,id',
+            'ip_address' => 'nullable|ip',
+            'user_agent' => 'nullable|string|max:500',
             'referrer' => 'nullable|string|max:500',
-            'referral_code' => 'nullable|string|max:50', // ⭐ NEW - For referral tracking
+            'referral_code' => 'nullable|string|max:50',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 400);
+                'errors' => $validator->errors(),
+            ], 422);
         }
 
         try {
-            $link = Link::findOrFail($request->link_id);
-
-            // Check if link is valid
-            if (!$link->isValid()) {
-                return response()->json([
-                    'status' => 'error',
-                    'message' => 'Link is not valid or has expired'
-                ], 400);
-            }
-
-            // Track referral if referral code provided
-            if ($request->has('referral_code')) {
-                $this->referralService->trackReferral($request->referral_code);
-            }
-
-            // Create click record
-            $click = Click::create([
-                'link_id' => $link->id,
-                'user_id' => $link->user_id,
-                'program_id' => $link->program_id,
-                'ip_address' => $request->ip_address,
-                'user_agent' => $request->user_agent,
-                'referrer' => $request->referrer ?? null,
-                'country' => $this->getCountryFromIP($request->ip_address),
-                'city' => $this->getCityFromIP($request->ip_address),
-                'device_type' => $this->getDeviceType($request->user_agent),
-                'browser' => $this->getBrowser($request->user_agent),
-                'os' => $this->getOS($request->user_agent),
-                'clicked_at' => now(),
-            ]);
-
-            // Update link click count
-            $link->increment('click_count');
-
-            // Generate affiliate URL
+            $link = Link::findOrFail($request->integer('link_id'));
+            $click = $this->trackingService->track($link, $request);
             $affiliateUrl = $link->generateAffiliateUrl();
-
-            Log::info('Click tracked', [
-                'click_id' => $click->id,
-                'link_id' => $link->id,
-                'user_id' => $link->user_id,
-                'ip_address' => $request->ip_address
-            ]);
+            $separator = str_contains($affiliateUrl, '?') ? '&' : '?';
 
             return response()->json([
                 'status' => 'success',
                 'data' => [
                     'click_id' => $click->id,
-                    'affiliate_url' => $affiliateUrl,
-                    'redirect_url' => $affiliateUrl,
-                ]
+                    'affiliate_url' => $affiliateUrl . $separator . http_build_query(['click_id' => $click->id]),
+                    'redirect_url' => $affiliateUrl . $separator . http_build_query(['click_id' => $click->id]),
+                ],
             ]);
-
-        } catch (\Exception $e) {
+        } catch (\DomainException $e) {
+            return response()->json(['status' => 'error', 'message' => $e->getMessage()], 400);
+        } catch (\Throwable $e) {
             Log::error('Click tracking failed', [
+                'request_id' => $requestId,
+                'link_id' => $request->input('link_id'),
                 'error' => $e->getMessage(),
-                'request' => $request->all()
             ]);
-
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Click tracking failed'
-            ], 500);
+            return response()->json(['status' => 'error', 'message' => 'Click tracking failed'], 500);
         }
     }
 
     /**
-     * Report a conversion
+     * Report a conversion from an authenticated partner integration.
      */
     public function reportConversion(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'click_id' => 'required|exists:clicks,id',
+        $requestId = (string) ($request->header('X-Request-ID') ?: Str::uuid());
+        $partnerEventId = (string) ($request->input('partner_event_id') ?: $request->header('Idempotency-Key'));
+        $validator = Validator::make(array_merge($request->all(), [
+            'partner_event_id' => $partnerEventId,
+        ]), [
+            'click_id' => 'required|integer|exists:clicks,id',
+            'partner_event_id' => 'required|string|max:100',
             'event_type' => 'required|string|in:purchase,signup,download,install,lead,click,other',
             'conversion_value' => 'nullable|numeric|min:0',
             'currency' => 'nullable|string|size:3',
@@ -133,90 +108,124 @@ class ApiController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 400);
+                'errors' => $validator->errors(),
+            ], 422);
         }
 
         try {
-            $click = Click::with(['link', 'user', 'program'])->findOrFail($request->click_id);
+            $existing = Conversion::where('partner_event_id', $partnerEventId)->first();
+            if ($existing) {
+                Log::info('Conversion report replayed idempotently', [
+                    'request_id' => $requestId,
+                    'conversion_id' => $existing->id,
+                    'partner_event_id' => $partnerEventId,
+                    'click_id' => $existing->click_id,
+                    'user_id' => $existing->user_id,
+                ]);
 
-            // Check if click has already converted
-            if ($click->is_converted) {
                 return response()->json([
-                    'status' => 'error',
-                    'message' => 'Click has already been converted'
-                ], 400);
+                    'status' => 'success',
+                    'idempotent' => true,
+                    'data' => [
+                        'conversion_id' => $existing->id,
+                        'commission_amount' => $existing->commission_amount,
+                        'status' => $existing->status,
+                        'points_credited' => true,
+                    ],
+                ]);
             }
 
-            // Calculate commission
-            $commissionAmount = $this->calculateCommission($click->program, $request->conversion_value);
+            $result = DB::transaction(function () use ($request, $partnerEventId) {
+                $click = Click::with(['link', 'user', 'program'])
+                    ->lockForUpdate()
+                    ->findOrFail($request->integer('click_id'));
 
-            // Create conversion record
-            $conversion = Conversion::create([
-                'click_id' => $click->id,
-                'link_id' => $click->link_id,
-                'user_id' => $click->user_id,
-                'program_id' => $click->program_id,
-                'event_type' => $request->event_type,
-                'event_data' => $request->event_data,
-                'commission_amount' => $commissionAmount,
-                'status' => Conversion::STATUS_PENDING,
-                'conversion_value' => $request->conversion_value ?? 0,
-                'currency' => $request->currency ?? 'INR',
-                'order_id' => $request->order_id,
-                'customer_id' => $request->customer_id,
-                'product_id' => $request->product_id,
-                'product_name' => $request->product_name,
-                'quantity' => $request->quantity ?? 1,
-            ]);
+                if ($click->is_converted) {
+                    throw new \DomainException('Click has already been converted');
+                }
 
-            // Mark click as converted
-            $click->markAsConverted();
+                $conversionValue = (float) ($request->input('conversion_value') ?? 0);
+                $commissionAmount = $this->calculateCommission($click->program, $conversionValue);
+                $conversion = Conversion::create([
+                    'click_id' => $click->id,
+                    'link_id' => $click->link_id,
+                    'user_id' => $click->user_id,
+                    'program_id' => $click->program_id,
+                    'event_type' => $request->input('event_type'),
+                    'event_data' => $request->input('event_data'),
+                    'commission_amount' => $commissionAmount,
+                    'status' => Conversion::STATUS_PENDING,
+                    'conversion_id' => 'conv_' . Str::uuid(),
+                    'partner_event_id' => $partnerEventId,
+                    'conversion_value' => $conversionValue,
+                    'order_value' => $conversionValue,
+                    'currency' => strtoupper($request->input('currency', 'INR')),
+                    'order_id' => $request->input('order_id'),
+                    'customer_id' => $request->input('customer_id'),
+                    'product_id' => $request->input('product_id'),
+                    'product_name' => $request->input('product_name'),
+                    'quantity' => $request->input('quantity', 1),
+                    'converted_at' => now(),
+                ]);
 
-            // Update link conversion count
-            $click->link->increment('conversion_count');
-            $click->link->increment('total_commission', $commissionAmount);
+                $click->markAsConverted();
+                $click->link->increment('conversion_count');
+                $click->link->increment('total_commission', $commissionAmount);
 
-            // Create commission record
-            $commission = $conversion->commissions()->create([
-                'user_id' => $click->user_id,
-                'amount' => $commissionAmount,
-                'status' => Commission::STATUS_PENDING,
-                'commission_type' => Commission::TYPE_AFFILIATE,
-            ]);
+                $conversion->commissions()->create([
+                    'user_id' => $click->user_id,
+                    'amount' => $commissionAmount,
+                    'status' => Commission::STATUS_PENDING,
+                    'commission_type' => Commission::TYPE_AFFILIATE,
+                    'currency' => strtoupper($request->input('currency', 'INR')),
+                ]);
 
-            // Credit cashback points to user
-            $this->cashbackService->creditCashback($conversion);
+                $cashbackCredited = $this->cashbackService->creditCashback($conversion);
+                $referralCredited = $this->referralService->creditReferralPoints($conversion);
+                $conversion->update(['processed_at' => now()]);
 
-            // Credit referral points (if applicable)
-            $this->referralService->creditReferralPoints($conversion);
+                return [
+                    'conversion' => $conversion->fresh(),
+                    'cashback_credited' => $cashbackCredited,
+                    'referral_credited' => $referralCredited,
+                ];
+            });
 
+            $conversion = $result['conversion'];
             Log::info('Conversion reported', [
+                'request_id' => $requestId,
                 'conversion_id' => $conversion->id,
-                'click_id' => $click->id,
-                'user_id' => $click->user_id,
-                'commission_amount' => $commissionAmount
+                'partner_event_id' => $partnerEventId,
+                'click_id' => $conversion->click_id,
+                'user_id' => $conversion->user_id,
             ]);
 
             return response()->json([
                 'status' => 'success',
                 'data' => [
                     'conversion_id' => $conversion->id,
-                    'commission_amount' => $commissionAmount,
+                    'commission_amount' => $conversion->commission_amount,
                     'status' => $conversion->status,
-                    'points_credited' => true,
-                ]
+                    'cashback_points_credited' => $result['cashback_credited'],
+                    'referral_points_credited' => $result['referral_credited'],
+                ],
             ]);
-
-        } catch (\Exception $e) {
+        } catch (\DomainException $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ], 409);
+        } catch (\Throwable $e) {
             Log::error('Conversion reporting failed', [
+                'request_id' => $requestId,
+                'click_id' => $request->input('click_id'),
+                'partner_event_id' => $partnerEventId,
                 'error' => $e->getMessage(),
-                'request' => $request->all()
             ]);
 
             return response()->json([
                 'status' => 'error',
-                'message' => 'Conversion reporting failed'
+                'message' => 'Conversion reporting failed',
             ], 500);
         }
     }
@@ -279,6 +288,9 @@ class ApiController extends Controller
     {
         try {
             $user = User::findOrFail($userId);
+            if (!Auth::check() || ((int) Auth::id() !== (int) $userId && !Auth::user()->isAdmin())) {
+                return response()->json(['status' => 'error', 'message' => 'Forbidden'], 403);
+            }
 
             $stats = [
                 'total_clicks' => $user->clicks()->count(),
@@ -335,58 +347,64 @@ class ApiController extends Controller
     // ========== POINTS API METHODS ==========
 
     /**
-     * Credit points to user (API)
+     * Credit points to a user through an authenticated partner integration.
      */
     public function creditPoints(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required|exists:users,id',
-            'points' => 'required|integer|min:1',
+        $idempotencyKey = (string) $request->header('Idempotency-Key');
+        $validator = Validator::make(array_merge($request->all(), [
+            'idempotency_key' => $idempotencyKey,
+        ]), [
+            'user_id' => 'required|integer|exists:users,id',
+            'points' => 'required|integer|min:1|max:1000000',
             'description' => 'required|string|max:255',
-            'reference_type' => 'nullable|string',
+            'reference_type' => 'nullable|string|in:purchase_cashback,referral,redemption,gift,bonus,adjustment',
             'reference_id' => 'nullable|integer',
+            'idempotency_key' => 'required|string|max:100',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Validation failed',
-                'errors' => $validator->errors()
-            ], 400);
+                'errors' => $validator->errors(),
+            ], 422);
         }
 
         try {
             $pointsService = app(\App\Services\PointsService::class);
-            
             $transaction = $pointsService->creditPoints(
-                $request->user_id,
-                $request->points,
-                $request->description,
-                $request->reference_type ?? \App\PointsTransaction::REF_BONUS,
-                $request->reference_id
+                $request->integer('user_id'),
+                $request->integer('points'),
+                $request->string('description')->toString(),
+                $request->input('reference_type', \App\PointsTransaction::REF_BONUS),
+                $request->integer('reference_id') ?: null,
+                $idempotencyKey
             );
 
             if (!$transaction) {
-                throw new \Exception('Failed to credit points');
+                throw new \RuntimeException('Failed to credit points');
             }
 
             return response()->json([
                 'status' => 'success',
+                'idempotent' => $transaction->idempotency_key === $idempotencyKey,
                 'data' => [
                     'transaction_id' => $transaction->id,
                     'points' => $transaction->points,
                     'balance_after' => $transaction->balance_after,
-                ]
+                ],
             ]);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             Log::error('Failed to credit points', [
                 'error' => $e->getMessage(),
-                'request' => $request->all()
+                'user_id' => $request->input('user_id'),
+                'idempotency_key' => $idempotencyKey,
             ]);
 
             return response()->json([
                 'status' => 'error',
-                'message' => 'Failed to credit points: ' . $e->getMessage()
+                'message' => 'Failed to credit points',
             ], 500);
         }
     }
@@ -397,6 +415,10 @@ class ApiController extends Controller
     public function getPointsBalance(Request $request, $userId)
     {
         try {
+            if (!Auth::check() || ((int) Auth::id() !== (int) $userId && !Auth::user()->isAdmin())) {
+                return response()->json(['status' => 'error', 'message' => 'Forbidden'], 403);
+            }
+
             $pointsService = app(\App\Services\PointsService::class);
             $balance = $pointsService->getBalance($userId);
             $stats = $pointsService->getPointsStats($userId);
@@ -490,6 +512,10 @@ class ApiController extends Controller
                 ], 404);
             }
 
+            if (!Auth::check() || ((int) Auth::id() !== (int) $referral->referrer_id && !Auth::user()->isAdmin())) {
+                return response()->json(['status' => 'error', 'message' => 'Forbidden'], 403);
+            }
+
             $stats = $this->referralService->getReferralStats($referral->referrer_id);
 
             return response()->json([
@@ -521,59 +547,4 @@ class ApiController extends Controller
         }
     }
 
-    /**
-     * Get country from IP address (simplified)
-     */
-    private function getCountryFromIP($ip)
-    {
-        // This is a simplified implementation
-        // In production, you would use a proper GeoIP service
-        return 'IN'; // Default to India
-    }
-
-    /**
-     * Get city from IP address (simplified)
-     */
-    private function getCityFromIP($ip)
-    {
-        // This is a simplified implementation
-        // In production, you would use a proper GeoIP service
-        return 'Mumbai'; // Default to Mumbai
-    }
-
-    /**
-     * Get device type from user agent
-     */
-    private function getDeviceType($userAgent)
-    {
-        if (preg_match('/Mobile|Android|iPhone|iPad/', $userAgent)) {
-            return 'mobile';
-        }
-        return 'desktop';
-    }
-
-    /**
-     * Get browser from user agent
-     */
-    private function getBrowser($userAgent)
-    {
-        if (preg_match('/Chrome/', $userAgent)) return 'Chrome';
-        if (preg_match('/Firefox/', $userAgent)) return 'Firefox';
-        if (preg_match('/Safari/', $userAgent)) return 'Safari';
-        if (preg_match('/Edge/', $userAgent)) return 'Edge';
-        return 'Unknown';
-    }
-
-    /**
-     * Get operating system from user agent
-     */
-    private function getOS($userAgent)
-    {
-        if (preg_match('/Windows/', $userAgent)) return 'Windows';
-        if (preg_match('/Mac/', $userAgent)) return 'macOS';
-        if (preg_match('/Linux/', $userAgent)) return 'Linux';
-        if (preg_match('/Android/', $userAgent)) return 'Android';
-        if (preg_match('/iOS/', $userAgent)) return 'iOS';
-        return 'Unknown';
-    }
 }
