@@ -1,0 +1,86 @@
+{
+  "phase_id": 1,
+  "task_envelope": {
+    "task_id": "phase1-commercial-input-gate",
+    "phase": "Phase 1 - Choose the commercial wedge and target customer",
+    "objective": "Validate whether owner-approved commercial inputs exist before business implementation.",
+    "allowed_files_or_commands": [
+      "tools/validate_pilot_decision_inputs.py",
+      "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+      "python3 tools/validate_pilot_decision_inputs.py",
+      "python3 tools/validate_pilot_decision_inputs.py --require-approved"
+    ],
+    "environment": "local",
+    "mutation_mode": "read-only",
+    "known_facts": [
+      "The repository contains an incomplete pilot decision template.",
+      "The pilot validator supports report-only and strict modes.",
+      "The current release commit is recorded in this artifact.",
+      "No production approval is implied by local validation."
+    ],
+    "unknowns": [
+      "Approved primary niche or category",
+      "Approved target customer segment",
+      "Approved consumer, B2B, or hybrid pilot model",
+      "Approved partner shortlist and status",
+      "Approved reward, referral, reversal, fraud, and payout policies",
+      "Approved pilot metric thresholds",
+      "Named owners and sign-offs"
+    ],
+    "required_user_or_owner_inputs": [
+      "Complete and approve docs/PILOT_DECISION_INPUT_TEMPLATE.md"
+    ],
+    "expected_evidence": [
+      "Validator report-only JSON output",
+      "Strict validator exit code",
+      "Committed phase gate artifact"
+    ],
+    "stop_conditions": [
+      "Any required decision is missing or not explicitly approved",
+      "More than one or zero pilot models are selected",
+      "An agent attempts to choose business values without owner approval"
+    ]
+  },
+  "release_commit": "b593ea1",
+  "environment": "local",
+  "verification": {
+    "report_only_command": "python3 tools/validate_pilot_decision_inputs.py",
+    "report_only_exit_code": 0,
+    "report_only_status": "blocked_owner_input_required",
+    "strict_command": "python3 tools/validate_pilot_decision_inputs.py --require-approved",
+    "strict_exit_code": 1,
+    "strict_exit_code_expected": true,
+    "required_fields_remaining": 40,
+    "selected_pilot_models": [],
+    "owner_signoff_rows_remaining": 4,
+    "production_approval": "not_approved",
+    "release_contract_validation": "passed",
+    "release_contract_required_files": 21,
+    "phpunit": "passed without coverage driver; 11 tests and 46 assertions",
+    "composer_audit": "passed; 0 advisories",
+    "composer_validate_strict": "passed",
+    "clean_sqlite_migration": "passed",
+    "git_diff_check": "passed"
+  },
+  "scope_completed": [
+    "Added pilot decision validation to the repository and CI report-only checks.",
+    "Added an opt-in strict CI gate for explicitly approved workflows.",
+    "Documented the Phase 1 gate in the release operations runbook.",
+    "Recorded this evidence artifact."
+  ],
+  "scope_intentionally_not_completed": [
+    "No niche selected",
+    "No target customer selected",
+    "No pilot model selected",
+    "No partner or financial policy invented",
+    "No staging or production action performed"
+  ],
+  "approval_status": "Blocked",
+  "open_blockers": [
+    "Owner must complete and approve the pilot decision template before Phase 1 implementation can begin."
+  ],
+  "limitations": [
+    "Local verification does not establish partner contracts, production credentials, payout behavior, legal approval, capacity, or business viability.",
+    "Coverage-enabled PHPUnit was not used for the pass claim because the local PHP runtime has no coverage driver; CI is configured with PCOV."
+  ]
+}
