@@ -15,19 +15,81 @@ MODEL_OPTIONS = {
     "b2b": "B2B merchant affiliate tracking/reconciliation",
     "hybrid": "Hybrid model",
 }
+APPROVAL_ROLES = (
+    "Product owner",
+    "Release owner",
+    "Security owner",
+    "Finance/payout owner",
+)
 
 
 def required_lines(text: str) -> list[str]:
-    return [
-        line.strip()
-        for line in text.splitlines()
-        if REQUIRED_MARKER in line
-    ]
+    return [line.strip() for line in text.splitlines() if REQUIRED_MARKER in line]
 
 
 def checked_models(text: str) -> list[str]:
-    matches = re.findall(r"- \[x\]\s*(.+)", text, flags=re.IGNORECASE)
-    return [label.strip() for label in matches if label.strip() in MODEL_OPTIONS.values()]
+    """Return selected model labels from plain or backtick-wrapped Markdown checkboxes."""
+    matches = re.findall(r"-\s+`?\[([ xX])\]`?\s*(.+)", text)
+    return [
+        label.strip()
+        for mark, label in matches
+        if mark.lower() == "x" and label.strip() in MODEL_OPTIONS.values()
+    ]
+
+
+def approval_rows(text: str) -> list[str]:
+    """Read only the owner sign-off rows, never similarly named fields above them."""
+    signoff_section = text.split("## 8. Owner sign-off", 1)[-1]
+    signoff_table = signoff_section.split("## Current status", 1)[0]
+    return [
+        line.strip()
+        for line in signoff_table.splitlines()
+        if line.startswith("|")
+        and any(line.startswith(f"| {role} |") for role in APPROVAL_ROLES)
+    ]
+
+
+def unapproved_rows(rows: list[str]) -> list[str]:
+    unapproved: list[str] = []
+    for row in rows:
+        fields = [field.strip() for field in row.strip().strip("|").split("|")]
+        if len(fields) < 5 or fields[2].lower() != "approve":
+            unapproved.append(row)
+    return unapproved
+
+
+def validate_text(text: str) -> dict[str, object]:
+    """Return deterministic validation facts for a pilot decision document."""
+    required = required_lines(text)
+    models = checked_models(text)
+    rows = approval_rows(text)
+    unapproved = unapproved_rows(rows)
+    blocking_reasons: list[str] = []
+
+    if required:
+        blocking_reasons.append(f"{len(required)} required fields still contain {REQUIRED_MARKER}")
+    if len(models) != 1:
+        blocking_reasons.append(
+            f"exactly one approved pilot model must be selected; checked={len(models)}"
+        )
+    if len(rows) != len(APPROVAL_ROLES):
+        blocking_reasons.append(
+            f"all {len(APPROVAL_ROLES)} owner sign-off rows are required; found={len(rows)}"
+        )
+    elif unapproved:
+        blocking_reasons.append(
+            f"{len(unapproved)} owner sign-off rows are not explicitly approved"
+        )
+
+    return {
+        "status": "ready_for_phase_1" if not blocking_reasons else "blocked_owner_input_required",
+        "required_fields_remaining": len(required),
+        "selected_pilot_models": models,
+        "owner_signoff_rows_remaining": len(unapproved) if rows else len(APPROVAL_ROLES),
+        "blocking_reasons": blocking_reasons,
+        "phase_1_status": "eligible" if not blocking_reasons else "blocked",
+        "production_approval": "not_approved",
+    }
 
 
 def main() -> int:
@@ -45,46 +107,10 @@ def main() -> int:
         print(json.dumps({"status": "error", "error": "pilot decision template missing"}, indent=2))
         return 2
 
-    text = TEMPLATE.read_text(encoding="utf-8")
-    missing: list[str] = []
-    required = required_lines(text)
-    if required:
-        missing.append(f"{len(required)} required fields still contain {REQUIRED_MARKER}")
-
-    models = checked_models(text)
-    if len(models) != 1:
-        missing.append(f"exactly one approved pilot model must be selected; checked={len(models)}")
-
-    approval_roles = ("Product owner", "Release owner", "Security owner", "Finance/payout owner")
-    signoff_section = text.split("## 8. Owner sign-off", 1)[-1]
-    approval_rows = [
-        line.strip()
-        for line in signoff_section.split("## Current status", 1)[0].splitlines()
-        if line.startswith("|") and any(line.startswith(f"| {role} |") for role in approval_roles)
-    ]
-    unapproved_rows = [
-        line for line in approval_rows
-        if len([field.strip() for field in line.strip().strip("|").split("|")]) < 5
-        or [field.strip() for field in line.strip().strip("|").split("|")][2].lower() != "approve"
-    ]
-    if len(approval_rows) != len(approval_roles):
-        missing.append(f"all {len(approval_roles)} owner sign-off rows are required; found={len(approval_rows)}")
-    elif unapproved_rows:
-        missing.append(f"{len(unapproved_rows)} owner sign-off rows are not explicitly approved")
-
-    status = "ready_for_phase_1" if not missing else "blocked_owner_input_required"
-    result = {
-        "status": status,
-        "template": str(TEMPLATE.relative_to(ROOT)),
-        "required_fields_remaining": len(required),
-        "selected_pilot_models": models,
-        "owner_signoff_rows_remaining": len(unapproved_rows) if approval_rows else len(approval_roles),
-        "blocking_reasons": missing,
-        "phase_1_status": "eligible" if not missing else "blocked",
-        "production_approval": "not_approved",
-    }
+    result = validate_text(TEMPLATE.read_text(encoding="utf-8"))
+    result["template"] = str(TEMPLATE.relative_to(ROOT))
     print(json.dumps(result, indent=2))
-    return 0 if not args.require_approved or not missing else 1
+    return 0 if not args.require_approved or result["blocking_reasons"] == [] else 1
 
 
 if __name__ == "__main__":
