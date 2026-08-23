@@ -21,8 +21,8 @@ jobs:
       SESSION_DRIVER: array
       QUEUE_CONNECTION: sync
       MAIL_MAILER: array
-      AFFILIATE_API_KEY: ci-test-key
-      AFFILIATE_API_SECRET: ci-test-secret
+      AFFILIATE_API_KEY: test-api-key
+      AFFILIATE_API_SECRET: test-api-secret
       ADMIN_PASSWORD: ci-admin-password
       ADMIN_EMAIL: admin@example.test
     steps:
@@ -58,8 +58,13 @@ jobs:
         run: |
           python3 -m py_compile tools/*.py
           python3 tools/validate_release_contracts.py
+          python3 tools/validate_pilot_decision_inputs.py
           php artisan route:list --path=api -v
           git diff --check
+
+      - name: Enforce approved pilot decision when enabled
+        if: ${{ vars.ENFORCE_PILOT_DECISION == 'true' }}
+        run: python3 tools/validate_pilot_decision_inputs.py --require-approved
 
       - name: Run migrations
         run: php artisan migrate:fresh --force

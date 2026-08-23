@@ -122,6 +122,9 @@ For advanced setup and API details, see `PARTNER_INTEGRATION_CONTRACT.md` and `A
 | `docs/CONTROL_EXECUTION_MATRIX.md` | Local versus staging-only control boundary |
 | `docs/STAGING_OWNER_EXECUTION_GUIDE.md` | Step-by-step staging certification and evidence procedure |
 | `STAGING_BLOCKER_REGISTER.md` | Owner, evidence, and stop-condition register for staging blockers |
+| `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` | Evidence-driven implementation phases and anti-hallucination execution rules |
+| `docs/PILOT_DECISION_INPUT_TEMPLATE.md` | Owner inputs required to unblock the commercial pilot plan |
+| `tools/validate_pilot_decision_inputs.py` | Strict Phase 1 owner-input and approval gate |
 | `STAGING_READINESS_REPORT.md` | Partner certification and payout reconciliation readiness |
 | `IMPLEMENTATION_PROGRESS.md` | Cumulative remediation status and verification evidence |
 | `FINAL_IMPLEMENTATION_SUMMARY.md` | Summary of the previous local-code remediation batch |
@@ -154,6 +157,9 @@ No license has been declared in the repository. Confirm the appropriate SPDX cla
 - `docs/CONTROL_EXECUTION_MATRIX.md` – Local versus staging-only execution boundary.
 - `docs/STAGING_OWNER_EXECUTION_GUIDE.md` – Staging certification and evidence procedure.
 - `STAGING_BLOCKER_REGISTER.md` – Owner-assigned staging blocker register.
+- `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` – Evidence-driven implementation phases and AI-agent safety rules.
+- `docs/PILOT_DECISION_INPUT_TEMPLATE.md` – Required owner decisions before Phase 1 implementation.
+- `tools/validate_pilot_decision_inputs.py` – Report-only and strict Phase 1 input validation.
 
 ### Current Status
 - `STAGING_READINESS_REPORT.md` – Staging certification and payout reconciliation results.

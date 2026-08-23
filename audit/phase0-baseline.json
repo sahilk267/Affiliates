@@ -1,0 +1,49 @@
+{
+  "phase": "Phase 0 - baseline lock and ownership prerequisites",
+  "recorded_at": "2026-08-23T00:00:00Z",
+  "repository": "sahilk267/Affiliates",
+  "branch": "main",
+  "baseline_commit": "129aaac3dae0cb013df1d2988c878dd02ff45485",
+  "baseline_commit_message": "Harden affiliate platform and add release evidence",
+  "remote_status_at_baseline": "origin/main synchronized at baseline commit before this phase",
+  "framework_constraints": {
+    "php": "^8.2",
+    "laravel": "^12.0",
+    "phpunit": "^11.0"
+  },
+  "local_verification": {
+    "clean_migration": "passed after clearing stale deployment-specific bootstrap caches",
+    "phpunit_tests": 11,
+    "phpunit_assertions": 46,
+    "phpunit_status": "passed",
+    "release_contract_validation": "passed",
+    "composer_advisories": 0
+  },
+  "release_score": {
+    "score_out_of_100": 80.31,
+    "measurable_category_count": 13
+  },
+  "staging_blockers": {
+    "total": 14,
+    "closed": 0,
+    "open_or_incomplete": 14,
+    "production_approval": "blocked"
+  },
+  "working_tree_changes_for_this_plan": [
+    "CONCEPT_VIABILITY_ASSESSMENT.md",
+    "DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md",
+    "README.md",
+    "tools/validate_release_contracts.py",
+    "audit/phase0-baseline.json"
+  ],
+  "known_baseline_issue": "Tracked bootstrap/cache files can contain deployment-specific paths; local verification must clear generated caches before artisan commands and restore tracked fixtures afterward.",
+  "owner_inputs_required_before_phase_1": [
+    "approved primary niche",
+    "approved target customer segment",
+    "approved pilot owner",
+    "named owners and due dates for staging blocker register",
+    "decision whether the pilot is consumer, B2B infrastructure, or hybrid"
+  ],
+  "phase_0_status": "ready_for_owner_input",
+  "production_status": "not_approved"
+}

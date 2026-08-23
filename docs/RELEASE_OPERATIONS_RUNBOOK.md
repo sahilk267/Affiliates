@@ -142,6 +142,20 @@ python3 tools/validate_staging_blockers.py --require-ready
 
 A non-zero strict-gate result blocks production approval. The authoritative register is `STAGING_BLOCKER_REGISTER.md`.
 
+Before Phase 1 business implementation, validate the owner decision template in report-only mode:
+
+```bash
+python3 tools/validate_pilot_decision_inputs.py
+```
+
+This must report the current missing fields, selected pilot model, and owner sign-off state. The strict gate is intentionally separate because the repository template starts incomplete:
+
+```bash
+python3 tools/validate_pilot_decision_inputs.py --require-approved
+```
+
+The strict command must be used only in an approved pilot-release workflow. CI runs the report-only check on every build and can enforce the strict check when the repository variable `ENFORCE_PILOT_DECISION=true` is explicitly enabled. A non-zero strict result means Phase 1 is blocked; the agent must request owner inputs rather than selecting a niche, audience, business model, partner, rate, or approval on its own.
+
 ## 8. Observability and alerting
 
 Centralized logs should retain the structured fields emitted by the application, especially `request_id`, `partner_event_id`, `click_id`, `conversion_id`, `user_id`, `order_id`, `transaction_id`, `reference_id`, and idempotency keys. Alerting should cover authentication failures, rate-limit spikes, conversion processing failures, reward credit failures, wallet debit failures, payout state-transition errors, and reconciliation exceptions.
