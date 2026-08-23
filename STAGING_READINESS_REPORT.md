@@ -16,12 +16,13 @@ No production credentials, live partner systems, real payouts, or customer data 
 | Payout reconciliation checker | `tools/reconcile_payouts.py` | Compares platform/provider CSV exports for missing, unexpected, duplicate, amount, status, and external-reference mismatches |
 | Staging acceptance record | `docs/STAGING_ACCEPTANCE_RECORD.md` | Captures release identity, automated gates, partner certification, payout controls, observability, rollback, and sign-off evidence |
 | Operations runbook | `docs/RELEASE_OPERATIONS_RUNBOOK.md` | Defines migration rehearsal, secret rotation, partner certification, payout reconciliation, rollback, and alerting procedures |
+| Pilot decision gate | `tools/validate_pilot_decision_inputs.py` and `audit/phase1-gate.json` | Blocks Phase 1 business implementation until owner-approved niche, audience, model, partner, policy, metric, and sign-off inputs exist |
 
 ## Local evidence
 
 | Check | Result | Artifact |
 |---|---|---|
-| Python tool compilation | Passed | `python3 -m py_compile` for all three tools |
+| Python tool compilation | Passed | `python3 -m py_compile` for all repository Python tools |
 | Sample payout reconciliation | Passed; 2 matched IDs, 0 exceptions | `audit/payout-reconciliation-final-2026-08-20.json` |
 | Partner negative-contract checks | Passed: health 200, invalid signature 401, expired timestamp 401, signed malformed payload 422 | `audit/partner-contract-check-final-2026-08-20.json` |
 | Read-only smoke | Passed: 5/5 requests successful, database connected | `audit/staging-smoke-check-final-2026-08-20.json` |
@@ -31,9 +32,10 @@ No production credentials, live partner systems, real payouts, or customer data 
 | Composer audit | Passed with 0 advisories | `audit/composer-audit-laravel12-2026-08-20.json` |
 | Whitespace integrity | Passed | `git diff --check` |
 | Release contract validator | Passed | `tools/validate_release_contracts.py` |
+| Phase 1 pilot-input validator | Passed in report-only mode; strict gate correctly blocked | `audit/phase1-gate.json` |
 | Dynamic audit refresh | Passed; 0 unresolved findings | `audit/issues.json`, `audit/release-score.json` |
 
-The partner checker’s valid mutation section is intentionally skipped in the local evidence because no live staging credentials or approved staging fixtures were supplied. That is a control boundary, not a failed test.
+The partner checker’s valid mutation section is intentionally skipped in the local evidence because no live staging credentials or approved staging fixtures were supplied. That is a control boundary, not a failed test. The Phase 1 pilot-input validator is also intentionally blocked because no owner-approved commercial decisions were supplied; the agent must not fill those fields with inferred values.
 
 ## Staging execution procedure
 
