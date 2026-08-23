@@ -6,7 +6,9 @@
     "objective": "Validate whether owner-approved commercial inputs exist before business implementation.",
     "allowed_files_or_commands": [
       "tools/validate_pilot_decision_inputs.py",
+      "tools/test_validate_pilot_decision_inputs.py",
       "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+      "audit/phase1-owner-input-capture.json",
       "python3 tools/validate_pilot_decision_inputs.py",
       "python3 tools/validate_pilot_decision_inputs.py --require-approved"
     ],
@@ -15,33 +17,37 @@
     "known_facts": [
       "The repository contains an incomplete pilot decision template.",
       "The pilot validator supports report-only and strict modes.",
-      "The current release commit is recorded in this artifact.",
+      "The owner supplied a draft direction for a consumer affiliate comparison with post-confirmation reward points.",
       "No production approval is implied by local validation."
     ],
     "unknowns": [
       "Approved primary niche or category",
       "Approved target customer segment",
-      "Approved consumer, B2B, or hybrid pilot model",
+      "Approved reward-points model wording and formal decision record",
       "Approved partner shortlist and status",
-      "Approved reward, referral, reversal, fraud, and payout policies",
+      "Approved reward, referral, reversal, fraud, gift, and payout policies",
       "Approved pilot metric thresholds",
-      "Named owners and sign-offs"
+      "Named owners and sign-offs",
+      "Exact reward allocation basis and confirmation period by partner"
     ],
     "required_user_or_owner_inputs": [
-      "Complete and approve docs/PILOT_DECISION_INPUT_TEMPLATE.md"
+      "Complete and approve docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+      "Resolve the allocation-basis and confirmation-period ambiguities recorded in audit/phase1-owner-input-capture.json"
     ],
     "expected_evidence": [
       "Validator report-only JSON output",
       "Strict validator exit code",
+      "Validator regression-test output",
       "Committed phase gate artifact"
     ],
     "stop_conditions": [
       "Any required decision is missing or not explicitly approved",
       "More than one or zero pilot models are selected",
-      "An agent attempts to choose business values without owner approval"
+      "An agent attempts to choose business values without owner approval",
+      "The reward allocation basis or confirmation period remains ambiguous"
     ]
   },
-  "release_commit": "b593ea1",
+  "release_commit": "c599bb8",
   "environment": "local",
   "verification": {
     "report_only_command": "python3 tools/validate_pilot_decision_inputs.py",
@@ -50,12 +56,15 @@
     "strict_command": "python3 tools/validate_pilot_decision_inputs.py --require-approved",
     "strict_exit_code": 1,
     "strict_exit_code_expected": true,
-    "required_fields_remaining": 40,
-    "selected_pilot_models": [],
+    "required_fields_remaining": 39,
+    "selected_pilot_models": [
+      "Consumer affiliate comparison with post-confirmation reward points"
+    ],
     "owner_signoff_rows_remaining": 4,
     "production_approval": "not_approved",
     "release_contract_validation": "passed",
-    "release_contract_required_files": 21,
+    "release_contract_required_files": 22,
+    "validator_regression_tests": "passed; 4 tests",
     "phpunit": "passed without coverage driver; 11 tests and 46 assertions",
     "composer_audit": "passed; 0 advisories",
     "composer_validate_strict": "passed",
@@ -63,21 +72,22 @@
     "git_diff_check": "passed"
   },
   "scope_completed": [
-    "Added pilot decision validation to the repository and CI report-only checks.",
-    "Added an opt-in strict CI gate for explicitly approved workflows.",
-    "Documented the Phase 1 gate in the release operations runbook.",
-    "Recorded this evidence artifact."
+    "Captured the owner-provided commercial direction in audit/phase1-owner-input-capture.json.",
+    "Added the post-confirmation reward-points model to the draft decision template as the selected direction.",
+    "Added validator regression coverage for the model and sign-off parsing.",
+    "Recorded this updated evidence artifact."
   ],
   "scope_intentionally_not_completed": [
-    "No niche selected",
-    "No target customer selected",
-    "No pilot model selected",
-    "No partner or financial policy invented",
+    "No bounded initial product category selected",
+    "No target customer scope beyond broad online shoppers selected",
+    "No partner approval or platform permission asserted",
+    "No reward allocation, gift, reversal, fraud, payout, or confirmation policy finalized",
     "No staging or production action performed"
   ],
   "approval_status": "Blocked",
   "open_blockers": [
-    "Owner must complete and approve the pilot decision template before Phase 1 implementation can begin."
+    "Owner must complete and approve the remaining pilot policy, partner, metrics, owner, and sign-off fields before Phase 1 implementation can begin.",
+    "The phrase '40% ka' and the 4% example need one exact allocation basis before any financial calculation or code change."
   ],
   "limitations": [
     "Local verification does not establish partner contracts, production credentials, payout behavior, legal approval, capacity, or business viability.",
