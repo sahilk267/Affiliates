@@ -1,0 +1,49 @@
+{
+  "phase_id": 1,
+  "status": "draft_owner_input_captured",
+  "source": "User-provided conversation input",
+  "scope": "Consumer-facing online shopping comparison and affiliate referral platform",
+  "owner_provided_inputs": {
+    "customer_problem": "Online shoppers currently open multiple applications to compare product prices and discounts.",
+    "platform_value": [
+      "Aggregate external merchant links in one platform.",
+      "Make product search easier.",
+      "Rank comparable offers from top to bottom by the approved ranking policy.",
+      "Maintain price history so users can understand price movement."
+    ],
+    "transaction_model": "Users purchase on external merchant platforms through referral links; the platform is not the checkout marketplace for this model.",
+    "reward_model": "Post-confirmation affiliate reward points; the user can use points only after the merchant confirms the referral/order.",
+    "confirmation_timing": "The user described confirmation as arriving after approximately two months; exact partner-specific confirmation periods remain to be supplied.",
+    "marketing_model": "Use selected high-referral products to provide gifts to some users as a marketing mechanism and encourage repeat visits.",
+    "distribution_channels": [
+      "WhatsApp",
+      "Telegram",
+      "Creators",
+      "SEO",
+      "Community",
+      "Facebook",
+      "Instagram"
+    ],
+    "product_prioritization_direction": [
+      "Prioritize products searched frequently across approved sources during the most recent two-month period.",
+      "Then consider products with higher referral margin.",
+      "Then consider moderate-margin/moderate-sale products.",
+      "Then consider lower-margin/high-sale products."
+    ],
+    "future_scope": "The owner may add first-party products in a future phase; this is not part of the current external-referral pilot unless separately approved."
+  },
+  "reward_allocation_statement_as_provided": "The user described an example in which a 4% referral commission could be allocated as 1.5% to customer points, 1.5% to the owner's allocation, and 1% to platform scaling and maintenance, with no user-charged platform fee.",
+  "unresolved_items": [
+    "The phrase '40% ka' is ambiguous relative to the 4% example: the exact denominator and allocation basis must be confirmed.",
+    "Whether the 1.5% owner allocation is owner profit, operating reserve, or another approved category is not specified.",
+    "Whether percentages are calculated on gross order value, net eligible order value, or received commission is not specified.",
+    "The confirmation period is not necessarily identical across merchants and requires partner-specific terms.",
+    "Gift eligibility, gift budget/cap, selection method, and return/fraud treatment are not specified.",
+    "Initial pilot product categories remain broad and need a bounded category scope.",
+    "The product/data source and permission for cross-platform price and price-history data are not specified.",
+    "Partner program approval/status for Amazon, Flipkart, Myntra, Tata CLiQ, AJIO, Jio, and other platforms is not supplied.",
+    "Numeric pilot metric thresholds, named owners, formal approval links, pilot dates, and staging URL remain missing."
+  ],
+  "phase_1_status": "blocked_pending_exact_policy_and_owner_signoff",
+  "production_approval": "not_approved"
+}

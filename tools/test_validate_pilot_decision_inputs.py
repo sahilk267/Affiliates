@@ -30,15 +30,20 @@ class PilotDecisionValidatorTests(unittest.TestCase):
         result = validator.validate_text(validator.TEMPLATE.read_text(encoding="utf-8"))
 
         self.assertEqual("blocked_owner_input_required", result["status"])
-        self.assertEqual(40, result["required_fields_remaining"])
-        self.assertEqual([], result["selected_pilot_models"])
+        self.assertEqual(39, result["required_fields_remaining"])
+        self.assertEqual(
+            [validator.MODEL_OPTIONS["consumer_points"]],
+            result["selected_pilot_models"],
+        )
         self.assertEqual(4, result["owner_signoff_rows_remaining"])
         self.assertEqual("not_approved", result["production_approval"])
 
     def test_backtick_wrapped_selected_model_is_detected(self):
         self.assertEqual(
-            [validator.MODEL_OPTIONS["consumer"]],
-            validator.checked_models("- `[x]` Consumer cashback and rewards"),
+            [validator.MODEL_OPTIONS["consumer_points"]],
+            validator.checked_models(
+                "- `[x]` Consumer affiliate comparison with post-confirmation reward points"
+            ),
         )
 
     def test_owner_rows_are_scoped_to_signoff_section(self):

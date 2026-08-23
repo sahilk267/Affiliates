@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "docs/PILOT_DECISION_INPUT_TEMPLATE.md"
 REQUIRED_MARKER = "[REQUIRED]"
 MODEL_OPTIONS = {
+    "consumer_points": "Consumer affiliate comparison with post-confirmation reward points",
     "consumer": "Consumer cashback and rewards",
     "b2b": "B2B merchant affiliate tracking/reconciliation",
     "hybrid": "Hybrid model",

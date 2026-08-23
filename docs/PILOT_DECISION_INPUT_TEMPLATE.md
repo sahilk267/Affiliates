@@ -20,14 +20,15 @@
 
 ## 2. Business model decision
 
-Select exactly one initial model and record the decision owner.
+Select exactly one initial model and record the decision owner. The current owner-provided direction is recorded as a draft selection; it does not replace the required owner sign-offs or policy approvals.
 
+- `[x]` Consumer affiliate comparison with post-confirmation reward points
 - `[ ]` Consumer cashback and rewards
 - `[ ]` B2B merchant affiliate tracking/reconciliation
 - `[ ]` Hybrid model
 - Decision owner: `[REQUIRED]`
 - Decision date: `[REQUIRED]`
-- Rationale: `[REQUIRED]`
+- Rationale: Users compare external merchant offers in one place, use referral links to reach the merchant, and receive reward points only after partner confirmation.
 
 ## 3. Target market decision
 
