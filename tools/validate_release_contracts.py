@@ -26,6 +26,7 @@ REQUIRED_FILES = [
     "STAGING_BLOCKER_REGISTER.md",
     "DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md",
     "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+    "docs/PHASE1_REMAINING_DECISIONS.md",
     "tools/validate_pilot_decision_inputs.py",
     "tools/test_validate_pilot_decision_inputs.py",
     "tools/validate_staging_blockers.py",

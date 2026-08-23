@@ -8,6 +8,7 @@
       "tools/validate_pilot_decision_inputs.py",
       "tools/test_validate_pilot_decision_inputs.py",
       "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+      "docs/PHASE1_REMAINING_DECISIONS.md",
       "audit/phase1-owner-input-capture.json",
       "python3 tools/validate_pilot_decision_inputs.py",
       "python3 tools/validate_pilot_decision_inputs.py --require-approved"
@@ -63,7 +64,7 @@
     "owner_signoff_rows_remaining": 4,
     "production_approval": "not_approved",
     "release_contract_validation": "passed",
-    "release_contract_required_files": 22,
+    "release_contract_required_files": 23,
     "validator_regression_tests": "passed; 4 tests",
     "phpunit": "passed without coverage driver; 11 tests and 46 assertions",
     "composer_audit": "passed; 0 advisories",
@@ -75,6 +76,7 @@
     "Captured the owner-provided commercial direction in audit/phase1-owner-input-capture.json.",
     "Added the post-confirmation reward-points model to the draft decision template as the selected direction.",
     "Added validator regression coverage for the model and sign-off parsing.",
+    "Added a structured remaining-decisions checklist for owner completion.",
     "Recorded this updated evidence artifact."
   ],
   "scope_intentionally_not_completed": [
