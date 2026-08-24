@@ -28,6 +28,7 @@ REQUIRED_FILES = [
     "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
     "docs/PHASE1_REMAINING_DECISIONS.md",
     "docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md",
+    "docs/API_INDEPENDENT_CATALOG_FOUNDATION.md",
     "tools/validate_pilot_decision_inputs.py",
     "tools/test_validate_pilot_decision_inputs.py",
     "tools/validate_staging_blockers.py",

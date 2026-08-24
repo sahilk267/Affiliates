@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ProductLink extends Model
 {
@@ -57,6 +59,22 @@ class ProductLink extends Model
     public function link(): BelongsTo
     {
         return $this->belongsTo(Link::class);
+    }
+
+    /**
+     * Historical source observations for this merchant offer.
+     */
+    public function priceSnapshots(): HasMany
+    {
+        return $this->hasMany(ProductPriceSnapshot::class);
+    }
+
+    /**
+     * Most recent source observation for this merchant offer.
+     */
+    public function latestPriceSnapshot(): HasOne
+    {
+        return $this->hasOne(ProductPriceSnapshot::class)->latestOfMany('observed_at');
     }
 
     /**
