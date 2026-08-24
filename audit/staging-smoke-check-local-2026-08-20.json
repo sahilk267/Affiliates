@@ -1,18 +1,17 @@
 {
+  "historical": true,
   "health_status": 200,
   "health_response": {
     "status": "healthy",
     "timestamp": "2026-08-20T14:59:01+00:00",
     "database": "connected"
-  }
-}
-{
+  },
   "requests": 5,
   "successful": 5,
   "failed": 0,
   "min_ms": 5.61,
   "median_ms": 7.66,
   "p95_ms": 8.35,
-  "max_ms": 9.59
+  "max_ms": 9.59,
+  "mutation_checks": "skipped; pass --allow-mutations explicitly in an approved staging run"
 }
-Mutation checks skipped; pass --allow-mutations explicitly in an approved staging run.

@@ -34,12 +34,12 @@ Select exactly one initial model and record the decision owner. The current owne
 
 | Field | Owner input |
 |---|---|
-| Primary niche/category | `[REQUIRED — one initial niche]` |
-| Target customer segment | `[REQUIRED]` |
+| Primary niche/category | `Owner direction: top 100 products across platforms and Google based on research; bounded initial category and exact “top 100” definition remain required.` |
+| Target customer segment | `Owner direction: all online users; measurable first-pilot segment remains required.` |
 | Geography/language scope | `[REQUIRED]` |
-| Primary user problem | `[REQUIRED]` |
-| Why ZenithSoles is different | `[REQUIRED]` |
-| Out-of-scope audiences/categories | `[REQUIRED]` |
+| Primary user problem | `Users currently visit multiple applications to compare prices and discounts; ZenithSoles should simplify discovery in one place.` |
+| Why ZenithSoles is different | `Cross-platform product intelligence, price comparison, permitted price history, tracked referral links, and post-confirmation reward points; formal positioning approval remains required.` |
+| Out-of-scope audiences/categories | `Direct merchant checkout, fulfilment, and unapproved live data sources are out of scope for the current external-affiliate model; owner confirmation remains required.` |
 | Evidence source | `[REQUIRED — interviews, approved research, or owner decision]` |
 
 ## 4. Initial partner decision
@@ -48,9 +48,9 @@ List only partners with verified approval or explicitly mark them as prospects. 
 
 | Partner/network | Status: prospect/approved staging/approved pilot | Contract/source | Technical owner | Required certification |
 |---|---|---|---|---|
-| `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | conversion / points / payout |
-| `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | conversion / points / payout |
-| `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | conversion / points / payout |
+| Amazon | `Direct API candidate; Creators API onboarding and approval pending` | `audit/phase1-partner-research-2026-08-24.md` | `[REQUIRED]` | catalog / link / conversion / reward |
+| Flipkart | `Direct API candidate; registered-affiliate approval and credentials pending` | `audit/phase1-partner-research-2026-08-24.md` | `[REQUIRED]` | product / offer / link / report / reward |
+| `[REQUIRED — third partner]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | conversion / points / payout |
 
 ## 5. Reward and financial policy inputs
 
@@ -58,11 +58,11 @@ These values must come from approved partner terms or a signed product/finance d
 
 | Policy | Approved value/decision | Source or approver |
 |---|---|---|
-| Cashback basis | `[REQUIRED]` | `[REQUIRED]` |
-| Cashback percentage/points rule | `[REQUIRED]` | `[REQUIRED]` |
+| Reward basis | `Owner direction: received affiliate commission after partner confirmation; gross/net deductions and reversal treatment remain pending.` | `Owner message; finance approval required` |
+| Customer allocation and points rule | `Owner direction: 40% of received affiliate commission to customer points; 10 points = ₹1 for voucher redemption; formal approval pending.` | `Owner message; finance/voucher approval required` |
 | Referral eligibility | `[REQUIRED]` | `[REQUIRED]` |
 | Referral reward rule | `[REQUIRED]` | `[REQUIRED]` |
-| Pending-to-confirmed condition | `[REQUIRED]` | `[REQUIRED]` |
+| Pending-to-confirmed condition | `Owner estimate: approximately two months because partner confirmation/payment may take 2–3 months; partner-specific rule required.` | `[REQUIRED — partner terms/approver]` |
 | Reversal/return treatment | `[REQUIRED]` | `[REQUIRED]` |
 | Minimum withdrawal | `[REQUIRED]` | `[REQUIRED]` |
 | Payout method and fee | `[REQUIRED]` | `[REQUIRED]` |
@@ -79,7 +79,7 @@ Define thresholds before the pilot begins. If the owner has not approved a thres
 | Reward cost per confirmed order | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
 | Contribution margin | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
 | 30-day repeat purchase | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
-| Missing-cashback ticket rate | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
+| Missing-reward or attribution ticket rate | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
 | Fraud/dispute rate | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
 | Settlement time | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` | `[REQUIRED]` |
 
@@ -113,4 +113,4 @@ Define thresholds before the pilot begins. If the owner has not approved a thres
 
 ## Current status
 
-**Blocked — owner inputs and approvals are not yet supplied.** This document is a request for factual inputs, not permission for an AI agent to choose the business strategy.
+**Blocked — owner inputs and approvals are incomplete.** The owner has supplied the external-merchant comparison direction and post-confirmation 40/40/20 reward direction, but this document still requires bounded scope, partner approvals, data permissions, detailed reversal/voucher/gift rules, numeric metrics, named owners, dates, and sign-offs. It is a request for factual inputs, not permission for an AI agent to choose the business strategy.

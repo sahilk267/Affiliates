@@ -2,7 +2,7 @@
 
 ## Executive result
 
-The next staging-readiness batch is complete. The repository now includes a non-mutating partner contract checker, a deterministic payout reconciliation checker, and a staging acceptance record for release owners. The final local verification passed with **zero Composer advisories**, clean migrations, PHP lint, `git diff --check`, and **11 tests with 46 assertions**. CI now enables PCOV, generates Clover coverage, and uploads a per-PHP-version coverage artifact.
+The current staging-readiness evidence is complete for the repository-level controls. The repository includes a non-mutating partner contract checker, a deterministic payout reconciliation checker, a staging acceptance record, and an API-independent catalog foundation. The latest local verification passed with **zero Composer advisories**, clean migrations, PHP lint, `git diff --check`, and **15 tests with 61 assertions**. CI enables PCOV, generates Clover coverage, and uploads a per-PHP-version coverage artifact.
 
 The refreshed dynamic audit scan reports **0 unresolved evidence-based findings** and a calculated release score of **80.31/100** across measurable repository controls. The security baseline now includes globally registered browser-hardening headers, covered by the feature suite, and the testing baseline now includes CI coverage artifact generation. Performance capacity and AI safety remain explicitly **NOT MEASURABLE** rather than being assigned invented scores. The score and issue inventory are stored in `audit/release-score.json` and `audit/issues.json`.
 
@@ -16,7 +16,8 @@ No production credentials, live partner systems, real payouts, or customer data 
 | Payout reconciliation checker | `tools/reconcile_payouts.py` | Compares platform/provider CSV exports for missing, unexpected, duplicate, amount, status, and external-reference mismatches |
 | Staging acceptance record | `docs/STAGING_ACCEPTANCE_RECORD.md` | Captures release identity, automated gates, partner certification, payout controls, observability, rollback, and sign-off evidence |
 | Operations runbook | `docs/RELEASE_OPERATIONS_RUNBOOK.md` | Defines migration rehearsal, secret rotation, partner certification, payout reconciliation, rollback, and alerting procedures |
-| Pilot decision gate | `tools/validate_pilot_decision_inputs.py` and `audit/phase1-gate.json` | Blocks Phase 1 business implementation until owner-approved niche, audience, model, partner, policy, metric, and sign-off inputs exist |
+| Pilot decision gate | `tools/validate_pilot_decision_inputs.py` and `audit/phase1-gate.json` | Blocks Phase 1 business implementation until the remaining category, partner, policy, metric, owner, and sign-off inputs are approved |
+| API-independent catalog foundation | `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md` and `audit/phase3-foundation.json` | Provides local snapshot/history/ranking contracts without claiming external API or merchant data |
 
 ## Local evidence
 
@@ -28,14 +29,14 @@ No production credentials, live partner systems, real payouts, or customer data 
 | Read-only smoke | Passed: 5/5 requests successful, database connected | `audit/staging-smoke-check-final-2026-08-20.json` |
 | PHP lint | Passed | Final verification session |
 | Clean SQLite migration | Passed through all migrations | Existing migration evidence and final verification session |
-| PHPUnit | **11 tests, 46 assertions, all passing** | Latest local verification artifact |
+| PHPUnit | **15 tests, 61 assertions, all passing** | Latest local verification session; dated 11-test evidence is historical |
 | Composer audit | Passed with 0 advisories | `audit/composer-audit-laravel12-2026-08-20.json` |
 | Whitespace integrity | Passed | `git diff --check` |
 | Release contract validator | Passed | `tools/validate_release_contracts.py` |
 | Phase 1 pilot-input validator | Passed in report-only mode; strict gate correctly blocked | `audit/phase1-gate.json` |
 | Dynamic audit refresh | Passed; 0 unresolved findings | `audit/issues.json`, `audit/release-score.json` |
 
-The partner checker’s valid mutation section is intentionally skipped in the local evidence because no live staging credentials or approved staging fixtures were supplied. That is a control boundary, not a failed test. The Phase 1 pilot-input validator is also intentionally blocked because no owner-approved commercial decisions were supplied; the agent must not fill those fields with inferred values.
+The partner checker’s valid mutation section is intentionally skipped in the local evidence because no live staging credentials or approved staging fixtures were supplied. That is a control boundary, not a failed test. The Phase 1 pilot-input validator remains blocked because only the model direction and some commercial context are captured; category scope, partner approvals, data permissions, ranking weights, detailed reward/voucher/reversal/gift policy, metrics, owners, dates, and sign-offs remain incomplete.
 
 ## Staging execution procedure
 
@@ -80,7 +81,7 @@ A non-zero exit status blocks the payout batch. Every exception must be assigned
 
 ## Controlled-staging execution package
 
-The local-versus-staging boundary is documented in `docs/CONTROL_EXECUTION_MATRIX.md`. The archived credential-free evidence bundle is under `audit/credential-free/` and includes release-contract validation, Composer audit, PHPUnit output, and the refreshed release-score output. The bundle confirms PHP ^8.2, Laravel ^12.0, PHPUnit ^11.0, zero Composer advisories, and 11 passing tests with 46 assertions.
+The local-versus-staging boundary is documented in `docs/CONTROL_EXECUTION_MATRIX.md`. The dated credential-free evidence bundle is under `audit/credential-free/` and is historical. Current repository-level evidence is recorded in `audit/RELEASE_READINESS_INVENTORY.md`, `audit/reports/latest.md`, and `audit/phase3-foundation.json`; the latest local suite has 15 passing tests with 61 assertions.
 
 The blocker completeness check reports **14 total staging blockers, 0 closed, and 14 open or incomplete**. This is expected for an unassigned handoff template and means production approval remains blocked. The result is archived in `audit/blocker-completeness/staging-blocker-status.json`.
 
@@ -97,9 +98,11 @@ The payout owner must complete a provider-backed reconciliation dry run and conf
 ## References
 
 1. [`LARAVEL12_UPGRADE_REPORT.md`](LARAVEL12_UPGRADE_REPORT.md), Laravel 12 dependency upgrade and security verification.
-2. [`PARTNER_INTEGRATION_CONTRACT.md`](PARTNER_INTEGRATION_CONTRACT.md), partner API and idempotency contract.
-3. [`docs/RELEASE_OPERATIONS_RUNBOOK.md`](docs/RELEASE_OPERATIONS_RUNBOOK.md), deployment and operational controls.
-4. [`docs/STAGING_ACCEPTANCE_RECORD.md`](docs/STAGING_ACCEPTANCE_RECORD.md), staging evidence and sign-off template.
-5. [`tools/partner_contract_check.py`](tools/partner_contract_check.py), partner certification checker.
-6. [`tools/reconcile_payouts.py`](tools/reconcile_payouts.py), payout reconciliation checker.
-7. [`tools/staging_smoke_test.py`](tools/staging_smoke_test.py), bounded read-only smoke and latency harness.
+2. [`audit/phase1-partner-research-2026-08-24.md`](audit/phase1-partner-research-2026-08-24.md), partner/API research and source boundaries.
+3. [`docs/API_INDEPENDENT_CATALOG_FOUNDATION.md`](docs/API_INDEPENDENT_CATALOG_FOUNDATION.md), source-agnostic catalog and ranking foundation.
+4. [`PARTNER_INTEGRATION_CONTRACT.md`](PARTNER_INTEGRATION_CONTRACT.md), partner API and idempotency contract.
+5. [`docs/RELEASE_OPERATIONS_RUNBOOK.md`](docs/RELEASE_OPERATIONS_RUNBOOK.md), deployment and operational controls.
+6. [`docs/STAGING_ACCEPTANCE_RECORD.md`](docs/STAGING_ACCEPTANCE_RECORD.md), staging evidence and sign-off template.
+7. [`tools/partner_contract_check.py`](tools/partner_contract_check.py), partner certification checker.
+8. [`tools/reconcile_payouts.py`](tools/reconcile_payouts.py), payout reconciliation checker.
+9. [`tools/staging_smoke_test.py`](tools/staging_smoke_test.py), bounded read-only smoke and latency harness.

@@ -162,11 +162,12 @@ This directory contains comprehensive project rules for the ZenithSoles Affiliat
 
 ## 🔗 **Related Documentation**
 
-- **[Project Architecture](../docs/architecture.md)** - System architecture overview
-- **[Database Schema](../docs/db-schema.md)** - Database design and relationships
-- **[Testing Guidelines](../docs/TESTING.md)** - Testing procedures and standards
-- **[Deployment Guide](../docs/DEPLOY_HOSTINGER.md)** - Deployment procedures
-- **[Project Notes](../NOTES.md)** - Current project status and progress
+- **[Architecture](../docs/architecture.md)** - Current architecture and boundaries
+- **[API-independent catalog foundation](../docs/API_INDEPENDENT_CATALOG_FOUNDATION.md)** - Source-agnostic catalog, snapshots, and ranking contracts
+- **[Testing and release evidence](../STAGING_READINESS_REPORT.md)** - Current verification and staging boundary
+- **[Release runbook](../docs/RELEASE_OPERATIONS_RUNBOOK.md)** - Deployment, rollback, secrets, and operational procedures
+- **[Phase 1 decisions](../docs/PHASE1_REMAINING_DECISIONS.md)** - Commercial decision gate
+- **[Current implementation plan](../DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md)** - Evidence-gated execution plan
 
 ## 📝 **Rule Customization**
 
@@ -184,9 +185,9 @@ This directory contains comprehensive project rules for the ZenithSoles Affiliat
 
 ---
 
-**Last Updated**: 2025-10-22
-**Version**: 1.0.0
-**Next Review**: 2025-11-22
+**Last Updated**: 2026-08-25
+**Version**: 2.0.0
+**Next Review**: 2026-09-25
 
 ---
 

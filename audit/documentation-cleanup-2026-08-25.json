@@ -1,0 +1,49 @@
+{
+  "updated_at": "2026-08-25",
+  "status": "reconciled",
+  "authoritative_sources": [
+    "README.md",
+    "DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md",
+    "STAGING_READINESS_REPORT.md",
+    "STAGING_BLOCKER_REGISTER.md",
+    "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+    "docs/PHASE1_REMAINING_DECISIONS.md",
+    "audit/phase1-gate.json",
+    "audit/phase3-foundation.json"
+  ],
+  "active_markdown_files": 43,
+  "archived_markdown_files": 22,
+  "current_release_contract_required_files": 28,
+  "phase1_required_fields_remaining": 32,
+  "phase1_owner_signoffs_remaining": 4,
+  "archive_root": "docs/archive/legacy",
+  "archived_categories": [
+    "obsolete Laravel 10/bootstrap notes",
+    "pre-Laravel-12 implementation plans",
+    "stale status and implementation snapshots",
+    "superseded release-readiness snapshot",
+    "duplicate generic rule documentation"
+  ],
+  "active_document_updates": [
+    "README.md rewritten as current source of truth",
+    "audit/RELEASE_READINESS_INVENTORY.md refreshed",
+    "audit/reports/latest.md refreshed",
+    "audit/testing.md refreshed",
+    "audit/documentation.md refreshed",
+    "docs/CONTROL_EXECUTION_MATRIX.md updated to 15 tests and 61 assertions",
+    "LARAVEL12_UPGRADE_REPORT.md updated to current test evidence",
+    ".cursor/rules/README.md and quick-reference.md repaired",
+    ".cursor/rules/project-rules.mcd updated to Laravel 12 and current status sources"
+  ],
+  "validation_boundary": "Documentation cleanup does not approve partner APIs, affiliate programs, price-data rights, financial policies, staging mutations, or production release.",
+  "archive_policy": "Archived files are retained for history only and must not be treated as current instructions, approvals, contracts, or evidence.",
+  "verification_required": [
+    "python3 tools/validate_release_contracts.py",
+    "python3 tools/validate_pilot_decision_inputs.py",
+    "composer validate --strict",
+    "composer audit",
+    "clean SQLite migration",
+    "PHPUnit",
+    "git diff --check"
+  ]
+}

@@ -14,11 +14,12 @@ This matrix prevents local verification from being mistaken for production certi
 | Python tool syntax | `python3 -m py_compile tools/*.py` | Passed |
 | PHP syntax | Repository PHP lint command | Passed |
 | Clean schema | SQLite `php artisan migrate:fresh --force` | Passed |
-| Financial/auth/API feature suite | PHPUnit | Passed; 10 tests, 37 assertions |
+| Financial/auth/API/catalog feature suite | PHPUnit | Passed; 15 tests, 61 assertions |
 | API route/middleware registration | `php artisan route:list --path=api -v` | Passed |
 | Read-only health and latency smoke | `tools/staging_smoke_test.py` | Passed locally; 5/5 health requests |
 | Negative partner authentication | `tools/partner_contract_check.py` without mutation flag | Passed locally; invalid and expired signatures rejected |
 | Sample payout reconciliation | `tools/reconcile_payouts.py` with sanitized matching exports | Passed; zero exceptions |
+| API-independent catalog foundation | `product_price_snapshots` migration, snapshot service, ranking service, and local feature tests | Passed locally; no external partner data used |
 | Dynamic repository audit | Build index, generate artifacts, generate score | Passed; current issue inventory and score refreshed |
 | CI definition checks | PHP matrix, Composer audit, release-contract validator, diff check | Repository checks passed |
 

@@ -1,168 +1,123 @@
-# ZenithSoles Affiliate Management System
+# ZenithSoles Affiliates
 
-A scalable, consumer-facing cashback and referral platform with points-based rewards system. Built with PHP (Laravel) and MySQL, designed for easy deployment on Hostinger and API integration with any website.
+ZenithSoles Affiliates is a **consumer product-comparison and affiliate-referral platform**. Users search for products across approved merchant or affiliate sources, compare source-reported offers, review timestamped price observations where permitted, and follow tracked links to complete purchases on the external merchant site. ZenithSoles does not currently act as the seller, checkout provider, fulfilment provider, or merchant of record.
 
-## 🎯 Core Features
+The repository is being implemented through an evidence-gated plan. External partner APIs, feeds, permissions, settlement terms, and production approvals are not assumed. Local fixtures and source-agnostic services may be built before those inputs arrive, but fixture tests do not prove partner or production capability.
 
-### Consumer-Facing Platform
-- **Product Listing** - Browse products from multiple platforms (Amazon, Flipkart, Myntra, etc.)
-- **Points-Based Cashback** - Earn points on every purchase (convertible to cash or gifts)
-- **"Buy with Me" Feature** - Compare prices across platforms, find best deals
-- **Referral Program** - Refer friends and earn points (non-e-commerce platforms only)
-- **Points Redemption** - Convert points to cash or redeem for gifts
-- **User Dashboard** - Track points, transactions, referrals, and earnings
+## Current project status
 
-### Admin Panel
-- **Product Management** - Add, edit, and manage products
-- **Affiliate Program Management** - Manage multiple affiliate networks
-- **Points Management** - Monitor and manage user points
-- **Cashback Settings** - Configure cashback and referral rates per program
-- **Referral Management** - Track and manage referrals
-- **Redemption Management** - Approve/reject withdrawal and gift redemption requests
-- **Analytics Dashboard** - Comprehensive analytics and reporting
+| Area | Current status |
+|---|---|
+| Framework | Laravel 12 with PHP ^8.2 and PHPUnit ^11 |
+| Local verification | Passing; current suite is 15 tests and 61 assertions without a local coverage driver |
+| Composer security audit | 0 advisories in the latest verified run |
+| API-independent catalog foundation | Implemented locally: offer snapshots, price history, and explicit ranking primitives |
+| Amazon integration | Creators API onboarding and terms verification required; PA-API 5 must not be used for new work |
+| Flipkart integration | Official Product, Offer, and Report API route documented; account and contract evidence still required |
+| Other merchant programs | Prospect or intermediary route only until current access and terms are evidenced |
+| Phase 1 commercial gate | Blocked: 39 required fields and 4 owner sign-offs pending |
+| Production release | Not approved |
 
-### Technical Features
-- **Multi-network Support** - Amazon, Flipkart, Myntra, GPay, PhonePe, Upstox, Zerodha, Groww, PolicyBazaar, etc.
-- **Points System** - Flexible points-based rewards (instead of direct cash)
-- **Referral Tracking** - Cookie-based referral tracking system
-- **Commission Split** - Automatic commission calculation and distribution
-- **Click & Conversion Tracking** - Complete tracking and analytics
-- **REST API** - Full API for integration
-- **Sub-affiliate Support** - For non-e-commerce platforms only (policy compliant)
+The authoritative status is maintained in `STAGING_READINESS_REPORT.md`, `STAGING_BLOCKER_REGISTER.md`, `audit/phase1-gate.json`, and `audit/phase3-foundation.json`.
 
-## 💰 Points-Based Cashback System
+## Product direction
 
-### How It Works
+The owner-confirmed direction is **consumer affiliate comparison with post-confirmation reward points**. Users are redirected to external merchants through approved tracked links. A reward is not immediately guaranteed: the affiliate event remains pending until the partner or network confirms the transaction and the commission is received or reconciled under the applicable contract.
 
-#### For E-commerce (Amazon, Flipkart, Myntra):
-1. User browses products on the platform
-2. Clicks "Buy with me" and selects a platform
-3. Purchases through affiliate link
-4. **Points credited automatically** (e.g., 20% cashback = 20 points per ₹100)
-5. **NO referral commission** (Amazon policy compliant)
+The current owner-stated allocation direction is **40% of received affiliate commission to customer points, 40% to the owner/business share, and 20% to a platform scaling and maintenance reserve**. The current points direction is **10 points = ₹1** for voucher redemption, subject to formal policy approval, partner settlement rules, reversal handling, accounting treatment, and voucher-provider approval. These rules must not be presented as a production financial policy until the required owner and finance approvals are recorded.
 
-#### For Non-E-commerce (GPay, PhonePe, Upstox, etc.):
-1. User A shares referral link with User B
-2. User B clicks link and makes purchase
-3. **User B gets cashback points** (e.g., 20% = 20 points)
-4. **User A gets referral points** (e.g., 10% = 10 points)
-5. **Full referral system active**
+The product may later include first-party products, but that is future scope and is not part of the current external-affiliate pilot baseline.
 
-### Points Redemption
-- **Cash Withdrawal** - Convert points to cash (minimum ₹100)
-- **Gift Redemption** - Redeem points for gifts from catalog
-- **Transaction History** - Complete history of all points transactions
+## API-pending development policy
 
-## 🔗 Referral Program
+Development does not need to stop while partner APIs are pending. The repository may safely build and test:
 
-> **Important:** Referral program is **enabled only for non-e-commerce platforms** (GPay, PhonePe, Upstox, Zerodha, Groww, PolicyBazaar, Impact, CJ, ShareASale, etc.) and **disabled for e-commerce** (Amazon, Flipkart, Myntra, etc.) to comply with affiliate policies.
+- source-agnostic product, merchant-offer, and price-snapshot records;
+- deterministic ranking primitives that accept explicit caller-supplied weights;
+- search, comparison, and history presentation using clearly labelled local fixtures;
+- adapter interfaces and sanitized contract fixtures;
+- delayed reward states, reversal ledgers, voucher abstractions, and reconciliation workflows behind approval gates;
+- security, idempotency, rate-limit, logging, backup, rollback, and release controls.
 
-### How Referrals Work
-- **Referral Code Generation** - Each user gets unique referral codes
-- **Cookie-Based Tracking** - Referral links tracked via cookies (30-day validity)
-- **Automatic Points Credit** - Referral commission credited as points automatically
-- **Referral Dashboard** - Track referrals, conversions, and earnings
-- **Multi-Level Support** - Full referral system for supported platforms
+The repository must not fabricate live prices, stock, ratings, commissions, partner approvals, API credentials, settlement windows, or search-demand rankings. Public webpages are not automatically permission to scrape, bulk-copy, store price history, or rank merchant offers. The active partner research record is `audit/phase1-partner-research-2026-08-24.md`.
 
----
+## Ranking and data principles
 
-## Supported Platforms
+“Top 100 products” remains an owner direction, not a completed data contract. The owner must define the source, geography, category scope, reference period, refresh frequency, deduplication rule, and permission basis. Raw offers from different merchants must not be compared unless product identity, variant, currency, timestamp, and relevant source fields are comparable.
 
-- **E-commerce (Direct Affiliate Only):** Amazon, Flipkart, Myntra
-- **Finance/Referral/Apps (Sub-affiliate Enabled):** GPay, PhonePe, Upstox, Zerodha, Groww, PolicyBazaar, Impact, CJ, ShareASale, etc.
+Referral margin may be an explicit and disclosed ranking feature if the owner approves it. The platform must not describe an offer as the cheapest while silently placing it above a cheaper offer for commercial reasons. Missing shipping, tax, coupon, seller, stock, or rating fields must be labelled as unavailable rather than treated as zero or as a favourable default.
 
-## Folder Structure
-- `app/` – PHP application logic (Controllers, Services, Models)
-- `public/` – Public web root (index.php, assets, .htaccess)
-- `config/` – Configuration files (database, AI, API keys, etc.)
-- `database/` – Migrations, seeds, and SQL scripts
-- `resources/` – Blade views, language files (en, hinglish)
-- `routes/` – Web and API route definitions
-- `storage/` – Logs, cache, uploads
-- `tests/` – PHPUnit tests
-- `docs/` – Project documentation, API docs, architecture diagrams
+## Core implementation areas
 
-## Deployment Notes
-- Serve the `public/` directory as the web root; do not expose the repository root.
-- Keep `vendor/`, `storage/`, `bootstrap/cache/`, migrations, and operational documentation available to the deployment process as required by the release runbook.
-- Configure `.env` from the secret manager; never commit production credentials.
-- Set writable permissions for `storage/` and `bootstrap/cache/` without making the entire application tree writable.
-- Use PHP 8.2+ and a database version supported by Laravel 12. Complete the migration rehearsal, secret validation, partner certification, payout reconciliation, and rollback checks in `docs/RELEASE_OPERATIONS_RUNBOOK.md` before production release.
+| Area | Scope |
+|---|---|
+| Product comparison | Product records, merchant offers, source timestamps, availability, and price history where permitted |
+| Affiliate attribution | Tracked external links, click records, partner events, SubID or equivalent attribution where supported, and reconciliation |
+| Reward ledger | Pending, confirmed, reversed, and usable states; idempotent ledger operations; voucher redemption only after policy approval |
+| Administration | Product, program, link, commission, user, points, payout, and operational management already present in the Laravel application |
+| Security | HMAC partner mutation verification, ownership checks, throttles, correlation logging, security headers, and release gates |
+| Operations | Staging-only certification, backups, rollback, secrets, monitoring, incident response, and blocker evidence |
 
-## Getting Started
-1. Clone/download this repo
-2. Run `composer install` (locally or via SSH)
-3. Copy `.env.example` to `.env` and set your config
-4. Run migrations: `php artisan migrate`
-5. Set up your admin user and start building!
+## Local setup
 
-## Sub-affiliate Quick Start
-1. Register a new sub-affiliate via the admin panel.
-2. Generate a unique product link for the sub-affiliate.
-3. Share the link; all clicks and sales are tracked automatically.
-4. View sub-affiliate performance and manage payouts from the admin dashboard.
-5. Add new affiliate programs (e.g., bank account, credit card, app download) from the admin panel as needed.
-6. Parent-child affiliate relationships are automatically managed for supported (non-e-commerce) platforms.
+Serve the Laravel `public/` directory as the web root. Do not expose the repository root. Configure `.env` from a secure local or staging secret store; never commit credentials. Use PHP 8.2 or newer within the Laravel-supported range and a database supported by the current release runbook.
 
-For advanced setup and API details, see `PARTNER_INTEGRATION_CONTRACT.md` and `API_SECURITY_CONTRACT.md`. Deployment and staging procedures are in `docs/RELEASE_OPERATIONS_RUNBOOK.md`, with sign-off fields in `docs/STAGING_ACCEPTANCE_RECORD.md`.
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
 
----
+For local verification, use the repository’s testing environment and disposable fixtures. If tracked Laravel bootstrap cache files contain deployment-specific paths, clear them before local Artisan or PHPUnit commands and restore them afterward as described in the release runbook.
 
-## Current Documentation
+## Validation commands
+
+```bash
+composer validate --strict
+composer audit
+python3 tools/validate_release_contracts.py
+python3 tools/validate_pilot_decision_inputs.py
+python3 tools/validate_pilot_decision_inputs.py --require-approved
+php artisan migrate:fresh --force
+./vendor/bin/phpunit --configuration phpunit.xml.dist --no-coverage
+```
+
+The strict pilot command is expected to fail while required owner inputs and sign-offs are incomplete. This is an intentional safety gate, not a suppressed CI failure.
+
+## Current documentation
 
 | Document | Purpose |
 |---|---|
-| `API_SECURITY_CONTRACT.md` | HMAC authentication and mutation security contract |
-| `PARTNER_INTEGRATION_CONTRACT.md` | Partner payloads, idempotency, retries, throttles, and reconciliation |
-| `LARAVEL12_UPGRADE_REPORT.md` | Laravel 12 migration and zero-advisory verification |
-| `docs/RELEASE_OPERATIONS_RUNBOOK.md` | Deployment, migration, rollback, secret rotation, and payout operations |
-| `docs/STAGING_ACCEPTANCE_RECORD.md` | Staging evidence and release sign-off template |
-| `docs/LICENSE_DECISION_RECORD.md` | Repository-owner license metadata decision |
-| `FINAL_STAGING_HANDOFF_CHECKLIST.md` | Final staging gates, owners, evidence, and sign-off |
-| `docs/CONTROL_EXECUTION_MATRIX.md` | Local versus staging-only control boundary |
-| `docs/STAGING_OWNER_EXECUTION_GUIDE.md` | Step-by-step staging certification and evidence procedure |
-| `STAGING_BLOCKER_REGISTER.md` | Owner, evidence, and stop-condition register for staging blockers |
-| `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` | Evidence-driven implementation phases and anti-hallucination execution rules |
-| `docs/PILOT_DECISION_INPUT_TEMPLATE.md` | Owner inputs required to unblock the commercial pilot plan |
-| `tools/validate_pilot_decision_inputs.py` | Strict Phase 1 owner-input and approval gate |
-| `STAGING_READINESS_REPORT.md` | Partner certification and payout reconciliation readiness |
-| `IMPLEMENTATION_PROGRESS.md` | Cumulative remediation status and verification evidence |
-| `FINAL_IMPLEMENTATION_SUMMARY.md` | Summary of the previous local-code remediation batch |
+| `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` | Evidence-gated implementation plan and anti-hallucination rules |
+| `CONCEPT_VIABILITY_ASSESSMENT.md` | Business viability analysis and narrow-pilot rationale |
+| `END_TO_END_GAP_ASSESSMENT.md` | Repository, product, business, and operations gap assessment |
+| `audit/phase1-partner-research-2026-08-24.md` | Official-source partner/API research and integration boundaries |
+| `docs/PILOT_DECISION_INPUT_TEMPLATE.md` | Owner inputs required before the commercial pilot gate can close |
+| `docs/PHASE1_REMAINING_DECISIONS.md` | Structured unresolved Phase 1 decisions |
+| `docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md` | Proposed roles and dates, explicitly not approvals |
+| `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md` | Snapshot and deterministic ranking foundation contract |
+| `audit/phase1-gate.json` | Machine-readable Phase 1 blocked-gate evidence |
+| `audit/phase3-foundation.json` | Machine-readable Phase 3 implementation evidence |
+| `API_SECURITY_CONTRACT.md` | HMAC authentication, mutation, and security contract |
+| `PARTNER_INTEGRATION_CONTRACT.md` | Partner payload, idempotency, retries, throttles, and reconciliation contract |
+| `docs/RELEASE_OPERATIONS_RUNBOOK.md` | Deployment, migration, rollback, secrets, and operational procedures |
+| `docs/STAGING_ACCEPTANCE_RECORD.md` | Staging acceptance and release sign-off template |
+| `FINAL_STAGING_HANDOFF_CHECKLIST.md` | Final staging gates and handoff checklist |
+| `STAGING_BLOCKER_REGISTER.md` | External staging blocker register and stop conditions |
+| `STAGING_READINESS_REPORT.md` | Current local/staging readiness narrative |
+| `docs/CONTROL_EXECUTION_MATRIX.md` | Credential-free local controls versus staging-only controls |
+| `docs/STAGING_OWNER_EXECUTION_GUIDE.md` | Staging certification procedures |
+| `docs/architecture.md` | Application architecture |
+| `docs/openapi.yaml` | Implemented API contract |
+| `docs/adr/0001-atomic-financial-transitions.md` | Financial state-transition decision record |
+| `docs/archive/README.md` | Archived document policy and legacy-file index |
 
-## API Reference
-The implemented API contract and examples are documented in `PARTNER_INTEGRATION_CONTRACT.md` and `API_SECURITY_CONTRACT.md`. The live route source is `routes/api.php`.
+## Release boundary
 
-## Admin Panel
-Admin workflows are implemented in `app/Http/Controllers/AdminController.php`. Staging and production approval requirements are documented in `docs/STAGING_ACCEPTANCE_RECORD.md`.
-
-## Contributing
-Pull requests and suggestions are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-## Support
-For support, open an issue or contact [your-email@example.com].
+Local code-level checks passing does not authorize staging or production. Partner certification, API credentials, data-permission review, MySQL migration rehearsal, backup and restore evidence, secret validation, payout reconciliation, fraud controls, observability, capacity evidence, privacy/licensing review, named owners, and explicit staging sign-offs are still required. No real funds, production credentials, or production mutations should be used for certification.
 
 ## License
-No license has been declared in the repository. Confirm the appropriate SPDX classification with the repository owner before external distribution.
 
-## 📚 Documentation Table of Contents
-
-### Core Documentation
-- `API_SECURITY_CONTRACT.md` – Partner authentication and mutation security.
-- `PARTNER_INTEGRATION_CONTRACT.md` – Partner API payload, retry, and reconciliation contract.
-- `LARAVEL12_UPGRADE_REPORT.md` – Framework upgrade and dependency audit result.
-- `docs/RELEASE_OPERATIONS_RUNBOOK.md` – Deployment and operations procedure.
-- `docs/STAGING_ACCEPTANCE_RECORD.md` – Staging acceptance and release sign-off record.
-- `docs/LICENSE_DECISION_RECORD.md` – Pending repository-owner license decision.
-- `FINAL_STAGING_HANDOFF_CHECKLIST.md` – Final staging handoff checklist.
-- `docs/CONTROL_EXECUTION_MATRIX.md` – Local versus staging-only execution boundary.
-- `docs/STAGING_OWNER_EXECUTION_GUIDE.md` – Staging certification and evidence procedure.
-- `STAGING_BLOCKER_REGISTER.md` – Owner-assigned staging blocker register.
-- `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` – Evidence-driven implementation phases and AI-agent safety rules.
-- `docs/PILOT_DECISION_INPUT_TEMPLATE.md` – Required owner decisions before Phase 1 implementation.
-- `tools/validate_pilot_decision_inputs.py` – Report-only and strict Phase 1 input validation.
-
-### Current Status
-- `STAGING_READINESS_REPORT.md` – Staging certification and payout reconciliation results.
-- `IMPLEMENTATION_PROGRESS.md` – Cumulative implementation progress.
-- `FINAL_IMPLEMENTATION_SUMMARY.md` – Previous local-code remediation summary.
-- `NEXT_RELEASE_READINESS_REPORT.md` – Superseded pre-Laravel-12 readiness decision record.
+The repository uses the proprietary license metadata recorded in `docs/LICENSE_DECISION_RECORD.md`. External distribution and commercial use remain subject to the repository owner’s legal decision and applicable partner terms.

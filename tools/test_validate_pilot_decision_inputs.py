@@ -30,7 +30,7 @@ class PilotDecisionValidatorTests(unittest.TestCase):
         result = validator.validate_text(validator.TEMPLATE.read_text(encoding="utf-8"))
 
         self.assertEqual("blocked_owner_input_required", result["status"])
-        self.assertEqual(39, result["required_fields_remaining"])
+        self.assertEqual(32, result["required_fields_remaining"])
         self.assertEqual(
             [validator.MODEL_OPTIONS["consumer_points"]],
             result["selected_pilot_models"],

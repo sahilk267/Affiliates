@@ -1,35 +1,56 @@
-# Enterprise Audit Report
+# Current Evidence and Release Audit
 
-**Generated:** 2026-08-21T22:00:43.763379+00:00
+**Generated:** 2026-08-25
 **Repository:** `sahilk267/Affiliates`
-**Commit:** `f23a894`
+**Status:** Current working-tree documentation reconciliation; verify the exact commit with `git rev-parse --short HEAD`.
 
-## Discovery proof
+## Current release conclusion
 
-The dynamic scan indexed **219 files** in **1155 directories** while excluding only `.git` internals and generated `audit/` outputs. It found **0 TypeScript**, **0 JavaScript**, **45 Markdown**, **2 JSON**, **3 automated test files**, and **0 Docker-related files**. The full per-file index is `audit/index.json`.
+**Ready for continued local development and controlled staging preparation; not approved for production.** The repository’s code-level controls can be exercised locally, but partner/API onboarding, data-permission review, staging certification, payout/reconciliation evidence, secrets, backup/restore, rollback, observability, capacity, privacy/legal review, named owners, and explicit release sign-offs remain external gates.
 
-## Finding summary
+Phase 1 commercial approval is still blocked. The current pilot validator reports one selected model direction, 39 required fields remaining, and four owner sign-offs pending. The strict command is intentionally expected to fail until the owner completes and approves the pilot decision template.
 
-| Severity | Count |
-|---|---:|
-| CRITICAL | 0 |
-| HIGH | 0 |
-| MEDIUM | 0 |
-| INFO | 0 |
+## Current measured local evidence
 
-## Findings
+| Gate | Result | Evidence |
+|---|---|---|
+| Composer strict validation | PASS | `composer validate --strict` |
+| Composer audit | PASS; 0 advisories | `composer audit` |
+| PHP lint | PASS | Current application, migration, route, and test sources |
+| Clean SQLite migrations | PASS | `php artisan migrate:fresh --force` with disposable test database |
+| PHPUnit | PASS; 15 tests and 61 assertions | `./vendor/bin/phpunit --configuration phpunit.xml.dist --no-coverage` |
+| Python guardrail tests | PASS; 4 tests | `python3 -m unittest discover -s tools -p 'test_*.py'` |
+| Release-contract validation | PASS; 28 required files | `tools/validate_release_contracts.py` |
+| Pilot report-only gate | BLOCKED as expected | `python3 tools/validate_pilot_decision_inputs.py` |
+| Pilot strict gate | BLOCKS as expected | `python3 tools/validate_pilot_decision_inputs.py --require-approved` |
+| API-independent catalog foundation | Implemented locally | `audit/phase3-foundation.json` |
+| Working-tree whitespace | PASS | `git diff --check` |
 
-| ID | Severity | Category | Title | Location | Priority |
-|---|---|---|---|---|---|
+The coverage-enabled PHPUnit command remains a CI concern because the local environment may not have a coverage driver. A normal no-coverage run passing does not constitute a coverage percentage or production load result.
 
+## Documentation state
 
-## Release conclusion
+The current repository contains 43 active Markdown documents and 22 archived Markdown documents under `docs/archive/`. The active source of truth is mapped in `README.md`. Legacy status snapshots, obsolete pre-Laravel-12 plans, old Laravel 10 notes, duplicate rule READMEs, and stale quick-start material are retained only under `docs/archive/legacy/` with explicit reasons.
 
-Release is blocked until the P0 issues are remediated and verified with a clean database initialization, authenticated API tests, consumer authentication tests, reward ledger tests, and CI that fails on test/migration errors.
+## Active phase evidence
 
-See the sibling audit files for API, database, security, frontend, backend, AI, testing, documentation, code quality, architecture, dependencies, and release-readiness details.
+| Phase | Status | Evidence |
+|---:|---|---|
+| Phase 0 | Complete baseline | `audit/phase0-baseline.json` |
+| Phase 1 | Blocked pending owner inputs and approvals | `audit/phase1-gate.json`, `docs/PHASE1_REMAINING_DECISIONS.md` |
+| Partner/API research | Research recorded; activation not approved | `audit/phase1-partner-research-2026-08-24.md` |
+| Phase 3 | API-independent catalog foundation implemented locally | `audit/phase3-foundation.json`, `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md` |
 
+## Non-claims
 
-## Calculated release score
+No real merchant API credential, partner acceptance, production URL, production database, real funds, commission rate, settlement window, price-demand dataset, search ranking, voucher account, gift budget, legal approval, privacy approval, or staging mutation evidence is asserted by this report.
 
-**Release score:** **80.31/100** across 13 measurable categories, using the explicit control table in `audit/release-score.json`. Categories without repository/runtime evidence are recorded as **NOT MEASURABLE**, not converted into invented percentages.
+The current blocker register and runbook remain authoritative for staging-only actions:
+
+- `STAGING_BLOCKER_REGISTER.md`
+- `STAGING_READINESS_REPORT.md`
+- `docs/RELEASE_OPERATIONS_RUNBOOK.md`
+- `docs/STAGING_ACCEPTANCE_RECORD.md`
+- `docs/CONTROL_EXECUTION_MATRIX.md`
+
+Historical audit snapshots remain available in Git history and should not be treated as current measurements unless their generated date and commit are explicitly checked.

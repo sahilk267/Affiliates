@@ -30,6 +30,8 @@ REQUIRED_FILES = [
     "docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md",
     "docs/API_INDEPENDENT_CATALOG_FOUNDATION.md",
     "audit/phase3-foundation.json",
+    "audit/documentation-cleanup-2026-08-25.json",
+    "docs/archive/README.md",
     "tools/validate_pilot_decision_inputs.py",
     "tools/test_validate_pilot_decision_inputs.py",
     "tools/validate_staging_blockers.py",

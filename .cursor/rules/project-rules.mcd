@@ -4,11 +4,12 @@
 ---
 
 ## 📋 **PROJECT OVERVIEW**
-**Project**: ZenithSoles Affiliate Management System  
-**Framework**: Laravel 10 (PHP 8.1+)  
-**Database**: MySQL 5.7+/8.0  
-**Architecture**: MVC with Service Providers & Middleware  
-**Deployment**: Hostinger-ready with load balancing support  
+**Project**: ZenithSoles Affiliate Management System
+**Framework**: Laravel 12 (PHP ^8.2)
+
+**Database**: MySQL 5.7+/8.0
+**Architecture**: MVC with Service Providers & Middleware
+**Deployment**: Staging-gated; production readiness remains unapproved
 
 ---
 
@@ -25,13 +26,13 @@ Before ANY modification (bug fix, feature, or integration):
 
 2. **🔁 Documentation Review**
    - Read latest `CHANGELOG.md`
-   - Review `NOTES.md` for current status
-   - Check `/docs/` for architecture and schema
+   - Review `README.md`, `STAGING_READINESS_REPORT.md`, and current phase evidence for status
+   - Check `/docs/` for architecture, contracts, runbooks, and decision gates
    - Understand existing API endpoints
 
 3. **📂 Critical Directory Analysis**
    - `/app/Http/Controllers/` - Request handling
-   - `/app/Models/` - Data relationships
+   - `/app/` - Data relationships and domain models
    - `/app/Services/` - Business logic
    - `/routes/` - API endpoints
    - `/database/migrations/` - Schema changes
@@ -460,9 +461,9 @@ Before ANY modification (bug fix, feature, or integration):
 
 ---
 
-**Last Updated**: 2025-10-22  
-**Version**: 1.0.0  
-**Next Review**: 2025-11-22  
+**Last Updated**: 2026-08-25
+**Version**: 2.0.0
+**Next Review**: 2026-09-25
 
 ---
 

@@ -1,36 +1,71 @@
 # Release Readiness Inventory
 
-## Dependency audit snapshot
+**Updated:** 2026-08-25
+**Decision:** Suitable for continued local development and controlled staging preparation; **not approved for production**.
 
-`composer audit --format=json` returned exit code 8 because the installed dependency graph has **20 reported advisories** across the Laravel framework, Symfony components, and `league/commonmark`. The raw result is preserved in `audit/composer-audit-2026-08-20.json`. The advisory set includes high-severity findings affecting Laravel framework, `league/commonmark`, `symfony/http-foundation`, and `symfony/mime`, as well as medium and low findings in related packages.
+## Current repository baseline
 
-| Package family | Observed advisory count | Highest observed severity | Release implication |
-|---|---:|---|---|
-| `laravel/framework` | 3 | High | Upgrade within the supported Laravel 10 constraint or apply the vendor-supported patched release before production |
-| `league/commonmark` | 7 | High | Review Markdown parsing exposure and upgrade to a non-affected version |
-| `symfony/http-foundation` | 2 | High | Required because request parsing and network protections are framework-adjacent |
-| `symfony/mailer` / `symfony/mime` | 3 | High | Required before enabling production email or SMTP flows |
-| `symfony/process` | 1 | Medium | Review if process execution is used in deployment or administration |
-| `symfony/routing` | 2 | Medium | Review generated URL and route-constraint behavior |
-| `symfony/polyfill-intl-idn` | 1 | Low | Upgrade with the Symfony dependency set |
-| `league/commonmark` and framework transitive set | 1 additional CVE-class finding | Medium | Confirm lockfile resolution after upgrades |
-
-The audit output should be treated as a release blocker until each advisory is either removed by a tested dependency upgrade or explicitly accepted by the security owner with a documented compensating control. A Composer dry run reports a feasible update set of **44 updates and 1 removal**, including `laravel/framework` 10.49.1 to 10.50.3, `league/commonmark` 2.7.1 to 2.10.0, and patched Symfony 6.4 component releases. The dry-run output is preserved in `audit/composer-update-dry-run-2026-08-20.txt`; no dependency changes were applied without a dedicated upgrade-and-test pass.
-
-## Repository-level gaps that can be addressed without production credentials
-
-| Gap | Safe next action in this repository | Requires external environment |
+| Control | Current result | Evidence |
 |---|---|---|
-| Dependency advisories | Test a constrained Composer update and rerun the complete suite | Security-owner approval if a major upgrade is proposed |
-| Deployment procedure | Add a staging/production runbook with preflight, migration, rollback, and cache steps | Actual deployment credentials and approval |
-| Secret handling | Add rotation and validation procedures; keep values out of source | Secret-manager integration and real secret rotation |
-| Migration rehearsal | Add a documented representative-schema rehearsal procedure | A sanitized production-schema copy |
-| Payout reconciliation | Define a reconciliation file format and control checklist | Real payout-provider exports |
-| Performance | Add a safe local/staging smoke harness with bounded concurrency | Staging URL, realistic data, and load-test approval |
-| Partner adapters | Define adapter interface and contract fixtures without fake live credentials | Partner APIs, credentials, sandbox certification |
-| Observability | Define log fields, retention, alert thresholds, and incident response | Central log/metrics destination |
-| GeoIP | Keep null-safe behavior and document provider selection criteria | Provider account, privacy review, retention policy |
+| PHP constraint | `^8.2` | `composer.json` |
+| Laravel constraint/resolution | `^12.0` / 12.67.0 | `composer.json`, `composer.lock` |
+| PHPUnit constraint/resolution | `^11.0` / 11.5.56 | `composer.json`, `composer.lock` |
+| Composer strict validation | PASS | `composer validate --strict` |
+| Composer security audit | PASS; 0 advisories | `composer audit --format=plain` |
+| Clean SQLite migration | PASS | Disposable local test database |
+| PHPUnit | PASS; 15 tests and 61 assertions | `phpunit.xml.dist`, latest no-coverage run |
+| Python guardrail tests | PASS; 4 tests | `tools/test_validate_pilot_decision_inputs.py` |
+| Release-contract inventory | PASS; 26 required files | `tools/validate_release_contracts.py` |
+| API-independent catalog foundation | Implemented locally | `audit/phase3-foundation.json` |
+| Production approval | Not approved | Staging acceptance and blocker records |
 
-## Current verified baseline
+Dated Composer and PHPUnit files from the pre-upgrade audit remain historical evidence. They must not be read as current dependency or test results unless their generated date and commit are explicitly checked.
 
-The application baseline before the next release-readiness batch is **10 PHPUnit tests with 37 assertions**, clean SQLite migrations, PHP syntax lint passing, API route registration passing, and no whitespace errors from `git diff --check`. The current implementation includes atomic payout orchestration, endpoint-specific throttles, and structured correlation fields in the conversion and points pipeline. `composer validate --strict` returns exit code 1 only because the package metadata has no declared license; this is a metadata decision requiring repository-owner confirmation rather than an assumed legal classification. The validation output is preserved in `audit/composer-validate-2026-08-20.txt`.
+## Safe repository work completed
+
+| Workstream | Current status | Evidence or boundary |
+|---|---|---|
+| Security and authentication | Implemented and locally tested | HMAC partner mutation protection, Laravel guard authentication, ownership checks, throttles, headers, and idempotency |
+| Financial state transitions | Implemented and locally tested | Transaction-scoped services, locking, deterministic idempotency, and audit logging |
+| Catalog foundation | Implemented without external APIs | Source-tagged snapshots, nullable unknown fields, history queries, and explicit ranking primitives |
+| Partner/API research | Documented, not activated | `audit/phase1-partner-research-2026-08-24.md` |
+| Pilot decision gate | Blocked by owner inputs | `audit/phase1-gate.json` and `docs/PHASE1_REMAINING_DECISIONS.md` |
+| Documentation cleanup | Active/archived sources separated | `README.md` and `docs/archive/README.md` |
+
+## External blockers before staging certification
+
+| Blocker | Required evidence | Current status |
+|---|---|---|
+| Partner/API access | Current partner or network acceptance, technical documentation, secure credentials, and approved campaign status | Pending |
+| Product/price data rights | Permission for product, price, availability, rating, demand, and price-history fields and retention | Pending |
+| Direct/intermediary route | Selected route for each first 3–5 partner targets, with campaign approval | Pending |
+| Attribution certification | Disposable staging click, valid conversion, replay/conflict checks, and reconciled partner identifiers | Pending |
+| Reward policy | Approved points, voucher, confirmation, reversal, deduction, fraud, and gift rules | Pending |
+| MySQL migration rehearsal | Timed migration, schema comparison, backup/restore checkpoint, and rollback decision | Pending |
+| Secret lifecycle | Secret-manager injection, rotation, old-secret invalidation, and log-redaction evidence | Pending |
+| Payout/reconciliation | Provider-backed export comparison and zero unresolved exceptions | Pending |
+| Observability | Central logs, dashboards, alerts, acknowledgement, and on-call ownership | Pending |
+| Capacity | Representative traffic profile, p95/p99, saturation behavior, and stop condition | Pending |
+| Privacy and legal | Data-retention, vendor, affiliate disclosure, licensing, and partner-terms decisions | Pending |
+| Named owners and dates | Product, Release, Affiliate Integration, Data/Privacy, Finance/Payout, Security, Engineering, and Operations owners | Pending |
+
+## Phase gate status
+
+Phase 1 remains blocked because the owner has not yet supplied all required category, measurable audience, partner approval, data-permission, ranking, reward/voucher/reversal/gift, metric, owner, date, and staging inputs. The selected direction is recorded as **consumer affiliate comparison with post-confirmation reward points**, but selection is not the same as full approval.
+
+Phase 3 is complete for the API-independent foundation only. It does not authorize a merchant adapter, scraping, a live price claim, a live commission claim, a voucher issuance, a gift commitment, a staging mutation, or production release.
+
+## Required handoff evidence
+
+Use the following active documents for the next release decision:
+
+- `docs/PILOT_DECISION_INPUT_TEMPLATE.md`
+- `docs/PHASE1_REMAINING_DECISIONS.md`
+- `docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md`
+- `STAGING_BLOCKER_REGISTER.md`
+- `STAGING_READINESS_REPORT.md`
+- `docs/RELEASE_OPERATIONS_RUNBOOK.md`
+- `docs/STAGING_ACCEPTANCE_RECORD.md`
+- `FINAL_STAGING_HANDOFF_CHECKLIST.md`
+
+No real funds, production credentials, production customer data, or production mutation should be used to close any of these gates.

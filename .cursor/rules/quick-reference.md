@@ -21,7 +21,7 @@
 2. ✅ Run full test suite before merge
 3. ✅ Fixes must include regression tests
 4. ✅ Test real-world scenarios
-5. ✅ Maintain 80%+ code coverage
+5. ✅ Meet the coverage threshold enforced by the current CI/release contract; never invent a percentage from an unverified run
 
 ### **Database Changes**
 1. 📊 Always use migrations
@@ -94,7 +94,7 @@
 ### **Performance**
 - [ ] Database queries optimized
 - [ ] Caching implemented
-- [ ] API response times < 200ms
+- [ ] API response objectives are measured and approved for the relevant environment
 - [ ] Mobile performance tested
 
 ### **Security**
@@ -119,16 +119,16 @@
 ## 📈 **SUCCESS METRICS**
 
 ### **Technical**
-- System uptime > 99.9%
-- API response time < 200ms
-- Test coverage > 80%
-- Bug resolution time < 24h
+- System uptime objective is measured and approved for the relevant environment
+- API response objective is measured and approved for the relevant environment
+- Test coverage is reported from a reproducible CI artifact
+- Bug-resolution objective is owner-approved and evidence-backed
 
 ### **Business**
 - Affiliate conversion rate
 - Commission accuracy
-- User satisfaction > 4.5/5
-- Revenue growth
+- User satisfaction target is owner-approved and measured during the pilot
+- Revenue and contribution-margin results are measured from reconciled partner data
 
 ---
 
@@ -154,8 +154,9 @@
 - **Main Rules**: [project-rules.mcd](./project-rules.mcd)
 - **Additional Rules**: [additional-rules.mcd](./additional-rules.mcd)
 - **Architecture**: [../docs/architecture.md](../docs/architecture.md)
-- **Database**: [../docs/db-schema.md](../docs/db-schema.md)
-- **Project Status**: [../NOTES.md](../NOTES.md)
+- **Database**: [../docs/architecture.md](../docs/architecture.md) and current migrations under `database/migrations/`
+- **Project Status**: [../README.md](../README.md) and [../STAGING_READINESS_REPORT.md](../STAGING_READINESS_REPORT.md)
+- **Phase 1 Gate**: [../docs/PHASE1_REMAINING_DECISIONS.md](../docs/PHASE1_REMAINING_DECISIONS.md)
 
 ---
 
