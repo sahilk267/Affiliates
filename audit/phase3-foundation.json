@@ -1,0 +1,82 @@
+{
+  "phase_id": 3,
+  "phase": "Build API-independent catalog, offer, price-history, and ranking foundations",
+  "status": "implemented_local_only",
+  "release_commit": "8ec3b5e",
+  "environment": "local",
+  "mutation_mode": "read-only_local_fixture_migration",
+  "task_envelope": {
+    "objective": "Build source-agnostic catalog foundations that can be exercised before merchant APIs are available.",
+    "allowed_files": [
+      "app/ProductLink.php",
+      "app/ProductPriceSnapshot.php",
+      "app/Services/ProductPriceSnapshotService.php",
+      "app/Services/ProductRankingService.php",
+      "database/migrations/2026_08_25_000001_create_product_price_snapshots_table.php",
+      "tests/Feature/CatalogFoundationTest.php",
+      "docs/API_INDEPENDENT_CATALOG_FOUNDATION.md"
+    ],
+    "known_facts": [
+      "Existing product links already represent merchant offers.",
+      "External API credentials and partner contracts are not available.",
+      "No real merchant response or production data was used.",
+      "Ranking weights are caller-supplied and no commercial default was embedded."
+    ],
+    "unknowns_preserved": [
+      "Partner product-feed and price-history permissions",
+      "Raw price, currency, availability, rating, demand, and referral data",
+      "Approved ranking weights",
+      "Partner-specific confirmation, reversal, and settlement rules"
+    ],
+    "stop_conditions": [
+      "Do not activate an adapter without current partner documentation and approval.",
+      "Do not infer missing offer fields or default unavailable products to in-stock.",
+      "Do not claim local fixture tests prove partner or production capability."
+    ]
+  },
+  "implementation": {
+    "snapshot_table": "product_price_snapshots",
+    "snapshot_model": "App\\ProductPriceSnapshot",
+    "snapshot_service": "App\\Services\\ProductPriceSnapshotService",
+    "ranking_service": "App\\Services\\ProductRankingService",
+    "ranking_features": [
+      "price",
+      "availability",
+      "rating",
+      "price_history",
+      "demand",
+      "referral_margin"
+    ],
+    "ranking_contract": "Caller supplies normalized 0..1 feature values and weights totaling 100; equal scores use stable offer ID ordering."
+  },
+  "verification": {
+    "clean_sqlite_migration": "passed; new product_price_snapshots migration applied",
+    "phpunit": "passed; 15 tests and 61 assertions",
+    "php_lint": "passed",
+    "python_guardrail_tests": "passed; 4 tests",
+    "release_contract_validation": "passed; 26 required files",
+    "pilot_gate": "blocked as expected; 39 required fields and 4 owner sign-offs pending",
+    "git_diff_check": "passed"
+  },
+  "scope_completed": [
+    "Added source-tagged timestamped offer snapshots with nullable unknown fields.",
+    "Added latest and source-filtered history access.",
+    "Added validation for ratings, discounts, numeric values, and metadata shape.",
+    "Added deterministic ranking primitives without embedded commercial weights.",
+    "Added local feature tests and foundation documentation."
+  ],
+  "scope_not_completed": [
+    "No merchant API adapter was activated.",
+    "No scraping or unapproved feed ingestion was implemented.",
+    "No production, staging, financial, voucher, gift, or partner mutation was performed.",
+    "No final ranking weights or user-facing commercial disclosure policy was selected."
+  ],
+  "approval_status": "Ready for review",
+  "open_blockers": [
+    "Partner APIs/network access and current data-permission terms are still required before source adapters.",
+    "Phase 1 commercial approvals remain incomplete."
+  ],
+  "limitations": [
+    "Local fixtures demonstrate application behavior only and do not establish merchant data quality, API limits, attribution, settlement, or production capacity."
+  ]
+}
