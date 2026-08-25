@@ -54,7 +54,7 @@
       "Partner-specific settlement, confirmation, reversal, or voucher rules remain unapproved"
     ]
   },
-  "release_commit": "9b5b55a",
+  "release_commit": "ee809c9",
   "environment": "local",
   "verification": {
     "report_only_command": "python3 tools/validate_pilot_decision_inputs.py",

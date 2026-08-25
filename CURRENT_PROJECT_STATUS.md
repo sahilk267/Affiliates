@@ -2,7 +2,7 @@
 
 **Status:** Active source of truth  
 **Last repository verification:** 25 August 2026  
-**Verified commit:** `9567325` — `Reconcile documentation and archive stale guidance`  
+**Verified source:** `main` / `origin/main` synchronized; verify the exact tip with `git rev-parse --short HEAD`
 **Branch:** `main`  
 **Remote:** `origin/main` synchronized  
 **Environment verified:** Local credential-free verification only  
