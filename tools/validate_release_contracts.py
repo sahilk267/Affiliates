@@ -39,6 +39,9 @@ REQUIRED_FILES = [
     "tools/partner_contract_check.py",
     "tools/reconcile_payouts.py",
     "tools/staging_smoke_test.py",
+    "config/comparison.php",
+    "app/Services/Contracts/ProductSourceAdapter.php",
+    "database/seeders/ComparisonPreviewSeeder.php",
 ]
 REQUIRED_OPENAPI_PATHS = [
     "/api/health:",

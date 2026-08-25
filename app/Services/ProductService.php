@@ -5,11 +5,89 @@ namespace App\Services;
 use App\Product;
 use App\ProductLink;
 use App\ProductCommission;
+use App\ProductPriceSnapshot;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class ProductService
 {
+    /**
+     * Get products for the public comparison MVP.
+     *
+     * This path uses source-tagged snapshots only and intentionally avoids
+     * commission-first ordering or inferred live values.
+     */
+    public function getComparisonProducts(array $filters = [], string $sortBy = 'price', int $perPage = 20): LengthAwarePaginator
+    {
+        $query = Product::active()->with([
+            'productLinks.program',
+            'productLinks.latestPriceSnapshot',
+        ]);
+
+        if (!empty($filters['category'])) {
+            $query->where('category', $filters['category']);
+        }
+
+        if (!empty($filters['brand'])) {
+            $query->where('brand', $filters['brand']);
+        }
+
+        if (!empty($filters['search'])) {
+            $search = trim((string) $filters['search']);
+            $query->where(function ($builder) use ($search) {
+                $builder->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('description', 'LIKE', "%{$search}%")
+                    ->orWhere('brand', 'LIKE', "%{$search}%")
+                    ->orWhere('category', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $products = $query->get()->map(function (Product $product): Product {
+            $snapshots = $product->productLinks
+                ->map(fn (ProductLink $link) => $link->latestPriceSnapshot)
+                ->filter();
+            $knownPrices = $snapshots
+                ->filter(fn (ProductPriceSnapshot $snapshot): bool => $snapshot->price !== null)
+                ->map(fn (ProductPriceSnapshot $snapshot): float => (float) $snapshot->price);
+
+            $product->comparison_min_price = $knownPrices->isNotEmpty() ? $knownPrices->min() : null;
+            $product->comparison_offer_count = $product->productLinks->count();
+            $product->comparison_observed_at = $snapshots->max('observed_at');
+            $product->comparison_has_fixture = $snapshots->contains(function (ProductPriceSnapshot $snapshot): bool {
+                return is_array($snapshot->metadata) && ($snapshot->metadata['fixture'] ?? false) === true;
+            });
+
+            return $product;
+        });
+
+        $products = match ($sortBy) {
+            'name' => $products->sortBy(fn (Product $product): string => mb_strtolower($product->name)),
+            'newest' => $products->sortByDesc(fn (Product $product) => $product->created_at),
+            default => $products->sort(function (Product $left, Product $right): int {
+                $leftPrice = $left->comparison_min_price ?? INF;
+                $rightPrice = $right->comparison_min_price ?? INF;
+
+                return $leftPrice <=> $rightPrice ?: $left->id <=> $right->id;
+            }),
+        };
+
+        $products = $products->values();
+        $page = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = max(1, min($perPage, 100));
+
+        return new LengthAwarePaginator(
+            $products->forPage($page, $perPage)->values(),
+            $products->count(),
+            $perPage,
+            $page,
+            [
+                'path' => LengthAwarePaginator::resolveCurrentPath(),
+                'query' => request()->query(),
+            ]
+        );
+    }
+
     /**
      * Get products with pagination and filters
      *
@@ -106,40 +184,86 @@ class ProductService
     }
 
     /**
+     * Get one active product for the public comparison preview without loading
+     * commission relations.
+     */
+    public function getComparisonProduct(int $productId): ?Product
+    {
+        return Product::active()->with([
+            'productLinks.program',
+            'productLinks.link',
+            'productLinks.latestPriceSnapshot',
+        ])->find($productId);
+    }
+
+    /**
      * Compare prices across platforms for a product
      *
      * @param int $productId
      * @return Collection
      */
-    public function comparePrices(int $productId): Collection
+    public function comparePrices(int $productId): SupportCollection
     {
-        $product = Product::with(['productLinks.program', 'activeCommissions'])->find($productId);
+        $product = Product::with([
+            'productLinks.program',
+            'productLinks.link',
+            'productLinks.latestPriceSnapshot',
+            'productLinks.priceSnapshots',
+        ])->find($productId);
 
         if (!$product) {
             return collect();
         }
 
-        $links = $product->productLinks()
-            ->with(['program', 'link'])
-            ->get()
+        $links = $product->productLinks
             ->map(function ($productLink) {
+                $snapshot = $productLink->latestPriceSnapshot;
+                $metadata = is_array($snapshot?->metadata) ? $snapshot->metadata : [];
+
                 return [
                     'id' => $productLink->id,
                     'program' => $productLink->program,
-                    'price' => $productLink->price,
-                    'currency' => $productLink->currency,
-                    'availability' => $productLink->availability,
-                    'is_best_price' => $productLink->is_best_price,
-                    'commission_rate' => $productLink->commission_rate,
+                    'price' => $snapshot?->price,
+                    'currency' => $snapshot?->currency,
+                    'availability' => $snapshot?->availability,
+                    'observed_at' => $snapshot?->observed_at,
+                    'source' => $snapshot?->source,
+                    'rating' => $snapshot?->rating,
+                    'rating_count' => $snapshot?->rating_count,
+                    'original_price' => $snapshot?->original_price,
+                    'discount_percent' => $snapshot?->discount_percent,
+                    'data_class' => $metadata['data_class'] ?? 'unclassified',
+                    'is_fixture' => ($metadata['fixture'] ?? false) === true,
+                    'has_snapshot' => $snapshot !== null,
+                    'history' => $productLink->priceSnapshots
+                        ->sortByDesc('observed_at')
+                        ->take(30)
+                        ->values(),
+                    'is_lowest_known_price' => false,
                     'link' => $productLink->link,
                 ];
-            })
-            ->sortByDesc(function ($link) {
-                // Sort by commission rate first, then by price
-                return [$link['commission_rate'], -$link['price']];
             });
 
-        return $links;
+        $knownPrices = $links
+            ->filter(fn (array $link): bool => $link['price'] !== null)
+            ->map(fn (array $link): float => (float) $link['price']);
+        $lowestKnownPrice = $knownPrices->isNotEmpty() ? $knownPrices->min() : null;
+
+        return $links
+            ->map(function (array $link) use ($lowestKnownPrice): array {
+                $link['is_lowest_known_price'] = $lowestKnownPrice !== null
+                    && $link['price'] !== null
+                    && (float) $link['price'] === (float) $lowestKnownPrice;
+
+                return $link;
+            })
+            ->sort(function (array $left, array $right): int {
+                $leftPrice = $left['price'] === null ? INF : (float) $left['price'];
+                $rightPrice = $right['price'] === null ? INF : (float) $right['price'];
+
+                return $leftPrice <=> $rightPrice ?: $left['id'] <=> $right['id'];
+            })
+            ->values();
     }
 
     /**

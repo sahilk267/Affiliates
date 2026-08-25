@@ -12,8 +12,15 @@
       "app/ProductPriceSnapshot.php",
       "app/Services/ProductPriceSnapshotService.php",
       "app/Services/ProductRankingService.php",
+      "app/Services/ProductService.php",
+      "app/Http/Controllers/ProductController.php",
+      "app/Services/Contracts/ProductSourceAdapter.php",
       "database/migrations/2026_08_25_000001_create_product_price_snapshots_table.php",
+      "database/seeders/ComparisonPreviewSeeder.php",
+      "config/comparison.php",
       "tests/Feature/CatalogFoundationTest.php",
+      "resources/views/products/index.blade.php",
+      "resources/views/products/show.blade.php",
       "docs/API_INDEPENDENT_CATALOG_FOUNDATION.md"
     ],
     "known_facts": [
@@ -47,14 +54,17 @@
       "demand",
       "referral_margin"
     ],
-    "ranking_contract": "Caller supplies normalized 0..1 feature values and weights totaling 100; equal scores use stable offer ID ordering."
+    "ranking_contract": "Caller supplies normalized 0..1 feature values and weights totaling 100; equal scores use stable offer ID ordering.",
+    "comparison_preview": "Public price-first snapshot comparison using labelled local synthetic fixtures; unknown values remain unavailable and outbound checkout remains external.",
+    "source_adapter_boundary": "Generic ProductSourceAdapter contract only; no partner adapter or credential is active.",
+    "financial_feature_switches": "Comparison preview rewards, vouchers, and gifts are disabled by default; legacy signed financial endpoints are unchanged."
   },
   "verification": {
     "clean_sqlite_migration": "passed; new product_price_snapshots migration applied",
-    "phpunit": "passed; 15 tests and 61 assertions",
+    "phpunit": "passed; 19 tests and 91 assertions",
     "php_lint": "passed",
     "python_guardrail_tests": "passed; 4 tests",
-    "release_contract_validation": "passed; 29 required files",
+    "release_contract_validation": "passed; 32 required files",
     "pilot_gate": "blocked as expected; 32 required fields and 4 owner sign-offs pending",
     "git_diff_check": "passed"
   },
@@ -63,13 +73,13 @@
     "Added latest and source-filtered history access.",
     "Added validation for ratings, discounts, numeric values, and metadata shape.",
     "Added deterministic ranking primitives without embedded commercial weights.",
-    "Added local feature tests and foundation documentation."
+    "Added local feature tests, guarded synthetic preview seeder, generic adapter boundary, and foundation documentation."
   ],
   "scope_not_completed": [
     "No merchant API adapter was activated.",
     "No scraping or unapproved feed ingestion was implemented.",
     "No production, staging, financial, voucher, gift, or partner mutation was performed.",
-    "No final ranking weights or user-facing commercial disclosure policy was selected."
+    "No final ranking weights, live partner source, real reward, voucher, gift, or user-facing commercial activation policy was selected."
   ],
   "approval_status": "Ready for review",
   "open_blockers": [

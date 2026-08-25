@@ -55,6 +55,26 @@ source response
 
 No adapter should be marked active because a public affiliate page exists. Each adapter requires current source documentation, partner/network approval, secure credentials, field mapping, terms/data-permission review, and approved staging certification.
 
+## Adapter interface and safety switches
+
+Future provider implementations should implement `App\\Services\\Contracts\\ProductSourceAdapter`. The interface exposes a stable source name and a `normalizeOffer()` method that converts provider payloads into `ProductPriceSnapshotService` input. It does not grant provider access, approve terms, or hide missing fields. Credentials and provider-specific behavior remain outside the interface.
+
+`config/comparison.php` defines the preview boundary. Comparison preview is enabled by default for local development, while rewards, vouchers, and gifts are disabled by default. The controller gate returns not-found for public comparison and outbound-click routes when preview is disabled. These comparison-preview switches do not disable legacy signed financial endpoints and do not replace partner approval, Finance/Payout approval, privacy review, or staging certification.
+
+## Read-only comparison preview
+
+The public `/products` and `/products/{id}` routes use the snapshot-backed comparison path. Products are ordered by lowest known observed price with stable product or offer ID ties; products without a known price appear after known prices. The preview does not apply commission-first ordering, does not infer availability, and does not promise that an observation is current.
+
+Use the synthetic preview data only in a local or testing environment:
+
+```bash
+php artisan migrate:fresh --seed --seeder="Database\\Seeders\\ComparisonPreviewSeeder"
+```
+
+`ComparisonPreviewSeeder` is not called by the default `DatabaseSeeder` and refuses to run outside `local` or `testing`. Its merchant names, URLs, products, prices, and ratings are synthetic `example.test` fixtures and must never be represented as live partner data.
+
+The existing `/buy/{productId}/{programId}` route remains an external redirect boundary and is subject to the same preview gate. When enabled, it records a local click for a valid tracked link and redirects externally, but it does not activate commissions, points, vouchers, gifts, or settlement behavior.
+
 ## Local evidence
 
 The feature suite covers:
@@ -63,6 +83,7 @@ The feature suite covers:
 - preservation of unknown price/rating values;
 - source-filtered latest/history ordering;
 - rejection of invalid ratings;
-- explicit ranking weights and stable ordering.
+- explicit ranking weights and stable ordering;
+- public disclosure boundaries and disabled-preview gate behavior.
 
 These tests use local fixtures only. They do not establish Amazon, Flipkart, network, merchant, price-history, or production capability.

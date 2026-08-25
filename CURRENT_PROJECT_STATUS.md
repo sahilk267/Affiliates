@@ -43,11 +43,11 @@ The repository has been upgraded to Laravel 12 with PHP 8.2 compatibility and PH
 
 Partner mutation security uses HMAC-SHA256 over `timestamp + '.' + raw request body` with `X-Affiliate-Key`, `X-Affiliate-Timestamp`, and `X-Affiliate-Signature`. Idempotency keys and deterministic ledger keys protect conversion, points, payout, redemption, and refund paths. Atomic transactions and row locks are used for financial state transitions. Endpoint-specific throttles, correlation identifiers, structured logs, security headers, and production-only HSTS behavior are implemented.
 
-### 3.2 API-independent catalog foundation
+### 3.2 API-independent catalog and comparison preview foundation
 
-The repository now contains an additive `product_price_snapshots` schema, an Eloquent snapshot model, a transactional snapshot service, and a deterministic product-ranking service. Snapshot records preserve source tags, nullable unknown values, price observations, availability, rating, discount, and timestamps. The foundation does not pretend that a missing value is available and does not contain hidden referral-margin defaults.
+The repository now contains an additive `product_price_snapshots` schema, an Eloquent snapshot model, a transactional snapshot service, a deterministic product-ranking service, a snapshot-backed public comparison path, a source-adapter interface, guarded comparison feature switches, and a local/testing-only synthetic preview seeder. Snapshot records preserve source tags, nullable unknown values, price observations, availability, rating, discount, and timestamps. The foundation does not pretend that a missing value is available and does not contain hidden referral-margin defaults.
 
-The ranking service accepts caller-supplied normalized features and approved weights. It is not an unrestricted autonomous agent. Before production use, ranking weights, user disclosure, source permissions, product matching, freshness rules, and commercial influence must be approved and tested with real partner data.
+The ranking service accepts caller-supplied normalized features and approved weights. It is not an unrestricted autonomous agent. The current preview orders offers by lowest known observed price with stable ties; this is a transparent preview rule, not the final commercial ranking policy. Before production use, ranking weights, user disclosure, source permissions, product matching, freshness rules, and commercial influence must be approved and tested with real partner data. `COMPARISON_REWARDS_ENABLED`, `COMPARISON_VOUCHERS_ENABLED`, and `COMPARISON_GIFTS_ENABLED` remain disabled by default.
 
 ### 3.3 Evidence-gated execution controls
 
@@ -62,14 +62,14 @@ The following checks were run against the current repository state. They prove l
 | Laravel framework constraint | Laravel `^12.0` |
 | PHP constraint | `^8.2` |
 | PHPUnit constraint | `^11.0` |
-| PHPUnit suite | **15 tests, 61 assertions passed** |
+| PHPUnit suite | **19 tests, 91 assertions passed** |
 | Python guardrail tests | **4 tests passed** |
 | Python compilation | Passed |
 | Clean SQLite migration | Passed |
 | PHP lint | Passed |
 | Composer strict validation | Passed |
 | Composer security audit | Passed; **0 advisories** |
-| Release-contract validator | Passed; **29 required files** |
+| Release-contract validator | Passed; **32 required files** |
 | Pilot report-only validator | Passed; correctly reports blocked |
 | Pilot strict validator | Expected non-zero block |
 | Audit JSON validation | Passed for current audit JSON set |

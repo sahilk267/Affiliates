@@ -30,6 +30,10 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        if ($response = $this->comparisonPreviewGate($request)) {
+            return $response;
+        }
+
         $filters = [
             'category' => $request->get('category'),
             'brand' => $request->get('brand'),
@@ -37,10 +41,10 @@ class ProductController extends Controller
             'status' => 'active',
         ];
 
-        $sortBy = $request->get('sort', 'commission');
-        $perPage = $request->get('per_page', 20);
+        $sortBy = $request->get('sort', 'price');
+        $perPage = (int) $request->get('per_page', 20);
 
-        $products = $this->productService->getProducts($filters, $sortBy, $perPage);
+        $products = $this->productService->getComparisonProducts($filters, $sortBy, $perPage);
 
         // For API requests
         if ($request->wantsJson()) {
@@ -59,7 +63,11 @@ class ProductController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $product = $this->productService->getProductWithLinks($id);
+        if ($response = $this->comparisonPreviewGate($request)) {
+            return $response;
+        }
+
+        $product = $this->productService->getComparisonProduct((int) $id);
 
         if (!$product) {
             if ($request->wantsJson()) {
@@ -93,6 +101,10 @@ class ProductController extends Controller
      */
     public function buy(Request $request, $productId, $programId)
     {
+        if ($response = $this->comparisonPreviewGate($request)) {
+            return $response;
+        }
+
         $productLink = ProductLink::where('product_id', $productId)
             ->where('program_id', $programId)
             ->with(['link', 'program'])
@@ -117,6 +129,26 @@ class ProductController extends Controller
             ]);
             return redirect()->back()->with('error', 'Unable to start affiliate redirect');
         }
+    }
+
+    /**
+     * Keep public comparison and outbound-click behavior explicitly opt-in.
+     * Admin and legacy signed financial flows do not consult this preview flag.
+     */
+    private function comparisonPreviewGate(Request $request)
+    {
+        if (config('comparison.preview_enabled', false)) {
+            return null;
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'status' => 'unavailable',
+                'message' => 'Comparison preview is disabled',
+            ], 404);
+        }
+
+        abort(404);
     }
 
     // ========== ADMIN METHODS ==========

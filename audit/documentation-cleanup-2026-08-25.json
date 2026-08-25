@@ -14,7 +14,7 @@
   ],
   "active_markdown_files": 44,
   "archived_markdown_files": 22,
-  "current_release_contract_required_files": 29,
+  "current_release_contract_required_files": 32,
   "phase1_required_fields_remaining": 32,
   "phase1_owner_signoffs_remaining": 4,
   "archive_root": "docs/archive/legacy",
@@ -34,7 +34,7 @@
     "audit/reports/latest.md refreshed",
     "audit/testing.md refreshed",
     "audit/documentation.md refreshed",
-    "docs/CONTROL_EXECUTION_MATRIX.md updated to 15 tests and 61 assertions",
+    "docs/CONTROL_EXECUTION_MATRIX.md updated to 19 tests and 91 assertions",
     "LARAVEL12_UPGRADE_REPORT.md updated to current test evidence",
     ".cursor/rules/README.md and quick-reference.md repaired",
     ".cursor/rules/project-rules.mcd updated to Laravel 12 and current status sources"

@@ -18,12 +18,12 @@ Phase 1 commercial approval is still blocked. The current pilot validator report
 | Composer audit | PASS; 0 advisories | `composer audit` |
 | PHP lint | PASS | Current application, migration, route, and test sources |
 | Clean SQLite migrations | PASS | `php artisan migrate:fresh --force` with disposable test database |
-| PHPUnit | PASS; 15 tests and 61 assertions | `./vendor/bin/phpunit --configuration phpunit.xml.dist --no-coverage` |
+| PHPUnit | PASS; 19 tests and 91 assertions | `./vendor/bin/phpunit --configuration phpunit.xml.dist --no-coverage` |
 | Python guardrail tests | PASS; 4 tests | `python3 -m unittest discover -s tools -p 'test_*.py'` |
-| Release-contract validation | PASS; 29 required files | `tools/validate_release_contracts.py` |
+| Release-contract validation | PASS; 32 required files | `tools/validate_release_contracts.py` |
 | Pilot report-only gate | BLOCKED as expected | `python3 tools/validate_pilot_decision_inputs.py` |
 | Pilot strict gate | BLOCKS as expected | `python3 tools/validate_pilot_decision_inputs.py --require-approved` |
-| API-independent catalog foundation | Implemented locally | `audit/phase3-foundation.json` |
+| API-independent catalog and comparison preview | Implemented locally; synthetic fixtures and reward switches remain guarded | `audit/phase3-foundation.json`, `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md` |
 | Working-tree whitespace | PASS | `git diff --check` |
 
 The coverage-enabled PHPUnit command remains a CI concern because the local environment may not have a coverage driver. A normal no-coverage run passing does not constitute a coverage percentage or production load result.

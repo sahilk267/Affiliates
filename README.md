@@ -9,9 +9,9 @@ The repository is being implemented through an evidence-gated plan. External par
 | Area | Current status |
 |---|---|
 | Framework | Laravel 12 with PHP ^8.2 and PHPUnit ^11 |
-| Local verification | Passing; current suite is 15 tests and 61 assertions without a local coverage driver |
+| Local verification | Passing; current suite is 19 tests and 91 assertions without a local coverage driver |
 | Composer security audit | 0 advisories in the latest verified run |
-| API-independent catalog foundation | Implemented locally: offer snapshots, price history, and explicit ranking primitives |
+| API-independent catalog foundation | Implemented locally: snapshot-backed comparison preview, offer snapshots, price history, adapter boundary, explicit ranking primitives, guarded synthetic fixtures, and disabled reward switches |
 | Amazon integration | Creators API onboarding and terms verification required; PA-API 5 must not be used for new work |
 | Flipkart integration | Official Product, Offer, and Report API route documented; account and contract evidence still required |
 | Other merchant programs | Prospect or intermediary route only until current access and terms are evidenced |

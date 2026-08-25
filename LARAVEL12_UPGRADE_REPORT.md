@@ -32,7 +32,7 @@ The lockfile was regenerated with `composer update --with-all-dependencies --no-
 | Composer audit after upgrade | Passed; no advisories | `audit/composer-audit-laravel12-2026-08-20.json` |
 | PHP syntax lint | Passed | Regression command across application, migrations, routes, configuration, bootstrap, and tests |
 | Clean SQLite migrations | Passed | `audit/laravel12-migrate-2026-08-20.txt` |
-| PHPUnit | **15 tests, 61 assertions, all passing** | Current no-coverage run; the dated `audit/laravel12-phpunit-2026-08-20.txt` is historical |
+| PHPUnit | **19 tests, 91 assertions, all passing** | Current no-coverage run; the dated `audit/laravel12-phpunit-2026-08-20.txt` is historical |
 | API route registration | Passed | `audit/laravel12-routes-2026-08-20.txt` |
 | Read-only smoke test | Passed: 5/5 health requests successful | `audit/laravel12-smoke-2026-08-20.txt` |
 

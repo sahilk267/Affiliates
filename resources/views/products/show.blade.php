@@ -2,112 +2,140 @@
 @extends('layouts.guest')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Breadcrumb -->
-    <nav class="mb-6">
+<div class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    <nav class="mb-6" aria-label="Breadcrumb">
         <ol class="flex items-center space-x-2 text-sm text-gray-500">
             <li><a href="{{ route('home') }}" class="hover:text-gray-700">Home</a></li>
-            <li>/</li>
-            <li><a href="{{ route('products.index') }}" class="hover:text-gray-700">Products</a></li>
-            <li>/</li>
+            <li aria-hidden="true">/</li>
+            <li><a href="{{ route('products.index') }}" class="hover:text-gray-700">Compare products</a></li>
+            <li aria-hidden="true">/</li>
             <li class="text-gray-900">{{ $product->name }}</li>
         </ol>
     </nav>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Product Image -->
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div>
             @if($product->image_url)
-            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full rounded-lg shadow-sm border border-gray-200">
+            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full rounded-lg border border-gray-200 shadow-sm">
             @else
-            <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-                <span class="text-gray-400">No Image Available</span>
+            <div class="flex h-96 w-full items-center justify-center rounded-lg bg-gray-100">
+                <span class="text-gray-400">No image available</span>
             </div>
             @endif
         </div>
 
-        <!-- Product Details -->
         <div>
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">{{ $product->name }}</h1>
-            
+            <div class="mb-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">Comparison preview</span>
+                @if($product->category)
+                <span class="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">{{ $product->category }}</span>
+                @endif
+            </div>
+            <h1 class="mb-4 text-3xl font-bold text-gray-900">{{ $product->name }}</h1>
+
             @if($product->brand)
-            <p class="text-lg text-gray-600 mb-4">Brand: {{ $product->brand }}</p>
+            <p class="mb-4 text-lg text-gray-600">Brand: {{ $product->brand }}</p>
             @endif
 
             @if($product->description)
             <div class="mb-6">
-                <h2 class="text-lg font-semibold mb-2">Description</h2>
+                <h2 class="mb-2 text-lg font-semibold">Description</h2>
                 <p class="text-gray-700">{{ $product->description }}</p>
             </div>
             @endif
 
-            <!-- Commission Badge -->
-            @if($product->max_commission_rate > 0)
-            <div class="mb-6">
-                <span class="inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-green-100 text-green-800">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                    </svg>
-                    Best Commission: {{ number_format($product->max_commission_rate, 1) }}%
-                </span>
+            <div class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+                Prices, availability, ratings, and history below are source observations. They may be local fixtures or partner snapshots and are not a purchase guarantee. ZenithSoles redirects you to the external merchant; checkout and fulfilment happen there.
             </div>
-            @endif
         </div>
     </div>
 
-    <!-- Price Comparison & Buy Options -->
-    @if($priceComparison && $priceComparison->count() > 0)
-    <div class="mt-12">
-        <h2 class="text-2xl font-bold mb-6">Buy with Me - Compare Prices & Commissions</h2>
-        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+    @if($priceComparison->isNotEmpty())
+    <section class="mt-12" aria-labelledby="comparison-heading">
+        <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+                <h2 id="comparison-heading" class="text-2xl font-bold text-gray-900">Compare recorded offers</h2>
+                <p class="mt-1 text-sm text-gray-600">Offers are ordered by lowest known observed price. Unknown prices appear last. Commercial ranking weights are not applied in this preview.</p>
+            </div>
+            <p class="text-xs text-gray-500">{{ $priceComparison->count() }} offer{{ $priceComparison->count() === 1 ? '' : 's' }} recorded</p>
+        </div>
+
+        <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
             <div class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Platform</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Commission</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Availability</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Platform</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Observed price</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Availability</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Rating</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Observed at</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach($priceComparison as $link)
-                        <tr class="hover:bg-gray-50 {{ $link['is_best_price'] ? 'bg-green-50' : '' }}">
-                            <td class="px-6 py-4 whitespace-nowrap">
+                    <tbody class="divide-y divide-gray-200 bg-white">
+                        @foreach($priceComparison as $offer)
+                        <tr class="hover:bg-gray-50 {{ $offer['is_lowest_known_price'] ? 'bg-green-50' : '' }}">
+                            <td class="px-6 py-4 align-top">
                                 <div class="flex items-center">
-                                    @if($link['program']->logo_url)
-                                    <img src="{{ $link['program']->logo_url }}" alt="{{ $link['program']->name }}" class="h-8 w-8 rounded mr-3">
+                                    @if($offer['program']?->logo_url)
+                                    <img src="{{ $offer['program']->logo_url }}" alt="{{ $offer['program']->name }} logo" class="mr-3 h-8 w-8 rounded">
                                     @endif
-                                    <span class="font-medium text-gray-900">{{ $link['program']->name }}</span>
+                                    <div>
+                                        <p class="font-medium text-gray-900">{{ $offer['program']?->name ?: 'Merchant not recorded' }}</p>
+                                        <p class="mt-1 text-xs text-gray-500">Source: {{ $offer['source'] ?: 'not recorded' }}</p>
+                                        @if($offer['is_fixture'])
+                                        <span class="mt-1 inline-flex rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800">Local fixture</span>
+                                        @endif
+                                    </div>
                                 </div>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="text-lg font-semibold text-gray-900">₹{{ number_format($link['price'], 2) }}</span>
-                                @if($link['is_best_price'])
-                                <span class="ml-2 text-xs text-green-600 font-semibold">Best Price</span>
-                                @endif
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                @if($link['commission_rate'] > 0)
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    {{ number_format($link['commission_rate'], 1) }}%
-                                </span>
-                                @if($link['commission_rate'] == $product->max_commission_rate)
-                                <span class="ml-2 text-xs text-yellow-600 font-semibold">⭐ Best Commission</span>
+                            <td class="px-6 py-4 align-top">
+                                @if($offer['price'] !== null)
+                                <p class="text-lg font-semibold text-gray-900">{{ $offer['currency'] ?: 'Currency not recorded' }} {{ number_format((float) $offer['price'], 2) }}</p>
+                                @if($offer['is_lowest_known_price'])
+                                <span class="mt-1 inline-flex rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800">Lowest known observed price</span>
                                 @endif
                                 @else
-                                <span class="text-gray-400">N/A</span>
+                                <p class="font-medium text-gray-500">Price unavailable</p>
                                 @endif
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <span class="text-sm text-gray-600">{{ $link['availability'] ?? 'In Stock' }}</span>
+                            <td class="px-6 py-4 align-top text-sm text-gray-700">
+                                {{ $offer['availability'] ?: 'Availability unavailable' }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap">
-                                <a href="{{ route('products.buy', ['productId' => $product->id, 'programId' => $link['program']->id]) }}" 
-                                   class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
-                                    Buy Now
-                                </a>
+                            <td class="px-6 py-4 align-top text-sm text-gray-700">
+                                @if($offer['rating'] !== null)
+                                {{ number_format((float) $offer['rating'], 2) }}/5
+                                @if($offer['rating_count'] !== null)
+                                <span class="block text-xs text-gray-500">{{ number_format((int) $offer['rating_count']) }} ratings</span>
+                                @endif
+                                @else
+                                Rating unavailable
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 align-top text-sm text-gray-700">
+                                @if($offer['observed_at'])
+                                {{ $offer['observed_at']->format('d M Y, H:i') }}
+                                @else
+                                Not recorded
+                                @endif
+                                @if($offer['history']->isNotEmpty())
+                                <details class="mt-2 text-xs">
+                                    <summary class="cursor-pointer font-medium text-indigo-700">View history</summary>
+                                    <ul class="mt-2 space-y-1 text-gray-600">
+                                        @foreach($offer['history']->take(5) as $snapshot)
+                                        <li>{{ $snapshot->observed_at->format('d M Y, H:i') }} — {{ $snapshot->price !== null ? ($snapshot->currency ?: 'INR') . ' ' . number_format((float) $snapshot->price, 2) : 'Price unavailable' }}</li>
+                                        @endforeach
+                                    </ul>
+                                </details>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 align-top">
+                                @if($offer['link'])
+                                <a href="{{ route('products.buy', ['productId' => $product->id, 'programId' => $offer['program']->id]) }}" class="inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-700">Open merchant</a>
+                                @else
+                                <span class="text-sm text-gray-400">Link unavailable</span>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -115,12 +143,11 @@
                 </table>
             </div>
         </div>
-    </div>
+    </section>
     @else
-    <div class="mt-12 bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
-        <p class="text-gray-500">No purchase options available for this product.</p>
+    <div class="mt-12 rounded-lg border border-gray-200 bg-white p-12 text-center">
+        <p class="text-gray-500">No source observations are available for this product yet.</p>
     </div>
     @endif
 </div>
 @endsection
-

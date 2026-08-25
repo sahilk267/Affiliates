@@ -13,9 +13,9 @@
 | Composer strict validation | PASS | `composer validate --strict` |
 | Composer security audit | PASS; 0 advisories | `composer audit --format=plain` |
 | Clean SQLite migration | PASS | Disposable local test database |
-| PHPUnit | PASS; 15 tests and 61 assertions | `phpunit.xml.dist`, latest no-coverage run |
+| PHPUnit | PASS; 19 tests and 91 assertions | `phpunit.xml.dist`, latest no-coverage run |
 | Python guardrail tests | PASS; 4 tests | `tools/test_validate_pilot_decision_inputs.py` |
-| Release-contract inventory | PASS; 26 required files | `tools/validate_release_contracts.py` |
+| Release-contract inventory | PASS; 32 required files | `tools/validate_release_contracts.py` |
 | API-independent catalog foundation | Implemented locally | `audit/phase3-foundation.json` |
 | Production approval | Not approved | Staging acceptance and blocker records |
 
@@ -27,7 +27,7 @@ Dated Composer and PHPUnit files from the pre-upgrade audit remain historical ev
 |---|---|---|
 | Security and authentication | Implemented and locally tested | HMAC partner mutation protection, Laravel guard authentication, ownership checks, throttles, headers, and idempotency |
 | Financial state transitions | Implemented and locally tested | Transaction-scoped services, locking, deterministic idempotency, and audit logging |
-| Catalog foundation | Implemented without external APIs | Source-tagged snapshots, nullable unknown fields, history queries, and explicit ranking primitives |
+| Catalog foundation | Implemented without external APIs | Snapshot-backed price-first comparison preview, labelled synthetic fixtures, nullable unknown fields, history queries, generic adapter boundary, and explicit ranking primitives; comparison rewards/vouchers/gifts remain disabled |
 | Partner/API research | Documented, not activated | `audit/phase1-partner-research-2026-08-24.md` |
 | Pilot decision gate | Blocked by owner inputs | `audit/phase1-gate.json` and `docs/PHASE1_REMAINING_DECISIONS.md` |
 | Documentation cleanup | Active/archived sources separated | `README.md` and `docs/archive/README.md` |
