@@ -1,6 +1,8 @@
 # 📘 ZenithSoles Project Rules - Complete Index
 
-This directory contains comprehensive project rules for the ZenithSoles Affiliate Management System. These rules ensure consistency, scalability, and maintainability across all aspects of development.
+This directory contains active development rules for the ZenithSoles Affiliates repository. Before using any rule, read [`CURRENT_PROJECT_STATUS.md`](../../CURRENT_PROJECT_STATUS.md), [`README.md`](../../README.md), and the relevant contract or phase gate. Generic examples, targets, schedules, and feature categories in these rule files are not approved project facts unless current evidence or owner approval confirms them.
+
+> **Anti-hallucination boundary:** Never infer live partner access, prices, stock, ratings, commission rates, reward or voucher policy, metric thresholds, owners, dates, legal approval, or production readiness from a generic rule. Use `audit/phase1-gate.json` and the current runbooks for authoritative status.
 
 ## 📁 **Rule Files Overview**
 
@@ -160,14 +162,16 @@ This directory contains comprehensive project rules for the ZenithSoles Affiliat
 - Faster development cycles
 - Higher team productivity
 
-## 🔗 **Related Documentation**
+## Related Documentation
 
-- **[Architecture](../docs/architecture.md)** - Current architecture and boundaries
-- **[API-independent catalog foundation](../docs/API_INDEPENDENT_CATALOG_FOUNDATION.md)** - Source-agnostic catalog, snapshots, and ranking contracts
-- **[Testing and release evidence](../STAGING_READINESS_REPORT.md)** - Current verification and staging boundary
-- **[Release runbook](../docs/RELEASE_OPERATIONS_RUNBOOK.md)** - Deployment, rollback, secrets, and operational procedures
-- **[Phase 1 decisions](../docs/PHASE1_REMAINING_DECISIONS.md)** - Commercial decision gate
-- **[Current implementation plan](../DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md)** - Evidence-gated execution plan
+- **[Current project status](../../CURRENT_PROJECT_STATUS.md)** - Single source of truth for completed work, pending work, gates, and archive policy
+
+- **[Architecture](../../docs/architecture.md)** - Current architecture and boundaries
+- **[API-independent catalog foundation](../../docs/API_INDEPENDENT_CATALOG_FOUNDATION.md)** - Source-agnostic catalog, snapshots, and ranking contracts
+- **[Testing and release evidence](../../STAGING_READINESS_REPORT.md)** - Current verification and staging boundary
+- **[Release runbook](../../docs/RELEASE_OPERATIONS_RUNBOOK.md)** - Deployment, rollback, secrets, and operational procedures
+- **[Phase 1 decisions](../../docs/PHASE1_REMAINING_DECISIONS.md)** - Commercial decision gate
+- **[Current implementation plan](../../DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md)** - Evidence-gated execution plan
 
 ## 📝 **Rule Customization**
 

@@ -294,7 +294,7 @@ The existing smoke harness is deliberately bounded and read-only by default. It 
 | 30-day repeat rate | Measures retention and LTV potential |
 | Fraud/dispute rate | Measures operational burden and leakage |
 | Settlement time | Measures user trust and working-capital pressure |
-| Missing-cashback ticket rate | Measures tracking/support quality |
+| Missing-reward or attribution ticket rate | Measures tracking/support quality |
 
 **Go/no-go criteria:** At least three verified partner programs, positive contribution margin after all variable costs, repeat users, manageable dispute rate, no unexplained financial discrepancies, and at least one repeatable acquisition channel not dependent entirely on paid advertising.
 

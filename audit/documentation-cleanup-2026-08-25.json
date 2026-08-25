@@ -2,6 +2,7 @@
   "updated_at": "2026-08-25",
   "status": "reconciled",
   "authoritative_sources": [
+    "CURRENT_PROJECT_STATUS.md",
     "README.md",
     "DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md",
     "STAGING_READINESS_REPORT.md",
@@ -11,9 +12,9 @@
     "audit/phase1-gate.json",
     "audit/phase3-foundation.json"
   ],
-  "active_markdown_files": 43,
+  "active_markdown_files": 44,
   "archived_markdown_files": 22,
-  "current_release_contract_required_files": 28,
+  "current_release_contract_required_files": 29,
   "phase1_required_fields_remaining": 32,
   "phase1_owner_signoffs_remaining": 4,
   "archive_root": "docs/archive/legacy",
@@ -25,7 +26,10 @@
     "duplicate generic rule documentation"
   ],
   "active_document_updates": [
-    "README.md rewritten as current source of truth",
+    "CURRENT_PROJECT_STATUS.md created as the single current project-status source of truth",
+    "README.md updated as repository overview and navigation source",
+    ".cursor/rules/README.md and quick-reference.md updated with current-status and anti-hallucination boundaries",
+    "tools/generate_audit_artifacts.py updated to preserve current-status authority during regeneration",
     "audit/RELEASE_READINESS_INVENTORY.md refreshed",
     "audit/reports/latest.md refreshed",
     "audit/testing.md refreshed",

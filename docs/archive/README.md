@@ -1,8 +1,8 @@
 # Archived Documentation
 
-This directory contains superseded planning, status, and quick-start documents retained for historical traceability. **Archived documents are not current instructions, release evidence, owner approvals, partner contracts, or production-readiness claims.**
+This directory contains superseded planning, status, and quick-start documents retained for historical traceability. **Archived documents are not current instructions, release evidence, owner approvals, partner contracts, or production-readiness claims.** Read `CURRENT_PROJECT_STATUS.md` at the repository root first for the current project state.
 
-The active source of truth is the repository root `README.md`, the current contracts and runbooks, `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md`, the Phase 1 decision documents under `docs/`, and the dated evidence records under `audit/`.
+The primary project-status source is the repository root `CURRENT_PROJECT_STATUS.md`. The repository overview is `README.md`; supporting current sources are the contracts and runbooks, `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md`, Phase 1 decision documents under `docs/`, and dated evidence records under `audit/`.
 
 ## Archive rules
 

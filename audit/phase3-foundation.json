@@ -54,8 +54,8 @@
     "phpunit": "passed; 15 tests and 61 assertions",
     "php_lint": "passed",
     "python_guardrail_tests": "passed; 4 tests",
-    "release_contract_validation": "passed; 26 required files",
-    "pilot_gate": "blocked as expected; 39 required fields and 4 owner sign-offs pending",
+    "release_contract_validation": "passed; 29 required files",
+    "pilot_gate": "blocked as expected; 32 required fields and 4 owner sign-offs pending",
     "git_diff_check": "passed"
   },
   "scope_completed": [

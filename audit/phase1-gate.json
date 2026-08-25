@@ -70,7 +70,7 @@
     "owner_signoff_rows_remaining": 4,
     "production_approval": "not_approved",
     "release_contract_validation": "passed",
-    "release_contract_required_files": 28,
+    "release_contract_required_files": 29,
     "validator_regression_tests": "passed; 4 tests",
     "phpunit": "passed without coverage driver; 15 tests and 61 assertions",
     "composer_audit": "passed; 0 advisories",

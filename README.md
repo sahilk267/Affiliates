@@ -15,10 +15,10 @@ The repository is being implemented through an evidence-gated plan. External par
 | Amazon integration | Creators API onboarding and terms verification required; PA-API 5 must not be used for new work |
 | Flipkart integration | Official Product, Offer, and Report API route documented; account and contract evidence still required |
 | Other merchant programs | Prospect or intermediary route only until current access and terms are evidenced |
-| Phase 1 commercial gate | Blocked: 39 required fields and 4 owner sign-offs pending |
+| Phase 1 commercial gate | Blocked: 32 required fields and 4 owner sign-offs pending |
 | Production release | Not approved |
 
-The authoritative status is maintained in `STAGING_READINESS_REPORT.md`, `STAGING_BLOCKER_REGISTER.md`, `audit/phase1-gate.json`, and `audit/phase3-foundation.json`.
+The authoritative status is maintained first in `CURRENT_PROJECT_STATUS.md`, with supporting evidence in `STAGING_READINESS_REPORT.md`, `STAGING_BLOCKER_REGISTER.md`, `audit/phase1-gate.json`, and `audit/phase3-foundation.json`.
 
 ## Product direction
 
@@ -88,8 +88,11 @@ The strict pilot command is expected to fail while required owner inputs and sig
 
 ## Current documentation
 
+Read [`CURRENT_PROJECT_STATUS.md`](CURRENT_PROJECT_STATUS.md) first. It is the single current source of truth for completed work, pending decisions, phase gates, and document authority.
+
 | Document | Purpose |
 |---|---|
+| `CURRENT_PROJECT_STATUS.md` | Complete current project status, completed work, pending work, evidence boundaries, and archive policy |
 | `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` | Evidence-gated implementation plan and anti-hallucination rules |
 | `CONCEPT_VIABILITY_ASSESSMENT.md` | Business viability analysis and narrow-pilot rationale |
 | `END_TO_END_GAP_ASSESSMENT.md` | Repository, product, business, and operations gap assessment |

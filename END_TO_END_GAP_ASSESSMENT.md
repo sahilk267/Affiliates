@@ -5,9 +5,9 @@
 
 ## 1. Executive conclusion
 
-The project does **not** currently show unresolved evidence-based defects in the refreshed repository audit. The Laravel 12 upgrade is applied, Composer reports zero advisories, the release-contract validator passes, PHP lint passes, clean migrations pass, and the feature suite passes with **11 tests and 46 assertions**. The calculated release score is **80.31/100** across measurable categories. Performance and AI safety are explicitly not measurable rather than being assigned invented scores. [1] [2] [3]
+The project does **not** currently show unresolved code-level defects in the refreshed repository audit. The Laravel 12 upgrade is applied, Composer reports zero advisories, the release-contract validator passes, PHP lint passes, clean migrations pass, and the feature suite passes with **15 tests and 61 assertions**. The calculated release score is **80.31/100** across measurable categories; that score is a dated repository audit heuristic, not a business or production-readiness score. Performance and AI safety are explicitly not measurable rather than being assigned invented scores. [1] [2] [3]
 
-The central gap is the distinction between **code readiness** and **production readiness**. Fourteen staging blockers remain open or incomplete: none has a named individual, due date, evidence link, cleared stop condition, or closed status. Therefore the system is suitable for a controlled staging handoff, but it is not yet eligible for production approval. [4] [5]
+The central gap is the distinction between **code readiness** and **production readiness**. Fourteen staging blockers remain open or incomplete: none has a named individual, due date, evidence link, cleared stop condition, or closed status. Phase 1 commercial approval also remains blocked by 32 required fields and four owner sign-offs. Therefore the system is suitable for continued local development and controlled staging preparation, but it is not yet eligible for production approval. [4] [5]
 
 > **Bottom line:** The repository-side P0/P1 remediation is substantially complete. The remaining work is primarily certification and operationalization, plus several measurable engineering maturity gaps that are not required to run the local application but matter for enterprise scale and release confidence.
 
