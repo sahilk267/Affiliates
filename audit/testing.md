@@ -10,7 +10,7 @@ The current repository verification is reproducible locally with disposable SQLi
 | Python guardrail tests | 4 | `tools/test_validate_pilot_decision_inputs.py` |
 | Clean SQLite migration | PASS | `php artisan migrate:fresh --force` |
 | PHP lint | PASS | Current application, migration, route, and test sources |
-| Release-contract validation | PASS; 32 required files | `python3 tools/validate_release_contracts.py` |
+| Release-contract validation | PASS; 34 required files | `python3 tools/validate_release_contracts.py` |
 | Pilot report-only validator | BLOCKED as expected | 32 required fields and 4 owner sign-offs remain |
 | Pilot strict validator | Expected non-zero exit | `--require-approved` intentionally enforces the Phase 1 gate |
 | Coverage percentage | NOT MEASURABLE locally | No local coverage driver was available for the verified run |

@@ -15,7 +15,7 @@
 | Clean SQLite migration | PASS | Disposable local test database |
 | PHPUnit | PASS; 19 tests and 91 assertions | `phpunit.xml.dist`, latest no-coverage run |
 | Python guardrail tests | PASS; 4 tests | `tools/test_validate_pilot_decision_inputs.py` |
-| Release-contract inventory | PASS; 32 required files | `tools/validate_release_contracts.py` |
+| Release-contract inventory | PASS; 34 required files | `tools/validate_release_contracts.py` |
 | API-independent catalog foundation | Implemented locally | `audit/phase3-foundation.json` |
 | Production approval | Not approved | Staging acceptance and blocker records |
 
@@ -59,6 +59,8 @@ Phase 3 is complete for the API-independent foundation only. It does not authori
 
 Use the following active documents for the next release decision:
 
+- `docs/OWNER_ACTION_PACKAGE.md`
+- `audit/owner-action-package.json`
 - `docs/PILOT_DECISION_INPUT_TEMPLATE.md`
 - `docs/PHASE1_REMAINING_DECISIONS.md`
 - `docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md`

@@ -35,7 +35,7 @@ This checklist translates the current owner-provided direction into implementati
 
 ## Current gate
 
-The partner research record is `audit/phase1-partner-research-2026-08-24.md`. The machine-readable gate is `audit/phase1-gate.json`. The current validator should remain blocked until the required fields and all four owner sign-offs are completed:
+The partner research record is `audit/phase1-partner-research-2026-08-24.md`. The machine-readable gate is `audit/phase1-gate.json`. The step-by-step completion checklist is `docs/OWNER_ACTION_PACKAGE.md`, with machine-readable evidence in `audit/owner-action-package.json`. The current validator should remain blocked until the required fields and all four owner sign-offs are completed:
 
 ```bash
 python3 tools/validate_pilot_decision_inputs.py

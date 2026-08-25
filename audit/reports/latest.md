@@ -8,7 +8,7 @@
 
 **Ready for continued local development and controlled staging preparation; not approved for production.** The repository’s code-level controls can be exercised locally, but partner/API onboarding, data-permission review, staging certification, payout/reconciliation evidence, secrets, backup/restore, rollback, observability, capacity, privacy/legal review, named owners, and explicit release sign-offs remain external gates.
 
-Phase 1 commercial approval is still blocked. The current pilot validator reports one selected model direction, 32 required fields remaining, and four owner sign-offs pending. The strict command is intentionally expected to fail until the owner completes and approves the pilot decision template.
+Phase 1 commercial approval is still blocked. The current pilot validator reports one selected model direction, 32 required fields remaining, and four owner sign-offs pending. The documented next action is `docs/OWNER_ACTION_PACKAGE.md`; the strict command is intentionally expected to fail until the owner completes and approves the pilot decision template.
 
 ## Current measured local evidence
 
@@ -20,7 +20,7 @@ Phase 1 commercial approval is still blocked. The current pilot validator report
 | Clean SQLite migrations | PASS | `php artisan migrate:fresh --force` with disposable test database |
 | PHPUnit | PASS; 19 tests and 91 assertions | `./vendor/bin/phpunit --configuration phpunit.xml.dist --no-coverage` |
 | Python guardrail tests | PASS; 4 tests | `python3 -m unittest discover -s tools -p 'test_*.py'` |
-| Release-contract validation | PASS; 32 required files | `tools/validate_release_contracts.py` |
+| Release-contract validation | PASS; 34 required files | `tools/validate_release_contracts.py` |
 | Pilot report-only gate | BLOCKED as expected | `python3 tools/validate_pilot_decision_inputs.py` |
 | Pilot strict gate | BLOCKS as expected | `python3 tools/validate_pilot_decision_inputs.py --require-approved` |
 | API-independent catalog and comparison preview | Implemented locally; synthetic fixtures and reward switches remain guarded | `audit/phase3-foundation.json`, `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md` |
@@ -30,7 +30,7 @@ The coverage-enabled PHPUnit command remains a CI concern because the local envi
 
 ## Documentation state
 
-The current repository contains 44 active Markdown documents and 22 archived Markdown documents under `docs/archive/`. The active project-status source of truth is `CURRENT_PROJECT_STATUS.md`, with repository overview and navigation in `README.md`. Legacy status snapshots, obsolete pre-Laravel-12 plans, old Laravel 10 notes, duplicate rule READMEs, and stale quick-start material are retained only under `docs/archive/legacy/` with explicit reasons.
+The current repository contains 45 active Markdown documents and 22 archived Markdown documents under `docs/archive/`. The active project-status source of truth is `CURRENT_PROJECT_STATUS.md`, with repository overview and navigation in `README.md`. Legacy status snapshots, obsolete pre-Laravel-12 plans, old Laravel 10 notes, duplicate rule READMEs, and stale quick-start material are retained only under `docs/archive/legacy/` with explicit reasons.
 
 ## Active phase evidence
 

@@ -51,7 +51,8 @@ The ranking service accepts caller-supplied normalized features and approved wei
 
 ### 3.3 Evidence-gated execution controls
 
-The pilot decision template, remaining-decisions checklist, owner/timeline proposal, report-only validator, strict validator, validator regression tests, Phase 1 owner-input capture, Phase 1 gate evidence, partner research, Phase 3 foundation evidence, and documentation-cleanup evidence are present. CI runs the pilot validator in report-only mode, and an explicitly enabled release workflow can enforce the strict gate through `ENFORCE_PILOT_DECISION=true`.
+The pilot decision template, remaining-decisions checklist, owner/timeline proposal, owner-action package, report-only validator, strict validator, validator regression tests, Phase 1 owner-input capture, Phase 1 gate evidence, partner research, Phase 3 foundation evidence, and documentation-cleanup evidence are present.
+ CI runs the pilot validator in report-only mode, and an explicitly enabled release workflow can enforce the strict gate through `ENFORCE_PILOT_DECISION=true`.
 
 ## 4. Verified local evidence
 
@@ -69,7 +70,7 @@ The following checks were run against the current repository state. They prove l
 | PHP lint | Passed |
 | Composer strict validation | Passed |
 | Composer security audit | Passed; **0 advisories** |
-| Release-contract validator | Passed; **32 required files** |
+| Release-contract validator | Passed; **34 required files** |
 | Pilot report-only validator | Passed; correctly reports blocked |
 | Pilot strict validator | Expected non-zero block |
 | Audit JSON validation | Passed for current audit JSON set |
@@ -89,7 +90,7 @@ Phase 1 is **blocked_owner_input_required**. The current validator result is:
 | Production approval | `not_approved` |
 | Strict release gate | Blocked until all required inputs and approvals are complete |
 
-The exact machine-readable record is [`audit/phase1-gate.json`](audit/phase1-gate.json). The owner-input form is [`docs/PILOT_DECISION_INPUT_TEMPLATE.md`](docs/PILOT_DECISION_INPUT_TEMPLATE.md).
+The exact machine-readable record is [`audit/phase1-gate.json`](audit/phase1-gate.json). The owner-input form is [`docs/PILOT_DECISION_INPUT_TEMPLATE.md`](docs/PILOT_DECISION_INPUT_TEMPLATE.md), and the step-by-step owner checklist is [`docs/OWNER_ACTION_PACKAGE.md`](docs/OWNER_ACTION_PACKAGE.md).
 
 ## 6. Pending work
 
@@ -146,16 +147,18 @@ Use the following order when deciding what is current:
 | 2 | `README.md` | Repository overview and current operating boundary |
 | 3 | `DETAILED_PHASE_WISE_IMPLEMENTATION_PLAN.md` | Phase gates and anti-hallucination execution rules |
 | 4 | `docs/PILOT_DECISION_INPUT_TEMPLATE.md` | Owner inputs and formal approvals |
-| 5 | `STAGING_BLOCKER_REGISTER.md`, `STAGING_READINESS_REPORT.md`, `FINAL_STAGING_HANDOFF_CHECKLIST.md` | Staging and release evidence |
-| 6 | Specific contracts, runbooks, architecture, ADRs, and foundation evidence | Technical implementation details |
-| 7 | `audit/*.json` and `audit/*.md` | Measured or historical evidence; use only with date, scope, and limitations |
-| 8 | `docs/archive/**` | Historical reference only; never current instructions or approval evidence |
+| 5 | `docs/OWNER_ACTION_PACKAGE.md` and `audit/owner-action-package.json` | Owner action sequence, evidence requirements, stop conditions, and completion checks |
+| 6 | `STAGING_BLOCKER_REGISTER.md`, `STAGING_READINESS_REPORT.md`, `FINAL_STAGING_HANDOFF_CHECKLIST.md` | Staging and release evidence |
+| 7 | Specific contracts, runbooks, architecture, ADRs, and foundation evidence | Technical implementation details |
+| 8 | `audit/*.json` and `audit/*.md` | Measured or historical evidence; use only with date, scope, and limitations |
+| 9 | `docs/archive/**` | Historical reference only; never current instructions or approval evidence |
 
 The archive index is [`docs/archive/README.md`](docs/archive/README.md). It contains superseded status reports, old plans, stale quick-start material, obsolete Laravel 10 guidance, and duplicate generic rule files. Dated audit snapshots may remain active as historical evidence, but they must not override this document or current phase-gate results.
 
 ## 9. Safe next action
 
-The next safe action is to complete and approve [`docs/PILOT_DECISION_INPUT_TEMPLATE.md`](docs/PILOT_DECISION_INPUT_TEMPLATE.md). Until then, development may continue only on API-independent fixtures, source adapters, documentation, UI scaffolding, validators, and tests that do not claim real partner behavior. No agent may select a category, partner, commission rule, reversal rule, metric threshold, owner, date, or production setting on the owner’s behalf.
+The next safe action is to follow [`docs/OWNER_ACTION_PACKAGE.md`](docs/OWNER_ACTION_PACKAGE.md) and complete and approve [`docs/PILOT_DECISION_INPUT_TEMPLATE.md`](docs/PILOT_DECISION_INPUT_TEMPLATE.md).
+ Until then, development may continue only on API-independent fixtures, source adapters, documentation, UI scaffolding, validators, and tests that do not claim real partner behavior. No agent may select a category, partner, commission rule, reversal rule, metric threshold, owner, date, or production setting on the owner’s behalf.
 
 ## References
 

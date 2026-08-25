@@ -15,10 +15,10 @@ The repository is being implemented through an evidence-gated plan. External par
 | Amazon integration | Creators API onboarding and terms verification required; PA-API 5 must not be used for new work |
 | Flipkart integration | Official Product, Offer, and Report API route documented; account and contract evidence still required |
 | Other merchant programs | Prospect or intermediary route only until current access and terms are evidenced |
-| Phase 1 commercial gate | Blocked: 32 required fields and 4 owner sign-offs pending |
+| Phase 1 commercial gate | Blocked: 32 required fields and 4 owner sign-offs pending; owner-action package documented |
 | Production release | Not approved |
 
-The authoritative status is maintained first in `CURRENT_PROJECT_STATUS.md`, with supporting evidence in `STAGING_READINESS_REPORT.md`, `STAGING_BLOCKER_REGISTER.md`, `audit/phase1-gate.json`, and `audit/phase3-foundation.json`.
+The authoritative status is maintained first in `CURRENT_PROJECT_STATUS.md`, with owner completion guidance in `docs/OWNER_ACTION_PACKAGE.md` and supporting evidence in `STAGING_READINESS_REPORT.md`, `STAGING_BLOCKER_REGISTER.md`, `audit/phase1-gate.json`, `audit/owner-action-package.json`, and `audit/phase3-foundation.json`.
 
 ## Product direction
 
@@ -98,6 +98,8 @@ Read [`CURRENT_PROJECT_STATUS.md`](CURRENT_PROJECT_STATUS.md) first. It is the s
 | `END_TO_END_GAP_ASSESSMENT.md` | Repository, product, business, and operations gap assessment |
 | `audit/phase1-partner-research-2026-08-24.md` | Official-source partner/API research and integration boundaries |
 | `docs/PILOT_DECISION_INPUT_TEMPLATE.md` | Owner inputs required before the commercial pilot gate can close |
+| `docs/OWNER_ACTION_PACKAGE.md` | Step-by-step owner inputs, evidence requirements, stop conditions, and completion checks |
+| `audit/owner-action-package.json` | Machine-readable owner-action and gate evidence |
 | `docs/PHASE1_REMAINING_DECISIONS.md` | Structured unresolved Phase 1 decisions |
 | `docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md` | Proposed roles and dates, explicitly not approvals |
 | `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md` | Snapshot and deterministic ranking foundation contract |

@@ -17,6 +17,7 @@ No production credentials, live partner systems, real payouts, or customer data 
 | Staging acceptance record | `docs/STAGING_ACCEPTANCE_RECORD.md` | Captures release identity, automated gates, partner certification, payout controls, observability, rollback, and sign-off evidence |
 | Operations runbook | `docs/RELEASE_OPERATIONS_RUNBOOK.md` | Defines migration rehearsal, secret rotation, partner certification, payout reconciliation, rollback, and alerting procedures |
 | Pilot decision gate | `tools/validate_pilot_decision_inputs.py` and `audit/phase1-gate.json` | Blocks Phase 1 business implementation until the remaining category, partner, policy, metric, owner, and sign-off inputs are approved |
+| Owner-action package | `docs/OWNER_ACTION_PACKAGE.md` and `audit/owner-action-package.json` | Maps each pending Phase 1 input to acceptable evidence, stop conditions, and completion checks |
 | API-independent catalog and comparison preview | `docs/API_INDEPENDENT_CATALOG_FOUNDATION.md`, `audit/phase3-foundation.json`, `database/seeders/ComparisonPreviewSeeder.php`, `config/comparison.php` | Provides local snapshot/history/comparison contracts, synthetic fixtures, and disabled reward switches without claiming external API or merchant data |
 
 ## Local evidence
@@ -36,7 +37,8 @@ No production credentials, live partner systems, real payouts, or customer data 
 | Phase 1 pilot-input validator | Passed in report-only mode; strict gate correctly blocked | `audit/phase1-gate.json` |
 | Dynamic audit refresh | Passed; 0 unresolved findings | `audit/issues.json`, `audit/release-score.json` |
 
-The partner checker’s valid mutation section is intentionally skipped in the local evidence because no live staging credentials or approved staging fixtures were supplied. That is a control boundary, not a failed test. The Phase 1 pilot-input validator remains blocked because only the model direction and some commercial context are captured; category scope, partner approvals, data permissions, ranking weights, detailed reward/voucher/reversal/gift policy, metrics, owners, dates, and sign-offs remain incomplete.
+The partner checker’s valid mutation section is intentionally skipped in the local evidence because no live staging credentials or approved staging fixtures were supplied. The current owner-action package is a documentation handoff only; it does not authorize staging mutations or production activity.
+ That is a control boundary, not a failed test. The Phase 1 pilot-input validator remains blocked because only the model direction and some commercial context are captured; category scope, partner approvals, data permissions, ranking weights, detailed reward/voucher/reversal/gift policy, metrics, owners, dates, and sign-offs remain incomplete.
 
 ## Staging execution procedure
 

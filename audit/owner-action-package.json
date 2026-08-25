@@ -1,0 +1,118 @@
+{
+  "phase_id": 1,
+  "artifact": "owner-action-package",
+  "status": "owner_input_required",
+  "updated_at": "2026-08-25",
+  "source_of_facts": [
+    "User-provided conversation input",
+    "docs/PILOT_DECISION_INPUT_TEMPLATE.md",
+    "docs/PHASE1_REMAINING_DECISIONS.md",
+    "audit/phase1-owner-input-capture.json"
+  ],
+  "current_gate": {
+    "selected_model_direction": "Consumer affiliate comparison with post-confirmation reward points",
+    "required_template_fields_remaining": 32,
+    "owner_signoff_rows_remaining": 4,
+    "production_approval": "not_approved",
+    "strict_gate_expected_before_completion": "non_zero"
+  },
+  "owner_actions": [
+    {
+      "id": "OA-01",
+      "area": "pilot identity and accountability",
+      "required_inputs": ["pilot name", "Product owner", "Release owner", "Security owner", "Finance/Payout owner", "planned start", "planned end", "approval record/link"],
+      "acceptable_evidence": ["durable owner decision record", "dated approval link"],
+      "stop_condition": "Any required identity, date, or approval field is missing."
+    },
+    {
+      "id": "OA-02",
+      "area": "pilot scope and environment",
+      "required_inputs": ["bounded category set", "measurable first-pilot audience", "geography/language", "staging URL", "approved test window"],
+      "acceptable_evidence": ["approved pilot decision", "staging target record"],
+      "stop_condition": "Broad all-user or all-product direction is used as a measurable pilot without a bounded decision."
+    },
+    {
+      "id": "OA-03",
+      "area": "business model",
+      "required_inputs": ["exact model wording", "decision owner", "decision date", "rationale"],
+      "acceptable_evidence": ["signed Product decision"],
+      "stop_condition": "Draft model is treated as approved without explicit sign-off."
+    },
+    {
+      "id": "OA-04",
+      "area": "partner shortlist",
+      "required_inputs": ["initial 3-5 partner targets", "prospect/approved staging/approved pilot status for each", "technical owner"],
+      "acceptable_evidence": ["current partner/network approval", "current technical documentation", "sanitized contract/source record"],
+      "stop_condition": "Any unverified candidate is labelled active."
+    },
+    {
+      "id": "OA-05",
+      "area": "data and permission basis",
+      "required_inputs": ["approved price source", "availability source", "rating source", "search-demand source", "price-history source", "retention/deletion rules"],
+      "acceptable_evidence": ["data-permission decision", "partner/network terms", "privacy review"],
+      "stop_condition": "Scraping, copying, ingestion, redistribution, or price-history storage is implemented without permission."
+    },
+    {
+      "id": "OA-06",
+      "area": "ranking policy",
+      "required_inputs": ["feature definitions", "normalization", "weights", "freshness rule", "tie-break rule", "commercial influence disclosure"],
+      "acceptable_evidence": ["approved ranking policy", "deterministic test cases"],
+      "stop_condition": "Referral margin silently overrides a cheaper offer or missing data receives a favourable default."
+    },
+    {
+      "id": "OA-07",
+      "area": "reward basis and allocation",
+      "required_inputs": ["denominator", "gross/net treatment", "eligible commission definition", "40/40/20 categories", "deductions", "accounting and liability treatment"],
+      "acceptable_evidence": ["Finance/Payout approval", "partner settlement terms", "reconciliation definition"],
+      "stop_condition": "The 4% example or 40/40/20 direction is used as an unapproved live financial calculation."
+    },
+    {
+      "id": "OA-08",
+      "area": "confirmation, reversal, voucher, payout, and fraud policy",
+      "required_inputs": ["partner-specific lifecycle", "usable-points condition", "return/reversal rule", "referral eligibility", "minimum withdrawal", "payout method/fees", "settlement timeline", "fraud/reserve policy", "voucher terms"],
+      "acceptable_evidence": ["approved policy", "partner/network terms", "Finance/Payout review"],
+      "stop_condition": "A universal two-month promise, voucher liability, payout obligation, or reversal behavior is assumed."
+    },
+    {
+      "id": "OA-09",
+      "area": "gift program",
+      "required_inputs": ["eligibility", "selection method", "budget/cap", "frequency", "disclosure", "return/fraud handling", "accounting treatment"],
+      "acceptable_evidence": ["signed gift/marketing decision", "budget owner approval"],
+      "stop_condition": "Gifts are promised or distributed without an approved rule and budget cap."
+    },
+    {
+      "id": "OA-10",
+      "area": "pilot measurement contract",
+      "required_inputs": ["metric definitions", "numeric thresholds", "data sources", "metric owners", "go/no-go rules"],
+      "acceptable_evidence": ["approved measurement plan", "baseline and reporting ownership"],
+      "stop_condition": "Success, revenue, margin, retention, or settlement claims are made without pre-approved thresholds."
+    },
+    {
+      "id": "OA-11",
+      "area": "mandatory sign-offs",
+      "required_inputs": ["Product approve", "Release approve", "Security approve", "Finance/Payout approve", "dates", "signature/links"],
+      "acceptable_evidence": ["completed sign-off table with durable links"],
+      "stop_condition": "Any sign-off is blank, TBD, revise, block, or not durable."
+    }
+  ],
+  "completion_checks": [
+    "docs/PILOT_DECISION_INPUT_TEMPLATE.md contains no unresolved [REQUIRED] markers",
+    "Exactly one pilot model is selected",
+    "All four mandatory sign-off rows explicitly say approve",
+    "Report-only validator returns ready_for_phase_1",
+    "Strict validator exits 0",
+    "audit/phase1-gate.json and CURRENT_PROJECT_STATUS.md are refreshed",
+    "Production remains separately blocked until staging evidence is complete"
+  ],
+  "validation_commands": [
+    "python3 tools/validate_pilot_decision_inputs.py",
+    "python3 tools/validate_pilot_decision_inputs.py --require-approved"
+  ],
+  "prohibited_assumptions": [
+    "No partner activation from a public page or unverified API mention",
+    "No fabricated price, availability, rating, demand, commission, settlement, voucher, gift, metric, owner, date, or approval",
+    "No production credentials, real funds, real customer data, or production URL for certification",
+    "No claim that local synthetic preview proves partner or production capability"
+  ],
+  "authoritative_action_document": "docs/OWNER_ACTION_PACKAGE.md"
+}

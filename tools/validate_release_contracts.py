@@ -30,6 +30,8 @@ REQUIRED_FILES = [
     "docs/PHASE1_REMAINING_DECISIONS.md",
     "docs/PHASE1_OWNER_AND_TIMELINE_PROPOSAL.md",
     "docs/API_INDEPENDENT_CATALOG_FOUNDATION.md",
+    "docs/OWNER_ACTION_PACKAGE.md",
+    "audit/owner-action-package.json",
     "audit/phase3-foundation.json",
     "audit/documentation-cleanup-2026-08-25.json",
     "docs/archive/README.md",

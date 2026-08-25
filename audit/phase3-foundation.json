@@ -64,7 +64,7 @@
     "phpunit": "passed; 19 tests and 91 assertions",
     "php_lint": "passed",
     "python_guardrail_tests": "passed; 4 tests",
-    "release_contract_validation": "passed; 32 required files",
+    "release_contract_validation": "passed; 34 required files",
     "pilot_gate": "blocked as expected; 32 required fields and 4 owner sign-offs pending",
     "git_diff_check": "passed"
   },
